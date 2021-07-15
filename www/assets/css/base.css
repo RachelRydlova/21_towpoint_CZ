@@ -1,0 +1,611 @@
+@font-face
+{
+	font-family: osr;
+	src: url('fonts/os-r.otf'),
+	url("fonts/os-r.woff") format("woff");
+}
+
+@font-face
+{
+	font-family: osb;
+	src: url('fonts/os-b.otf'),
+	url("fonts/os-b.woff") format("woff");
+}
+
+@font-face
+{
+	font-family: ossb;
+	src: url('fonts/os-sb.otf'),
+	url("fonts/os-sb.woff") format("woff");
+}
+
+
+
+
+
+body
+{
+	margin: 0px;
+	padding: 0px;
+	font-family: osr, Arial, Helvetica, sans-serif;
+	-webkit-text-size-adjust: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.5);
+	-ms-text-size-adjust: 100%;
+}
+
+* hr,
+.hide { display: none; }
+
+a:active { outline: none; }
+:focus { outline-style: none; }
+
+a
+{
+	color: inherit;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+input, textarea
+{
+	-webkit-border-radius: 0px;
+	-webkit-appearance: none;
+}
+
+
+input::-webkit-input-placeholder {  color: inherit;  opacity: 1;}
+input::-moz-placeholder {  color: inherit;  opacity: 1;}
+input:-ms-input-placeholder {  color: inherit;  opacity: 1;}
+input:-moz-placeholder {  color: inherit;  opacity: 1;}
+
+
+*, *:before, *:after
+{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+}
+
+
+
+
+header
+{
+	max-width: 1650px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 30px 0px;
+}
+
+header > a.logo
+{
+	float: left;
+	background-image: url("../img/logo-w.svg");
+	width: 310px;
+	height: 71px;
+	background-size: auto 70%;
+	background-repeat: no-repeat;
+	background-position: left bottom;
+}
+
+header::after
+{
+	content: " ";
+	clear: both;
+	display: block;
+}
+
+header nav
+{
+	float: right;
+	font-size: 16px;
+	padding-top: 30px;
+	font-weight: bold;
+}
+
+#mmenu
+{
+	display: none;
+}
+
+header nav a,
+.cta
+{
+	background-color: #f90;
+	margin-right: 10px;
+	float: left;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+header nav a:last-of-type
+{
+	margin-right: 0px;
+}
+
+header nav a span,
+.cta > span
+{
+	background-color: #f90;
+	color: white;
+	padding: 10px 25px;
+	float: left;
+	width: 100%;
+	
+	transition: 100ms transform, 100ms background-color, 100ms color;
+}
+
+header nav a:hover span,
+.cta:hover > span
+{
+	text-decoration: none;
+	background-color: #525252;
+	
+	-moz-transform: translateY(-5px);
+	-webkit-transform: translateY(-5px);
+	-o-transform: translateY(-5px);
+	-ms-transform: translateY(-5px);
+	transform: translateY(-5px);
+}
+
+.cta.alt
+{
+	background-color: white;
+}
+
+.cta.alt span
+{
+	background-color: white;
+	color: black;
+}
+
+.cta.alt:hover span
+{
+	background-color: #525252;
+	color: white;
+}
+
+
+
+
+
+
+
+
+#main,
+.subn
+{
+	float: left;
+	width: 100%;
+	background-color: #525252;
+	color: white;
+}
+
+#main h1,
+.subn h2
+{
+	font-size: 32px;	
+	max-width: 1650px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 40px 0px;
+	font-weight: normal;
+	font-family: osb, Arial, Helvetica, sans-serif;
+}
+
+.subn
+{
+	background-color: #ebebeb;
+}
+
+.subn h2
+{
+	font-size: 22px;
+	font-weight: normal;
+	font-family: ossb, Arial, Helvetica, sans-serif;
+	padding: 30px 0px;
+	color: #525252;
+}
+
+
+
+
+
+
+
+#vyrobci
+{
+	float: left;
+	width: 100%;
+	text-align: center;
+	padding: 50px;
+	padding-bottom: 40px;
+	padding-top: 40px;
+	background-color: #ebebeb;
+}
+
+#vyrobci div
+{
+	margin-right: 30px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0px 25px;
+	width: 234px;
+}
+
+#vyrobci div:last-of-type
+{
+	margin-right: 0px;
+}
+
+#vyrobci img
+{
+	width: 100%;
+/*	width: 234px;
+	height: 60px;*/
+	display: block;
+}
+
+#vyrobci div:nth-of-type(5) img
+{
+	margin-top: 5px;
+}
+
+
+
+#service_net
+{
+	float: left;
+	width: 100%;
+	background-color: #525252;
+}
+
+#service_net > div
+{
+	max-width: 1650px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 40px 0px;
+	color: white;
+	line-height: 1.5em;
+	font-size: 18px;
+	text-align: justify;
+}
+
+
+
+
+
+@media screen and (max-width: 1750px)
+{
+	header,
+	#main h1,
+	#service_net > div
+	{
+		max-width: none;
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+}
+
+
+
+
+@media screen and (max-width: 1300px)
+{
+	header > a.logo
+	{
+		background-image: url("../img/logo.svg");
+		background-size: auto 100%;
+		width: 125px;
+	}
+}
+
+
+/*
+	sirka 4
+*/
+@media screen and (max-width: 1660px) {
+
+	#vyrobci {
+		padding-left: calc((100% - 1200px) / 2);
+		padding-right: calc((100% - 1200px) / 2);
+	}
+
+	#vyrobci div:nth-of-type(4) {
+		margin-right: 0px;
+	}
+
+	#vyrobci div {
+		margin-bottom: 20px;
+	}
+}
+
+/*
+	sirka 3
+*/
+@media screen and (max-width: 1040px) {
+	#vyrobci {
+		padding-left: calc((100% - 800px) / 2);
+		padding-right: calc((100% - 800px) / 2);
+	}
+
+	#vyrobci div:nth-of-type(3) {
+		margin-right: 0px;
+		margin-bottom: 20px;
+	}
+
+	#vyrobci div:nth-of-type(1),
+	#vyrobci div:nth-of-type(2) {
+		margin-bottom: 20px;
+	}
+}
+
+
+
+
+
+@media screen and (max-width: 1100px)
+{
+	header nav
+	{
+		font-size: 12px;
+		padding-top: 34px;
+	}
+}
+
+
+
+
+@media screen and (max-width: 960px)
+{
+	header nav
+	{
+		position: absolute;
+		right: 150px;
+		top: 45px;
+		background-color: white;
+		padding-top: 0px;
+		padding: 10px;
+		padding-bottom: 0px;
+		z-index: 20;
+		width: calc(100% - 360px);
+		box-shadow: 0px 10px 0px rgba(0,0,0,0.33);
+		display: none;
+	}
+	
+	header nav a
+	{
+		width: calc((100% - 20px)/3);
+		margin-bottom: 10px;
+	}
+	
+	header nav a:nth-of-type(3)
+	{
+		margin-right: 0px;
+	}
+	
+	#mmenu
+	{
+		float: right;
+		display: inline;
+		background-color: #f90;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: bold;
+		color: white;
+		margin-top: 30px;
+	}
+	
+	#mmenu > span
+	{
+		background-color: #f90;
+		color: white;
+		padding: 10px;
+		padding-left: 35px;
+		float: left;
+		width: 100%;
+		background-image: url("../img/mmicon.svg");
+		background-size: 15px;
+		background-repeat: no-repeat;
+		background-position: 10px center;
+	
+		transition: 100ms transform, 100ms background-color, 100ms color;
+	}
+	
+	#mmenu:hover > span,
+	#mmenu.sel > span
+	{
+		text-decoration: none;
+		background-color: #525252;
+	
+		-moz-transform: translateY(-5px);
+		-webkit-transform: translateY(-5px);
+		-o-transform: translateY(-5px);
+		-ms-transform: translateY(-5px);
+		transform: translateY(-5px);
+	}
+	
+	#mmenu.sel > span
+	{
+		background-image: url("../img/close.svg");
+	}
+	
+	
+	#main h1
+	{
+		font-size: 26px;
+	}
+}
+
+
+
+
+@media screen and (max-width: 840px)
+{
+	header nav a
+	{
+		width: calc((100% - 10px)/2);
+		margin-bottom: 10px;
+	}
+	
+	header nav a:nth-of-type(3)
+	{
+		margin-right: 10px;
+	}
+	
+	header nav a:nth-of-type(2n)
+	{
+		margin-right: 0px;
+	}
+}
+
+
+@media screen and (max-width: 800px) {
+	#vyrobci {
+		padding-left: calc((100% - 550px) / 2);
+		padding-right: calc((100% - 550px) / 2);
+	}
+
+	#vyrobci div:nth-of-type(2),
+	#vyrobci div:nth-of-type(4) {
+		margin-right: 0px;
+	}
+
+	#vyrobci div:nth-of-type(3) {
+		margin-right: 30px;
+		margin-bottom: 20px;
+	}
+
+	#vyrobci div:nth-of-type(1),
+	#vyrobci div:nth-of-type(2),
+	#vyrobci div:nth-of-type(4) {
+		margin-bottom: 20px;
+	}
+
+	#vyrobci div:nth-of-type(5) {
+		margin-top: 10px;
+	}
+}
+
+
+
+
+
+@media screen and (max-width: 720px)
+{
+	header,
+	#main h1,
+	#service_net > div
+	{
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+	
+	#main h1
+	{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: 20px;
+	}
+	
+	header nav
+	{
+		right: 125px;
+		width: calc(100% - 310px);
+	}
+	
+	#service_net > div
+	{
+		font-size: 16px;
+		text-align: center;
+	}
+}
+
+
+
+
+@media screen and (max-width: 640px)
+{
+	header nav a
+	{
+		width: 100%;
+	}
+}
+
+
+@media screen and (max-width: 548px) {
+	#vyrobci {
+		padding-left: 25px;
+		padding-right: 25px;
+	}
+
+	#vyrobci div,
+	#vyrobci div:nth-of-type(2),
+	#vyrobci div:nth-of-type(4),
+	#vyrobci div:nth-of-type(5),
+	#vyrobci div:nth-of-type(3),
+	#vyrobci div:last-of-type {
+		display: block;
+		margin-right: 0px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 234px;
+	}
+
+	#vyrobci div:nth-of-type(5) {
+		margin-top: 30px;
+	}
+
+	#vyrobci div:last-of-type {
+		margin-top: 30px;
+	}
+}
+
+
+
+
+
+@media screen and (max-width: 480px)
+{
+	#mmenu
+	{
+		margin-top: 12px;
+	}
+	
+	header
+	{
+		padding-top: 20px;
+		padding-bottom: 20px;
+	}
+	
+	header > a.logo
+	{
+		height: 55px;
+	}
+	
+	
+	header nav
+	{
+		top: 17px;
+		width: calc(100% - 270px);
+	}
+}
+
+
+
+@media screen and (max-width: 440px)
+{	
+	header nav
+	{
+		right: 15px;
+		top: 80px;
+		width: calc(100% - 30px);
+	}
+}

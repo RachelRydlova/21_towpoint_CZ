@@ -1,0 +1,77 @@
+{block title}Pro partnery TowPoint{/block}
+
+{block head}
+    <link href="{$basePath}/assets/css/partneri.css" rel="stylesheet">
+{/block}
+
+{block content}
+
+    <section id="main">
+        <h1>Chcete se stát naším partnerským montážním&nbsp;místem?</h1>
+    </section>
+
+
+
+    <section id="doc">
+        <div>
+            <ul>
+                <li>Neustále rozšiřujeme síť odborných montážních středisek pro tažná&nbsp;zařízení</li>
+                <li>I vy se můžete stát partnery největšího dodavatele tažných&nbsp;zařízení v&nbsp;ČR</li>
+                <li>Zapojte se do naší sítě a&nbsp;poskytněte svým zákazníkům odbornou profesionální&nbsp;péči</li>
+                <li>My poskytujeme nejen tažná zařízení, ale i&nbsp;jejich zákazníky, a&nbsp;to vše pro své&nbsp;partnery</li>
+                <li>V případě zájmu o&nbsp;bližší informace vyplňte a&nbsp;odešlete kontaktní&nbsp;formulář</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="form">
+        <form action="form" method="post">
+            <h2>Kontaktní formulář</h2>
+            <div{in_array('name',$errors)?' class="error"':''}>
+            <input type="text" placeholder="Jméno" data="name" tabindex="1" value="<?=safe_out($post['form_data']['name'])?>" name="form_data[name]">
+            <p>Vyplňte své jméno.</p>
+            </div>
+            <div<?=in_array('surname',$errors)?' class="error"':''?>>
+            <input type="text" placeholder="Příjmení" data="surname" tabindex="2" value="<?=safe_out($post['form_data']['surname'])?>" name="form_data[surname]">
+            <p>Vyplňte své příjmení.</p>
+            </div>
+            <div>
+                <input type="text" placeholder="Pozice" data="pos" tabindex="3" value="<?=safe_out($post['form_data']['position'])?>" name="form_data[position]">
+                <p>Vyplňte svoji pozici ve firmě.</p>
+            </div>
+            <div>
+                <input type="text" placeholder="Název firmy" data="firm" tabindex="4" value="<?=safe_out($post['form_data']['nazev'])?>" name="form_data[nazev]">
+                <p>Vyplňte název firmy.</p>
+            </div>
+            <div<?=in_array('mesto',$errors)?' class="error"':''?>>
+            <input type="text" placeholder="Město" data="mesto" tabindex="5" value="<?=safe_out($post['form_data']['mesto'])?>" name="form_data[mesto]">
+            <p>Vyplňte město.</p>
+            </div>
+            <div<?=in_array('psc',$errors)?' class="error"':''?>>
+            <input type="text" placeholder="PSČ" maxlength="6" data="psc" tabindex="5" value="<?=safe_out($post['form_data']['psc'])?>" name="form_data[psc]">
+            <p>Vyplňte své poštovní směrovací číslo.</p>
+            </div>
+            <div<?=in_array('email',$errors)?' class="error"':''?>>
+            <input type="text" placeholder="E-mail" class="email" data="email" tabindex="7" value="<?=safe_out($post['form_data']['email'])?>" name="form_data[email]">
+            <p>Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+            </div>
+            <div class="last<?=in_array('vzkaz',$errors)?' error':''?>">
+                <input type="text" placeholder="Vzkaz" data="vzkaz" tabindex="7" value="<?=safe_out($post['form_data']['vzkaz'])?>" name="form_data[vzkaz]">
+                <p>Vyplňte vzkaz.</p>
+            </div>
+            <a href="#" class="cta"><span><span>Odeslat</span></span></a>
+        </form>
+    </section>
+
+
+
+
+
+<!-- End Partner -->
+
+{/block}
+<script src="{$basePath}/assets/js/partneri.js"></script>
+{block script}
+
+{/block}
+

@@ -1,0 +1,295 @@
+.container {
+	/* defaults for resposive height container */
+	position: relative;
+	width: 100%;
+	height: 315px;
+	margin: 0 auto;
+	overflow: visible;
+}
+
+.iosSlider {
+	width: 100%;
+	height: 315px;
+}
+
+.iosSlider .slider {
+	width: 100%;
+	height: 100%;
+}
+
+.iosSlider .slider .item {
+	float: left;
+	width: 100%;
+	height: 100%;
+}
+
+.iosSlider .slider .item img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+
+
+
+
+#topbanner::after
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	content: "";
+	float: left;
+	width: 100%;
+	height: 30px;
+	background-image: url("fade.svg?");
+	background-repeat: repeat-x;
+	background-position: top center;
+	pointer-events: none;
+	z-index: 10;
+}
+
+#topbanner img
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#topbanner .next,
+#topbanner .prev
+{
+	position: absolute;
+	top: 50%;
+	width: 50px;
+	height: 100px;
+	background-color: rgba(255,255,255,0.5);
+	background-image: url("prev.svg");
+	background-repeat: no-repeat;
+	background-size: auto 50px;
+	background-position: center center;
+	z-index: 10;
+	display: none;
+	
+	-moz-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+#topbanner .next
+{
+	left: auto;
+	right: 0px;
+	background-image: url("next.svg");
+}
+
+#topbanner .prev:hover
+{
+	background-position: calc(50% - 5px) center;
+}
+
+#topbanner .next:hover
+{
+	background-position: calc(50% + 5px) center;
+}
+
+
+
+
+
+
+
+
+
+#topbanner .item
+{
+	background-color: #ff9900;
+}
+
+#topbanner .item .img
+{
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 42.2%;
+	background-image: url("banner-img.jpg");
+	background-size: cover;
+	background-position: 35% 75%;
+}
+
+#topbanner .item .logo
+{
+	position: absolute;
+	left: calc(40% - 167px);
+	top: 0px;
+	height: 100%;
+	width: 335px;
+	background-image: url("banner-stred.svg");
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+}
+
+#topbanner .item .claim
+{
+	position: absolute;
+	width: 62.3%;
+	right: 0px;
+	top: 50%;
+	text-align: center;
+	pointer-events: none;
+	
+	-moz-transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+#topbanner .item .claim h2
+{
+	font-weight: normal;
+	font-family: osb, Arial, Helvetica, sans-serif;
+	font-size: 120px;
+	letter-spacing: 0.015em;
+	line-height: 1em;
+}
+
+#topbanner .item .claim p
+{
+	font-family: osb, Arial, Helvetica, sans-serif;
+	font-size: 38px;
+	text-transform: uppercase;
+}
+
+#topbanner .item .claim p:last-of-type
+{
+	font-size: 21px;
+	margin-top: 0.4em;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1290px)
+{
+	.container,
+	.iosSlider
+	{
+		height: 220px;
+	}
+	
+	
+	
+	
+	#topbanner .item .claim h2
+	{
+		font-size: 80px;
+	}
+	
+	#topbanner .item .claim p
+	{
+		font-size: 25px;
+	}
+	
+	#topbanner .item .claim p:last-of-type
+	{
+		font-size: 14px;
+	}
+}
+
+
+
+
+
+@media screen and (max-width: 900px)
+{
+	#topbanner .item .claim
+	{
+		padding-right: 40px;
+	}
+	
+	
+	#topbanner .item .claim h2
+	{
+		font-size: 50px;
+	}
+	
+	#topbanner .item .claim p
+	{
+		font-size: 20px;
+	}
+	
+	#topbanner .item .claim p:last-of-type
+	{
+		font-size: 12px;
+	}
+}
+
+
+
+
+
+@media screen and (max-width: 750px)
+{
+	.container,
+	.iosSlider
+	{
+		height: 180px;
+	}
+	
+	#topbanner .item .img
+	{
+		background-position: 35% 100%;
+		background-size: auto 120%;
+		width: 120px;
+	}
+	
+	#topbanner .item .claim
+	{
+		padding-top: 0px;
+	}
+	
+	#topbanner .item .logo
+	{
+		background-image: url("banner-stred-lo.svg");
+		width: 125px;
+		left: 0%;
+	}
+	
+	#topbanner .item .claim
+	{
+		width: calc(100% - 80px);
+	}
+}
+
+
+
+
+@media screen and (max-width: 410px)
+{
+	#topbanner .item .claim h2
+	{
+		font-size: 36px;
+	}
+	
+	#topbanner .item .claim p
+	{
+		font-size: 14px;
+	}
+	
+	
+	
+	#topbanner .next,
+	#topbanner .prev
+	{
+		height: 60px;
+		width: 40px;
+		background-size: auto 30px;
+	}
+}
