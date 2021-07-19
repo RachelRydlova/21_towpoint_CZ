@@ -130,7 +130,8 @@ header nav a:last-of-type
 }
 
 header nav a span,
-.cta > span
+.cta > span,
+.cta
 {
 	background-color: #f90;
 	color: white;

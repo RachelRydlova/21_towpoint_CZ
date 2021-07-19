@@ -19,12 +19,9 @@ header nav a:first-of-type span
 	margin-left: calc((100% - 280px)/2);
 	font-family: osb, Arial, Helvetica, sans-serif;
 	letter-spacing: 1px;
-}
-
-.cta > span
-{
 	padding: 20px 0px;
 }
+
 
 .cta.step1
 {
@@ -131,7 +128,8 @@ header nav a:first-of-type span
 	background-position: center center;
 }
 
-#form .inputs > div
+#form .inputs > div,
+#partnerform form > div
 {
 	float: left;
 	width: calc((100% - 60px) / 3);
@@ -139,7 +137,8 @@ header nav a:first-of-type span
 	padding-bottom: 20px;
 }
 
-#form .inputs > div:last-of-type
+#form .inputs > div:last-of-type,
+#partnerform form > div:last-of-type
 {
 	margin-right: 0px;
 }
@@ -152,9 +151,9 @@ header nav a:first-of-type span
 }
 
 #sel select,
-#form .inputs select,
-#form .inputs input,
-#form .inputs textarea,
+#form  select,
+#form  input,
+#form  textarea,
 #imark,
 #imodel,
 #imotor
@@ -705,9 +704,12 @@ header nav a:first-of-type span
 	float: left;
 	width: 100%;
 	padding-bottom: 40px;
-	opacity: 0.33;
 	pointer-events: none;
 	transition: opacity 250ms linear;
+}
+
+#form2 {
+	opacity: 0.33;
 }
 
 #form.shown,
@@ -967,8 +969,7 @@ header nav a:first-of-type span
 
 
 
-
-#form .inputs
+#form
 {
 	clear: both;
 	width: 100%;
@@ -976,42 +977,43 @@ header nav a:first-of-type span
 	margin-top: 40px;
 }
 
-#form .inputs input,
-#form .inputs textarea
+#form input,
+#form textarea
 {
 	background-image: none;
 }
 
-#form .inputs textarea
+#form textarea
 {
 	float: right;
 	margin-right: 0px;
 	height: 152px;
 }
 
-#form .inputs select
+#form select
 {
 	margin-right: 0px;
 	height: 66px;
 }
 
-#form .inputs input::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form .inputs input::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form .inputs input:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form .inputs input:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form input::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form input::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form input:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form input:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
 
-#form .inputs textarea::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form .inputs textarea::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form .inputs textarea:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form .inputs textarea:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form textarea::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form textarea::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form textarea:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+#form textarea:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
 
 
-#form .inputs .clr
+#form .clr
 {
 	clear: left;
 }
 
 #form .cta.loading span,
+#partnerform .cta.loading span,
 .poptavka .cta.loading span
 {
 	height: 64px;
