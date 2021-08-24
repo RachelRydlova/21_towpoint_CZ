@@ -48,6 +48,9 @@ final class Versions
   'doctrine/lexer' => '1.2.1@e864bbf5904cb8f5bb334f99209b48018522f042',
   'doctrine/orm' => '2.9.3@82e77cf5089a1303733f75f0f0ed01be3ab9ec22',
   'doctrine/persistence' => '2.2.1@d138f3ab5f761055cab1054070377cfd3222e368',
+  'guzzlehttp/guzzle' => '7.0.0@414c24961042f6616fb43e23fa69a785f9fc053e',
+  'guzzlehttp/promises' => '1.4.1@8e7d04f1f6450fef59366c399cfad4b9383aa30d',
+  'guzzlehttp/psr7' => '1.8.2@dc960a912984efb74d0a90222870c72c87f10c91',
   'latte/latte' => 'v2.10.3@dd2c58863e830c22a2c6b85af63f37b829d255df',
   'nette/application' => 'v3.1.3@c1229f66210a7a4a7dd62cf9f1757a393d3c8067',
   'nette/bootstrap' => 'v3.1.1@efe6c30fc009451f59fe56f3b309eb85c48b2baf',
@@ -72,6 +75,9 @@ final class Versions
   'nettrine/orm' => 'v0.8.1@a86e9ec690cf4b7659a25767fd493935c1d3e34a',
   'psr/cache' => '1.0.1@d11b50ad223250cf17b86e38383413f5a6764bf8',
   'psr/container' => '1.1.1@8622567409010282b7aeebe4bb841fe98b58dcaf',
+  'psr/http-client' => '1.0.1@2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
+  'psr/http-message' => '1.0.1@f6561bf28d520154e4b0ec72be95418abe6d9363',
+  'ralouphie/getallheaders' => '3.0.3@120b605dfeb996808c31b6477290a714d356e822',
   'symfony/console' => 'v5.3.2@649730483885ff2ca99ca0560ef0e5f6b03f2ac1',
   'symfony/deprecation-contracts' => 'v2.4.0@5f38c8804a9e97d23e0c8d63341088cd8a22d627',
   'symfony/polyfill-ctype' => 'v1.23.0@46cd95797e9df938fdd2b03693b5fca5e64b01ce',
@@ -85,7 +91,7 @@ final class Versions
   'tracy/tracy' => 'v2.8.5@b23da41363546aa750d9f698f21e14815bd78913',
   'nette/tester' => 'v2.4.0@0988c33459b49bfd6c8d06e16f29de96eba341e7',
   'symfony/thanks' => 'v1.2.10@e9c4709560296acbd4fe9e12b8d57a925aa7eae8',
-  'nette/web-project' => 'dev-main@d935bd0661505669fa188228954b37c4159535b4',
+  'nette/web-project' => 'dev-main@bce979cce79a9cb140fc87284dde236a19f8c347',
 );
 
     private function __construct()

@@ -154,7 +154,7 @@ header nav a:first-of-type span
 #form  select,
 #form  input,
 #form  textarea,
-#imark,
+#carSelectorManId,
 #imodel,
 #imotor
 {
@@ -181,7 +181,7 @@ header nav a:first-of-type span
 }
 
 #sel select,
-#imark,
+#carSelectorManId,
 #imodel,
 #imotor
 {
@@ -193,7 +193,7 @@ header nav a:first-of-type span
 
 #sel select
 {
-	display: none;
+	display: block;
 }
 
 #form .inputs textarea
@@ -391,7 +391,7 @@ header nav a:first-of-type span
 
 
 
-#imark.loading,
+#carSelectorManId.loading,
 #imodel.loading,
 #imotor.loading
 {
@@ -795,7 +795,8 @@ header nav a:first-of-type span
 	background-color: #f90;
 }
 
-.yesno a
+.yesno a,
+.yesno label
 {
 	float: left;
 	width: calc(100% - 100px);
@@ -875,7 +876,8 @@ header nav a:first-of-type span
 	margin-right: 0px;
 }
 
-.radios > div div
+.radios > div div,
+.radios input
 {
 	float: left;
 	width: 50px;
@@ -1188,7 +1190,8 @@ header nav a:first-of-type span
 	margin-right: auto;
 }
 
-.poptavka .yesno a
+.poptavka .yesno a,
+.poptavka .yesno label
 {
 	width: 100%;
 	margin-left: 0px;
@@ -1509,7 +1512,7 @@ header nav a:first-of-type span
 	}
 	
 	#sel select,
-	#imark,
+	#carSelectorManId,
 	#imodel,
 	#imotor
 	{
@@ -1579,6 +1582,7 @@ header nav a:first-of-type span
 	
 	
 	#form .inputs input,
+	#form .inputs select,
 	#form .inputs select,
 	#form .inputs textarea
 	{
@@ -1744,7 +1748,7 @@ header nav a:first-of-type span
 
 @media screen and (max-width: 767px)
 {
-	#imark,
+	#carSelectorManId,
 	#imodel,
 	#imotor
 	{
@@ -1758,10 +1762,10 @@ header nav a:first-of-type span
 		display: none !important;
 	}
 	
-	#sel select
-	{
-		display: block;
-	}
+	/*#sel select*/
+	/*{*/
+	/*	display: block;*/
+	/*}*/
 }
 
 
@@ -2259,6 +2263,7 @@ header nav a:first-of-type span
 	}
 	
 	.radios > div div,
+	.radios input,
 	#komfort a::before
 	{
 		width: 40px;

@@ -133,16 +133,16 @@ $(document).ready(function(){
 	});
 	*/
 	
-	$(document).on('change','#mark',function(){
-		set_mark($(this).val());
-	});
+	// $(document).on('change','#carSelectorManId',function(){
+	// 	set_mark($(this).val());
+	// });
 	
-	$(document).on('focus','#imark',function(){
-		$('#selmodely, #selmotory').slideUp(300);
-		$('#preffered').slideDown(300);
-		mark_zal=$(this).val();
-		$(this).val('');
-	});
+	// $(document).on('focus','#carSelectorManId',function(){
+	// 	//$('#selmodely, #selmotory').slideUp(300);
+	// 	$('#carSelectorManId').slideDown(300);
+	// 	mark_zal=$(this).val();
+	// 	$(this).val('');
+	// });
 	
 	$(document).on('focus','#imodel',function(){
 		$('#preffered, #selmotory').slideUp(300);

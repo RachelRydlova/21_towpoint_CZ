@@ -4,14 +4,78 @@ declare(strict_types=1);
 
 namespace App\FrontModule\Presenters;
 
+use App\FrontModule\components\Calculator;
+use App\FrontModule\components\CarSelector;
+use App\FrontModule\components\ContactForm;
+use App\ICarSelectorFactory;
+use App\Model\applCache;
 use App\Presenters\BasePresenter;
-use Nette\Application\UI\Presenter;
 use Nette\Application\UI\Form;
+use App\Model\BannerModel;
+use App\Model\ApiManager;
+use Nette\Http\Session;
+use Tracy\Debugger;
 
 
 
 class DefaultPresenter extends BasePresenter
 {
+    /** @var BannerModel @inject */
+    public $bannerModel;
+
+    /** @var ApiManager @inject */
+    public $apiManager;
+
+    /** @var applCache @inject */
+    public $cache;
+
+    /** @var ICarSelectorFactory @inject */
+    public $carSelectorFactory;
+
+
+    /**
+     * formular pro vyber vozu
+     * @return CarSelector
+     */
+     protected function createComponentCarSelector()
+     {
+//         $section = $this->getSession('manufacturer');
+//         $selMan = $section->selMan;
+//
+//
+        return new CarSelector($this->apiManager);
+    }
+
+
+    /**
+     * konfigurator s kalkulackou
+     * @return Calculator
+     */
+    protected function createComponentCalculator(){
+         return new Calculator();
+    }
+
+    /**
+     * kontaktni formular
+     * @return ContactForm
+     */
+    protected function createComponentContactForm(){
+         return new ContactForm();
+    }
+
+
+    /**
+     * test vypsani dat vozidel
+     */
+    public function actionDefault()
+    {
+        Debugger::barDump($this->apiManager->getCarManufacturers(14), 'carData');
+    }
+
+    /**
+     * formular do sekce "pro partnery"
+     * @return Form
+     */
     protected function createComponentPartnerForm(): Form
     {
         $form = new Form;
@@ -43,16 +107,29 @@ class DefaultPresenter extends BasePresenter
         return $form;
     }
 
-
-    public function partnerFormSucceeded(Form $form, Data $data): void
+    /**
+     * @param Form $form
+     * @param \stdClass $data
+     * @throws Nette\Application\AbortException
+     */
+    public function partnerFormSucceeded(Form $form, \stdClass $data): void
     {
 
         // tady zpracujeme data odeslaná formulářem
         // $data->name obsahuje jméno
         // $data->surname obsahuje prijmeni
-        $this->flashMessage('Zpráva byla úspěšně odeslána.');
+        $this->flashMessage('Zpráva byla úspěšně odeslána.', 'success');
         $this->redirect('Default:');
     }
 
+    public function renderDefault(){
+        // data pro banner
+        $this->template->b = $this->bannerModel->getBannerData();
+        $this->template->format = $this->bannerModel->getBannerData();
+
+        // vypsani v tracy, co posilame do banneru
+        Debugger::barDump($this->template->b[0], 'banner');
+        // Debugger::barDump($this->session->mainForm, 'sessions');
+    }
 
 }

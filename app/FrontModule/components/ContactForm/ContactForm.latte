@@ -1,0 +1,39 @@
+{form contactForm}
+
+    <div class="subn step step3">
+        <h2>Kontaktní údaje</h2>
+    </div>
+    <section id="form">
+
+        <div>
+            <div class="inputs">
+              {input note}
+              <div>  {input name}  </div>
+              <div>  {input surname}  </div>
+              <div>  {input email}  </div>
+              <div>  {input tel}  </div>
+              <div>  {input psc}  </div>
+              <div>  {input mesto}  </div>
+             <div>   {input state}  </div>
+            </div>
+        </div>
+
+
+    </section>
+
+    <div class="subn step step4">
+        <h2>Odeslat nezávaznou poptávku</h2>
+    </div>
+
+    <section class="poptavka">
+        <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
+        <div class="yesno sel">
+           <div></div>
+            {input gdpr}
+            {label gdpr}
+       </div>
+        {input success}
+    </section>
+
+
+{/form}

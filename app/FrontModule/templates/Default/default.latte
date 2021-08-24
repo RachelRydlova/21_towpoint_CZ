@@ -4,15 +4,36 @@
 
 {block header}
     <link href="{$basePath}/assets/css/home.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/map.css.php" rel="stylesheet">
 {/block}
 
 
 
 <!-- ======= Banner Section ======= -->
 
+{if json_encode($b)}
+    <div id="topSlide" class="container">
+    <div class="slides iosSlider">
+        <div class="slider">
+            {foreach $b[0] as $bid}
+                <div class="item{$bid == 0 ? 'current' : ''}{$format[1] == 'mp4' ? ' video' : ''}">
+{*                    {if $b[1] == 'jpg'}*}
+                        <img src="{$basePath}/ftp/cz/{$bid}.jpg" alt="">
+                        <img src="{$basePath}/ftp/cz/{$bid}-sml.jpg" alt="">
+{*                    {/if}*}
+{*                    {if $format[1] == 'mp4'}*}
+{*                        <video playsinline muted> <source src="{$basePath}/ftp/cz/{$bid}.mp4" type="video/mp4"></video>*}
+{*                    {/if}*}
+                </div>
+            {/foreach}
 
-<a href="#" title="předchozí" class="prev"></a>
-<a href="#" title="další" class="next"></a>
+        </div>
+    </div>
+
+        <a href="#" title="předchozí" class="prev"></a>
+        <a href="#" title="další" class="next"></a>
+    </div>
+{/if}
 
 
 <!-- ======= Auto configurator ======= -->
@@ -21,261 +42,39 @@
 <hr><section id="main">
     <h1>Chci nabídku na tažné zařízení i&nbsp;s&nbsp;montáží</h1>
 </section>
-<?php
-	foreach ($modely as $item) if ($_SESSION['model']==$item->tcmodel) $selmodel=$item->fullname;
-?>
+
+
 <div class="subn step step11">
     <h2>Vyberte vozidlo a&nbsp;motorizaci</h2>
 </div>
-<?php
-	foreach ($znacky as $item) if ($_SESSION['znacka']==$item->tcznacka) $selmark=$item->name;
-?>
-<section id="sel">
-    <div>
-        <figure <?php if ($_SESSION['model_img']=='') { ?>class="hide" <?php } ?> ><img src="<?=str_replace('https://vapol.cz','https://www.vapol.cz',$_SESSION['model_img'])?>" alt="<?=$selmark.' '.$selmodel?>"></figure>
-        <input type="text" id="imark" value="<?=$selmark?>" placeholder="Značka vozu" autocomplete="off">
-        <select id="mark">
-            <option value="0">Značka vozu</option>
-            <optgroup label="Preferované">
-                <?php
-	foreach ($znacky as $item) if ($item->preferovana)
-                {
-                echo '<option value="'.$item->tcznacka.'"'.($_SESSION['znacka']==$item->tcznacka?' selected':'').'>'.$item->name.'</option>';
-                }
-                ?>
-            </optgroup>
-            <optgroup label="Ostatní">
-                <?php
-	foreach ($znacky as $item) if (!$item->preferovana)
-                {
-                echo '<option value="'.$item->tcznacka.'"'.($_SESSION['znacka']==$item->tcznacka?' selected':'').'>'.$item->name.'</option>';
-                }
-                ?>
-            </optgroup>
-        </select>
-        <?php
-	foreach ($modely as $item) if ($_SESSION['model']==$item->tcmodel) $selmodel=$item->fullname;
-        ?>
-        <input type="text" id="imodel" value="<?=$selmodel?>" placeholder="Model vozu"<?=$_SESSION['znacka']==0?' disabled class="dis"':''?> autocomplete="off">
-        <select id="model"<?=$_SESSION['znacka']==0?' disabled class="dis"':''?>>
-        <option value="0">Model vozu</option>
-        <?php
-	foreach ($modely as $item) if ($item->tcmodel!=0) echo '<option value="'.$item->tcmodel.'"'.($_SESSION['model']==$item->tcmodel?' selected':'').'>'.$item->fullname.'</option>';
-        ?>
-        </select>
-        <?php
-	if ($ismotory) foreach ($motory as $item) if ($_SESSION['motor']==$item->vozidlo_id) $selmotor=$item->fullname;
-        ?>
-        <input type="text" id="imotor" value="<?=$selmotor?>" placeholder="Motor vozu"<?=$_SESSION['model']==0||!$ismotory?' disabled class="dis"':''?> autocomplete="off">
-        <select id="engine"<?=$_SESSION['model']==0||!$ismotory?' disabled class="dis"':''?>>
-        <option value="0">Motor vozu</option>
-        <?php
-			if ($ismotory) foreach ($motory as $item) echo '<option value="'.$item->vozidlo_id.'"'.($_SESSION['motor']==$item->vozidlo_id?' selected':'').'>'.$item->fullname.'</option>';
-        ?>
-        </select>
 
-        <div id="preffered">
-            <?php include 'all-marks.php';?>
-        </div>
 
-        <div id="selmodely">
-            <?php include 'all-models.php';?>
-        </div>
+    {control carSelector}
 
-        <div id="selmotory">
-            <?php include 'all-engines.php';?>
-        </div>
-
-        <div id="komfort">
-            <div>
-                <a href="#"<?=$_SESSION['komfort']?' class="sel"':''?>><span>Vozidlo s&nbsp;prvky komfortní výbavy</span></a>
-            </div>
-            <p>ACC Adaptive Control, Front Assist Control, hlídaní mrtvého úhlu nebo jiná komfortní výbava&nbsp;vozu?</p>
-        </div>
-
-        <?php
-/*		<div class="img"><img src="<?=$pprefix?>img/car.jpg" alt=""></div>
-
-    <a href="#" class="cta alt step1<?=$_SESSION['motor']>0?' visible':''?>"><span>Pokračovat</span></a>
-
-    */?>
-
-    </div>
-</section>
 <hr>
 
-<?php
-	$errors=check_user_data($_SESSION['form_data'],0);
-?>
-<section id="form2"<?=count($errors)==0&&$_SESSION['motor']?' class="shown"':''?>>
 
 <!-- ======= Price calculator ======= -->
 
 
-<div class="subn step step2">
-    <h2>Konfigurátor s&nbsp;kalkulačkou</h2>
-</div>
-<?php
-//	d($_SESSION['form_data']['kvalita']);
-?>
-<div>
-    <div>
-        <div class="radios pref">
-            <h3>Preference:</h3>
-            <div <?=$_SESSION['form_data']['kvalita']=='qnormal'||!$_SESSION['form_data']['kvalita']?'class="sel" ':''?>data="qnormal">
-            <div></div>
-            <a href="#">Cena</a>
-        </div>
-
-        <div <?=$_SESSION['form_data']['kvalita']=='qbest'?'class="sel" ':''?>data="qbest">
-        <div></div>
-        <a href="#">Kvalita</a>
+<section id="form2">
+    <div class="subn step step2">
+        <h2>Konfigurátor s&nbsp;kalkulačkou</h2>
     </div>
-</div>
-
-<div class="radios koule">
-    <h3>Upevnění koule:</h3>
-    <div <?=$_SESSION['form_data']['koule']=='pevne'||!$_SESSION['form_data']['koule']?'class="sel" ':''?>data="pevne">
-    <div></div>
-    <a href="#">Pevné</a>
-</div>
-
-<div <?=$_SESSION['form_data']['koule']=='odnimatelne'?'class="sel" ':''?>data="odnimatelne">
-<div></div>
-<a href="#">Odnímatelné</a>
-</div>
-</div>
-
-<div class="radios el">
-    <h3>Zásuvka:</h3>
-    <div <?=$_SESSION['form_data']['el']=='7pin'||!$_SESSION['form_data']['el']?'class="sel" ':''?>data="7pin">
-    <div></div>
-    <a href="#">7pinová</a>
-</div>
-
-<div <?=$_SESSION['form_data']['el']=='13pin'?'class="sel" ':''?>data="13pin">
-<div></div>
-<a href="#">13pinová</a>
-</div>
-</div>
-
-<div class="radios redukce">
-    <h3>Redukce zdarma:</h3>
-    <div <?=$_SESSION['form_data']['el']=='7pin'||!$_SESSION['form_data']['el']?'class="sel" ':''?>data="7pin">
-    <div></div>
-    <div>7→13</div>
-</div>
-
-<div <?=$_SESSION['form_data']['el']=='13pin'?'class="sel" ':''?>data="13pin">
-<div></div>
-<div>13→7</div>
-</div>
-</div>
-</div>
-<hr>
-
-<?php
-	$carid=$_SESSION['motor'];
-	include 'nabidka.php';
-?>
-</div>
+    {control calculator}
 
 
+    <hr>
 
+    <!-- ======= Contact form  ======= -->
 
+    <section class="form">
 
+        {control contactForm}
 
-
-<hr>
-
-
-<?php
-/*
-<section id="slides"><a href="<?=$pprefix?>co-nabizime"><img src="<?=$pprefix?>img/img1.jpg" alt="nosiče kol"></a><a href="<?=$pprefix?>co-nabizime"><img src="<?=$pprefix?>img/img2.jpg" alt="tažná zařízení a přívěsy"></a></section>
-*/?>
-
-<section id="form"<?=$_SESSION['motor']&&$_SESSION['model']>0&&$_SESSION['motor']>0?' class="shown"':''?>>
-
-
-<!-- ======= Contact form ======= -->
-
-
-<div class="subn step step3">
-    <h2>Kontaktní údaje</h2>
-</div>
-
-<div>
-    <div class="inputs">
-        <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
-
-        <textarea placeholder="Poznámky" data="notes" tabindex="100"><?=safe_out($_SESSION['form_data']['notes'])?></textarea>
-        <div>
-            <input type="text" placeholder="Jméno" data="name" tabindex="1" value="<?=safe_out($_SESSION['form_data']['name'])?>">
-            <!--				<p>Vyplňte své jméno.</p>-->
-        </div>
-        <div>
-            <input type="text" placeholder="Příjmení" data="surname" tabindex="2" value="<?=safe_out($_SESSION['form_data']['surname'])?>">
-            <!--				<p>Vyplňte své příjmení.</p>-->
-        </div>
-        <div class="clr">
-            <input type="text" placeholder="E-mail" class="email" data="email" tabindex="4" value="<?=safe_out($_SESSION['form_data']['email'])?>">
-            <p>Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
-        </div>
-        <div>
-            <input type="text" placeholder="Telefon" data="tel" tabindex="5" value="<?=safe_out($_SESSION['form_data']['tel'])?>">
-            <p>Vyplňte své telefonní číslo &ndash; nejlépe ve&nbsp;formátu +420&nbsp;123&nbsp;456&nbsp;789.</p>
-        </div>
-        <div class="clr">
-            <input type="text" placeholder="PSČ" class="clr" maxlength="6" data="psc" tabindex="6" value="<?=safe_out($_SESSION['form_data']['psc'])?>">
-            <!--				<p>Vyplňte své poštovní směrovací číslo.</p>-->
-        </div>
-        <div>
-            <input type="text" placeholder="Obec / město" data="mesto" tabindex="7" value="<?=safe_out($_SESSION['form_data']['mesto'])?>">
-            <!--				<p>Vyplňte obec nebo město.</p>-->
-        </div>
-        <div><select tabindex="8">
-                <option value="1" selected>Česká republika</option>
-                <?php
-/*				<option value="">Slovensko</option>
-                <option value="">Rakousko</option>
-                <option value="">Maďarsko</option>*/?>
-            </select></div>
-    </div>
-
-    <?php
-         //<a href="#" class="cta"><span><span>Pokračovat</span></span></a>
-    ?>
-</div>
+    </section>
 </section>
 
-<hr>
-
-
-<!-- ======= Send form ======= -->
-
-
-<div class="subn step step4">
-    <h2>Odeslat nezávaznou poptávku</h2>
-</div>
-
-<div class="poptavka">
-    <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
-
-    <div class="yesno<?=$_SESSION['form_data']['souhlas']?' sel':''?>" data="souhlas">
-        <div></div>
-        <a href="#">Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v&nbsp;souvislosti s&nbsp;nabídkou montáže tažného zařízení</a>
-        <p>Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>
-    </div>
-
-    <a href="#" class="cta"><span><span>Odeslat</span></span></a>
-    <?php
-/* 		<p class="ctanote">Ověřit dostupnost a&nbsp;kapacitu.</p> */?>
-    <div class="final_loader"><div>Odesíláme požadavek, mějte strpení...</div></div>
-</div>
-</section>
-
-
-<hr>
 
 
 
@@ -291,3 +90,10 @@
 </section>
 
 <hr>
+
+
+
+{block script}
+    <script src="{$basePath}/assets/js/support.js"></script>
+{*    <script src="{$basePath}/assets/js/home.js"></script>*}
+{/block}

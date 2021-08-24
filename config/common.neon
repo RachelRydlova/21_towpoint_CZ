@@ -2,9 +2,10 @@ parameters:
 
 
 application:
-	errorPresenter: Error
-	mapping:
-		*: App\*Module\Presenters\*Presenter
+#    catchExceptions: true
+    errorPresenter: Error
+    mapping:
+        *: App\*Module\Presenters\*Presenter
 
 
 session:
@@ -19,3 +20,7 @@ di:
 
 services:
 	- App\Router\RouterFactory::createRouter
+	- App\Model\BannerModel
+	- App\Model\ApiManager
+	- App\Model\applCache
+	- App\ICarSelectorFactory

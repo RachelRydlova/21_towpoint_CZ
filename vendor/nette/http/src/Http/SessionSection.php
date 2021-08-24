@@ -15,7 +15,7 @@ use Nette;
 /**
  * Session section.
  */
-class SessionSection implements \IteratorAggregate, \ArrayAccess
+class SessionSection extends \App\Model\ApiManager implements \IteratorAggregate, \ArrayAccess
 {
 	use Nette\SmartObject;
 
