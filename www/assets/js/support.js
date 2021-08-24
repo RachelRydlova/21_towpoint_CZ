@@ -4,7 +4,7 @@ $(function () {
     $(document).on('change', '#carSelectorManId', function () {
         let value = $(this).val();
 
-        $.ajax({
+        $.nette.ajax({
             url: '?do=carSelector-setManufacturer',
             data: {'carSelector-manId': value}
         })

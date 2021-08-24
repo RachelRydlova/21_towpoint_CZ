@@ -74,9 +74,10 @@ class CarSelector extends Control
             }
             $this['carSelector']['manufacturer']->setDefaultValue($manId);
             $this['carSelector']['model']->setItems($modelsItems);
-            $this['carSelector']['model']->setDisabled(false);
+            //$this['carSelector']['model']->setDisabled(false);
+            $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('model');
-           // $this->redrawControl('carSelectorWrapper');
+
         }
     }
 
@@ -179,7 +180,8 @@ class CarSelector extends Control
         $form->addSelect('model', 'model')
             ->setPrompt('Model vozu')
             ->setAttribute('id', 'carSelectorModId')
-            ->setDisabled();
+        //    ->setDisabled()
+        ;
         $form->addHidden('modelId');
 
         $form->addSelect('vehicle', 'vehicle')
