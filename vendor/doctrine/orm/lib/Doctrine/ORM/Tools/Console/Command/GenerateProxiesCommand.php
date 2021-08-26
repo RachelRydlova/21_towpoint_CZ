@@ -58,6 +58,8 @@ class GenerateProxiesCommand extends AbstractEntityManagerCommand
 
     /**
      * {@inheritdoc}
+     *
+     * @return int
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
@@ -72,6 +74,10 @@ class GenerateProxiesCommand extends AbstractEntityManagerCommand
         $destPath = $input->getArgument('dest-path');
         if ($destPath === null) {
             $destPath = $em->getConfiguration()->getProxyDir();
+
+            if ($destPath === null) {
+                throw new InvalidArgumentException('Proxy directory cannot be null');
+            }
         }
 
         if (! is_dir($destPath)) {

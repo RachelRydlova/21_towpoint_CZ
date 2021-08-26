@@ -11,24 +11,23 @@
 
 <!-- ======= Banner Section ======= -->
 
-{if json_encode($b)}
+{if ($b)}
     <div id="topSlide" class="container">
-    <div class="slides iosSlider">
-        <div class="slider">
-            {foreach $b[0] as $bid}
-                <div class="item{$bid == 0 ? 'current' : ''}{$format[1] == 'mp4' ? ' video' : ''}">
-{*                    {if $b[1] == 'jpg'}*}
-                        <img src="{$basePath}/ftp/cz/{$bid}.jpg" alt="">
-                        <img src="{$basePath}/ftp/cz/{$bid}-sml.jpg" alt="">
-{*                    {/if}*}
-{*                    {if $format[1] == 'mp4'}*}
-{*                        <video playsinline muted> <source src="{$basePath}/ftp/cz/{$bid}.mp4" type="video/mp4"></video>*}
-{*                    {/if}*}
-                </div>
-            {/foreach}
-
+        <div class="slides iosSlider">
+            <div class="slider">
+                {foreach $b[0] as $bid => $bi}
+                    <div class="item{$bid == 0 ? ' current' : ''}{$b[1][$bid] == 'mp4' ? ' video' : ''}">
+                        {if $b[1][$bid] == 'jpg'}
+                            <img src="{$basePath}/ftp/cz/{$bi}.jpg" alt="">
+                            <img src="{$basePath}/ftp/cz/{$bi}-sml.jpg" alt="">
+                        {/if}
+                        {if $b[1][$bid] == 'mp4'}
+                            <video playsinline muted> <source src="{$basePath}/ftp/cz/{$bi}.mp4" type="video/mp4"></video>
+                        {/if}
+                    </div>
+                {/foreach}
+            </div>
         </div>
-    </div>
 
         <a href="#" title="předchozí" class="prev"></a>
         <a href="#" title="další" class="next"></a>
@@ -48,8 +47,12 @@
     <h2>Vyberte vozidlo a&nbsp;motorizaci</h2>
 </div>
 
+<section id="sel">
+    <div>
+        {control carSelector}
 
-    {control carSelector}
+    </div>
+</section>
 
 <hr>
 
@@ -58,21 +61,42 @@
 
 
 <section id="form2">
+
     <div class="subn step step2">
         <h2>Konfigurátor s&nbsp;kalkulačkou</h2>
     </div>
-    {control calculator}
+    <div>
+        {control calculator}
+    </div>
+
 
 
     <hr>
 
     <!-- ======= Contact form  ======= -->
 
-    <section class="form">
-
-        {control contactForm}
-
+    <section id="form">
+       {control contactForm}
     </section>
+
+
+    <div class="subn step step4">
+        <h2>Odeslat nezávaznou poptávku</h2>
+    </div>
+
+
+    <div class="poptavka">
+        {form orderForm}
+            <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
+            <div class="yesno sel">
+                <div></div>
+                {input gdpr}
+                {label gdpr}
+            </div>
+            {input success}
+        {/form}
+    </div>
+
 </section>
 
 

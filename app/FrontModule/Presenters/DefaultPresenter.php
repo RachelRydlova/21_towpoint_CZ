@@ -39,11 +39,15 @@ class DefaultPresenter extends BasePresenter
      */
      protected function createComponentCarSelector()
      {
-//         $section = $this->getSession('manufacturer');
-//         $selMan = $section->selMan;
-//
-//
-        return new CarSelector($this->apiManager);
+        $comp = new CarSelector($this->apiManager, $this->session);
+        $p = $this;
+        $comp->onSuccess[] = function ($vehicleId) use ($p) {
+//            $selVehicleId = $p->apiManager->getTowpointPrices($vehicleId);
+            $p['calculator']->getPrice($vehicleId);
+        };
+        return $comp;
+//         return new CarSelector($this->apiManager, $this->session);
+
     }
 
 
@@ -51,8 +55,8 @@ class DefaultPresenter extends BasePresenter
      * konfigurator s kalkulackou
      * @return Calculator
      */
-    protected function createComponentCalculator(){
-         return new Calculator();
+    protected function createComponentCalculator($vehicleId){
+         return new Calculator($this->apiManager, $this->session);
     }
 
     /**
@@ -65,12 +69,35 @@ class DefaultPresenter extends BasePresenter
 
 
     /**
-     * test vypsani dat vozidel
+     * @return Form
+     * @throws \Throwable
      */
-    public function actionDefault()
+    public function createComponentOrderForm(): Form
     {
-        Debugger::barDump($this->apiManager->getCarManufacturers(14), 'carData');
+        $form = new Form();
+
+        $form->addCheckbox('gdpr', 'Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení')
+            ->setRequired();
+     //       ->setAttribute('class', 'yesno sel')
+
+
+        $form->addSubmit('success', 'Odeslat')
+            ->setAttribute('class', 'cta');
+
+        $form->onSuccess[] = [$this, 'onOrderFormSuccess'];
+
+        return $form;
     }
+
+    /**
+     * @param Form $form
+     */
+    public function onOrderFormSuccess(Form $form): void
+    {
+        $values = $form->getValues();
+    }
+
+
 
     /**
      * formular do sekce "pro partnery"
@@ -125,11 +152,9 @@ class DefaultPresenter extends BasePresenter
     public function renderDefault(){
         // data pro banner
         $this->template->b = $this->bannerModel->getBannerData();
-        $this->template->format = $this->bannerModel->getBannerData();
 
         // vypsani v tracy, co posilame do banneru
-        Debugger::barDump($this->template->b[0], 'banner');
-        // Debugger::barDump($this->session->mainForm, 'sessions');
+        // Debugger::barDump($this->template->b, 'banner');
     }
 
 }

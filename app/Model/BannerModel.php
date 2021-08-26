@@ -35,6 +35,12 @@ class BannerModel
             sort($b);
 //            d($link);
         }
+        if (is_array($link))
+        {
+            $link=array_unique($link);
+            sort($link);
+//            d($link);
+        }
 
 
         return [$b, $link];

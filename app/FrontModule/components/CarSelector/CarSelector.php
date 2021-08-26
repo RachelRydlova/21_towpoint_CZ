@@ -25,17 +25,20 @@ class CarSelector extends Control
 
     public $onSuccess;
 
-    /** @var Session */
-    public $session;
+    /**
+     * @var Nette\Http\Session - kompletni session pro nette
+     */
+    protected $session;
 
     /**
      * form selector constructor
      * @param ApiManager $apiManager
-//     * @param applCache $cache
+     * @param Session $session
      */
-    public function __construct(ApiManager $apiManager)
+    public function __construct(ApiManager $apiManager, Session $session)
     {
         $this->apiManager = $apiManager;
+        $this->session    = $session;
     }
 
 
@@ -50,13 +53,13 @@ class CarSelector extends Control
             $this['carSelector']['model']->setDisabled();
             $this['carSelector']['vehicle']->setItems([]);
             $this['carSelector']['vehicle']->setDisabled();
-//            $this->template->progress = 0;
+            $this->template->progress = 0;
             $this->redrawControl('carSelectorWrapper');
-//            $this->redrawControl('progress');
-//            $this->redrawControl('img');
+            $this->redrawControl('progress');
+            $this->redrawControl('img');
             $this->redrawControl('model');
             $this->redrawControl('vehicle');
-//            $this->redrawControl('manuImg');
+            $this->redrawControl('manuImg');
         } else {
             if ($manRow = $this->apiManager->getManufacturerApiRow($manId)) {
                 $this->template->manuImg = $manRow->imageurl;
@@ -74,7 +77,7 @@ class CarSelector extends Control
             }
             $this['carSelector']['manufacturer']->setDefaultValue($manId);
             $this['carSelector']['model']->setItems($modelsItems);
-            //$this['carSelector']['model']->setDisabled(false);
+            $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('model');
 
@@ -84,23 +87,16 @@ class CarSelector extends Control
 
     /**
      * @param $modId
-     * @param $manId
      * @throws \Throwable
      */
     public function handleSetModel($modId): void
     {
-//        $this->session->hasSection('manufacturer');
-
-        //        $this->handleSetManufacturer($manRow);
-//        Debugger::barDump($manRow, 'debugHandleSetModel');
         if (!$modId) {
             $this['carSelector']['vehicle']->setItems([]);
             $this['carSelector']['vehicle']->setDisabled();
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('vehicle');
             $this->redrawControl('img');
-//            $this->template->progress = 33;
-//            $this->redrawControl('progress');
         } else {
             $vehicleItems = [];
             if ($vehicles = $this->apiManager->getCarModelVehicles($modId)) {
@@ -113,7 +109,6 @@ class CarSelector extends Control
             }
             $this['carSelector']['vehicle']->setItems($vehicleItems);
             $this['carSelector']['vehicle']->setDisabled(false);
-           // $this['carSelector']['manufacturer']->setDefaultValue($manRow);
             // Hidden prvky
             $this['carSelector']['modelId']->setDefaultValue($modId);
             $this['carSelector']['vehicleId']->setDefaultValue(null);
@@ -124,28 +119,19 @@ class CarSelector extends Control
                 $this->redrawControl('img');
             }
 
-//            $this->redrawControl('carSelectorWrapper');
+            $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('vehicle');
             $this->redrawControl('hiddenData');
         }
     }
 
-
     /**
-     * Obnovená posledního výběru auta
-     * @param $manId
-     * @param $modId
-     * @param $carId
+     * @param $vehicleId
+     * @throws \Throwable
      */
-    public function handleSetLastSelect($manId, $modId, $carId): void
+    public function handleSetMotor($vehicleId): void
     {
-        $this->handleSetManufacturer($manId);
-        $this['carSelector']['manufacturer']->setDefaultValue($manId);
-        $this->redrawControl('manuf');
-        $this->handleSetModel($modId);
-        $this['carSelector']['model']->setDefaultValue($modId);
-        $this['carSelector']['vehicle']->setDefaultValue($carId);
-        $this->onSuccess($manId, $modId, $carId);
+        $this->onSuccess($vehicleId);
     }
 
 
@@ -156,8 +142,6 @@ class CarSelector extends Control
     public function createComponentCarSelector(): Form
     {
         $form = new Form();
-
-        $form->getElementPrototype()->setAttribute('id', 'sel');
 
         $manItems = ['Preferované' => [], 'Ostatní' => []];
         if ($mans = $this->apiManager->getCarManufacturers()) {
@@ -173,25 +157,25 @@ class CarSelector extends Control
             }
         }
 
-        $form->addSelect('manufacturer', 'manufacturer', $manItems)
+        $form->addSelect('manufacturer', '', $manItems)
             ->setPrompt('Značka vozu')
-            ->setAttribute('id', 'carSelectorManId');
+            ->setAttribute('id', 'imark');
 
-        $form->addSelect('model', 'model')
+        $form->addSelect('model', '')
             ->setPrompt('Model vozu')
-            ->setAttribute('id', 'carSelectorModId')
-        //    ->setDisabled()
-        ;
+            ->setAttribute('id', 'imodel')
+            ->setDisabled();
         $form->addHidden('modelId');
 
         $form->addSelect('vehicle', 'vehicle')
             ->setPrompt('Motorizace')
-            ->setAttribute('id', 'carSelectorVehicleId')
+            ->setAttribute('id', 'imotor')
             ->setDisabled();
 
         $form->addHidden('vehicleId')
             ->setAttribute('id', 'carSelectorVehicleIdHidden');
-        $form->addCheckbox('komfort', 'Vozidlo s prvky komfortní výbavy');
+
+        $form->addCheckbox('komfort');
 
 
         $form->onSuccess[] = [$this, 'onFormSuccess'];
@@ -205,13 +189,13 @@ class CarSelector extends Control
      */
     public function onFormSuccess(Form $form): void
     {
-        $values = $form->getValues();
-        Debugger::barDump($values, 'csValues');
-        if ($model = $this->apiManager->getModelApiRow($values->manufacturer,$values->modelId)) {
-            $name = $model->fullname;
-        }
+//        $values = $form->getValues();
+//        Debugger::barDump($values, 'csValues');
+//        if ($model = $this->apiManager->getModelApiRow($values->manufacturer,$values->modelId)) {
+//            $name = $model->fullname;
+//        }
 //        $this->saveValue(self::SESS_LAST_SEL_KEY, $name.'_'.$values->manufacturer.'_'.$values->modelId.'_'.$values->vehicleId);
-        $this->onSuccess($values->manufacturer, $values->modelId, $values->vehicleId);
+//        $this->onSuccess($values->manufacturer, $values->modelId, $values->vehicleId);
     }
 
 
@@ -219,13 +203,30 @@ class CarSelector extends Control
     {
         $this->template->setFile(__DIR__ . '/CarSelector.latte');
 
-//        if ($last = $this->loadValue(self::SESS_LAST_SEL_KEY)) {
-//            $parts = explode('_', $last);
-//            $this->template->lastParts = $parts;
-//        }
+        if ($last = $this->loadValue(self::SESS_LAST_SEL_KEY)) {
+            $parts = explode('_', $last);
+            $this->template->lastParts = $parts;
+        }
         $this->template->render();
     }
+    /**
+     * @param string $key
+     * @param string $value
+     */
+    public function saveValue($key,$value): void
+    {
+        $this->session->getSection('userSection')->$key = $value;
+    }
 
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function loadValue($key)
+    {
+        return $this->session->getSection('userSection')->$key;
+    }
 
 
 }

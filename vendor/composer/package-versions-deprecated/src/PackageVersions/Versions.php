@@ -33,12 +33,12 @@ final class Versions
      * @internal
      */
     const VERSIONS          = array (
-  'composer/package-versions-deprecated' => '1.11.99.2@c6522afe5540d5fc46675043d3ed5a45a740b27c',
+  'composer/package-versions-deprecated' => '1.11.99.3@fff576ac850c045158a250e7e27666e146e78d18',
   'contributte/console' => 'v0.9.1@549893573ba3cb81f476785763f48178b5166322',
   'contributte/di' => 'v0.5.1@534fdb5e85b4ae01f8f848fc4b752deb8458ed7c',
-  'doctrine/annotations' => '1.13.1@e6e7b7d5b45a2f2abc5460cc6396480b2b1d321f',
-  'doctrine/cache' => '1.12.0@92032beb419568d3b61ae645f48bbb693cc7e00e',
-  'doctrine/collections' => '1.6.7@55f8b799269a1a472457bd1a41b4f379d4cfba4a',
+  'doctrine/annotations' => '1.13.2@5b668aef16090008790395c02c893b1ba13f7e08',
+  'doctrine/cache' => '1.12.1@4cf401d14df219fa6f38b671f5493449151c9ad8',
+  'doctrine/collections' => '1.6.8@1958a744696c6bb3bb0d28db2611dc11610e78af',
   'doctrine/common' => '3.1.2@a036d90c303f3163b5be8b8fde9b6755b2be4a3a',
   'doctrine/dbal' => '2.13.2@8dd39d2ead4409ce652fd4f02621060f009ea5e4',
   'doctrine/deprecations' => 'v0.5.3@9504165960a1f83cc1480e2be1dd0a0478561314',
@@ -46,8 +46,8 @@ final class Versions
   'doctrine/inflector' => '2.0.3@9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
   'doctrine/instantiator' => '1.4.0@d56bf6102915de5702778fe20f2de3b2fe570b5b',
   'doctrine/lexer' => '1.2.1@e864bbf5904cb8f5bb334f99209b48018522f042',
-  'doctrine/orm' => '2.9.3@82e77cf5089a1303733f75f0f0ed01be3ab9ec22',
-  'doctrine/persistence' => '2.2.1@d138f3ab5f761055cab1054070377cfd3222e368',
+  'doctrine/orm' => '2.9.5@77cc86ed880e3f1f6c9c5819e131a8aaeeeee0da',
+  'doctrine/persistence' => '2.2.2@4ce4712e6dc84a156176a0fbbb11954a25c93103',
   'guzzlehttp/guzzle' => '7.0.0@414c24961042f6616fb43e23fa69a785f9fc053e',
   'guzzlehttp/promises' => '1.4.1@8e7d04f1f6450fef59366c399cfad4b9383aa30d',
   'guzzlehttp/psr7' => '1.8.2@dc960a912984efb74d0a90222870c72c87f10c91',
@@ -59,16 +59,16 @@ final class Versions
   'nette/database' => 'v3.1.3@08aff4d62c80873752254b0b655027211f501c4d',
   'nette/di' => 'v3.0.8@1a3210f0f1f971db8a6e970c716c1cebd28b7ab0',
   'nette/finder' => 'v2.5.2@4ad2c298eb8c687dd0e74ae84206a4186eeaed50',
-  'nette/forms' => 'v3.1.3@bfbef39b1f07dc5cdfeb7dba4843ee086ca0c065',
-  'nette/http' => 'v3.1.1@c903d0f0b793ed2045a442f338e756e1d3954c22',
+  'nette/forms' => 'v3.1.4@3883b688d6bc3b7ff0054996a9df9059a8768c4d',
+  'nette/http' => 'v3.1.2@5777e50f69566732579bf381d2cbcb2f2695d015',
   'nette/mail' => 'v3.1.7@0825a071b896c2ed8cbe1af776c2539acd7bb976',
   'nette/neon' => 'v3.2.2@e4ca6f4669121ca6876b1d048c612480e39a28d5',
   'nette/php-generator' => 'v3.5.4@59bb35ed6e8da95854fbf7b7d47dce6156b42915',
-  'nette/robot-loader' => 'v3.4.0@3973cf3970d1de7b30888fd10b92dac9e0c2fd82',
+  'nette/robot-loader' => 'v3.4.1@e2adc334cb958164c050f485d99c44c430f51fe2',
   'nette/routing' => 'v3.0.2@5532e7e3612e13def357f089c1a5c25793a16843',
   'nette/schema' => 'v1.2.1@f5ed39fc96358f922cedfd1e516f0dadf5d2be0d',
-  'nette/security' => 'v3.1.3@817ee98aad1f122f8f40b728c35e634086e1093d',
-  'nette/utils' => 'v3.2.2@967cfc4f9a1acd5f1058d76715a424c53343c20c',
+  'nette/security' => 'v3.1.4@a78bbb9d2260fffd898701b1ebdafcc797acb663',
+  'nette/utils' => 'v3.2.3@5c36cc1ba9bb6abb8a9e425cf054e0c3fd5b9822',
   'nettrine/annotations' => 'v0.7.0@fbb06d156a4edcbf37e4154e5b4ede079136388b',
   'nettrine/cache' => 'v0.3.0@8a58596de24cdd61e45866ef8f35788675f6d2bc',
   'nettrine/dbal' => 'v0.7.0@26a63ef21d229aa35b42b2d7798581bdb88ee912',
@@ -78,20 +78,20 @@ final class Versions
   'psr/http-client' => '1.0.1@2dfb5f6c5eff0e91e20e913f8c5452ed95b86621',
   'psr/http-message' => '1.0.1@f6561bf28d520154e4b0ec72be95418abe6d9363',
   'ralouphie/getallheaders' => '3.0.3@120b605dfeb996808c31b6477290a714d356e822',
-  'symfony/console' => 'v5.3.2@649730483885ff2ca99ca0560ef0e5f6b03f2ac1',
+  'symfony/console' => 'v5.3.6@51b71afd6d2dc8f5063199357b9880cea8d8bfe2',
   'symfony/deprecation-contracts' => 'v2.4.0@5f38c8804a9e97d23e0c8d63341088cd8a22d627',
   'symfony/polyfill-ctype' => 'v1.23.0@46cd95797e9df938fdd2b03693b5fca5e64b01ce',
-  'symfony/polyfill-intl-grapheme' => 'v1.23.0@24b72c6baa32c746a4d0840147c9715e42bb68ab',
+  'symfony/polyfill-intl-grapheme' => 'v1.23.1@16880ba9c5ebe3642d1995ab866db29270b36535',
   'symfony/polyfill-intl-normalizer' => 'v1.23.0@8590a5f561694770bdcd3f9b5c69dde6945028e8',
-  'symfony/polyfill-mbstring' => 'v1.23.0@2df51500adbaebdc4c38dea4c89a2e131c45c8a1',
+  'symfony/polyfill-mbstring' => 'v1.23.1@9174a3d80210dca8daa7f31fec659150bbeabfc6',
   'symfony/polyfill-php73' => 'v1.23.0@fba8933c384d6476ab14fb7b8526e5287ca7e010',
-  'symfony/polyfill-php80' => 'v1.23.0@eca0bf41ed421bed1b57c4958bab16aa86b757d0',
+  'symfony/polyfill-php80' => 'v1.23.1@1100343ed1a92e3a38f9ae122fc0eb21602547be',
   'symfony/service-contracts' => 'v2.4.0@f040a30e04b57fbcc9c6cbcf4dbaa96bd318b9bb',
   'symfony/string' => 'v5.3.3@bd53358e3eccec6a670b5f33ab680d8dbe1d4ae1',
-  'tracy/tracy' => 'v2.8.5@b23da41363546aa750d9f698f21e14815bd78913',
-  'nette/tester' => 'v2.4.0@0988c33459b49bfd6c8d06e16f29de96eba341e7',
+  'tracy/tracy' => 'v2.8.7@8e708de7c611f626c8792d43f1c78812ea24e6f6',
+  'nette/tester' => 'v2.4.1@b54326b3c1a2c6c76d2662a06b5ad5a10d822e98',
   'symfony/thanks' => 'v1.2.10@e9c4709560296acbd4fe9e12b8d57a925aa7eae8',
-  'nette/web-project' => 'dev-main@bce979cce79a9cb140fc87284dde236a19f8c347',
+  'nette/web-project' => 'dev-main@fcf4ac3610f0984ba6569b2d3af7997bbc9818b6',
 );
 
     private function __construct()
@@ -106,7 +106,7 @@ final class Versions
      */
     public static function rootPackageName() : string
     {
-        if (!class_exists(InstalledVersions::class, false) || !(method_exists(InstalledVersions::class, 'getAllRawData') ? InstalledVersions::getAllRawData() : InstalledVersions::getRawData())) {
+        if (!self::composer2ApiUsable()) {
             return self::ROOT_PACKAGE_NAME;
         }
 
@@ -124,7 +124,7 @@ final class Versions
      */
     public static function getVersion(string $packageName): string
     {
-        if (class_exists(InstalledVersions::class, false) && (method_exists(InstalledVersions::class, 'getAllRawData') ? InstalledVersions::getAllRawData() : InstalledVersions::getRawData())) {
+        if (self::composer2ApiUsable()) {
             return InstalledVersions::getPrettyVersion($packageName)
                 . '@' . InstalledVersions::getReference($packageName);
         }
@@ -136,5 +136,26 @@ final class Versions
         throw new OutOfBoundsException(
             'Required package "' . $packageName . '" is not installed: check your ./vendor/composer/installed.json and/or ./composer.lock files'
         );
+    }
+
+    private static function composer2ApiUsable(): bool
+    {
+        if (!class_exists(InstalledVersions::class, false)) {
+            return false;
+        }
+
+        if (method_exists(InstalledVersions::class, 'getAllRawData')) {
+            $rawData = InstalledVersions::getAllRawData();
+            if (count($rawData) === 1 && count($rawData[0]) === 0) {
+                return false;
+            }
+        } else {
+            $rawData = InstalledVersions::getRawData();
+            if ($rawData === []) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

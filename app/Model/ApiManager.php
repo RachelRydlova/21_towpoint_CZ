@@ -4,7 +4,9 @@
 namespace App\Model;
 
 use GuzzleHttp\Client;
+use Exception;
 use GuzzleHttp\Exception\GuzzleException;
+use Nette\Application\AbortException;
 use Nette\Caching\Cache;
 use Nette\Http\Session;
 use Tracy\Debugger;

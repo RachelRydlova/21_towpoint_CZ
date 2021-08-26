@@ -154,7 +154,7 @@ header nav a:first-of-type span
 #form  select,
 #form  input,
 #form  textarea,
-#carSelectorManId,
+#imark,
 #imodel,
 #imotor
 {
@@ -181,7 +181,7 @@ header nav a:first-of-type span
 }
 
 #sel select,
-#carSelectorManId,
+#imark,
 #imodel,
 #imotor
 {
@@ -391,7 +391,7 @@ header nav a:first-of-type span
 
 
 
-#carSelectorManId.loading,
+#imark.loading,
 #imodel.loading,
 #imotor.loading
 {
@@ -473,13 +473,13 @@ header nav a:first-of-type span
 	margin-left: 30px;
 }
 
-#komfort a
+#komfort input
 {
 	font-weight: bold;
 	float: left;
 }
 
-#komfort a::before
+#komfort input::before
 {
 	float: left;
 	background-color: white;
@@ -495,7 +495,7 @@ header nav a:first-of-type span
 	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 }
 
-#komfort a.sel::before
+#komfort input::before
 {
 	background-image: url("../img/check.svg");
 	background-position: center center;
@@ -708,7 +708,8 @@ header nav a:first-of-type span
 	transition: opacity 250ms linear;
 }
 
-#form2 {
+#form2
+{
 	opacity: 0.33;
 }
 
@@ -911,7 +912,7 @@ header nav a:first-of-type span
 	border-radius: 50%;	
 }
 
-.radios > div a
+.radios .radioText
 {
 	float: left;
 	margin-left: 20px;
@@ -919,12 +920,12 @@ header nav a:first-of-type span
 	line-height: 1.4em;
 }
 
-.radios > div a:hover
+.radioText:hover
 {
 	text-decoration: none;
 }
 
-.redukce > div div
+.redukce div input
 {
 	cursor: auto;
 	-webkit-border-radius: 0px;
@@ -1426,17 +1427,17 @@ header nav a:first-of-type span
 		float: none;
 		white-space: nowrap;
 	}
-	
+
 	#komfort a:hover
 	{
 		text-decoration: none;
 	}
-	
+
 	#komfort div a::before
 	{
 		float: right;
 	}
-	
+
 	#komfort a span
 	{
 		display: block;
@@ -1512,7 +1513,7 @@ header nav a:first-of-type span
 	}
 	
 	#sel select,
-	#carSelectorManId,
+	#imark,
 	#imodel,
 	#imotor
 	{
@@ -1748,7 +1749,7 @@ header nav a:first-of-type span
 
 @media screen and (max-width: 767px)
 {
-	#carSelectorManId,
+	#imark,
 	#imodel,
 	#imotor
 	{

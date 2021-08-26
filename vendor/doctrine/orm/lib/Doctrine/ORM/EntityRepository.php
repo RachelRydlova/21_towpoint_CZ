@@ -64,8 +64,6 @@ class EntityRepository implements ObjectRepository, Selectable
 
     /**
      * Initializes a new <tt>EntityRepository</tt>.
-     *
-     * @psalm-param Mapping\ClassMetadata $class
      */
     public function __construct(EntityManagerInterface $em, Mapping\ClassMetadata $class)
     {
@@ -208,7 +206,8 @@ class EntityRepository implements ObjectRepository, Selectable
      * @psalm-param array<string, mixed> $criteria
      * @psalm-param array<string, string>|null $orderBy
      *
-     * @psalm-return list<T> The objects.
+     * @return object[] The objects.
+     * @psalm-return list<T>
      */
     public function findBy(array $criteria, ?array $orderBy = null, $limit = null, $offset = null)
     {
@@ -250,7 +249,8 @@ class EntityRepository implements ObjectRepository, Selectable
     /**
      * Adds support for magic method calls.
      *
-     * @param string $method
+     * @param string  $method
+     * @param mixed[] $arguments
      * @psalm-param list<mixed> $arguments
      *
      * @return mixed The returned value from the resolved method.

@@ -2,43 +2,48 @@
 {form carSelector}
 
 
+    <div n:snippet="img">
+        <figure>
 
+            <img n:ifset="$img" n:if="$img" src="{$img}" alt="" style="max-height: 250px; width: auto;">
+
+            <h3 id="csSelectVehicle" n:ifset="$img" n:if="$img" class="font-yellow-casablanca"> <i class="fa fa-arrow-down"></i> </h3>
+        </figure>
+
+    </div>
 
     <div n:snippet="manuf">
-{*            {label manufacturer}*}
+{*        <div n:snippet="manuImg">*}
+{*            <img n:ifset="$manuImg" n:if="$manuImg" src="{$manuImg}" alt="" style="max-height: 250px; width: auto;">*}
+{*                 <h3 id="csSelectVehicle" n:ifset="$img" n:if="$img" class="font-yellow-casablanca">Vyber motorizaci <i class="fa fa-arrow-down"></i> </h3>*}
+{*        </div>*}
         {input manufacturer}
-        {*<div n:snippet="manuImg">
-            <img n:ifset="$manuImg" n:if="$manuImg" src="{$manuImg}" alt="" style="max-height: 250px; width: auto;">
-             <h3 id="csSelectVehicle" n:ifset="$img" n:if="$img" class="font-yellow-casablanca">Vyber motorizaci <i class="fa fa-arrow-down"></i> </h3>
-        </div>*}
     </div>
 
 
     <div n:snippet="model">
-            {*{label model}*}
         {input model}
     </div>
 
-    <div n:snippet="img">
-        <img n:ifset="$img" n:if="$img" src="{$img}" alt="" style="max-height: 250px; width: auto;">
-        {*
-            <h3 id="csSelectVehicle" n:ifset="$img" n:if="$img" class="font-yellow-casablanca">Vyber motorizaci <i class="fa fa-arrow-down"></i> </h3>
-        *}
-    </div>
 
 
     <div n:snippet="vehicle">
         {input vehicle}
     </div>
 
-    <div id="komfort">
-        {input komfort}
-        <p>ACC Adaptive Control, Front Assist Control, hlídaní mrtvého úhlu nebo jiná komfortní výbava&nbsp;vozu?</p>
-    </div>
     {snippet hiddenData}
         {input modelId}
         {input vehicleId}
     {/snippet}
+
+
+    <div id="komfort">
+        <div>
+            {input komfort}
+            <a href="#"><span>Vozidlo s prvky komfortní výbavy</span></a>
+        </div>
+        <p>ACC Adaptive Control, Front Assist Control, hlídaní mrtvého úhlu nebo jiná komfortní výbava vozu?</p>
+    </div>
 
 
 

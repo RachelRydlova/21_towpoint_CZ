@@ -262,6 +262,7 @@ class Parser
     /**
      * Adds a custom tree walker for modifying the AST.
      *
+     * @param string $className
      * @psalm-param class-string $className
      *
      * @return void
@@ -489,8 +490,9 @@ class Parser
     /**
      * Generates a new syntax error.
      *
-     * @param string $expected Expected string.
-     * @psalm-param array<string, mixed>|null $token    Got token.
+     * @param string       $expected Expected string.
+     * @param mixed[]|null $token    Got token.
+     * @psalm-param array<string, mixed>|null $token
      *
      * @return void
      * @psalm-return no-return
@@ -509,14 +511,15 @@ class Parser
         $message .= $expected !== '' ? sprintf('Expected %s, got ', $expected) : 'Unexpected ';
         $message .= $this->lexer->lookahead === null ? 'end of string.' : sprintf("'%s'", $token['value']);
 
-        throw QueryException::syntaxError($message, QueryException::dqlError($this->query->getDQL()));
+        throw QueryException::syntaxError($message, QueryException::dqlError($this->query->getDQL() ?? ''));
     }
 
     /**
      * Generates a new semantical error.
      *
-     * @param string $message Optional message.
-     * @psalm-param array<string, mixed>|null $token Optional token.
+     * @param string       $message Optional message.
+     * @param mixed[]|null $token   Optional token.
+     * @psalm-param array<string, mixed>|null $token
      *
      * @return void
      *
@@ -525,7 +528,7 @@ class Parser
     public function semanticalError($message = '', $token = null)
     {
         if ($token === null) {
-            $token = $this->lexer->lookahead ?? ['position' => null];
+            $token = $this->lexer->lookahead ?? ['position' => 0];
         }
 
         // Minimum exposed chars ahead of token
@@ -538,7 +541,7 @@ class Parser
         $pos    = strpos($dql, ' ', $length > $pos ? $pos : $length);
         $length = $pos !== false ? $pos - $token['position'] : $distance;
 
-        $tokenPos = isset($token['position']) && $token['position'] > 0 ? $token['position'] : '-1';
+        $tokenPos = $token['position'] > 0 ? $token['position'] : '-1';
         $tokenStr = substr($dql, $token['position'], $length);
 
         // Building informative message

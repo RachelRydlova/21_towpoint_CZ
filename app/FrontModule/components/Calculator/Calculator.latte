@@ -1,31 +1,63 @@
+
+{snippetArea calculatorWrapper}
 {form calculator}
 
     <div>
         <div>
             <div class="radios pref">
                 <h3>{label pref}</h3>
-                 <div> {input pref} </div>
-
+                {foreach $form['pref']->items as $key => $value}
+                    <div>
+                        {input $form['pref']:$key}
+                        {label $form['pref']:$key, class=>'radioText'}
+                    </div>
+                {/foreach}
             </div>
 
             <div class="radios koule">
                 <h3>{label koule}</h3>
-                 <div> {input koule}</div>
-
+                {foreach $form['koule']->items as $key => $value}
+                    <div>
+                        {input $form['koule']:$key}
+                        {label $form['koule']:$key, class=>'radioText'}
+                    </div>
+                {/foreach}
             </div>
 
             <div class="radios el">
                 <h3>{label zasuvka}</h3>
-                 <div> {input zasuvka}</div>
+                {foreach $form['zasuvka']->items as $key => $value}
+                    <div>
+                        {input $form['zasuvka']:$key}
+                        {label $form['zasuvka']:$key, class=>'radioText'}
+                    </div>
+                {/foreach}
             </div>
 
-            <div class="radios el">
+            <div class="radios redukce">
                 <h3>{label redukce}</h3>
-                <div> {input redukce} </div>
+                {foreach $form['redukce']->items as $key => $value}
+                    <div>
+                        {input $form['redukce']:$key}
+                        {label $form['redukce']:$key, class=>'radioText'}
+                    </div>
+                {/foreach}
             </div>
-
         </div>
     </div>
 
 
+
+
+
+    <div id="nabidka">
+        {snippet summaryBox}
+            <div n:ifset="$summaryPrice">
+                <h2>Cena včetně montáže s DPH: {$summaryPrice} Kč</h2>
+                <p>Cena je orientační a&nbsp;může se dle technického provedení vozidla mírně lišit, pro více informací kontaktujte naši zákaznickou linku.</p>
+            </div>
+        {/snippet}
+    </div>
+
 {/form}
+{/snippetArea}

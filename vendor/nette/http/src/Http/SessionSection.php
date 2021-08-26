@@ -15,7 +15,7 @@ use Nette;
 /**
  * Session section.
  */
-class SessionSection extends \App\Model\ApiManager implements \IteratorAggregate, \ArrayAccess
+class SessionSection implements \IteratorAggregate, \ArrayAccess
 {
 	use Nette\SmartObject;
 
@@ -106,6 +106,7 @@ class SessionSection extends \App\Model\ApiManager implements \IteratorAggregate
 	}
 
 
+	#[\ReturnTypeWillChange]
 	/**
 	 * Gets a variable from this session section.
 	 * @return mixed

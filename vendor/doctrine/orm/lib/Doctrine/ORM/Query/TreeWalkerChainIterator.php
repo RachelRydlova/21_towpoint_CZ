@@ -23,6 +23,7 @@ namespace Doctrine\ORM\Query;
 use ArrayAccess;
 use Doctrine\ORM\AbstractQuery;
 use Iterator;
+use ReturnTypeWillChange;
 
 use function key;
 use function next;
@@ -58,6 +59,7 @@ class TreeWalkerChainIterator implements Iterator, ArrayAccess
      * @return string|false
      * @psalm-return class-string<TreeWalker>|false
      */
+    #[ReturnTypeWillChange]
     public function rewind()
     {
         return reset($this->walkers);
@@ -66,6 +68,7 @@ class TreeWalkerChainIterator implements Iterator, ArrayAccess
     /**
      * @return TreeWalker|null
      */
+    #[ReturnTypeWillChange]
     public function current()
     {
         return $this->offsetGet(key($this->walkers));
@@ -74,6 +77,7 @@ class TreeWalkerChainIterator implements Iterator, ArrayAccess
     /**
      * @return int
      */
+    #[ReturnTypeWillChange]
     public function key()
     {
         return key($this->walkers);
@@ -82,6 +86,7 @@ class TreeWalkerChainIterator implements Iterator, ArrayAccess
     /**
      * @return TreeWalker|null
      */
+    #[ReturnTypeWillChange]
     public function next()
     {
         next($this->walkers);
@@ -91,25 +96,34 @@ class TreeWalkerChainIterator implements Iterator, ArrayAccess
 
     /**
      * {@inheritdoc}
+     *
+     * @return bool
      */
+    #[ReturnTypeWillChange]
     public function valid()
     {
         return key($this->walkers) !== null;
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     * @psalm-param array-key|null $offset
+     *
+     * @return bool
      */
+    #[ReturnTypeWillChange]
     public function offsetExists($offset)
     {
-        return isset($this->walkers[$offset]);
+        return isset($this->walkers[$offset ?? '']);
     }
 
     /**
+     * @param mixed $offset
      * @psalm-param array-key|null $offset
      *
      * @return TreeWalker|null
      */
+    #[ReturnTypeWillChange]
     public function offsetGet($offset)
     {
         if ($this->offsetExists($offset)) {
@@ -128,7 +142,10 @@ class TreeWalkerChainIterator implements Iterator, ArrayAccess
      *
      * @param string $value
      * @psalm-param array-key|null $offset
+     *
+     * @return void
      */
+    #[ReturnTypeWillChange]
     public function offsetSet($offset, $value)
     {
         if ($offset === null) {
@@ -139,12 +156,16 @@ class TreeWalkerChainIterator implements Iterator, ArrayAccess
     }
 
     /**
-     * {@inheritdoc}
+     * @param mixed $offset
+     * @psalm-param array-key|null $offset
+     *
+     * @return void
      */
+    #[ReturnTypeWillChange]
     public function offsetUnset($offset)
     {
         if ($this->offsetExists($offset)) {
-            unset($this->walkers[$offset]);
+            unset($this->walkers[$offset ?? '']);
         }
     }
 }

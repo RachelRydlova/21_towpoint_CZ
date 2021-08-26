@@ -46,7 +46,6 @@ use function spl_object_hash;
  * Similarly, if you remove entities from a collection that is part of a one-many
  * mapping this will only result in the nulling out of the foreign keys on flush.
  *
- * @phpstan-template TKey
  * @psalm-template TKey of array-key
  * @psalm-template T
  * @template-implements Collection<TKey,T>
@@ -595,6 +594,7 @@ final class PersistentCollection extends AbstractLazyCollection implements Selec
      * @param int      $offset
      * @param int|null $length
      *
+     * @return mixed[]
      * @psalm-return array<TKey,T>
      */
     public function slice($offset, $length = null): array
@@ -637,7 +637,7 @@ final class PersistentCollection extends AbstractLazyCollection implements Selec
      * Selects all elements from a selectable that match the expression and
      * return a new collection containing these elements.
      *
-     * @return Collection<TKey, T>
+     * @psalm-return Collection<TKey, T>
      *
      * @throws RuntimeException
      */

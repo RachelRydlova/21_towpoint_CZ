@@ -114,6 +114,8 @@ $(document).ready(function(){
 		}
 		return false;
 	});
+
+
 /*	
 	$(document).on('change','#mark',function(){
 		$('#model, #engine').prop('disabled',true).val(0).addClass('dis');
@@ -133,81 +135,81 @@ $(document).ready(function(){
 	});
 	*/
 	
-	// $(document).on('change','#carSelectorManId',function(){
+	// $(document).on('change','#imark',function(){
 	// 	set_mark($(this).val());
 	// });
 	
-	// $(document).on('focus','#carSelectorManId',function(){
+	// $(document).on('focus','#imark',function(){
 	// 	//$('#selmodely, #selmotory').slideUp(300);
-	// 	$('#carSelectorManId').slideDown(300);
+	// 	$('#imark').slideDown(300);
 	// 	mark_zal=$(this).val();
 	// 	$(this).val('');
 	// });
-	
-	$(document).on('focus','#imodel',function(){
-		$('#preffered, #selmotory').slideUp(300);
-		$('#selmodely').slideDown(300);
-		model_zal=$(this).val();
-		$(this).val('');
-	});
-	
-	$(document).on('focus','#imotor',function(){
-		$('#preffered, #selmodely').slideUp(300);
-		$('#selmotory').slideDown(300);
-		motor_zal=$(this).val();
-		$(this).val('');
-	});
-	
-	var vsechny_znacky_zal=$('#preffered').html();
-	$(document).on('blur','#imark',function(){
-		$(this).val(mark_zal);
-		mb_to=setTimeout(function(){
-			$('#preffered').html(vsechny_znacky_zal);
-		},500);
-	});
-	
-	vsechny_modely_zal=$('#selmodely').html();
-	$(document).on('blur','#imodel',function(){
-		$(this).val(model_zal);
-		mb_to=setTimeout(function(){
-			$('#selmodely').html(vsechny_modely_zal);
-		},500);
-	});
-	
-	vsechny_motory_zal=$('#selmotory').html();
-	$(document).on('blur','#imotor',function(){
-		$(this).val(motor_zal);
-		mb_to=setTimeout(function(){
-			$('#selmotory').html(vsechny_motory_zal);
-		},500);
-	});
-	
-	$(document).on('keyup','#imark',function(){
-		if (search_mark_req) search_mark_req.abort();
-		$('#imark').addClass('loading');
-		search_mark_req=$.get(pprefix+'helpers/mark_search.php?q='+$(this).val(),function(data){
-			$('#preffered').html(data);
-			$('#imark').removeClass('loading');
-		})
-	});
-	
-	$(document).on('keyup','#imodel',function(){
-		if (search_mod_req) search_mod_req.abort();
-		$('#imodel').addClass('loading');
-		search_mod_req=$.get(pprefix+'helpers/mod_search.php?q='+$(this).val(),function(data){
-			$('#selmodely').html(data);
-			$('#imodel').removeClass('loading');
-		})
-	});
-	
-	$(document).on('keyup','#imotor',function(){
-		if (search_eng_req) search_eng_req.abort();
-		$('#imotor').addClass('loading');
-		search_eng_req=$.get(pprefix+'helpers/eng_search.php?q='+$(this).val(),function(data){
-			$('#selmotory').html(data);
-			$('#imotor').removeClass('loading');
-		})
-	});
+	//
+	// $(document).on('focus','#imodel',function(){
+	// 	$('#preffered, #selmotory').slideUp(300);
+	// 	$('#selmodely').slideDown(300);
+	// 	model_zal=$(this).val();
+	// 	$(this).val('');
+	// });
+	//
+	// $(document).on('focus','#imotor',function(){
+	// 	$('#preffered, #selmodely').slideUp(300);
+	// 	$('#selmotory').slideDown(300);
+	// 	motor_zal=$(this).val();
+	// 	$(this).val('');
+	// });
+	//
+	// var vsechny_znacky_zal=$('#preffered').html();
+	// $(document).on('blur','#imark',function(){
+	// 	$(this).val(mark_zal);
+	// 	mb_to=setTimeout(function(){
+	// 		$('#preffered').html(vsechny_znacky_zal);
+	// 	},500);
+	// });
+	//
+	// vsechny_modely_zal=$('#selmodely').html();
+	// $(document).on('blur','#imodel',function(){
+	// 	$(this).val(model_zal);
+	// 	mb_to=setTimeout(function(){
+	// 		$('#selmodely').html(vsechny_modely_zal);
+	// 	},500);
+	// });
+	//
+	// vsechny_motory_zal=$('#selmotory').html();
+	// $(document).on('blur','#imotor',function(){
+	// 	$(this).val(motor_zal);
+	// 	mb_to=setTimeout(function(){
+	// 		$('#selmotory').html(vsechny_motory_zal);
+	// 	},500);
+	// });
+	//
+	// $(document).on('keyup','#imark',function(){
+	// 	if (search_mark_req) search_mark_req.abort();
+	// 	$('#imark').addClass('loading');
+	// 	search_mark_req=$.get(pprefix+'helpers/mark_search.php?q='+$(this).val(),function(data){
+	// 		$('#preffered').html(data);
+	// 		$('#imark').removeClass('loading');
+	// 	})
+	// });
+	//
+	// $(document).on('keyup','#imodel',function(){
+	// 	if (search_mod_req) search_mod_req.abort();
+	// 	$('#imodel').addClass('loading');
+	// 	search_mod_req=$.get(pprefix+'helpers/mod_search.php?q='+$(this).val(),function(data){
+	// 		$('#selmodely').html(data);
+	// 		$('#imodel').removeClass('loading');
+	// 	})
+	// });
+	//
+	// $(document).on('keyup','#imotor',function(){
+	// 	if (search_eng_req) search_eng_req.abort();
+	// 	$('#imotor').addClass('loading');
+	// 	search_eng_req=$.get(pprefix+'helpers/eng_search.php?q='+$(this).val(),function(data){
+	// 		$('#selmotory').html(data);
+	// 		$('#imotor').removeClass('loading');
+	// 	})
+	// });
 /*	
 	$(document).on('click','#preffered a',function(){
 		$('#model, #engine').prop('disabled',true).val(0).addClass('dis');
@@ -231,33 +233,33 @@ $(document).ready(function(){
 	});
 	*/
 
-	
-	$(document).on('click','#preffered a',function(){
-		frompreflist=true;
-		set_mark($(this).attr('data-id'));
-		return false;
-	});
-	
-	$(document).on('click','#selmodely a',function(){
-		frommodlist=true;
-		set_model($(this).attr('data-id'));
-		return false;
-	});
-	
-	$(document).on('click','#selmotory a',function(){
-		fromenglist=true;
-		set_engine($(this).attr('data-id'));
-		return false;
-	});
-	
-	$(document).on('change','#model',function(){
-		frommodlist=false;
-		set_model($(this).val());
-	});
-	
-	$(document).on('change','#engine',function(){
-		set_engine($(this).val());
-	});
+	//
+	// $(document).on('click','#preffered a',function(){
+	// 	frompreflist=true;
+	// 	set_mark($(this).attr('data-id'));
+	// 	return false;
+	// });
+	//
+	// $(document).on('click','#selmodely a',function(){
+	// 	frommodlist=true;
+	// 	set_model($(this).attr('data-id'));
+	// 	return false;
+	// });
+	//
+	// $(document).on('click','#selmotory a',function(){
+	// 	fromenglist=true;
+	// 	set_engine($(this).attr('data-id'));
+	// 	return false;
+	// });
+	//
+	// $(document).on('change','#model',function(){
+	// 	frommodlist=false;
+	// 	set_model($(this).val());
+	// });
+	//
+	// $(document).on('change','#engine',function(){
+	// 	set_engine($(this).val());
+	// });
 
 	$(document).on('click', '#komfort a', function () {
 		$(this).toggleClass('sel');
@@ -274,108 +276,108 @@ $(document).ready(function(){
 });
 
 
+//
+// function set_mark(mid)
+// {
+// 	$('#mark').val(mid);
+// 	$('#imark').val($('#preffered a.mark'+mid).attr('title'));
+// 	$('#model, #engine').prop('disabled',true).val(0).addClass('dis');
+// 	$('#imodel, #imotor').prop('disabled',true).val('').addClass('dis');
+// 	$('#form, #form2').removeClass('shown');
+// 	$('#nabidka').html('');
+// 	$('#sel figure').slideUp(200);
+// 	$('#selmodely').slideUp(300);
+// 	$('#sel').addClass('loading');
+// 	sel=mid;
+// 	reqmotor=$.get(pprefix+'helpers/set_mark.php?mark='+sel,function(data){
+// 		$('#sel').removeClass('loading');
+// 		if (data!='')
+// 		{
+// 			pole=data.split(String.fromCharCode(0,0,0));
+// 			$('#model').prop('disabled',false).html(pole[0]).removeClass('dis').val(0);
+// 			$('#selmodely').html(pole[1]);
+// 			vsechny_modely_zal=pole[1];
+// 			$('#imodel').prop('disabled',false).val('').removeClass('dis');
+// 			$('#engine').prop('disabled',true).val(0).addClass('dis');
+// 			$('#preffered').slideUp(300);
+// 			$('html, body').animate({ scrollTop: $(".subn.step11").offset().top }, 250);
+// 			if (frompreflist) $('#imodel').focus();
+// 		}
+// 	});
+// }
 
-function set_mark(mid)
-{
-	$('#mark').val(mid);
-	$('#imark').val($('#preffered a.mark'+mid).attr('title'));
-	$('#model, #engine').prop('disabled',true).val(0).addClass('dis');
-	$('#imodel, #imotor').prop('disabled',true).val('').addClass('dis');
-	$('#form, #form2').removeClass('shown');
-	$('#nabidka').html('');
-	$('#sel figure').slideUp(200);
-	$('#selmodely').slideUp(300);
-	$('#sel').addClass('loading');
-	sel=mid;
-	reqmotor=$.get(pprefix+'helpers/set_mark.php?mark='+sel,function(data){
-		$('#sel').removeClass('loading');
-		if (data!='')
-		{
-			pole=data.split(String.fromCharCode(0,0,0));
-			$('#model').prop('disabled',false).html(pole[0]).removeClass('dis').val(0);
-			$('#selmodely').html(pole[1]);
-			vsechny_modely_zal=pole[1];
-			$('#imodel').prop('disabled',false).val('').removeClass('dis');
-			$('#engine').prop('disabled',true).val(0).addClass('dis');
-			$('#preffered').slideUp(300);
-			$('html, body').animate({ scrollTop: $(".subn.step11").offset().top }, 250);
-			if (frompreflist) $('#imodel').focus();
-		}
-	});
-}
-
-
-function set_model(mid)
-{
-	$('#model').val(mid);
-	$('#imodel').val($('#selmodely a.model'+mid).attr('title'));
-	$('#engine').prop('disabled',true).val(0).addClass('dis');
-	$('#imotor').prop('disabled',true).val('').addClass('dis');
-	$('#form, #form2').removeClass('shown');
-	$('#nabidka').html('');
-	$('#sel, #sel figure').addClass('loading');
-	$('#sel figure img').animate({opacity: 0},200);
-	sel=mid;
-	if (reqmotor) reqmotor.abort();
-	reqmotor=$.get(pprefix+'helpers/set_model.php?model='+sel,function(data){
-		$('#sel').removeClass('loading');
-		if (data!='')
-		{
-			pole=data.split(String.fromCharCode(0,0,0));
-			$('#engine').prop('disabled',false).html(pole[0]).removeClass('dis').val(0);
-			$('#imotor').prop('disabled',false).removeClass('dis');
-			$('#preffered, #selmodely').slideUp(300);
-			if (pole[1]!='')
-			{
-				$('#sel figure').show();
-				var alt=$('#imark').val()+' '+$('#imodel').val();
-				$('#sel figure img').attr('src',pole[1]).attr('alt',alt).on('load',function(){
-					$('#sel figure img').stop().animate({opacity: 1},200);
-					$('#sel figure').removeClass('loading');
-				});
-			} else $('#sel figure').hide();
-			$('#selmotory').html(pole[2]);
-			vsechny_motory_zal=pole[2];
-			if (frommodlist) $('#imotor').focus();
-		} else $('#sel figure').slideUp(200);
-	})
-	$('html, body').animate({ scrollTop: $(".subn.step11").offset().top }, 250);
-}
-
-
-function set_engine(mid)
-{
-	$('#engine').val(mid);
-	$('#imotor').val($('#selmotory a.motor'+mid).attr('title'));
-	$('#sel').addClass('loading');
-	$('#selmotory').slideUp(300);
-	sel=mid;
-	
-	if (sel==0)
-	{
-		$('#form, #form2').removeClass('shown');
-		$('#nabidka').html('');
-	}
-	
-	if (reqmotor) reqmotor.abort();
-	reqmotor=$.get(pprefix+'helpers/set_motor.php?motor='+sel,function(data){
-          // Pro test
-		console.log(data);
-          if (data == '101') {
-              window.location.href = 'https://towpoint.cz/test';
-          }
-          update_conf();
-		$('#sel').removeClass('loading');
-		if (sel==0) $('#form, #form2').removeClass('shown');
-		pole=data.split('***');
-		if (pole[0]=='1')
-		{
-			$('#form').addClass('shown');
-//			$('html, body').animate({ scrollTop: $("#form").offset().top }, 250);
-			if (pole[1]=='1') $('#form2').addClass('shown'); else $('#form2').removeClass('shown');
-		} else $('#form, #form2').removeClass('shown');
-	})
-}
+//
+// function set_model(mid)
+// {
+// 	$('#model').val(mid);
+// 	$('#imodel').val($('#selmodely a.model'+mid).attr('title'));
+// 	$('#engine').prop('disabled',true).val(0).addClass('dis');
+// 	$('#imotor').prop('disabled',true).val('').addClass('dis');
+// 	$('#form, #form2').removeClass('shown');
+// 	$('#nabidka').html('');
+// 	$('#sel, #sel figure').addClass('loading');
+// 	$('#sel figure img').animate({opacity: 0},200);
+// 	sel=mid;
+// 	if (reqmotor) reqmotor.abort();
+// 	reqmotor=$.get(pprefix+'helpers/set_model.php?model='+sel,function(data){
+// 		$('#sel').removeClass('loading');
+// 		if (data!='')
+// 		{
+// 			pole=data.split(String.fromCharCode(0,0,0));
+// 			$('#engine').prop('disabled',false).html(pole[0]).removeClass('dis').val(0);
+// 			$('#imotor').prop('disabled',false).removeClass('dis');
+// 			$('#preffered, #selmodely').slideUp(300);
+// 			if (pole[1]!='')
+// 			{
+// 				$('#sel figure').show();
+// 				var alt=$('#imark').val()+' '+$('#imodel').val();
+// 				$('#sel figure img').attr('src',pole[1]).attr('alt',alt).on('load',function(){
+// 					$('#sel figure img').stop().animate({opacity: 1},200);
+// 					$('#sel figure').removeClass('loading');
+// 				});
+// 			} else $('#sel figure').hide();
+// 			$('#selmotory').html(pole[2]);
+// 			vsechny_motory_zal=pole[2];
+// 			if (frommodlist) $('#imotor').focus();
+// 		} else $('#sel figure').slideUp(200);
+// 	})
+// 	$('html, body').animate({ scrollTop: $(".subn.step11").offset().top }, 250);
+// }
+//
+//
+// function set_engine(mid)
+// {
+// 	$('#engine').val(mid);
+// 	$('#imotor').val($('#selmotory a.motor'+mid).attr('title'));
+// 	$('#sel').addClass('loading');
+// 	$('#selmotory').slideUp(300);
+// 	sel=mid;
+//
+// 	if (sel==0)
+// 	{
+// 		$('#form, #form2').removeClass('shown');
+// 		$('#nabidka').html('');
+// 	}
+//
+// 	if (reqmotor) reqmotor.abort();
+// 	reqmotor=$.get(pprefix+'helpers/set_motor.php?motor='+sel,function(data){
+//           // Pro test
+// 		console.log(data);
+//           if (data == '101') {
+//               window.location.href = 'https://towpoint.cz/test';
+//           }
+//           update_conf();
+// 		$('#sel').removeClass('loading');
+// 		if (sel==0) $('#form, #form2').removeClass('shown');
+// 		pole=data.split('***');
+// 		if (pole[0]=='1')
+// 		{
+// 			$('#form').addClass('shown');
+// //			$('html, body').animate({ scrollTop: $("#form").offset().top }, 250);
+// 			if (pole[1]=='1') $('#form2').addClass('shown'); else $('#form2').removeClass('shown');
+// 		} else $('#form, #form2').removeClass('shown');
+// 	})
+// }
 
 
 $(window).load(function(){
