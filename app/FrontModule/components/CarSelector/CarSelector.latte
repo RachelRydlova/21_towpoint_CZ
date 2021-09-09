@@ -34,13 +34,14 @@
     <form n:name="carSelector">
         <div id="preffered">
             <div class="logos" >
-                <a href="" n:foreach="$preferovane as $key => $carInfo">
+                <a href="javascript:;" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
+                    {dump $carInfo}
                     <img src="{$carInfo->imageurl}">
                 </a>
 
             </div>
             <div class="all">
-                <a n:foreach="$ostatni as $key => $carInfo">
+                <a href="javascript:;" n:foreach="$ostatni as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
                     {$carInfo->name}
                 </a>
             </div>

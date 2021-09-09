@@ -169,7 +169,7 @@ class CarSelector extends Control
         $manItems = ['Preferované' => [], 'Ostatní' => []];
         if ($mans = $this->apiManager->getCarManufacturers(1)) {
             foreach ($mans as $man) {
-                $manItems['Preferované'][$man->tcznacka] = $man->imageurl;
+                $manItems['Preferované'][$man->tcznacka] = $man->name;
             }
         }
         if ($mans = $this->apiManager->getCarManufacturers(0)) {

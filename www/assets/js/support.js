@@ -38,8 +38,16 @@ $(function () {
 
 
     // Výběr značky
-    $(document).on('click', '#preffered img', function () {
-       let value = $(this).val();
+    // Musíš zachytit klik na odkaz!
+    $(document).on('click', '#preffered a.znackaLink', function (e) {
+        // Tady tímto řádkem zakážeš aby to udělalo default akci presmerovani
+        e.preventDefault();
+
+        // Tento radek je blbost, protoze val() snima hodnotu form. prvku, ale ty snimas odkaz
+        //let value = $(this).val();
+
+        // Takze to musis vyresit jinak, nejcasteji se to dela data atributem
+        let value = $(this).attr('data-key');
         $('#imark').val(value);
 
         $.nette.ajax({
