@@ -49,7 +49,6 @@ class CarSelector extends Control
      */
     public function handleSetManufacturer($manId): void
     {
-        Debugger::barDump($manId);
         if (!$manId) {
             $this['carSelector']['model']->setItems([]);
             $this['carSelector']['model']->setDisabled();
@@ -91,6 +90,7 @@ class CarSelector extends Control
             $this['carSelector']['vehicle']->setItems([]);
             $this['carSelector']['vehicle']->setDisabled();
             $this->redrawControl('carSelectorWrapper');
+            $this->redrawControl('model');
             $this->redrawControl('vehicle');
             $this->redrawControl('img');
         } else {
@@ -184,7 +184,7 @@ class CarSelector extends Control
         $form->addSelect('manufacturer', 'manu', $manItems)
             ->setPrompt('Značka vozu')
             ->setAttribute('id', 'imark');
-        Debugger::barDump($manItems, ' coJeVSelectu');
+//        Debugger::barDump($manItems, ' coJeVSelectu');
         $form->addHidden('manufacturerId');
 
         $form->addSelect('model', '')
@@ -237,13 +237,22 @@ class CarSelector extends Control
             $this->template->lastParts = $parts;
         }
 
-
+        // vytvoreni promennych se seznamem znacek
         $preferovane = $this->apiManager->getCarManufacturers(1);
-        Debugger::barDump($preferovane);
         $ostatni = $this->apiManager->getCarManufacturers(0);
-
+        // nastavuji promenne do template
         $this->template->preferovane = $preferovane;
         $this->template->ostatni = $ostatni;
+
+        // vytvoreni promenne se seznamem modelu
+        $modelsItems = [];
+        $manId = $this->loadValue('manufacturer');
+        $models = $this->apiManager->getCarManufacturerModels($manId);
+//        foreach ($models as $model) {
+//            $modelsItems[$model->tcmodel] = $model->fullname;
+//        }
+        Debugger::barDump($models);
+        $this->template->modely = $models;
 
 
         $this->template->render();

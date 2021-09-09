@@ -36,6 +36,13 @@ $(function () {
         $('#preffered').slideDown(300);
     });
 
+    $(document).on('focus','#imodel',function(){
+        $('#selmodely').slideDown(300);
+    });
+
+    $(document).on('click', '#snippet-carSelector-manufacturer', function (){
+        e.preventDefault();
+    })
 
     // Výběr značky
     // Musíš zachytit klik na odkaz!
@@ -46,25 +53,33 @@ $(function () {
         // Tento radek je blbost, protoze val() snima hodnotu form. prvku, ale ty snimas odkaz
         //let value = $(this).val();
 
-        // Takze to musis vyresit jinak, nejcasteji se to dela data atributem
+        // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
         $('#imark').val(value);
+
 
         $.nette.ajax({
             url: '?do=carSelector-setManufacturer',
             data: {'carSelector-manId': value}
         })
+
+        $('#preffered').slideUp(300);
+        $('#selmodely').slideDown(300);
     });
 
 
     // Výběr modelu
-    $(document).on('change', '#imodel', function () {
-        let value = $(this).val();
-        $('#sel figure').slideUp(200);
+    $(document).on('click', '#selmodely a.modelLink', function (e) {
+        e.preventDefault();
+        let value = $(this).attr('data-key');
+        $('#imodel').val(value);
+
         $.nette.ajax({
             url: '?do=carSelector-setModel',
             data: {'carSelector-modId': value}
         })
+        $('#selmodely').slideUp(300);
+        $('#selmotory').slideDown(300);
     });
 
 
