@@ -73,6 +73,9 @@ class CarSelector extends Control
             $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('model');
+
+            // Tady musis prekreslit snippet pro list modelů
+            $this->redrawControl('modelyList');
             // ulozeni zvolene znacky do session
             $this->saveValue('manufacturer', $manId);
         }

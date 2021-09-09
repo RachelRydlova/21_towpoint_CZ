@@ -40,7 +40,7 @@ $(function () {
         $('#selmodely').slideDown(300);
     });
 
-    $(document).on('click', '#snippet-carSelector-manufacturer', function (){
+    $(document).on('click', '#snippet-carSelector-manufacturer', function (e){
         e.preventDefault();
     })
 
@@ -61,10 +61,12 @@ $(function () {
         $.nette.ajax({
             url: '?do=carSelector-setManufacturer',
             data: {'carSelector-manId': value}
-        })
+        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
+            $('#preffered').slideUp(300);
+            $('#selmodely').slideDown(300);
+        });
 
-        $('#preffered').slideUp(300);
-        $('#selmodely').slideDown(300);
+
     });
 
 
