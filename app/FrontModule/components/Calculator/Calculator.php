@@ -13,11 +13,10 @@ use Tracy\Debugger;
 
 class Calculator extends Control
 {
-    private $vehicleId;
+    public $vehicleId;
 
     /** @var ApiManager */
     private $apiManager;
-
 
     /**
      * @var Nette\Http\Session - kompletni session pro nette
@@ -39,12 +38,11 @@ class Calculator extends Control
     /**
      * zjisteni ID zvoleneho motoru a ziskani cen
      * @param $vehicleId
+     * @param bool $comfort
      * @return mixed|null
      */
-      public function getPrice($vehicleId)
+      public function getPrice($vehicleId, $komfort = true)
     {
-        $this->template->vehicleId = $vehicleId;
-        Debugger::barDump($vehicleId, 'chosenVehicleId');
         $prices = $this->apiManager->getTowpointPrices($vehicleId, 'CZ');
         Debugger::barDump($prices, 'cenyAPI');
 
@@ -59,13 +57,21 @@ class Calculator extends Control
         // cena montaze
         $summaryPrice += $prices->cena->pevne->montaz_cena_7_dph;
 
-        // priplatek za komfortni vybavu
+        // komfortni vybava
+//        if ($comfort){
+//            $summaryPrice +=
+//        }
+
+
         $this->template->summaryPrice = $summaryPrice;
         $this->redrawControl('summaryBox');
         Debugger::barDump($summaryPrice, 'vypocetCeny');
 
         return $summaryPrice;
     }
+
+
+
 
 
     /**
@@ -87,6 +93,7 @@ class Calculator extends Control
             ->setDefaultValue('0');
         $form->addRadioList('redukce', "Redukce zdarma:", ['7→13','13→7'])
             ->setAttribute('id', 'redukce')
+            ->setDisabled()
             ->setDefaultValue('0');
 
 
@@ -96,10 +103,11 @@ class Calculator extends Control
     }
 
 
-    public function handleSetPref($pref): void
+    public function handleSetParam($param): void
     {
-        $this->redrawControl('summaryBox');
-        $this->redrawControl('pref');
+
+        $this->redrawControl('calculatorWrapper');
+        $this->redrawControl('summaryPrice');
     }
 
     /**

@@ -6,7 +6,7 @@ namespace App\FrontModule\Presenters;
 
 use App\FrontModule\components\Calculator;
 use App\FrontModule\components\CarSelector;
-use App\FrontModule\components\ContactForm;
+use App\FrontModule\components\OrderForm;
 use App\ICarSelectorFactory;
 use App\Model\applCache;
 use App\Presenters\BasePresenter;
@@ -41,13 +41,10 @@ class DefaultPresenter extends BasePresenter
      {
         $comp = new CarSelector($this->apiManager, $this->session);
         $p = $this;
-        $comp->onSuccess[] = function ($vehicleId) use ($p) {
-//            $selVehicleId = $p->apiManager->getTowpointPrices($vehicleId);
-            $p['calculator']->getPrice($vehicleId);
+        $comp->onSuccess[] = function ($carInfo) use ($p) {
+            $p['calculator']->getPrice($carInfo['vehicleId']);
         };
         return $comp;
-//         return new CarSelector($this->apiManager, $this->session);
-
     }
 
 
@@ -60,44 +57,24 @@ class DefaultPresenter extends BasePresenter
     }
 
     /**
-     * kontaktni formular
-     * @return ContactForm
+     * odeslani objednavky s kontaktnimi udaji i informacemi o zvolenem voze
+     * @return OrderForm
      */
-    protected function createComponentContactForm(){
-         return new ContactForm();
+    protected function createComponentOrderForm(){
+//        return new OrderForm($this->apiManager, $this->session);
+        $comp = new OrderForm($this->apiManager, $this->session);
+        $p = $this;
+        $comp->onSuccess[] = function ($contact) use ($p) {
+            $manufacturer = $p->session->getSection('carSection')->manufacturer;
+            $model = $p->session->getSection('carSection')->model;
+            $vehicle = $p->session->getSection('carSection')->vehicle;
+
+            $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle];
+            $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
+            $this->apiManager->sendDataToApi($dataToReva);
+        };
+        return $comp;
     }
-
-
-    /**
-     * @return Form
-     * @throws \Throwable
-     */
-    public function createComponentOrderForm(): Form
-    {
-        $form = new Form();
-
-        $form->addCheckbox('gdpr', 'Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení')
-            ->setRequired();
-     //       ->setAttribute('class', 'yesno sel')
-
-
-        $form->addSubmit('success', 'Odeslat')
-            ->setAttribute('class', 'cta');
-
-        $form->onSuccess[] = [$this, 'onOrderFormSuccess'];
-
-        return $form;
-    }
-
-    /**
-     * @param Form $form
-     */
-    public function onOrderFormSuccess(Form $form): void
-    {
-        $values = $form->getValues();
-    }
-
-
 
     /**
      * formular do sekce "pro partnery"
@@ -152,9 +129,6 @@ class DefaultPresenter extends BasePresenter
     public function renderDefault(){
         // data pro banner
         $this->template->b = $this->bannerModel->getBannerData();
-
-        // vypsani v tracy, co posilame do banneru
-        // Debugger::barDump($this->template->b, 'banner');
     }
 
 }

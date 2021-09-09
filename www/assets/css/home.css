@@ -173,7 +173,7 @@ header nav a:first-of-type span
 	background-repeat: no-repeat;
 	background-size: 10px;
 	background-position: calc(100% - 20px) center;
-	
+
 	border-radius: 20px;
 	-webkit-appearance: none;
    -moz-appearance: none;
@@ -185,10 +185,16 @@ header nav a:first-of-type span
 #imodel,
 #imotor
 {
-	width: calc((100% - 60px) / 3);
+	width: calc((100% - 100px) / 3);
 	margin-right: 30px;
 	padding-right: 50px;
 	background-color: white;
+}
+
+#imark optgroup,
+#imark option
+{
+	display: none;
 }
 
 #sel select
@@ -204,12 +210,6 @@ header nav a:first-of-type span
 #sel option
 {
 	font-family: osb, Arial, Helvetica, sans-serif;
-}
-
-#sel select:last-of-type,
-#imotor
-{
-	margin-right: 0px;
 }
 
 #form .inputs > div p
@@ -312,6 +312,7 @@ header nav a:first-of-type span
 
 #preffered .logos a
 {
+
 	top: 0px;
 	background-color: white;
 	display: inline-block;
@@ -479,7 +480,7 @@ header nav a:first-of-type span
 	float: left;
 }
 
-#komfort input::before
+#komfort input
 {
 	float: left;
 	background-color: white;
@@ -489,13 +490,13 @@ header nav a:first-of-type span
 	height: 50px;
 	position: relative;
 	border: 1px solid #525252;
-	
+
 	-webkit-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 	-moz-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 }
 
-#komfort input::before
+#komfort input:checked
 {
 	background-image: url("../img/check.svg");
 	background-position: center center;
@@ -704,7 +705,7 @@ header nav a:first-of-type span
 	float: left;
 	width: 100%;
 	padding-bottom: 40px;
-	pointer-events: none;
+	/*pointer-events: none;*/
 	transition: opacity 250ms linear;
 }
 
@@ -897,19 +898,19 @@ header nav a:first-of-type span
 	cursor: pointer;
 }
 
-.radios > div.sel div::before
+.radios > div input:checked
 {
-	position: absolute;
+	position: relative;
 	background-color: #ff9900;
 	width: 30px;
 	height: 30px;
 	content: " ";
 	left: 9px;
 	top: 9px;
-	
+
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
-	border-radius: 50%;	
+	border-radius: 50%;
 }
 
 .radios .radioText
@@ -1156,11 +1157,13 @@ header nav a:first-of-type span
 
 .poptavka
 {
-	padding-bottom: 30px;
+	display: inline-block;
+	padding: 2% 27%;
 }
 
 .poptavka p
 {
+	display: inline-block;
 	color: #525252;
 	margin-bottom: 50px;
 	text-align: center;
@@ -1226,9 +1229,11 @@ header nav a:first-of-type span
 	padding: 0px;
 }
 
-
-
-
+.thanks {
+	height: 20em;
+	text-align: center;
+	padding-top: 5em;
+}
 
 
 .final_loader

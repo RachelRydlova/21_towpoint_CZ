@@ -43,31 +43,25 @@ class CarSelector extends Control
 
 
     /**
+     * funkce pro zachyceni zvolene znacky vozu ve formulari
      * @param $manId
      * @throws \Throwable
      */
     public function handleSetManufacturer($manId): void
     {
+        Debugger::barDump($manId);
         if (!$manId) {
             $this['carSelector']['model']->setItems([]);
             $this['carSelector']['model']->setDisabled();
             $this['carSelector']['vehicle']->setItems([]);
             $this['carSelector']['vehicle']->setDisabled();
-            $this->template->progress = 0;
             $this->redrawControl('carSelectorWrapper');
-            $this->redrawControl('progress');
             $this->redrawControl('img');
             $this->redrawControl('model');
             $this->redrawControl('vehicle');
-            $this->redrawControl('manuImg');
+
+
         } else {
-            if ($manRow = $this->apiManager->getManufacturerApiRow($manId)) {
-                $this->template->manuImg = $manRow->imageurl;
-                $this->template->manRow = $manRow;
-                Debugger::barDump($manRow, 'manRow');
-                $this->redrawControl('manuImg');
-                $this->redrawControl('img');
-            }
 
             $modelsItems = [];
             if ($models = $this->apiManager->getCarManufacturerModels($manId)) {
@@ -80,12 +74,14 @@ class CarSelector extends Control
             $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('model');
-
+            // ulozeni zvolene znacky do session
+            $this->saveValue('manufacturer', $manId);
         }
     }
 
 
     /**
+     * funkce pro zachyceni zvolene hodnoty modelu vozu ve formulari
      * @param $modId
      * @throws \Throwable
      */
@@ -122,16 +118,41 @@ class CarSelector extends Control
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('vehicle');
             $this->redrawControl('hiddenData');
+
         }
+        // ulozeni zvoleneho modelu do session
+        $this->saveValue('model', $modId);
     }
 
     /**
+     * zachyceni hodnoty zvoleneho motoru a zaroven odeslani dat
+     * data se vytahuji ze session, protoze samotny formular se neodesila
      * @param $vehicleId
      * @throws \Throwable
      */
-    public function handleSetMotor($vehicleId): void
+    public function handleSaveData($vehicleId): void
     {
-        $this->onSuccess($vehicleId);
+        // ulozeni motoru do session
+        $this->saveValue('vehicle', $vehicleId);
+        // nacteni dat ze session
+        $vehicle = $this->loadValue('vehicle');
+        $model = $this->loadValue('model');
+        $manufacturer = $this->loadValue('manufacturer');
+        $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle];
+//        $carInfo = $this->loadValue();
+        $this->onSuccess($carInfo);
+    }
+
+
+    /**
+     * @param $komfort
+     */
+    public function handleSetKomfort($komfort): void
+    {
+
+        $this->saveValue('komfort', $komfort);
+
+        Debugger::barDump($komfort);
     }
 
 
@@ -143,10 +164,12 @@ class CarSelector extends Control
     {
         $form = new Form();
 
+//        Debugger::barDump($this->apiManager->getCarManufacturers(1));
+
         $manItems = ['Preferované' => [], 'Ostatní' => []];
-        if ($mans = $this->apiManager->getCarManufacturers()) {
+        if ($mans = $this->apiManager->getCarManufacturers(1)) {
             foreach ($mans as $man) {
-                $manItems['Preferované'][$man->tcznacka] = $man->name;
+                $manItems['Preferované'][$man->tcznacka] = $man->imageurl;
             }
         }
         if ($mans = $this->apiManager->getCarManufacturers(0)) {
@@ -157,9 +180,12 @@ class CarSelector extends Control
             }
         }
 
-        $form->addSelect('manufacturer', '', $manItems)
+
+        $form->addSelect('manufacturer', 'manu', $manItems)
             ->setPrompt('Značka vozu')
             ->setAttribute('id', 'imark');
+        Debugger::barDump($manItems, ' coJeVSelectu');
+        $form->addHidden('manufacturerId');
 
         $form->addSelect('model', '')
             ->setPrompt('Model vozu')
@@ -176,27 +202,30 @@ class CarSelector extends Control
             ->setAttribute('id', 'carSelectorVehicleIdHidden');
 
         $form->addCheckbox('komfort');
+        $form->addSubmit('success', 'confirm');
 
-
-        $form->onSuccess[] = [$this, 'onFormSuccess'];
+        $form->onSuccess[] = [$this, 'handleSaveData'];
 
         return $form;
     }
 
-
     /**
      * @param Form $form
+     * @throws \Throwable
      */
-    public function onFormSuccess(Form $form): void
+    public function onCarSelectSuccess(Form $form): void
     {
-//        $values = $form->getValues();
-//        Debugger::barDump($values, 'csValues');
-//        if ($model = $this->apiManager->getModelApiRow($values->manufacturer,$values->modelId)) {
-//            $name = $model->fullname;
-//        }
-//        $this->saveValue(self::SESS_LAST_SEL_KEY, $name.'_'.$values->manufacturer.'_'.$values->modelId.'_'.$values->vehicleId);
-//        $this->onSuccess($values->manufacturer, $values->modelId, $values->vehicleId);
+//        $vehicle = $this->loadValue('vehicle');
+//        $model = $this->loadValue('model');
+//        $manufacturer = $this->loadValue('manufacturer');
+//        $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle];
+//        $this->onSuccess($carInfo);
+
+
+        $carInfo = $form->getValues();
+        $this->onSuccess($carInfo);
     }
+
 
 
     public function render(): void
@@ -207,15 +236,29 @@ class CarSelector extends Control
             $parts = explode('_', $last);
             $this->template->lastParts = $parts;
         }
+
+
+        $preferovane = $this->apiManager->getCarManufacturers(1);
+        Debugger::barDump($preferovane);
+        $ostatni = $this->apiManager->getCarManufacturers(0);
+
+        $this->template->preferovane = $preferovane;
+        $this->template->ostatni = $ostatni;
+
+
         $this->template->render();
     }
+
+
+
+
     /**
      * @param string $key
      * @param string $value
      */
     public function saveValue($key,$value): void
     {
-        $this->session->getSection('userSection')->$key = $value;
+        $this->session->getSection('carSection')->$key = $value;
     }
 
 
@@ -225,7 +268,7 @@ class CarSelector extends Control
      */
     public function loadValue($key)
     {
-        return $this->session->getSection('userSection')->$key;
+        return $this->session->getSection('carSection')->$key;
     }
 
 

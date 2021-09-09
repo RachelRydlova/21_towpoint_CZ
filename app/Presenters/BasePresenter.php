@@ -22,6 +22,7 @@ class BasePresenter extends Presenter
         ':Front:Default:' => 'Montáž tažných zařízení',
         ':Front:Default:how' => 'Jak to funguje',
         ':Front:Default:what' => 'Co nabízíme',
+        ':Front:Default:service' => 'Servis vozíků',
         ':Front:Default:about' => 'O nás',
         ':Front:Default:partner' => 'Pro partnery'
     ];

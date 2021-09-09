@@ -43,14 +43,13 @@
 </section>
 
 
-<div class="subn step step11">
+<div class="subn step step1">
     <h2>Vyberte vozidlo a&nbsp;motorizaci</h2>
 </div>
 
 <section id="sel">
     <div>
         {control carSelector}
-
     </div>
 </section>
 
@@ -70,35 +69,12 @@
     </div>
 
 
-
     <hr>
 
     <!-- ======= Contact form  ======= -->
 
-    <section id="form">
-       {control contactForm}
-    </section>
-
-
-    <div class="subn step step4">
-        <h2>Odeslat nezávaznou poptávku</h2>
-    </div>
-
-
-    <div class="poptavka">
-        {form orderForm}
-            <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
-            <div class="yesno sel">
-                <div></div>
-                {input gdpr}
-                {label gdpr}
-            </div>
-            {input success}
-        {/form}
-    </div>
-
+    {control orderForm}
 </section>
-
 
 
 
@@ -119,5 +95,4 @@
 
 {block script}
     <script src="{$basePath}/assets/js/support.js"></script>
-{*    <script src="{$basePath}/assets/js/home.js"></script>*}
 {/block}

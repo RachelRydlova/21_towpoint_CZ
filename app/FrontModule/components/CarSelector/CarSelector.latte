@@ -12,19 +12,13 @@
 
     </div>
 
-    <div n:snippet="manuf">
-{*        <div n:snippet="manuImg">*}
-{*            <img n:ifset="$manuImg" n:if="$manuImg" src="{$manuImg}" alt="" style="max-height: 250px; width: auto;">*}
-{*                 <h3 id="csSelectVehicle" n:ifset="$img" n:if="$img" class="font-yellow-casablanca">Vyber motorizaci <i class="fa fa-arrow-down"></i> </h3>*}
-{*        </div>*}
+    <div n:snippet="manufacturer">
         {input manufacturer}
     </div>
-
 
     <div n:snippet="model">
         {input model}
     </div>
-
 
 
     <div n:snippet="vehicle">
@@ -37,14 +31,31 @@
     {/snippet}
 
 
+    <form n:name="carSelector">
+        <div id="preffered">
+            <div class="logos" >
+                <a href="" n:foreach="$preferovane as $key => $carInfo">
+                    <img src="{$carInfo->imageurl}">
+                </a>
+
+            </div>
+            <div class="all">
+                <a n:foreach="$ostatni as $key => $carInfo">
+                    {$carInfo->name}
+                </a>
+            </div>
+        </div>
+
+    </form>
+
+
     <div id="komfort">
         <div>
             {input komfort}
-            <a href="#"><span>Vozidlo s prvky komfortní výbavy</span></a>
+            <a><span>Vozidlo s prvky komfortní výbavy</span></a>
         </div>
         <p>ACC Adaptive Control, Front Assist Control, hlídaní mrtvého úhlu nebo jiná komfortní výbava vozu?</p>
     </div>
-
 
 
 {/form}
