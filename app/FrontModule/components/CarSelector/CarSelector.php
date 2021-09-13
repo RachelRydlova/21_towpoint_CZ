@@ -74,7 +74,7 @@ class CarSelector extends Control
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('model');
 
-            // Tady musis prekreslit snippet pro list modelů
+            // prekresluju snippet pro list modelů
             $this->redrawControl('modelyList');
             // ulozeni zvolene znacky do session
             $this->saveValue('manufacturer', $manId);
@@ -123,8 +123,11 @@ class CarSelector extends Control
             $this->redrawControl('hiddenData');
 
         }
+        // prekresluju snippet pro list motorů
+        $this->redrawControl('motoryList');
         // ulozeni zvoleneho modelu do session
         $this->saveValue('model', $modId);
+
     }
 
     /**
@@ -240,23 +243,22 @@ class CarSelector extends Control
             $this->template->lastParts = $parts;
         }
 
-        // vytvoreni promennych se seznamem znacek
+    // vytvoreni promennych se seznamem znacek
         $preferovane = $this->apiManager->getCarManufacturers(1);
         $ostatni = $this->apiManager->getCarManufacturers(0);
         // nastavuji promenne do template
         $this->template->preferovane = $preferovane;
         $this->template->ostatni = $ostatni;
 
-        // vytvoreni promenne se seznamem modelu
-        $modelsItems = [];
+    // vytvoreni promenne se seznamem modelu
         $manId = $this->loadValue('manufacturer');
         $models = $this->apiManager->getCarManufacturerModels($manId);
-//        foreach ($models as $model) {
-//            $modelsItems[$model->tcmodel] = $model->fullname;
-//        }
-        Debugger::barDump($models);
         $this->template->modely = $models;
 
+    // vytvoreni promenne se seznamem motoru
+        $modId = $this->loadValue('model');
+        $motors = $this->apiManager->getCarModelVehicles($modId);
+        $this->template->motory = $motors;
 
         $this->template->render();
     }

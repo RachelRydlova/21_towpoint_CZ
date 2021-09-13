@@ -34,24 +34,27 @@ $(function () {
     //zobrazeni znacek
     $(document).on('focus','#imark',function(){
         $('#preffered').slideDown(300);
+        e.preventDefault();
+
     });
 
     $(document).on('focus','#imodel',function(){
         $('#selmodely').slideDown(300);
     });
 
-    $(document).on('click', '#snippet-carSelector-manufacturer', function (e){
-        e.preventDefault();
+    $(document).on('blur', '#imark', function (e){
+        $('#preffered').slideUp(300);
+    })
+
+    $(document).on('blur', '#imodel', function (e){
+        $('#selmodely').slideUp(300);
     })
 
     // Výběr značky
-    // Musíš zachytit klik na odkaz!
+    // Musím zachytit klik na odkaz!
     $(document).on('click', '#preffered a.znackaLink', function (e) {
-        // Tady tímto řádkem zakážeš aby to udělalo default akci presmerovani
+        // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
         e.preventDefault();
-
-        // Tento radek je blbost, protoze val() snima hodnotu form. prvku, ale ty snimas odkaz
-        //let value = $(this).val();
 
         // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
@@ -79,34 +82,39 @@ $(function () {
         $.nette.ajax({
             url: '?do=carSelector-setModel',
             data: {'carSelector-modId': value}
-        })
-        $('#selmodely').slideUp(300);
-        $('#selmotory').slideDown(300);
+        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
+            $('#selmodely').slideUp(300);
+            $('#selmotory').slideDown(300);
+        });
     });
 
 
     // Výběr motoru
-    $(document).on('change', '#imotor', function () {
+    $(document).on('click', '#selmotory a.motorLink', function (e) {
+        e.preventDefault();
+        let value = $(this).attr('data-key');
+        $('#imotor').val(value);
         $('#nabidka').addClass('loading');
-        let value = $(this).val();
-        $('#carSelectorVehicleIdHidden').val(value);
-        //$('#csSelectVehicle').hide();
+        $('#selmotory').slideUp(300);
+
         $.nette.ajax({
             url: '?do=carSelector-saveData',
             data: {'carSelector-vehicleId': value}
+        }).then(function (){
+            $('#form2').addClass('shown');
+            $('#nabidka').removeClass('loading');
         })
-        $('#form2').addClass('shown');
-        $('#nabidka').removeClass('loading');
     });
 
 
 
 
     // Komfortni vybava
-    $(document).on('click', '#komfort', function (){
-        let value = $(this).val();
-        $('#komfort').toggleClass('sel');
-        // $('#frm-carSelector-carSelector').submit()
+    $(document).on('change', '#komfort input', function (){
+        // let value = $(this).val();
+        var value = document.querySelector('#komfort input:checked').value;
+        // let value = $("input[type='checkbox']").val();
+        // $('#komfort div input').toggleClass('sel');
         $.nette.ajax({
             url: '?do=carSelector-setKomfort',
             data: {'carSelector-komfort': value}
@@ -115,19 +123,10 @@ $(function () {
 
 
 
-
-
-
-
-
-
-
-
-
     // KONFIGURATOR S KALKULACKOU
     $(document).on('change', '.radios', function () {
         let value = $(this).val();
-       // $(this).toggleClass('sel');
+        // $('#frm-calculator-calculator').submit();
         $.nette.ajax({
             url: '?do=calculator-setParam',
             data: {'calculator-param': value}

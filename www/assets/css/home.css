@@ -191,8 +191,9 @@ header nav a:first-of-type span
 	background-color: white;
 }
 
-#imark optgroup,
-#imark option
+#imark > *,
+#imodel > *,
+#imotor > *
 {
 	display: none;
 }

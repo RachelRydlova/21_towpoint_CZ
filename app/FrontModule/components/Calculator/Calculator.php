@@ -46,28 +46,33 @@ class Calculator extends Control
         $prices = $this->apiManager->getTowpointPrices($vehicleId, 'CZ');
         Debugger::barDump($prices, 'cenyAPI');
 
-        $summaryPrice = 0;
+        if ($prices->cena->pevne->tazne !== false){
 
-        // cena tazneho
-        $summaryPrice += $prices->cena->pevne->tazne->price_moc_dph;
+            $summaryPrice = 0;
 
-        // cena elektriky
-        $summaryPrice += $prices->cena->pevne->elektro->E7->price_moc_dph;
+            // cena tazneho
+            $summaryPrice += $prices->cena->pevne->tazne->price_moc_dph;
 
-        // cena montaze
-        $summaryPrice += $prices->cena->pevne->montaz_cena_7_dph;
+            // cena elektriky
+            $summaryPrice += $prices->cena->pevne->elektro->E7->price_moc_dph;
 
-        // komfortni vybava
-//        if ($comfort){
-//            $summaryPrice +=
-//        }
+            // cena montaze
+            $summaryPrice += $prices->cena->pevne->montaz_cena_7_dph;
+
+            // Pricitam comfort
+    //        if ($comfort) {
+    //            $comfortNomen = $this->apiManager->getTowpointPrices()  towpointManager->getSupplementNomenByIdNomenklatura(AtpSupplementNomen::MONTAZ_COMFORM_NOMEN);
+    //            $summaryPrice += $comfortNomen->getCena($stat);
+    //            Debugger::log($price, 'testprice');
+    //        }
 
 
-        $this->template->summaryPrice = $summaryPrice;
-        $this->redrawControl('summaryBox');
-        Debugger::barDump($summaryPrice, 'vypocetCeny');
-
+            $this->template->summaryPrice = $summaryPrice;
+            $this->redrawControl('summaryBox');
+            Debugger::barDump($summaryPrice, 'vypocetCeny');
         return $summaryPrice;
+        }
+
     }
 
 
@@ -96,19 +101,10 @@ class Calculator extends Control
             ->setDisabled()
             ->setDefaultValue('0');
 
-
         $form->onSuccess[] = [$this, 'onFormSuccess'];
-
         return $form;
     }
 
-
-    public function handleSetParam($param): void
-    {
-
-        $this->redrawControl('calculatorWrapper');
-        $this->redrawControl('summaryPrice');
-    }
 
     /**
      * @param Form $form
@@ -119,6 +115,13 @@ class Calculator extends Control
         Debugger::barDump($values, 'calculatorform');
     }
 
+
+    public function handleSetParam($param): void
+    {
+
+        $this->redrawControl('calculatorWrapper');
+        $this->redrawControl('summaryPrice');
+    }
 
     public function render(): void
     {
