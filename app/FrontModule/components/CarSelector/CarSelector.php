@@ -134,31 +134,40 @@ class CarSelector extends Control
      * zachyceni hodnoty zvoleneho motoru a zaroven odeslani dat
      * data se vytahuji ze session, protoze samotny formular se neodesila
      * @param $vehicleId
+     * @param $comfort
      * @throws \Throwable
      */
-    public function handleSaveData($vehicleId): void
+    public function handleSaveData($vehicleId, $comfort): void
     {
-        // ulozeni motoru do session
+        // ulozeni motoru a komfortu do session
         $this->saveValue('vehicle', $vehicleId);
         // nacteni dat ze session
         $vehicle = $this->loadValue('vehicle');
         $model = $this->loadValue('model');
         $manufacturer = $this->loadValue('manufacturer');
-        $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle];
-//        $carInfo = $this->loadValue();
+        $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle, 'comfort'=> $comfort];
         $this->onSuccess($carInfo);
     }
 
 
     /**
-     * @param $komfort
+     * @param $comfort
      */
-    public function handleSetKomfort($komfort): void
+    public function handleSetComfort($comfort): void
     {
+        $this->saveValue('comfort', $comfort);
+        $vehicle = $this->loadValue('vehicle');
 
-        $this->saveValue('komfort', $komfort);
+        if (!$vehicle){
+            Debugger::barDump($vehicle);
+            Debugger::barDump($comfort);
+            // pokud se meni comfort ale v session neni vehicle_id nestane se nic
+            $this->presenter->sendPayload();
 
-        Debugger::barDump($komfort);
+        }
+
+        //pokud je vehicle_id v session
+        $this->handleSaveData($vehicle, $comfort);
     }
 
 

@@ -225,17 +225,19 @@ class ApiManager
     /**
      * Volam pro ziskani cen
      * @param $vehicleId
+     * @param $comfort
      * @param $stat
      * @return mixed|null
      * @throws Throwable
      */
-    public function getTowpointPrices($vehicleId, $stat = 'CZ')
+    public function getTowpointPrices($vehicleId, $comfort, $stat = 'CZ')
     {
         $log = 'remote.towpointPrices';
         $cacheKey = $log.'.'.$vehicleId.'.'.$stat;
         $token = self::countApiToken([$vehicleId, $stat]);
-        $uri = '/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&stat='.$stat.'&secret='.$token;
+        $uri = '/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.$comfort.'&stat='.$stat.'&secret='.$token;
         return $this->solveVapolResponse($uri, $cacheKey, $log);
+
     }
 
 

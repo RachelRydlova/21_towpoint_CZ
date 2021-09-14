@@ -32,23 +32,19 @@ $(function () {
     //
 
     //zobrazeni znacek
-    $(document).on('focus','#imark',function(){
-        $('#preffered').slideDown(300);
+    $(document).on('focus','#imark',function(e){
         e.preventDefault();
+        $('#preffered').slideDown(300);
 
     });
 
-    $(document).on('focus','#imodel',function(){
-        $('#selmodely').slideDown(300);
-    });
-
-    $(document).on('blur', '#imark', function (e){
+    $(document).on('blur', '#imark', function (){
+        $('#preffered').slideUp(300);
+    })
+    $(document).on('blur', '#imark', function (){
         $('#preffered').slideUp(300);
     })
 
-    $(document).on('blur', '#imodel', function (e){
-        $('#selmodely').slideUp(300);
-    })
 
     // Výběr značky
     // Musím zachytit klik na odkaz!
@@ -88,6 +84,13 @@ $(function () {
         });
     });
 
+    $(document).on('focus','#imodel',function(){
+        $('#selmodely').slideDown(300);
+    });
+    $(document).on('blur', '#imodel', function (){
+        $('#selmodely').slideUp(300);
+    })
+
 
     // Výběr motoru
     $(document).on('click', '#selmotory a.motorLink', function (e) {
@@ -106,25 +109,33 @@ $(function () {
         })
     });
 
+    $(document).on('focus','#imotor',function(){
+        $('#selmotory').slideDown(300);
+    });
+    $(document).on('blur', '#imotor', function (){
+        $('#selmotory').slideUp(300);
+    })
+
 
 
 
     // Komfortni vybava
-    $(document).on('change', '#komfort input', function (){
-        // let value = $(this).val();
-        var value = document.querySelector('#komfort input:checked').value;
-        // let value = $("input[type='checkbox']").val();
-        // $('#komfort div input').toggleClass('sel');
+    $(document).on('click', '#frm-carSelector-carSelector-komfort', function (){
+        let value = 0;
+        if ($('#frm-carSelector-carSelector-komfort').is(':checked')) {
+            value = 1;
+        }
         $.nette.ajax({
-            url: '?do=carSelector-setKomfort',
-            data: {'carSelector-komfort': value}
+            url: '?do=carSelector-setComfort',
+            data: {'carSelector-comfort': value}
         })
     })
 
 
 
+
     // KONFIGURATOR S KALKULACKOU
-    $(document).on('change', '.radios', function () {
+    $(document).on('click', '.radios > div', function () {
         let value = $(this).val();
         // $('#frm-calculator-calculator').submit();
         $.nette.ajax({
@@ -133,12 +144,28 @@ $(function () {
         })
     });
 
-
-
-
-
-
-
+    // zasuvka prepina redukci
+    $(document).on('change', '.radios el', function (){
+        $('.redukce > input').attr( 'checked', true );
+    })
+    // $('.radios > div').not('.redukce > div').click(function(){
+    //     if (!$(this).hasClass('sel'))
+    //     {
+    //         $(this).parent().find('div').removeClass('sel');
+    //         $(this).addClass('sel');
+    //         var co=$(this).attr('data');
+    //
+    //
+    //         // zasuvka prepina redukci
+    //         if ($(this).parent().hasClass('el'))
+    //         {
+    //             $('.redukce > input').attr('checked', false);
+    //             $('.redukce > input').each(function(){
+    //                 if ($(this).attr('data')==co) $(this).attr('checked', true);
+    //             });
+    //         }
+    //     }
+    // });
 
 
 

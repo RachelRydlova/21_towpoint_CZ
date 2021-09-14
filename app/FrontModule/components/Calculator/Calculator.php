@@ -38,15 +38,16 @@ class Calculator extends Control
     /**
      * zjisteni ID zvoleneho motoru a ziskani cen
      * @param $vehicleId
-     * @param bool $comfort
+     * @param $comfort
      * @return mixed|null
      */
-      public function getPrice($vehicleId, $komfort = true)
+      public function getPrice($vehicleId, $comfort)
     {
-        $prices = $this->apiManager->getTowpointPrices($vehicleId, 'CZ');
+        $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
         Debugger::barDump($prices, 'cenyAPI');
 
-        if ($prices->cena->pevne->tazne !== false){
+//        if ($prices->cena->pevne->tazne !== false)
+//        {
 
             $summaryPrice = 0;
 
@@ -71,7 +72,7 @@ class Calculator extends Control
             $this->redrawControl('summaryBox');
             Debugger::barDump($summaryPrice, 'vypocetCeny');
         return $summaryPrice;
-        }
+//        }
 
     }
 

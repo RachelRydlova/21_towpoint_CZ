@@ -1,0 +1,86 @@
+#images
+{
+    background-color: #ff9900;
+    float: left;
+    width: 100%;
+}
+
+#images > div
+{
+    max-width: 1650px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 40px 0px;
+}
+
+#images > div > div
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+#images > div > div figure
+{
+    width: 23.5%;
+}
+
+#images > div > div figure img
+{
+    width: 100%;
+    display: block;
+}
+
+
+@media screen and (max-width: 1750px)
+{
+    #images > div
+    {
+        max-width: none;
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+}
+
+
+@media screen and (max-width: 960px)
+{
+   #images > div > div
+    {
+        flex-wrap: wrap;
+    }
+
+    #images > div > div figure
+    {
+        width: 48%;
+    }
+
+    #images > div > div figure:first-of-type
+    {
+        margin-bottom: 40px;
+    }
+}
+
+
+@media screen and (max-width: 720px)
+{
+    #images > div
+    {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+}
+
+@media screen and (max-width: 480px)
+{
+    #images > div > div figure
+    {
+        width: 100%;
+        margin-bottom: 40px;
+    }
+
+    #images > div > div figure:last-of-type
+    {
+        margin-bottom: 0px;
+    }
+}

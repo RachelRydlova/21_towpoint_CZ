@@ -47,11 +47,13 @@
     {snippet modelyList}
         <div id="selmodely">
             <div class="all">
-                <div n:foreach="$modely as $model => $modelInfo">
-                    <a href="javascript:;" title="{$modelInfo->fullname}" data-key="{(int) $modelInfo->tcmodel}" class="modelLink">
-                        {$modelInfo->fullname}
-                    </a>
-                </div>
+                {if is_array($modely)}
+                    <div n:ifset="$modely" n:foreach="$modely as $model => $modelInfo">
+                        <a href="javascript:;" title="{$modelInfo->fullname}" data-key="{(int) $modelInfo->tcmodel}" class="modelLink">
+                            {$modelInfo->fullname}
+                        </a>
+                    </div>
+                {/if}
             </div>
 
         </div>

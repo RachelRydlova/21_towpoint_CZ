@@ -42,7 +42,8 @@ class DefaultPresenter extends BasePresenter
         $comp = new CarSelector($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($carInfo) use ($p) {
-            $p['calculator']->getPrice($carInfo['vehicleId']);
+            $p['calculator']->getPrice($carInfo['vehicleId'], $carInfo['comfort']);
+            Debugger::barDump($carInfo);
         };
         return $comp;
     }
