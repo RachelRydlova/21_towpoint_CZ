@@ -52,11 +52,11 @@ class OrderForm extends Control
         $form->addText('surname', "Příjmení")
             ->setAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
-            ->setAttribute('placeholder', 'E-mail')
-            ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.');
+            ->setAttribute('placeholder', 'E-mail');
+//            ->setRequired();
         $form->addText('tel', "Telefon")
-            ->setAttribute('placeholder', 'Telefon')
-            ->setRequired('Vyplňte své telefonní číslo – nejlépe ve formátu +420 123 456 789.');
+            ->setAttribute('placeholder', 'Telefon');
+//            ->setRequired();
         $form->addText('psc', "PSČ")
             ->setAttribute('placeholder', 'PSČ');
         $form->addText('mesto', "Obec / město")

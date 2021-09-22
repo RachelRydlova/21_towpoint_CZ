@@ -7,14 +7,21 @@
 
         <div>
             <div class="inputs">
-              {input note}
-              <div>  {input name}  </div>
-              <div>  {input surname}  </div>
-              <div>  {input email}  </div>
-              <div>  {input tel}  </div>
-              <div>  {input psc}  </div>
-              <div>  {input mesto}  </div>
-             <div>   {input state}  </div>
+                <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+                {input note}
+                <div>  {input name}  </div>
+                <div>  {input surname}  </div>
+                <div required>
+                    {input email}
+                    <p id="errorEmail">Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+                </div>
+                <div required>
+                    {input tel}
+                    <p id="errorTel">Vyplňte své telefonní číslo &ndash; nejlépe ve&nbsp;formátu +420&nbsp;123&nbsp;456&nbsp;789.</p>
+                </div>
+                <div>  {input psc}  </div>
+                <div>  {input mesto}  </div>
+                <div>  {input state}  </div>
             </div>
         </div>
 
@@ -27,10 +34,11 @@
     </div>
     <div class="poptavka">
         <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
-        <div class="yesno sel">
+        <div class="yesno">
             <div></div>
             {input gdpr}
             {label gdpr}
+            <p>Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>
         </div>
         {input success}
     </div>

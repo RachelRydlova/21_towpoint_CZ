@@ -41,38 +41,45 @@ class Calculator extends Control
      * @param $comfort
      * @return mixed|null
      */
-      public function getPrice($vehicleId, $comfort)
+      public function setPrice($vehicleId, $comfort)
     {
+
         $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
         Debugger::barDump($prices, 'cenyAPI');
 
-//        if ($prices->cena->pevne->tazne !== false)
-//        {
+        // defaultni nastaveni nejlevnejsi varianty montaze
+        $koule = 'pevne';
+        $el = 'E7';
+
+        // preference zakaznika
+        $pref = $this->loadValue('preference');
+        if (isset($pref)){
+            return $pref;
+        } else {
+            $pref = 'cena';
+        }
+
+        Debugger::barDump($pref, 'prefvSetPrice');
+
+        if ($prices->$pref->$koule->tazne !== false)
+        {
 
             $summaryPrice = 0;
 
             // cena tazneho
-            $summaryPrice += $prices->cena->pevne->tazne->price_moc_dph;
+            $summaryPrice += $prices->$pref->$koule->tazne->price_moc_dph;
 
             // cena elektriky
-            $summaryPrice += $prices->cena->pevne->elektro->E7->price_moc_dph;
+            $summaryPrice += $prices->$pref->$koule->elektro->$el->price_moc_dph;
 
             // cena montaze
-            $summaryPrice += $prices->cena->pevne->montaz_cena_7_dph;
-
-            // Pricitam comfort
-    //        if ($comfort) {
-    //            $comfortNomen = $this->apiManager->getTowpointPrices()  towpointManager->getSupplementNomenByIdNomenklatura(AtpSupplementNomen::MONTAZ_COMFORM_NOMEN);
-    //            $summaryPrice += $comfortNomen->getCena($stat);
-    //            Debugger::log($price, 'testprice');
-    //        }
+            $summaryPrice += $prices->$pref->$koule->montaz_cena_7_dph;
 
 
             $this->template->summaryPrice = $summaryPrice;
             $this->redrawControl('summaryBox');
-            Debugger::barDump($summaryPrice, 'vypocetCeny');
         return $summaryPrice;
-//        }
+        }
 
     }
 
@@ -117,11 +124,12 @@ class Calculator extends Control
     }
 
 
-    public function handleSetParam($param): void
+    /**
+     * @param $pref
+     */
+    public function handleSetPref($pref): void
     {
-
-        $this->redrawControl('calculatorWrapper');
-        $this->redrawControl('summaryPrice');
+        $this->saveValue('preference', $pref);
     }
 
     public function render(): void
@@ -129,6 +137,26 @@ class Calculator extends Control
         $this->template->setFile(__DIR__ . '/Calculator.latte');
         $this->template->render();
 
+    }
+
+
+    /**
+     * @param string $key
+     * @param string $value
+     */
+    public function saveValue($key,$value): void
+    {
+        $this->session->getSection('calculator')->$key = $value;
+    }
+
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function loadValue($key)
+    {
+        return $this->session->getSection('calculator')->$key;
     }
 
 

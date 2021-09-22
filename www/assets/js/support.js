@@ -32,14 +32,13 @@ $(function () {
     //
 
     //zobrazeni znacek
-    $(document).on('focus','#imark',function(e){
-        e.preventDefault();
+    $(document).on('focus','#imark',function(){
         $('#preffered').slideDown(300);
 
     });
 
-    $(document).on('blur', '#imark', function (){
-        $('#preffered').slideUp(300);
+    $(document).on('click', '#snippet-carSelector-manufacturer', function (e){
+        e.preventDefault()
     })
     $(document).on('blur', '#imark', function (){
         $('#preffered').slideUp(300);
@@ -100,6 +99,7 @@ $(function () {
         $('#nabidka').addClass('loading');
         $('#selmotory').slideUp(300);
 
+
         $.nette.ajax({
             url: '?do=carSelector-saveData',
             data: {'carSelector-vehicleId': value}
@@ -125,22 +125,34 @@ $(function () {
         if ($('#frm-carSelector-carSelector-komfort').is(':checked')) {
             value = 1;
         }
+        $('#nabidka').addClass('loading');
         $.nette.ajax({
             url: '?do=carSelector-setComfort',
             data: {'carSelector-comfort': value}
+        }).then(function (){
+            $('#nabidka').removeClass('loading');
         })
+        console.log(value);
     })
 
 
 
 
     // KONFIGURATOR S KALKULACKOU
-    $(document).on('click', '.radios > div', function () {
-        let value = $(this).val();
+    $(document).on('click', '.pref div input', function () {
+        // let value = 'cena';
+        if ($('#pref-0').is(':checked')) {
+            value = 'cena';
+        }
+        if ($('#pref-1').is(':checked')) {
+            value = 'kvalita';
+        }
+
+        console.log(value);
         // $('#frm-calculator-calculator').submit();
         $.nette.ajax({
-            url: '?do=calculator-setParam',
-            data: {'calculator-param': value}
+            url: '?do=calculator-setPref',
+            data: {'calculator-pref': value}
         })
     });
 
@@ -148,26 +160,6 @@ $(function () {
     $(document).on('change', '.radios el', function (){
         $('.redukce > input').attr( 'checked', true );
     })
-    // $('.radios > div').not('.redukce > div').click(function(){
-    //     if (!$(this).hasClass('sel'))
-    //     {
-    //         $(this).parent().find('div').removeClass('sel');
-    //         $(this).addClass('sel');
-    //         var co=$(this).attr('data');
-    //
-    //
-    //         // zasuvka prepina redukci
-    //         if ($(this).parent().hasClass('el'))
-    //         {
-    //             $('.redukce > input').attr('checked', false);
-    //             $('.redukce > input').each(function(){
-    //                 if ($(this).attr('data')==co) $(this).attr('checked', true);
-    //             });
-    //         }
-    //     }
-    // });
-
-
 
 
 
@@ -181,34 +173,65 @@ $(function () {
         return false;
     });
 
-    $('#form2 .cta').click(function(){
-//		clearTimeout(uint);
-        if (!$(this).hasClass('loading'))
-        {
-            $(this).addClass('loading');
+
+
+
+    $('#form2 .cta').click(function(e) {
+        e.preventDefault();
+        //zkontroluju jestli je vyplnen email
+        if ($('#frm-orderForm-orderForm-email').empty()) {
+            $('#errorEmail').show();
+            $('#frm-orderForm-orderForm-email').parent().addClass('error');
+            }
+        // zkontroluju jestli je vyplneno telefonni cislo
+        if ($('#frm-orderForm-orderForm-tel').empty()) {
+            $('#errorTel').show();
+            $('#frm-orderForm-orderForm-tel').parent().addClass('error');
+            //zkontroluju gdpr
+            if (!$('.poptavka .yesno').hasClass('sel')) {
+                $('.poptavka .yesno').addClass('error');
+                $('.poptavka .yesno p').show();
+            } else {
+                $('.poptavka .yesno').removeClass('error');
+                $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
+                $('#frm-orderForm-orderForm-email').parent().removeClass('error');
+                $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
+
+            }
+        } else {
             $('.final_loader').stop(true).delay(1000).fadeIn(200);
-            $('#form .yesno, #form .inputs > div, .poptavka .yesno').removeClass('error');
-            // $.get(pprefix+'helpers/inquiry.php?isf=1',function(data){
-            //     if (data!='')
-            //     {
-            //         $('.final_loader').stop(true).fadeOut(200);
-            //         pole=data.split('***');
-            //         $('.poptavka .yesno').each(function(){
-            //             if (pole.indexOf($(this).attr('data'))>=0) $(this).addClass('error');
-            //         });
-            //         $('#form input').each(function(){
-            //             if (pole.indexOf($(this).attr('data'))>=0) $(this).parent().addClass('error');
-            //         });
-            //         if (pole.includes('full-data')) $('#form .inputs p.complete').show().addClass('error');
-            //         if ($(".error").length>0) $('html, body').animate({ scrollTop: $(".error").offset().top }, 250);
-            //
-            //         if (pole=='req_api'||pole=='reqid') alert('Vyskytla se chyba při předávání poptávky. Zkuste odeslat formulář později.');
-            //     }
-            //     $('#form2 .cta').removeClass('loading');
-            // });
+            $(this).submit();
+
+
+// //		clearTimeout(uint);
+            if (!$(this).hasClass('loading')) {
+                $(this).addClass('loading');
+                $('.final_loader').stop(true).delay(1000).fadeIn(200);
+                $(this).submit();
+                $('#form .yesno, #form .inputs > div, .poptavka .yesno').removeClass('error');
+    //             // $.get(pprefix+'helpers/inquiry.php?isf=1',function(data){
+    //             //     if (data!='')
+    //             //     {
+    //             //         $('.final_loader').stop(true).fadeOut(200);
+    //             //         pole=data.split('***');
+    //             //         $('.poptavka .yesno').each(function(){
+    //             //             if (pole.indexOf($(this).attr('data'))>=0) $(this).addClass('error');
+    //             //         });
+    //             //         $('#form input').each(function(){
+    //             //             if (pole.indexOf($(this).attr('data'))>=0) $(this).parent().addClass('error');
+    //             //         });
+    //             //         if (pole.includes('full-data')) $('#form .inputs p.complete').show().addClass('error');
+    //             //         if ($(".error").length>0) $('html, body').animate({ scrollTop: $(".error").offset().top }, 250);
+    //             //
+    //             //         if (pole=='req_api'||pole=='reqid') alert('Vyskytla se chyba při předávání poptávky. Zkuste odeslat formulář později.');
+    //             //     }
+    //             //     $('#form2 .cta').removeClass('loading');
+    //             // });
+            }
         }
         return false;
     });
+
 
 
 });

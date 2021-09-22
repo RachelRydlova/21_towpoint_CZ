@@ -20,6 +20,9 @@ header nav a:first-of-type span
 	font-family: osb, Arial, Helvetica, sans-serif;
 	letter-spacing: 1px;
 	padding: 20px 0px;
+	border: none;
+	cursor: pointer;
+
 }
 
 
@@ -238,10 +241,9 @@ header nav a:first-of-type span
 #form .inputs p.complete
 {
 	color: #d50000; 
-	margin-bottom: 40px;
+	margin-bottom: 1em;
 	display: none;
 }
-
 
 
 
@@ -810,7 +812,7 @@ header nav a:first-of-type span
 	text-decoration: none;
 }
 
-.yesno p
+.poptavka .yesno p
 {
 	float: left;
 	font-size: 12px;
@@ -825,7 +827,7 @@ header nav a:first-of-type span
 	display: inline;
 }
 
-.yesno.error a
+.yesno.error label
 {
 	color: #d50000;
 }

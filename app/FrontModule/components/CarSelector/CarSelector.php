@@ -90,6 +90,8 @@ class CarSelector extends Control
     public function handleSetModel($modId): void
     {
         if (!$modId) {
+            $this['carSelector']['model']->setItems([]);
+            $this['carSelector']['model']->setDisabled();
             $this['carSelector']['vehicle']->setItems([]);
             $this['carSelector']['vehicle']->setDisabled();
             $this->redrawControl('carSelectorWrapper');
@@ -145,6 +147,9 @@ class CarSelector extends Control
         $vehicle = $this->loadValue('vehicle');
         $model = $this->loadValue('model');
         $manufacturer = $this->loadValue('manufacturer');
+//        $comfort = $this->loadValue('comfort');
+
+
         $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle, 'comfort'=> $comfort];
         $this->onSuccess($carInfo);
     }
@@ -155,20 +160,26 @@ class CarSelector extends Control
      */
     public function handleSetComfort($comfort): void
     {
-        $this->saveValue('comfort', $comfort);
-        $vehicle = $this->loadValue('vehicle');
-
-        if (!$vehicle){
-            Debugger::barDump($vehicle);
-            Debugger::barDump($comfort);
+//        $this->saveValue('comfort', $comfort);
+        $vehicleId = $this->loadValue('vehicle');
+//
+        if ($vehicleId == null){
             // pokud se meni comfort ale v session neni vehicle_id nestane se nic
             $this->presenter->sendPayload();
 
+        } else {
+            //pokud je vehicle_id v session
+            $this->handleSaveData($vehicleId, $comfort);
         }
-
-        //pokud je vehicle_id v session
-        $this->handleSaveData($vehicle, $comfort);
     }
+
+//
+//    public function handleSetPref($pref): void
+//    {
+//        $this->saveValue('pref', $pref);
+//
+//        $this->handleSaveData($pref);
+//    }
 
 
     /**

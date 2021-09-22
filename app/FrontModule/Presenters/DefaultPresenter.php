@@ -42,7 +42,7 @@ class DefaultPresenter extends BasePresenter
         $comp = new CarSelector($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($carInfo) use ($p) {
-            $p['calculator']->getPrice($carInfo['vehicleId'], $carInfo['comfort']);
+            $p['calculator']->setPrice($carInfo['vehicleId'], $carInfo['comfort']);
             Debugger::barDump($carInfo);
         };
         return $comp;
@@ -114,12 +114,14 @@ class DefaultPresenter extends BasePresenter
 
     /**
      * @param Form $form
-     * @param \stdClass $data
+     * @param $data
      * @throws Nette\Application\AbortException
      */
-    public function partnerFormSucceeded(Form $form, \stdClass $data): void
+    public function partnerFormSucceeded(Form $form, $data): void
     {
-
+        $data = $form->getValues($form);
+        $this->onSuccess($data);
+        Debugger::barDump($data);
         // tady zpracujeme data odeslaná formulářem
         // $data->name obsahuje jméno
         // $data->surname obsahuje prijmeni

@@ -233,8 +233,11 @@ class ApiManager
     public function getTowpointPrices($vehicleId, $comfort, $stat = 'CZ')
     {
         $log = 'remote.towpointPrices';
-        $cacheKey = $log.'.'.$vehicleId.'.'.$stat;
+        // do cache si posilam i komfort, prepise to hodnotu komfort a cenu montaze, zpet se poslou vsechny ceny
+        $cacheKey = $log.'.'.$vehicleId.'.'.$comfort.'.'.$stat;
         $token = self::countApiToken([$vehicleId, $stat]);
+        // v pripade, ze je komfort prazdny
+        if ( empty($comfort) ) $comfort = 0;
         $uri = '/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.$comfort.'&stat='.$stat.'&secret='.$token;
         return $this->solveVapolResponse($uri, $cacheKey, $log);
 
