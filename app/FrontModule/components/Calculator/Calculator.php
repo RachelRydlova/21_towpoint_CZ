@@ -47,40 +47,37 @@ class Calculator extends Control
         $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
         Debugger::barDump($prices, 'cenyAPI');
 
-        // defaultni nastaveni nejlevnejsi varianty montaze
-        $koule = 'pevne';
-        $el = 'E7';
 
-        // preference zakaznika
-        $pref = $this->loadValue('preference');
-        if (isset($pref)){
-            return $pref;
-        } else {
-            $pref = 'cena';
-        }
 
-        Debugger::barDump($pref, 'prefvSetPrice');
+        // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
+        $data = [];
+        // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
+        $data['cenaPevne7'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E7->price_moc_dph + $prices->cena->pevne->montaz_cena_7_dph;
+        // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
+        $data['cenaPevne13'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
+        // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
+        $data['cenaOdnimatelne7'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->odnimatelne->elektro->E13->price_moc_dph + $prices->cena->odnimatelne->montaz_cena_7_dph;
+        // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
+        $data['cenaOdnimatelne13'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
 
-        if ($prices->$pref->$koule->tazne !== false)
+        // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
+        $data['kvalitaPevne7'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E7->price_moc_dph + $prices->kvalita->pevne->montaz_cena_7_dph;
+        // v druhe moznosti pocitam preference > kvalita + pevne + 13pin + montaz
+        $data['kvalitaPevne13'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E13->price_moc_dph + $prices->kvalita->pevne->montaz_cena_13_dph;
+        // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
+        $data['kvalitaOdnimatelne7'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E7->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_7_dph;
+        // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
+        $data['kvalitaOdnimatelne13'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E13->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_13_dph;
+
+        Debugger::barDump($data, 'variantyCen');
+
+
+        if ($prices->cena->pevne->tazne !== false)
         {
-
-            $summaryPrice = 0;
-
-            // cena tazneho
-            $summaryPrice += $prices->$pref->$koule->tazne->price_moc_dph;
-
-            // cena elektriky
-            $summaryPrice += $prices->$pref->$koule->elektro->$el->price_moc_dph;
-
-            // cena montaze
-            $summaryPrice += $prices->$pref->$koule->montaz_cena_7_dph;
-
-
-            $this->template->summaryPrice = $summaryPrice;
+            $this->template->data = $data;
             $this->redrawControl('summaryBox');
-        return $summaryPrice;
         }
-
+        return $data;
     }
 
 
@@ -123,14 +120,6 @@ class Calculator extends Control
         Debugger::barDump($values, 'calculatorform');
     }
 
-
-    /**
-     * @param $pref
-     */
-    public function handleSetPref($pref): void
-    {
-        $this->saveValue('preference', $pref);
-    }
 
     public function render(): void
     {

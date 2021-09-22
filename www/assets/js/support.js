@@ -27,6 +27,11 @@ $(function () {
         if (arg.currentSlideObject.hasClass('video')) $(arg.currentSlideObject).find('video').get(0).play();
     }
 
+    $(window).load(function (){
+        $('#snippet-calculator-summaryBox > div').hide();
+    });
+
+
     //
     // VYBER ZNACKA | MODEL | MOTOR
     //
@@ -39,10 +44,10 @@ $(function () {
 
     $(document).on('click', '#snippet-carSelector-manufacturer', function (e){
         e.preventDefault()
-    })
+    });
     $(document).on('blur', '#imark', function (){
         $('#preffered').slideUp(300);
-    })
+    });
 
 
     // Výběr značky
@@ -88,7 +93,7 @@ $(function () {
     });
     $(document).on('blur', '#imodel', function (){
         $('#selmodely').slideUp(300);
-    })
+    });
 
 
     // Výběr motoru
@@ -106,6 +111,8 @@ $(function () {
         }).then(function (){
             $('#form2').addClass('shown');
             $('#nabidka').removeClass('loading');
+            $('#cenaPevne7').show();
+            $('#pref-0, #koule-0, #el-0').prop('checked', true);
         })
     });
 
@@ -114,7 +121,7 @@ $(function () {
     });
     $(document).on('blur', '#imotor', function (){
         $('#selmotory').slideUp(300);
-    })
+    });
 
 
 
@@ -131,35 +138,84 @@ $(function () {
             data: {'carSelector-comfort': value}
         }).then(function (){
             $('#nabidka').removeClass('loading');
+            $('#cenaPevne7').show();
+            $('#pref-0, #koule-0, #el-0').prop('checked', true);
         })
         console.log(value);
-    })
+    });
 
 
 
 
     // KONFIGURATOR S KALKULACKOU
-    $(document).on('click', '.pref div input', function () {
-        // let value = 'cena';
-        if ($('#pref-0').is(':checked')) {
-            value = 'cena';
-        }
-        if ($('#pref-1').is(':checked')) {
-            value = 'kvalita';
-        }
+    $(document).on('click', '.radios div input', function () {
+        // prvni schovam vsechny ceny
+        $('#snippet-calculator-summaryBox > div').hide();
 
-        console.log(value);
-        // $('#frm-calculator-calculator').submit();
-        $.nette.ajax({
-            url: '?do=calculator-setPref',
-            data: {'calculator-pref': value}
-        })
-    });
+        // vyber a zobrazeni spravne ceny
+
+        // CENA?
+        if ($('#pref-0').is(':checked')) {
+
+            // pevne?
+            if ($('#koule-0').is(':checked')) {
+                // 7pin?
+                if ($('#el-0').is(':checked')) {
+                    $('#cenaPevne7').show();
+                }
+                // 13pin?
+                if ($('#el-1').is(':checked')) {
+                    $('#cenaPevne13').show();
+                }
+            }
+            // odnimatelne?
+            if ($('#koule-1').is(':checked')) {
+                // 7pin?
+                if ($('#el-0').is(':checked')) {
+                    $('#cenaOdnimatelne7').show();
+                }
+                // 13pin?
+                if ($('#el-1').is(':checked')) {
+                    $('#cenaOdnimatelne13').show();
+                }
+            }
+        }
+        // KVALITA?
+        if ($('#pref-1').is(':checked')) {
+
+            // pevne?
+            if ($('#koule-0').is(':checked')) {
+                // 7pin?
+                if ($('#el-0').is(':checked')) {
+                    $('#kvalitaPevne7').show();
+                }
+                // 13pin?
+                if ($('#el-1').is(':checked')) {
+                    $('#kvalitaPevne13').show();
+                }
+            }
+            // odnimatelne?
+            if ($('#koule-1').is(':checked')) {
+                // 7pin?
+                if ($('#el-0').is(':checked')) {
+                    $('#kvalitaOdnimatelne7').show();
+                }
+                // 13pin?
+                if ($('#el-1').is(':checked')) {
+                    $('#kvalitaOdnimatelne13').show();
+                }
+            }
+        }
+    })
+
 
     // zasuvka prepina redukci
     $(document).on('change', '.radios el', function (){
-        $('.redukce > input').attr( 'checked', true );
-    })
+        if ($('#el-1').is(':checked')) {
+            $('#redukce-0').checked = false;
+            $('#redukce-1').checked = true;
+        }
+    });
 
 
 
@@ -234,4 +290,4 @@ $(function () {
 
 
 
-});
+})

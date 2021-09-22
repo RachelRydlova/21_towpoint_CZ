@@ -173,14 +173,6 @@ class CarSelector extends Control
         }
     }
 
-//
-//    public function handleSetPref($pref): void
-//    {
-//        $this->saveValue('pref', $pref);
-//
-//        $this->handleSaveData($pref);
-//    }
-
 
     /**
      * @return Form

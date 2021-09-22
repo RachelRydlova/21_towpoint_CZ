@@ -36,6 +36,17 @@ header nav a:first-of-type span
 	visibility: visible;
 }
 
+.poptavka .cta:hover
+{
+	text-decoration: none;
+	background-color: #525252;
+
+	-moz-transform: translateY(-5px);
+	-webkit-transform: translateY(-5px);
+	-o-transform: translateY(-5px);
+	-ms-transform: translateY(-5px);
+	transform: translateY(-5px);
+}
 
 
 
@@ -1137,6 +1148,9 @@ header nav a:first-of-type span
 	padding: 0px 50px;
 }
 
+.hidden {
+	display: none;
+}
 
 
 .poptavka
