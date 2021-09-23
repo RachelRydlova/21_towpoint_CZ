@@ -42,9 +42,6 @@ $(function () {
 
     });
 
-    $(document).on('click', '#snippet-carSelector-manufacturer', function (e){
-        e.preventDefault()
-    });
     $(document).on('blur', '#imark', function (){
         $('#preffered').slideUp(300);
     });
@@ -54,7 +51,7 @@ $(function () {
     // Musím zachytit klik na odkaz!
     $(document).on('click', '#preffered a.znackaLink', function (e) {
         // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
-        e.preventDefault();
+        e.stopImmediatePropagation();
 
         // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
@@ -87,7 +84,6 @@ $(function () {
             $('#selmotory').slideDown(300);
         });
     });
-
     $(document).on('focus','#imodel',function(){
         $('#selmodely').slideDown(300);
     });
@@ -115,15 +111,12 @@ $(function () {
             $('#pref-0, #koule-0, #el-0').prop('checked', true);
         })
     });
-
     $(document).on('focus','#imotor',function(){
         $('#selmotory').slideDown(300);
     });
     $(document).on('blur', '#imotor', function (){
         $('#selmotory').slideUp(300);
     });
-
-
 
 
     // Komfortni vybava
@@ -139,16 +132,14 @@ $(function () {
         }).then(function (){
             $('#nabidka').removeClass('loading');
             $('#cenaPevne7').show();
-            $('#pref-0, #koule-0, #el-0').prop('checked', true);
+            $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
         })
         console.log(value);
     });
 
 
-
-
     // KONFIGURATOR S KALKULACKOU
-    $(document).on('click', '.radios div input', function () {
+    $(document).on('click', '.radios div > div', function () {
         // prvni schovam vsechny ceny
         $('#snippet-calculator-summaryBox > div').hide();
 
@@ -156,6 +147,7 @@ $(function () {
 
         // CENA?
         if ($('#pref-0').is(':checked')) {
+
 
             // pevne?
             if ($('#koule-0').is(':checked')) {
@@ -210,16 +202,13 @@ $(function () {
 
 
     // zasuvka prepina redukci
-    $(document).on('change', '.radios el', function (){
+    $(document).on('click', '.el', function (){
         if ($('#el-1').is(':checked')) {
-            $('#redukce-0').checked = false;
-            $('#redukce-1').checked = true;
+            $('#redukce-1').prop('checked', true);
+        } else {
+            $('#redukce-0').prop('checked', true);
         }
     });
-
-
-
-
 
 
 
@@ -232,62 +221,39 @@ $(function () {
 
 
 
-    $('#form2 .cta').click(function(e) {
-        e.preventDefault();
-        //zkontroluju jestli je vyplnen email
+    $('#form2 .cta').click(function() {
+
+
+       // zkontroluju jestli je vyplnen email
         if ($('#frm-orderForm-orderForm-email').empty()) {
             $('#errorEmail').show();
             $('#frm-orderForm-orderForm-email').parent().addClass('error');
-            }
-        // zkontroluju jestli je vyplneno telefonni cislo
-        if ($('#frm-orderForm-orderForm-tel').empty()) {
-            $('#errorTel').show();
-            $('#frm-orderForm-orderForm-tel').parent().addClass('error');
-            //zkontroluju gdpr
-            if (!$('.poptavka .yesno').hasClass('sel')) {
-                $('.poptavka .yesno').addClass('error');
-                $('.poptavka .yesno p').show();
-            } else {
-                $('.poptavka .yesno').removeClass('error');
-                $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
-                $('#frm-orderForm-orderForm-email').parent().removeClass('error');
-                $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
 
-            }
-        } else {
-            $('.final_loader').stop(true).delay(1000).fadeIn(200);
-            $(this).submit();
+           // zkontroluju jestli je vyplneno telefonni cislo
+            if ($('#frm-orderForm-orderForm-tel').empty()) {
+                $('#errorTel').show();
+                $('#frm-orderForm-orderForm-tel').parent().addClass('error');
+
+                //zkontroluju gdpr
+                if (!$('.poptavka .yesno').hasClass('sel')) {
+                    $('.poptavka .yesno').addClass('error');
+                    $('.poptavka .yesno p').show();
 
 
-// //		clearTimeout(uint);
-            if (!$(this).hasClass('loading')) {
-                $(this).addClass('loading');
-                $('.final_loader').stop(true).delay(1000).fadeIn(200);
-                $(this).submit();
-                $('#form .yesno, #form .inputs > div, .poptavka .yesno').removeClass('error');
-    //             // $.get(pprefix+'helpers/inquiry.php?isf=1',function(data){
-    //             //     if (data!='')
-    //             //     {
-    //             //         $('.final_loader').stop(true).fadeOut(200);
-    //             //         pole=data.split('***');
-    //             //         $('.poptavka .yesno').each(function(){
-    //             //             if (pole.indexOf($(this).attr('data'))>=0) $(this).addClass('error');
-    //             //         });
-    //             //         $('#form input').each(function(){
-    //             //             if (pole.indexOf($(this).attr('data'))>=0) $(this).parent().addClass('error');
-    //             //         });
-    //             //         if (pole.includes('full-data')) $('#form .inputs p.complete').show().addClass('error');
-    //             //         if ($(".error").length>0) $('html, body').animate({ scrollTop: $(".error").offset().top }, 250);
-    //             //
-    //             //         if (pole=='req_api'||pole=='reqid') alert('Vyskytla se chyba při předávání poptávky. Zkuste odeslat formulář později.');
-    //             //     }
-    //             //     $('#form2 .cta').removeClass('loading');
-    //             // });
+                } else {
+                    let value = val(value);
+                    sessionStorage.setItem("key", "value");
+                    console.log($value);
+                    $('.poptavka .yesno').removeClass('error');
+                    $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
+                    $('#frm-orderForm-orderForm-email').parent().removeClass('error');
+                    $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
+
+                }
             }
         }
-        return false;
+
+
     });
-
-
 
 })

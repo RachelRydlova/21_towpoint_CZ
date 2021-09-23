@@ -36,19 +36,6 @@ header nav a:first-of-type span
 	visibility: visible;
 }
 
-.poptavka .cta:hover
-{
-	text-decoration: none;
-	background-color: #525252;
-
-	-moz-transform: translateY(-5px);
-	-webkit-transform: translateY(-5px);
-	-o-transform: translateY(-5px);
-	-ms-transform: translateY(-5px);
-	transform: translateY(-5px);
-}
-
-
 
 
 #sel
@@ -163,6 +150,7 @@ header nav a:first-of-type span
 {
 	padding-bottom: 0px;
 }
+
 
 #sel select,
 #form  select,
@@ -884,12 +872,7 @@ header nav a:first-of-type span
 	width: 180px;
 }
 
-/*.radios > div:last-of-type*/
-/*{*/
-/*	margin-right: 0px;*/
-/*}*/
-
-.radios > div input
+.radios > div div
 {
 
 	float: left;
@@ -924,20 +907,16 @@ header nav a:first-of-type span
 	border-radius: 50%;
 }
 
-.radios .radioText
+.radios > div label
 {
 	float: left;
 	margin-left: 20px;
 	margin-top: 12px;
-	line-height: 1.4em;
+	cursor: pointer;
 }
 
-.radioText:hover
-{
-	text-decoration: none;
-}
 
-.redukce div input
+.redukce div div
 {
 	cursor: auto;
 	-webkit-border-radius: 0px;

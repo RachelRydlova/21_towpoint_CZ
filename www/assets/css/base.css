@@ -129,9 +129,15 @@ header nav a:last-of-type
 	margin-right: 0px;
 }
 
+
+.cta span{
+
+	padding: 10px 25px;
+}
+
+
 header nav a span,
-.cta > span,
-.cta
+.cta > span
 {
 	background-color: #f90;
 	color: white;
@@ -142,12 +148,18 @@ header nav a span,
 	transition: 100ms transform, 100ms background-color, 100ms color;
 }
 
+span:hover .cta {
+	color: white;
+	border-bottom: #ff9900 solid 6px;
+}
+
 header nav a:hover span,
-.cta:hover > span
+.cta:hover > span,
+span:hover .cta
 {
 	text-decoration: none;
 	background-color: #525252;
-	
+
 	-moz-transform: translateY(-5px);
 	-webkit-transform: translateY(-5px);
 	-o-transform: translateY(-5px);
@@ -166,7 +178,7 @@ header nav a:hover span,
 	color: black;
 }
 
-.cta.alt:hover span
+.cta:hover span
 {
 	background-color: #525252;
 	color: white;
@@ -174,7 +186,9 @@ header nav a:hover span,
 
 
 
-
+select > option{
+	display: none;
+}
 
 
 

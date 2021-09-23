@@ -8,7 +8,9 @@
                 <h3>{label pref}</h3>
                 {foreach $form['pref']->items as $key => $value}
                     <div>
-                        {input $form['pref']:$key}
+                        <div>
+                            {input $form['pref']:$key}
+                        </div>
                         {label $form['pref']:$key, class=>'radioText'}
                     </div>
                 {/foreach}
@@ -18,7 +20,9 @@
                 <h3>{label koule}</h3>
                 {foreach $form['koule']->items as $key => $value}
                     <div>
-                        {input $form['koule']:$key}
+                        <div>
+                            {input $form['koule']:$key}
+                        </div>
                         {label $form['koule']:$key, class=>'radioText'}
                     </div>
                 {/foreach}
@@ -28,7 +32,9 @@
                 <h3>{label zasuvka}</h3>
                 {foreach $form['zasuvka']->items as $key => $value}
                     <div>
-                        {input $form['zasuvka']:$key}
+                        <div>
+                            {input $form['zasuvka']:$key}
+                        </div>
                         {label $form['zasuvka']:$key, class=>'radioText'}
                     </div>
                 {/foreach}
@@ -38,7 +44,9 @@
                 <h3>{label redukce}</h3>
                 {foreach $form['redukce']->items as $key => $value}
                     <div>
-                        {input $form['redukce']:$key}
+                        <div>
+                            {input $form['redukce']:$key}
+                        </div>
                         {label $form['redukce']:$key, class=>'radioText'}
                     </div>
                 {/foreach}

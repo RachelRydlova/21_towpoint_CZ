@@ -202,7 +202,6 @@ class CarSelector extends Control
         $form->addSelect('manufacturer', 'manu', $manItems)
             ->setPrompt('Značka vozu')
             ->setAttribute('id', 'imark');
-//        Debugger::barDump($manItems, ' coJeVSelectu');
         $form->addHidden('manufacturerId');
 
         $form->addSelect('model', '')
