@@ -136,14 +136,18 @@ class Calculator extends Control
     /**
      * @param $preference
      */
-    public function handleSetPref($preference): void
+    public function handleSetPref(string $preference): void
     {
 
-        Debugger::barDump($preference, 'prefVHandleru');
+        Debugger::log(print_r($preference,true),'debug-pref');
+        Debugger::barDump($preference, 'prefererVHandleru');
+        $arrPref = json_decode($preference);
+        Debugger::barDump($arrPref,'arrayVHnd');
+        
 //        $prefInfo = ['pref' => $preference[0], 'koule' => $preference[1], 'el'=> $preference[2]];
 
         // ulozeni preferenci do session
-        $this->saveValue('preferencies', $preference);
+        $this->saveValue('preferencies', $arrPref);
     }
 
 

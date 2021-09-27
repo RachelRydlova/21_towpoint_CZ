@@ -207,11 +207,13 @@ $(function () {
     $(document).on('click', '#frm-calculator-calculator', function (){
         // vytahnu info o zvolenych preferencich
         value = get_selected_radios_array();
+        param = JSON.stringify(value);
         $.nette.ajax({
             url: '?do=calculator-setPref',
-            data: {'calculator-setPref': value}
-        })
+            data: {'calculator-preference': param}
+        });
         console.log(value);
+        console.log(param);
 
     })
 
