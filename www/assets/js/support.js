@@ -51,7 +51,7 @@ $(function () {
     // Musím zachytit klik na odkaz!
     $(document).on('click', '#preffered a.znackaLink', function (e) {
         // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
-        e.stopImmediatePropagation();
+        e.preventDefault();
 
         // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
@@ -64,6 +64,7 @@ $(function () {
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
             $('#preffered').slideUp(300);
             $('#selmodely').slideDown(300);
+            $('#imodel').removeClass('dis');
         });
 
 
@@ -82,6 +83,7 @@ $(function () {
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
             $('#selmodely').slideUp(300);
             $('#selmotory').slideDown(300);
+            $('#imotor').removeClass('dis');
         });
     });
     $(document).on('focus','#imodel',function(){
@@ -130,6 +132,7 @@ $(function () {
             url: '?do=carSelector-setComfort',
             data: {'carSelector-comfort': value}
         }).then(function (){
+            $('#form2').addClass('shown');
             $('#nabidka').removeClass('loading');
             $('#cenaPevne7').show();
             $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
@@ -139,7 +142,7 @@ $(function () {
 
 
     // KONFIGURATOR S KALKULACKOU
-    $(document).on('click', '.radios div > div', function () {
+    $(document).on('click', '.radios div', function () {
         // prvni schovam vsechny ceny
         $('#snippet-calculator-summaryBox > div').hide();
 
@@ -147,7 +150,6 @@ $(function () {
 
         // CENA?
         if ($('#pref-0').is(':checked')) {
-
 
             // pevne?
             if ($('#koule-0').is(':checked')) {
@@ -201,6 +203,18 @@ $(function () {
     })
 
 
+    // pri zmene na radiobuttonech posilam hodnoty do handleru
+    $(document).on('click', '#frm-calculator-calculator', function (){
+        // vytahnu info o zvolenych preferencich
+        value = get_selected_radios_array();
+        $.nette.ajax({
+            url: '?do=calculator-setPref',
+            data: {'calculator-setPref': value}
+        })
+        console.log(value);
+
+    })
+
     // zasuvka prepina redukci
     $(document).on('click', '.el', function (){
         if ($('#el-1').is(':checked')) {
@@ -209,7 +223,6 @@ $(function () {
             $('#redukce-0').prop('checked', true);
         }
     });
-
 
 
     // ODESLANI POPTAVKY
@@ -228,32 +241,37 @@ $(function () {
         if ($('#frm-orderForm-orderForm-email').empty()) {
             $('#errorEmail').show();
             $('#frm-orderForm-orderForm-email').parent().addClass('error');
-
-           // zkontroluju jestli je vyplneno telefonni cislo
-            if ($('#frm-orderForm-orderForm-tel').empty()) {
-                $('#errorTel').show();
-                $('#frm-orderForm-orderForm-tel').parent().addClass('error');
-
-                //zkontroluju gdpr
-                if (!$('.poptavka .yesno').hasClass('sel')) {
-                    $('.poptavka .yesno').addClass('error');
-                    $('.poptavka .yesno p').show();
-
-
-                } else {
-                    let value = val(value);
-                    sessionStorage.setItem("key", "value");
-                    console.log($value);
-                    $('.poptavka .yesno').removeClass('error');
-                    $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
-                    $('#frm-orderForm-orderForm-email').parent().removeClass('error');
-                    $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
-
-                }
-            }
+        }
+       // zkontroluju jestli je vyplneno telefonni cislo
+        if ($('#frm-orderForm-orderForm-tel').empty()) {
+            $('#errorTel').show();
+            $('#frm-orderForm-orderForm-tel').parent().addClass('error');
+        }
+        //zkontroluju gdpr
+        if (!$('.poptavka .yesno').hasClass('sel')) {
+            $('.poptavka .yesno').addClass('error');
+            $('.poptavka .yesno p').show();
         }
 
+        if ($('#errorEmail, #errorTel').hide() && $('.poptavka .yesno').hasClass('sel')){
+            $('.poptavka .yesno').removeClass('error');
+            $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
+            $('#frm-orderForm-orderForm-email').parent().removeClass('error');
+            $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
+            $(document).addClass('loading');
+            $('.final_loader').stop(true).delay(1000).fadeIn(200);
+
+
+        }
 
     });
+
+    // vytahuju hodnoty vsech radio buttonu na strance
+    function get_selected_radios_array(){
+        var ch_list=Array();
+        $("input:radio[type=radio]:checked").each(function(){ch_list.push($(this).val());});
+        return ch_list;
+    }
+
 
 })

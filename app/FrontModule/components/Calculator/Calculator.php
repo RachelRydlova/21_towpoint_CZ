@@ -42,42 +42,50 @@ class Calculator extends Control
      * @return mixed|null
      */
       public function setPrice($vehicleId, $comfort)
-    {
+      {
 
-        $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
-        Debugger::barDump($prices, 'cenyAPI');
+          $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
+          Debugger::barDump($prices, 'cenyAPI');
 
 
+          // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
+          $data = [];
 
-        // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
-        $data = [];
-        // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
-        $data['cenaPevne7'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E7->price_moc_dph + $prices->cena->pevne->montaz_cena_7_dph;
-        // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
-        $data['cenaPevne13'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
-        // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
-        $data['cenaOdnimatelne7'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->odnimatelne->elektro->E13->price_moc_dph + $prices->cena->odnimatelne->montaz_cena_7_dph;
-        // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
-        $data['cenaOdnimatelne13'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
-
-        // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
-        $data['kvalitaPevne7'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E7->price_moc_dph + $prices->kvalita->pevne->montaz_cena_7_dph;
-        // v druhe moznosti pocitam preference > kvalita + pevne + 13pin + montaz
-        $data['kvalitaPevne13'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E13->price_moc_dph + $prices->kvalita->pevne->montaz_cena_13_dph;
-        // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
-        $data['kvalitaOdnimatelne7'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E7->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_7_dph;
-        // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
-        $data['kvalitaOdnimatelne13'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E13->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_13_dph;
+          if ($prices->cena->pevne->tazne !== false) {
+              // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
+              $data['cenaPevne7'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E7->price_moc_dph + $prices->cena->pevne->montaz_cena_7_dph;
+              // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
+              $data['cenaPevne13'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
+            $this->template->data = $data;
+          }
+          if ($prices->cena->odnimatelne->tazne !== false) {
+              // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
+              $data['cenaOdnimatelne7'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->odnimatelne->elektro->E7->price_moc_dph + $prices->cena->odnimatelne->montaz_cena_7_dph;
+              // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
+              $data['cenaOdnimatelne13'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
+            $this->template->data = $data;
+          }
+          if ($prices->kvalita->pevne->tazne !== false){
+              // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
+              $data['kvalitaPevne7'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E7->price_moc_dph + $prices->kvalita->pevne->montaz_cena_7_dph;
+          // v druhe moznosti pocitam preference > kvalita + pevne + 13pin + montaz
+          $data['kvalitaPevne13'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E13->price_moc_dph + $prices->kvalita->pevne->montaz_cena_13_dph;
+            $this->template->data = $data;
+          }
+          if ($prices->kvalita->odnimatelne->tazne !== false) {
+              // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
+              $data['kvalitaOdnimatelne7'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E7->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_7_dph;
+              // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
+              $data['kvalitaOdnimatelne13'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E13->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_13_dph;
+            $this->template->data = $data;
+          }
 
         Debugger::barDump($data, 'variantyCen');
 
 
-        if ($prices->cena->pevne->tazne !== false)
-        {
-            $this->template->data = $data;
-            $this->redrawControl('summaryBox');
-        }
-        return $data;
+
+        $this->redrawControl('summaryBox');
+        return false;
     }
 
 
@@ -117,7 +125,25 @@ class Calculator extends Control
     public function onFormSuccess(Form $form): void
     {
         $values = $form->getValues();
-        Debugger::barDump($values, 'calculatorform');
+        // ulozit preference do session
+        $this->saveValue('preferencies', $values);
+        Debugger::barDump($values, 'valuesCalculatorForm');
+        $this->redirect('this');
+
+    }
+
+
+    /**
+     * @param $preference
+     */
+    public function handleSetPref($preference): void
+    {
+
+        Debugger::barDump($preference, 'prefVHandleru');
+//        $prefInfo = ['pref' => $preference[0], 'koule' => $preference[1], 'el'=> $preference[2]];
+
+        // ulozeni preferenci do session
+        $this->saveValue('preferencies', $preference);
     }
 
 

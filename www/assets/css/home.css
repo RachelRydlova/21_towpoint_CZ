@@ -144,6 +144,7 @@ header nav a:first-of-type span
 	margin-right: 0px;
 }
 
+
 #form .inputs > div:nth-last-of-type(1),
 #form .inputs > div:nth-last-of-type(2),
 #form .inputs > div:nth-last-of-type(3)
@@ -170,7 +171,7 @@ header nav a:first-of-type span
 	-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	color: #525252;
-	
+
 	background-image: url("../img/arrow.svg");
 	background-repeat: no-repeat;
 	background-size: 10px;
@@ -239,7 +240,7 @@ header nav a:first-of-type span
 
 #form .inputs p.complete
 {
-	color: #d50000; 
+	color: #d50000;
 	margin-bottom: 1em;
 	display: none;
 }
@@ -265,7 +266,7 @@ header nav a:first-of-type span
 	position: absolute;
 	left: 0px;
 	top: 50%;
-	
+
 	-moz-transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
@@ -335,7 +336,7 @@ header nav a:first-of-type span
 	left: 50%;
 	top: 50%;
 	width: 80px;
-	
+
 	-moz-transform: translateX(-50%) translateY(-50%);
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-o-transform: translateX(-50%) translateY(-50%);

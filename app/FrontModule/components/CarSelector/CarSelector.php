@@ -147,7 +147,7 @@ class CarSelector extends Control
         $vehicle = $this->loadValue('vehicle');
         $model = $this->loadValue('model');
         $manufacturer = $this->loadValue('manufacturer');
-//        $comfort = $this->loadValue('comfort');
+        $this->saveValue('comfort', $comfort);
 
 
         $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle, 'comfort'=> $comfort];
@@ -160,7 +160,6 @@ class CarSelector extends Control
      */
     public function handleSetComfort($comfort): void
     {
-//        $this->saveValue('comfort', $comfort);
         $vehicleId = $this->loadValue('vehicle');
 //
         if ($vehicleId == null){
@@ -232,13 +231,6 @@ class CarSelector extends Control
      */
     public function onCarSelectSuccess(Form $form): void
     {
-//        $vehicle = $this->loadValue('vehicle');
-//        $model = $this->loadValue('model');
-//        $manufacturer = $this->loadValue('manufacturer');
-//        $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle];
-//        $this->onSuccess($carInfo);
-
-
         $carInfo = $form->getValues();
         $this->onSuccess($carInfo);
     }

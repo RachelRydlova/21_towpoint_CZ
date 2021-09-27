@@ -62,15 +62,17 @@ class DefaultPresenter extends BasePresenter
      * @return OrderForm
      */
     protected function createComponentOrderForm(){
-//        return new OrderForm($this->apiManager, $this->session);
         $comp = new OrderForm($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($contact) use ($p) {
             $manufacturer = $p->session->getSection('carSection')->manufacturer;
             $model = $p->session->getSection('carSection')->model;
             $vehicle = $p->session->getSection('carSection')->vehicle;
+            $comfort = $p->session->getSection('carSection')->comfort;
+            $preference = $p->session->getSection('calculator')->preferencies;
+            Debugger::barDump($preference, 'prefVOrderFormu');
 
-            $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle];
+            $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle, 'comfort'=> $comfort];
             $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
             $this->apiManager->sendDataToApi($dataToReva);
         };
@@ -119,8 +121,8 @@ class DefaultPresenter extends BasePresenter
      */
     public function partnerFormSucceeded(Form $form, $data): void
     {
-        $data = $form->getValues($form);
-        $this->onSuccess($data);
+//        $data = $form->getValues($form);
+//        $this->onSuccess($data);
         Debugger::barDump($data);
         // tady zpracujeme data odeslaná formulářem
         // $data->name obsahuje jméno

@@ -53,7 +53,7 @@ class OrderForm extends Control
             ->setAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
             ->setAttribute('placeholder', 'E-mail')
-            ->setRequired('Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.');
+            ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.');
         $form->addText('tel', "Telefon")
             ->setAttribute('placeholder', 'Telefon')
             ->setRequired('Vyplňte své telefonní číslo nejlépe ve formátu +420 123 456 789.');
@@ -82,11 +82,14 @@ class OrderForm extends Control
      */
     public function onOrderFormSuccess(Form $form): void
     {
+        // ulozit kontakty do session
+
         $contact = $form->getValues();
         $this->onSuccess($contact);
-
+//        Debugger::barDump($contact);
         $this->getPresenter()->redirect('Default:thanks');
     }
+
 
 
     public function render(): void

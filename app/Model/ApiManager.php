@@ -251,13 +251,6 @@ class ApiManager
      */
     public function sendDataToApi($dataToReva)
     {
-//        // vytahnu data z kontaktniho formulare
-//        $contactData = Nette\Utils\ArrayHash::from($dataToReva['contact']);
-//
-////        $contactData= (toArray($dataToReva['contact']));
-//        Debugger::barDump($contactData, ' contactData');
-
-
         // vytahnu info o znacce
         $secret = self::countApiToken(array('onlyFavorities'=>'1'));
         $url='https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=1&secret='.$secret;
@@ -290,11 +283,12 @@ class ApiManager
         foreach ($motory as $item) if ($vehicleId==$item->vozidlo_id) $outmotor=$item->fullname;
 
 
-        // nastavuji prozatim defaultne komfort na false
-        $komfort = false;
+        // vytahuji informaci, zda byl zvolen komfort
+         $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
 
+         Debugger::barDump($dataToReva, 'dataDoRevy');
 
-        $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($komfort+0).'&stat=CZ|SK';
+        $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
         $data=json_decode(file_get_contents($url));
 
         $prevod['qnormal']='cena';
@@ -330,7 +324,7 @@ class ApiManager
 //            'elektrika'=>$el->id_nomenklatura,	// kod produktu - nomenklatura
 //            'elektrika_cena'=>$el->price_moc_dph,
 //            'montaz_cena'=>$el0->{'montaz_cena_'.str_replace('pin','',$_SESSION['form_data']['el']).'_dph'}/*+$tazne->montaz_dph*/,
-//            'comfort'=>$_SESSION['komfort']+0
+            'comfort'=>$comfort
             );
 
        // $url='https://reva.vapol.cz/api/api/request-tow-point/'.$rqid.'?token='.self::countApiToken(array($rqid));
