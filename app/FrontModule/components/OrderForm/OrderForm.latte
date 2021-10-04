@@ -34,13 +34,14 @@
     </div>
     <div class="poptavka">
         <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
-        <div class="yesno">
-            <div></div>
-            {input gdpr}
-            {label gdpr}
-            <p>Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>
+        <div id="gdpr">
+{*            <div>*}
+            <input n:name="gdpr">
+{*        <p>Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>*}
+{*            </div>*}
         </div>
         <span>
+            <p>Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení</p>
             {input success}
         </span>
     </div>

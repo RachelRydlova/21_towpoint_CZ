@@ -89,9 +89,6 @@ class Calculator extends Control
     }
 
 
-
-
-
     /**
      * @return Form
      * @throws \Throwable
@@ -125,9 +122,6 @@ class Calculator extends Control
     public function onFormSuccess(Form $form): void
     {
         $values = $form->getValues();
-        // ulozit preference do session
-        $this->saveValue('preferencies', $values);
-        Debugger::barDump($values, 'valuesCalculatorForm');
         $this->redirect('this');
 
     }
@@ -140,11 +134,9 @@ class Calculator extends Control
     {
 
         Debugger::log(print_r($preference,true),'debug-pref');
-        Debugger::barDump($preference, 'prefererVHandleru');
+//        Debugger::barDump($preference, 'prefererVHandleru');
         $arrPref = json_decode($preference);
-        Debugger::barDump($arrPref,'arrayVHnd');
-        
-//        $prefInfo = ['pref' => $preference[0], 'koule' => $preference[1], 'el'=> $preference[2]];
+//        Debugger::barDump($arrPref,'arrayVHnd');
 
         // ulozeni preferenci do session
         $this->saveValue('preferencies', $arrPref);

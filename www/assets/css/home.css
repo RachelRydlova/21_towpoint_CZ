@@ -60,22 +60,6 @@ header nav a:first-of-type span
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 1650px;
-/*	position: absolute;
-	width: 1650px;
-	right: 50%;
-	top: 50%;
-	
-	background-image: url("loader.svg");
-	background-repeat: no-repeat;
-	background-size: 50px;
-	background-position: -500px -500px;
-	
-	-moz-transform: translateX(50%) translateY(-50%);
-	-webkit-transform: translateX(50%) translateY(-50%);
-	-o-transform: translateX(50%) translateY(-50%);
-	-ms-transform: translateX(50%) translateY(-50%);
-	transform: translateX(50%) translateY(-50%);
-	*/
 }
 
 #sel::after
@@ -129,8 +113,7 @@ header nav a:first-of-type span
 	background-position: center center;
 }
 
-#form .inputs > div,
-#partnerform form > div
+#form .inputs > div
 {
 	float: left;
 	width: calc((100% - 60px) / 3);
@@ -138,8 +121,7 @@ header nav a:first-of-type span
 	padding-bottom: 20px;
 }
 
-#form .inputs > div:last-of-type,
-#partnerform form > div:last-of-type
+#form .inputs > div:last-of-type
 {
 	margin-right: 0px;
 }
@@ -833,9 +815,6 @@ header nav a:first-of-type span
 }
 
 
-
-
-
 .radios
 {
 	width: 510px;
@@ -1139,13 +1118,60 @@ header nav a:first-of-type span
 	padding: 2% 27%;
 }
 
+#gdpr
+{
+	-webkit-appearance: checkbox;
+	float: none;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80px;
+	height: 50px;
+	position: relative;
+	border: 1px solid #525252;
+	-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	cursor: pointer;
+	margin-bottom: 15px;
+}
+
+#gdpr input
+{
+	position: absolute;
+	background-color: #525252;
+	width: 34px;
+	height: 34px;
+	content: " ";
+	left: 7px;
+	top: 7px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+	transition: 150ms all;
+}
+
+#gdpr > input:checked
+{
+	left: 36px;
+	background-color: #f90;
+}
+
 .poptavka p
 {
 	display: inline-block;
 	color: #525252;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 	text-align: center;
-	padding: 0px 50px;
+}
+
+/*.poptavka > span p*/
+/*{*/
+/*	padding: 0px 50px;*/
+/*}*/
+
+.poptavka .cta
+{
+	margin-top: 15px;
 }
 
 .poptavka p strong
@@ -1155,34 +1181,9 @@ header nav a:first-of-type span
 	white-space: nowrap;
 }
 
-.poptavka .yesno
-{
-	width: 500px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	float: none;
-}
 
-.poptavka .yesno div
-{
-	float: none;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.poptavka .yesno a,
-.poptavka .yesno label
-{
-	width: 100%;
-	margin-left: 0px;
-	clear: both;
-	text-align: center;
-}
-
-.poptavka .yesno::after,
-.poptavka::after
+#gdpr::after,
+#gdpr input:checked
 {
 	display: block;
 	clear: both;
@@ -1190,7 +1191,7 @@ header nav a:first-of-type span
 }
 
 
-.poptavka .yesno p
+#gdpr p
 {
 	color: #d50000;
 	text-align: center;
@@ -1201,7 +1202,7 @@ header nav a:first-of-type span
 	width: 100%;
 }
 
-.poptavka .yesno.error p
+#gdpr.error p
 {
 	display: block;
 	padding: 0px;
@@ -1746,10 +1747,12 @@ header nav a:first-of-type span
 		display: none !important;
 	}
 	
-	/*#sel select*/
-	/*{*/
-	/*	display: block;*/
-	/*}*/
+	.poptavka p
+	{
+		font-size: 14px;
+		padding-left: 25px;
+		padding-right: 25px;
+	}
 }
 
 

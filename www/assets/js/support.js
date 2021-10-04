@@ -31,6 +31,16 @@ $(function () {
         $('#snippet-calculator-summaryBox > div').hide();
     });
 
+    $(document).ready(function (){
+        $('#imark, #imodel, #imotor').click(function (event){
+            event.stopPropagation();
+        })
+
+    })
+
+
+
+
 
     //
     // VYBER ZNACKA | MODEL | MOTOR
@@ -39,9 +49,7 @@ $(function () {
     //zobrazeni znacek
     $(document).on('focus','#imark',function(){
         $('#preffered').slideDown(300);
-
     });
-
     $(document).on('blur', '#imark', function (){
         $('#preffered').slideUp(300);
     });
@@ -49,9 +57,9 @@ $(function () {
 
     // Výběr značky
     // Musím zachytit klik na odkaz!
-    $(document).on('click', '#preffered a.znackaLink', function (e) {
+    $(document).on('click', '#preffered a.znackaLink', function () {
         // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
-        e.preventDefault();
+        // e.preventDefault();
 
         // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
@@ -236,37 +244,46 @@ $(function () {
 
 
 
-    $('#form2 .cta').click(function() {
+    // // kontrola vyplneni kontaktu a odeslani formu
+    // $('#form2 .cta').click(function() {
+    //
+    //
+    //    // zkontroluju jestli je vyplnen email
+    //     if ($('#frm-orderForm-orderForm-email').empty()) {
+    //         $('#errorEmail').show();
+    //         $('#frm-orderForm-orderForm-email').parent().addClass('error');
+    //     }
+    //    // zkontroluju jestli je vyplneno telefonni cislo
+    //     if ($('#frm-orderForm-orderForm-tel').empty()) {
+    //         $('#errorTel').show();
+    //         $('#frm-orderForm-orderForm-tel').parent().addClass('error');
+    //     }
+    //     //zkontroluju gdpr
+    //     if (!$('.poptavka .yesno').hasClass('sel')) {
+    //         $('.poptavka .yesno').addClass('error');
+    //         $('.poptavka .yesno p').show();
+    //     }
+    //
+    //
+    //     if ($('#errorEmail, #errorTel').hide()){
+    //         $('.poptavka .yesno').removeClass('error');
+    //         $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
+    //         $('#frm-orderForm-orderForm-email').parent().removeClass('error');
+    //         $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
+    //         $(document).addClass('loading');
+    //         $('.final_loader').stop(true).delay(1000).fadeIn(200);
+    //
+    //
+    //     }
 
 
-       // zkontroluju jestli je vyplnen email
-        if ($('#frm-orderForm-orderForm-email').empty()) {
-            $('#errorEmail').show();
-            $('#frm-orderForm-orderForm-email').parent().addClass('error');
-        }
-       // zkontroluju jestli je vyplneno telefonni cislo
-        if ($('#frm-orderForm-orderForm-tel').empty()) {
-            $('#errorTel').show();
-            $('#frm-orderForm-orderForm-tel').parent().addClass('error');
-        }
-        //zkontroluju gdpr
-        if (!$('.poptavka .yesno').hasClass('sel')) {
-            $('.poptavka .yesno').addClass('error');
-            $('.poptavka .yesno p').show();
-        }
-
-        if ($('#errorEmail, #errorTel').hide() && $('.poptavka .yesno').hasClass('sel')){
-            $('.poptavka .yesno').removeClass('error');
-            $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
-            $('#frm-orderForm-orderForm-email').parent().removeClass('error');
-            $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
-            $(document).addClass('loading');
-            $('.final_loader').stop(true).delay(1000).fadeIn(200);
 
 
-        }
 
-    });
+    // });
+
+
+    // FUNKCE
 
     // vytahuju hodnoty vsech radio buttonu na strance
     function get_selected_radios_array(){

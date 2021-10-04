@@ -222,6 +222,16 @@ class CarSelector extends Control
 
         $form->onSuccess[] = [$this, 'handleSaveData'];
 
+//        if ($this->loadValue('manufacturer')){
+//            $form['manufacturer']->setDefaultValue($this->loadValue('manufacturer'));
+
+//            if ($this->loadValue('model')){
+//                $form['model']->setDefaultValue($this->loadValue('model'));
+//            }
+//        }
+
+
+
         return $form;
     }
 
@@ -234,6 +244,7 @@ class CarSelector extends Control
         $carInfo = $form->getValues();
         $this->onSuccess($carInfo);
     }
+
 
 
 
@@ -266,6 +277,12 @@ class CarSelector extends Control
         $this->template->render();
     }
 
+
+    public function actionDefault()
+    {
+        $this->template->selMan = $this->loadValue('manufacturer');
+
+    }
 
 
 

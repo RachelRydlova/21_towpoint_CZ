@@ -1,7 +1,6 @@
 {block title}Pro partnery TowPoint{/block}
 
 {block head}
-    <link href="{$basePath}/assets/css/home.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/partneri.css" rel="stylesheet">
 {/block}
 
@@ -25,46 +24,25 @@
         </div>
     </section>
 
-<!-- Form -->
-{*    <section id="form">*}
-{*        <form n:name=partnerForm>*}
-{*            <h2>Kontaktní formulář</h2>*}
-{*            <div><input n:name="name"></div>*}
-{*            <div><input n:name="surname"></div>*}
-{*            <div><input n:name="position"></div>*}
-{*            <div><input n:name="company"></div>*}
-{*            <div><input n:name="city"></div>*}
-{*            <div><input n:name="zipcode"></div>*}
-{*            <div><input n:name="email"></div>*}
-{*            <div class="last"><input n:name="message"></div>*}
-{*            <div class="cta"><span id="send">{input send}</span></div>*}
-
-
-
-{*        </form>*}
-
-{*    </section>*}
 {form partnerForm}
     <section id="form">
-        <div>
-            <div class="inputs">
-                <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
-                <div>  {input name}  </div>
-                <div>  {input surname}  </div>
-                <div>  {input position}  </div>
-                <div>  {input company}  </div>
-                <div>  {input city}  </div>
-                <div>  {input zipcode}  </div>
-                <div required>
-                    {input email}
-                    <p id="errorEmail">Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
-                </div>
-
-                <div class="last">  {input message}  </div>
-                <span>
-                    {input send}
-                </span>
+        <div class="inputs">
+            <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+            <div>  {input name}  </div>
+            <div>  {input surname}  </div>
+            <div>  {input position}  </div>
+            <div>  {input company}  </div>
+            <div>  {input city}  </div>
+            <div>  {input zipcode}  </div>
+            <div required>
+                {input email}
+                <p id="errorEmail">Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
             </div>
+
+            <div class="last">  {input message}  </div>
+            <span>
+                {input send}
+            </span>
         </div>
     </section>
 {/form}

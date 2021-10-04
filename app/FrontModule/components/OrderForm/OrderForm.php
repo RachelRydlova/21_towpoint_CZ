@@ -64,8 +64,8 @@ class OrderForm extends Control
         $form->addTextArea('note', "Poznámky")
             ->setAttribute('placeholder', 'Poznámky');
         $form->addSelect('state', 'Stát', $staty);
-        $form->addCheckbox('gdpr', 'Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení');
-//            ->setRequired();
+        $form->addCheckbox('gdpr')
+            ->setRequired('Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.');
 
         $form->addSubmit('success', 'Odeslat')
             ->setAttribute('class', 'cta');
