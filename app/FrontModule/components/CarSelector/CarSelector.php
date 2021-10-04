@@ -230,8 +230,6 @@ class CarSelector extends Control
 //            }
 //        }
 
-
-
         return $form;
     }
 

@@ -10,6 +10,7 @@ use App\FrontModule\components\OrderForm;
 use App\ICarSelectorFactory;
 use App\Model\applCache;
 use App\Presenters\BasePresenter;
+use Doctrine\Common\Util\Debug;
 use Nette\Application\UI\Form;
 use App\Model\BannerModel;
 use App\Model\ApiManager;
@@ -45,6 +46,12 @@ class DefaultPresenter extends BasePresenter
             $p['calculator']->setPrice($carInfo['vehicleId'], $carInfo['comfort']);
             Debugger::barDump($carInfo);
         };
+
+//        $selMan = $this->session->getSection('carSection')->manufacturer;
+//        $selMod = $this->session->getSection('carSection')->model;
+//        $this['carSelector']['form']['manufacturer']->setDefaultValue($selMan);
+//        Debugger::barDump($selMod, 'zvoleneAutoVComponente');
+
         return $comp;
     }
 
@@ -70,9 +77,10 @@ class DefaultPresenter extends BasePresenter
             $vehicle = $p->session->getSection('carSection')->vehicle;
             $comfort = $p->session->getSection('carSection')->comfort;
             $preference = $p->session->getSection('calculator')->preferencies;
-            Debugger::barDump($preference, 'prefVOrderFormu');
 
-            $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle, 'comfort'=> $comfort];
+            $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
+                'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
+//            Debugger::barDump($carInfo, 'InfoCoPosilamZOrderFormu');
             $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
             $this->apiManager->sendDataToApi($dataToReva);
         };
@@ -99,8 +107,7 @@ class DefaultPresenter extends BasePresenter
         $form->addText('city')
             ->setHtmlAttribute('placeholder', 'Město');
         $form->addText('zipcode')
-            ->setHtmlAttribute('placeholder', 'PSČ')
-            ->addRule($form::MIN_LENGTH, 'PSČ musí být zapsána bez mezer.', 6);
+            ->setHtmlAttribute('placeholder', 'PSČ');
         $form->addEmail('email')
             ->setHtmlAttribute('placeholder', 'E-mail')
             ->setHtmlType('email')
@@ -108,7 +115,8 @@ class DefaultPresenter extends BasePresenter
         $form->addText('message')
             ->setHtmlAttribute('placeholder', 'Vzkaz')
             ->setRequired('Vyplňte vzkaz.');
-        $form->addSubmit('send', 'Odeslat');
+        $form->addSubmit('send', 'Odeslat')
+            ->setHtmlAttribute('class', 'cta');
         $form->onSuccess[] = [$this, 'PartnerFormSucceeded'];
 
         return $form;
@@ -121,15 +129,17 @@ class DefaultPresenter extends BasePresenter
      */
     public function partnerFormSucceeded(Form $form, $data): void
     {
-//        $data = $form->getValues($form);
-//        $this->onSuccess($data);
-        Debugger::barDump($data);
-        // tady zpracujeme data odeslaná formulářem
-        // $data->name obsahuje jméno
-        // $data->surname obsahuje prijmeni
         $this->flashMessage('Zpráva byla úspěšně odeslána.', 'success');
-        $this->redirect('Default:');
+        $this->apiManager->getPartnerData($data);
+        $this->redirect('this');
     }
+
+    public function actionDefault()
+    {
+
+//        $this->template->selMan = $this->session->getSection('carSelector')->manufacturer;
+    }
+
 
     public function renderDefault(){
         // data pro banner
