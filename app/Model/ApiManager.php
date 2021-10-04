@@ -3,8 +3,11 @@
 
 namespace App\Model;
 
+use Cassandra\Tinyint;
 use Doctrine\Common\Util\Debug;
 use GuzzleHttp\Client;
+use http\Env\Request;
+use Nette\Http\Response;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
 use Nette\Application\AbortException;
@@ -38,7 +41,14 @@ class ApiManager
 
 
 
-
+    function get_secret($params)
+    {
+        $hour = date('H');
+        $paramsString = implode(':', $params);
+        $token = urlencode(base64_encode(hash_hmac('sha1', $hour.$paramsString, 'VapolIT', true)));
+//		$token=12345;
+        return($token);
+    }
 
     /**
      * Vypocita token api pozadavku
@@ -286,23 +296,37 @@ class ApiManager
         // vytahuji informaci, zda byl zvolen komfort
          $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
 
+        // preference Cena x Kvalita
+        $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
+         if ($pref == 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
+
+        // koule Pevne x Odnimatelne
+        $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
+         if ($koule == 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
+
+        // elektrika 7pin x 13pin
+        $el = Arrays::get($dataToReva, ['carInfo', 'el']);
+         if ($el == 0) { $el = '7pin'; } else { $el = '13pin'; }
+        $e = Arrays::get($dataToReva, ['carInfo', 'el']);
+        if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
+
          Debugger::barDump($dataToReva, 'dataDoRevy');
+
 
         $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
         $data=json_decode(file_get_contents($url));
 
-        $prevod['qnormal']='cena';
-        $prevod['qbest']='kvalita';
-
-        $prevod['7pin']='E7';
-        $prevod['13pin']='E13';
 
         $out=$data->data;
-//        $tazne=$out->{$prevod[$_SESSION['form_data']['kvalita']]}->{$_SESSION['form_data']['koule']}->tazne;
-//        $el=$out->{$prevod[$_SESSION['form_data']['kvalita']]}->{$_SESSION['form_data']['koule']}->elektro->{$prevod[$_SESSION['form_data']['el']]};
-//        $el0=$out->{$prevod[$_SESSION['form_data']['kvalita']]}->{$_SESSION['form_data']['koule']};
+        $tazne=$out->{$pref}->{$koule}->tazne;
+        $ele=$out->{$pref}->{$koule}->elektro->{$e};
+        $el0=$out->{$pref}->{$koule};
+
+        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $pole=array(
+            'session_id'=> $this->session->getId(),
+            'final_request'=> 1,
             'znacka'=>$outznacka,
             'manufacturer_id'=>$manufacturerId,
             'model'=>$outmodel,
@@ -317,35 +341,45 @@ class ApiManager
             'psc'=>$dataToReva['contact']->psc,
             'mesto'=>$dataToReva['contact']->mesto,
             'stat'=>$dataToReva['contact']->state,
-//            'typ_tazne'=>$_SESSION['form_data']['koule'],
-//            'tazne'=>$tazne->id_nomenklatura,	// kod produktu - nomenklatura
-//            'tazne_cena'=>$tazne->price_moc_dph,
-//            'typ_elektrika'=>$_SESSION['form_data']['el'],
-//            'elektrika'=>$el->id_nomenklatura,	// kod produktu - nomenklatura
-//            'elektrika_cena'=>$el->price_moc_dph,
-//            'montaz_cena'=>$el0->{'montaz_cena_'.str_replace('pin','',$_SESSION['form_data']['el']).'_dph'}/*+$tazne->montaz_dph*/,
+            'typ_tazne'=>$koule,
+            'tazne'=>$tazne->id_nomenklatura,	// kod produktu - nomenklatura
+            'tazne_cena'=>$tazne->price_moc_dph,
+            'typ_elektrika'=>$e,
+            'elektrika'=>$ele->id_nomenklatura,	// kod produktu - nomenklatura
+            'elektrika_cena'=>$ele->price_moc_dph,
+            'montaz_cena'=>$el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'},
             'comfort'=>$comfort
             );
 
-       // $url='https://reva.vapol.cz/api/api/request-tow-point/'.$rqid.'?token='.self::countApiToken(array($rqid));
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, ($pole));
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-        //	curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-        $html = curl_exec($ch);
-        //	$info = curl_getinfo($ch,CURLINFO_HEADER_OUT);
-        curl_close ($ch);
-
-        $pole=json_decode($html);
-//		d($pole);
+        Debugger::barDump($pole);
 
 
+//        $method = 'POST';
+//        $request = new \GuzzleHttp\Psr7\Request($method, $url, [], json_encode($pole));
+//        $client = new Client();
+//        $response = $client->send($request);
+//        dump(json_decode($response->getBody()->getContents()));
+//        die;
 
 
+        $client = new Client();
+        $response = $client->request('POST', $url, [
+            'form_params' => $pole
+            ]
+        );
+        dump(json_decode($response->getBody()->getContents()));
+        die();
+
+
+    }
+
+    /**
+     * data ze zpravy od partnera -> prozatim nikam neodesilam, bude se predelavat
+     * @param $data
+     */
+    public function getPartnerData($data)
+    {
+        Debugger::barDump($data, 'partnerDataVApi');
     }
 
 

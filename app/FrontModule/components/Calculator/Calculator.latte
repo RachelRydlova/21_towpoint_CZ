@@ -2,59 +2,53 @@
 {snippetArea calculatorWrapper}
 {form calculator}
 
-    <div>
-        <div>
-            <div class="radios pref">
-                <h3>{label pref}</h3>
-                {foreach $form['pref']->items as $key => $value}
-                    <div>
-                        <div>
-                            {input $form['pref']:$key}
-                        </div>
-                        {label $form['pref']:$key}
-                    </div>
-                {/foreach}
+    <div class="radios pref">
+        <h3>{label pref}</h3>
+        {foreach $form['pref']->items as $key => $value}
+            <div onclick="this.querySelector('input').click()">
+                <div>
+                    {input $form['pref']:$key}
+                </div>
+                {label $form['pref']:$key}
             </div>
-
-            <div class="radios koule">
-                <h3>{label koule}</h3>
-                {foreach $form['koule']->items as $key => $value}
-                    <div>
-                        <div>
-                            {input $form['koule']:$key}
-                        </div>
-                        {label $form['koule']:$key}
-                    </div>
-                {/foreach}
-            </div>
-
-            <div class="radios el">
-                <h3>{label zasuvka}</h3>
-                {foreach $form['zasuvka']->items as $key => $value}
-                    <div>
-                        <div>
-                            {input $form['zasuvka']:$key}
-                        </div>
-                        {label $form['zasuvka']:$key}
-                    </div>
-                {/foreach}
-            </div>
-
-            <div class="radios redukce">
-                <h3>{label redukce}</h3>
-                {foreach $form['redukce']->items as $key => $value}
-                    <div>
-                        <div>
-                            {input $form['redukce']:$key}
-                        </div>
-                        {label $form['redukce']:$key}
-                    </div>
-                {/foreach}
-            </div>
-        </div>
+        {/foreach}
     </div>
 
+    <div class="radios koule">
+        <h3>{label koule}</h3>
+        {foreach $form['koule']->items as $key => $value}
+            <div onclick="this.querySelector('input').click()">
+                <div>
+                    {input $form['koule']:$key}
+                </div>
+                {label $form['koule']:$key}
+            </div>
+        {/foreach}
+    </div>
 
+    <div class="radios el">
+        <h3>{label zasuvka}</h3>
+        {foreach $form['zasuvka']->items as $key => $value}
+            <div onclick="this.querySelector('input').click()">
+                <div>
+                    {input $form['zasuvka']:$key}
+                </div>
+                {label $form['zasuvka']:$key}
+            </div>
+        {/foreach}
+    </div>
+
+    <div class="radios redukce">
+        <h3>{label redukce}</h3>
+        {foreach $form['redukce']->items as $key => $value}
+            <div>
+                <div>
+                    {input $form['redukce']:$key}
+                </div>
+                {label $form['redukce']:$key}
+            </div>
+        {/foreach}
+    </div>
 
 
 

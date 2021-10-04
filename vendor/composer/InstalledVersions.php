@@ -32,19 +32,19 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'fcf4ac3610f0984ba6569b2d3af7997bbc9818b6',
+    'reference' => '5d96c2b750cd1d7962b5dbc18cc2dffbad1e3777',
     'name' => 'nette/web-project',
   ),
   'versions' => 
   array (
     'composer/package-versions-deprecated' => 
     array (
-      'pretty_version' => '1.11.99.3',
-      'version' => '1.11.99.3',
+      'pretty_version' => '1.11.99.4',
+      'version' => '1.11.99.4',
       'aliases' => 
       array (
       ),
-      'reference' => 'fff576ac850c045158a250e7e27666e146e78d18',
+      'reference' => 'b174585d1fe49ceed21928a945138948cb394600',
     ),
     'contributte/console' => 
     array (
@@ -102,12 +102,12 @@ private static $installed = array (
     ),
     'doctrine/dbal' => 
     array (
-      'pretty_version' => '2.13.2',
-      'version' => '2.13.2.0',
+      'pretty_version' => '2.13.4',
+      'version' => '2.13.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8dd39d2ead4409ce652fd4f02621060f009ea5e4',
+      'reference' => '2411a55a2a628e6d8dd598388ab13474802c7b6e',
     ),
     'doctrine/deprecations' => 
     array (
@@ -156,12 +156,12 @@ private static $installed = array (
     ),
     'doctrine/orm' => 
     array (
-      'pretty_version' => '2.9.5',
-      'version' => '2.9.5.0',
+      'pretty_version' => '2.10.0',
+      'version' => '2.10.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '77cc86ed880e3f1f6c9c5819e131a8aaeeeee0da',
+      'reference' => '07e15a00382982dc8088093669108d2174e456ea',
     ),
     'doctrine/persistence' => 
     array (
@@ -201,12 +201,12 @@ private static $installed = array (
     ),
     'latte/latte' => 
     array (
-      'pretty_version' => 'v2.10.3',
-      'version' => '2.10.3.0',
+      'pretty_version' => 'v2.10.4',
+      'version' => '2.10.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'dd2c58863e830c22a2c6b85af63f37b829d255df',
+      'reference' => '6e0540c60805b33148dc95db2602a087fb2ef9fb',
     ),
     'nette/application' => 
     array (
@@ -255,12 +255,12 @@ private static $installed = array (
     ),
     'nette/di' => 
     array (
-      'pretty_version' => 'v3.0.8',
-      'version' => '3.0.8.0',
+      'pretty_version' => 'v3.0.10',
+      'version' => '3.0.10.0',
       'aliases' => 
       array (
       ),
-      'reference' => '1a3210f0f1f971db8a6e970c716c1cebd28b7ab0',
+      'reference' => '4f0cb0b3f032a9106aa3fb29e33da381564716c2',
     ),
     'nette/finder' => 
     array (
@@ -282,12 +282,12 @@ private static $installed = array (
     ),
     'nette/http' => 
     array (
-      'pretty_version' => 'v3.1.2',
-      'version' => '3.1.2.0',
+      'pretty_version' => 'v3.1.3',
+      'version' => '3.1.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5777e50f69566732579bf381d2cbcb2f2695d015',
+      'reference' => '999f54884deed7a419b13552271c7059a5acb428',
     ),
     'nette/mail' => 
     array (
@@ -309,12 +309,12 @@ private static $installed = array (
     ),
     'nette/php-generator' => 
     array (
-      'pretty_version' => 'v3.5.4',
-      'version' => '3.5.4.0',
+      'pretty_version' => 'v3.6.2',
+      'version' => '3.6.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '59bb35ed6e8da95854fbf7b7d47dce6156b42915',
+      'reference' => 'bce6abcd4090ab5eec24b78f26c753c6525a425c',
     ),
     'nette/robot-loader' => 
     array (
@@ -363,12 +363,12 @@ private static $installed = array (
     ),
     'nette/utils' => 
     array (
-      'pretty_version' => 'v3.2.3',
-      'version' => '3.2.3.0',
+      'pretty_version' => 'v3.2.5',
+      'version' => '3.2.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '5c36cc1ba9bb6abb8a9e425cf054e0c3fd5b9822',
+      'reference' => '9cd80396ca58d7969ab44fc7afcf03624dfa526e',
     ),
     'nette/web-project' => 
     array (
@@ -377,7 +377,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'fcf4ac3610f0984ba6569b2d3af7997bbc9818b6',
+      'reference' => '5d96c2b750cd1d7962b5dbc18cc2dffbad1e3777',
     ),
     'nettrine/annotations' => 
     array (
@@ -408,12 +408,12 @@ private static $installed = array (
     ),
     'nettrine/orm' => 
     array (
-      'pretty_version' => 'v0.8.1',
-      'version' => '0.8.1.0',
+      'pretty_version' => 'v0.8.2',
+      'version' => '0.8.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a86e9ec690cf4b7659a25767fd493935c1d3e34a',
+      'reference' => 'fc84bccce8665255519266351bb6b746d1d58650',
     ),
     'ocramius/package-versions' => 
     array (
@@ -490,12 +490,12 @@ private static $installed = array (
     ),
     'symfony/console' => 
     array (
-      'pretty_version' => 'v5.3.6',
-      'version' => '5.3.6.0',
+      'pretty_version' => 'v5.3.7',
+      'version' => '5.3.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => '51b71afd6d2dc8f5063199357b9880cea8d8bfe2',
+      'reference' => '8b1008344647462ae6ec57559da166c2bfa5e16a',
     ),
     'symfony/deprecation-contracts' => 
     array (
@@ -542,6 +542,15 @@ private static $installed = array (
       ),
       'reference' => '9174a3d80210dca8daa7f31fec659150bbeabfc6',
     ),
+    'symfony/polyfill-php72' => 
+    array (
+      'pretty_version' => 'v1.23.0',
+      'version' => '1.23.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '9a142215a36a3888e30d0a9eeea9766764e96976',
+    ),
     'symfony/polyfill-php73' => 
     array (
       'pretty_version' => 'v1.23.0',
@@ -571,12 +580,12 @@ private static $installed = array (
     ),
     'symfony/string' => 
     array (
-      'pretty_version' => 'v5.3.3',
-      'version' => '5.3.3.0',
+      'pretty_version' => 'v5.3.7',
+      'version' => '5.3.7.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bd53358e3eccec6a670b5f33ab680d8dbe1d4ae1',
+      'reference' => '8d224396e28d30f81969f083a58763b8b9ceb0a5',
     ),
     'symfony/thanks' => 
     array (

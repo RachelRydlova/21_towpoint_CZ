@@ -62,7 +62,6 @@ final class InjectExtension extends DI\CompilerExtension
 					unset($setups[$key]);
 				}
 			}
-			self::checkType($class, $property, $type, $builder);
 			array_unshift($setups, $inject);
 		}
 
@@ -114,14 +113,12 @@ final class InjectExtension extends DI\CompilerExtension
 			$rp = new \ReflectionProperty($class, $name);
 			$hasAttr = PHP_VERSION_ID >= 80000 && $rp->getAttributes(DI\Attributes\Inject::class);
 			if ($hasAttr || DI\Helpers::parseAnnotation($rp, 'inject') !== null) {
-				if ($type = Reflection::getPropertyType($rp)) {
-				} elseif (!$hasAttr && ($type = DI\Helpers::parseAnnotation($rp, 'var'))) {
-					if (strpos($type, '|') !== false) {
-						throw new Nette\InvalidStateException('The ' . Reflection::toString($rp) . ' is not expected to have a union type.');
-					}
-					$type = Reflection::expandClassName($type, Reflection::getPropertyDeclaringClass($rp));
+				$type = Nette\Utils\Type::fromReflection($rp);
+				if (!$type && !$hasAttr && ($annotation = DI\Helpers::parseAnnotation($rp, 'var'))) {
+					$annotation = Reflection::expandClassName($annotation, Reflection::getPropertyDeclaringClass($rp));
+					$type = Nette\Utils\Type::fromString($annotation);
 				}
-				$res[$name] = $type;
+				$res[$name] = DI\Helpers::ensureClassType($type, 'type of property ' . Reflection::toString($rp));
 			}
 		}
 		ksort($res);
@@ -144,25 +141,7 @@ final class InjectExtension extends DI\CompilerExtension
 		}
 
 		foreach (self::getInjectProperties(get_class($service)) as $property => $type) {
-			self::checkType($service, $property, $type, $container);
 			$service->$property = $container->getByType($type);
-		}
-	}
-
-
-	/**
-	 * @param  object|string  $class
-	 * @param  DI\Container|DI\ContainerBuilder|null  $container
-	 */
-	private static function checkType($class, string $name, ?string $type, $container): void
-	{
-		$propName = Reflection::toString(new \ReflectionProperty($class, $name));
-		if (!$type) {
-			throw new Nette\InvalidStateException("Property $propName has no type hint.");
-		} elseif (!class_exists($type) && !interface_exists($type)) {
-			throw new Nette\InvalidStateException("Class or interface '$type' used in type hint at $propName not found. Check type and 'use' statements.");
-		} elseif ($container && !$container->getByType($type, false)) {
-			throw new Nette\DI\MissingServiceException("Service of type $type used in type hint at $propName not found. Did you add it to configuration file?");
 		}
 	}
 }

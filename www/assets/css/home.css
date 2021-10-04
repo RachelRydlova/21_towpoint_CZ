@@ -870,6 +870,7 @@ header nav a:first-of-type span
 	border-radius: 50px;
 
 	cursor: pointer;
+	pointer-events:none
 }
 
 .radios > div input:checked
@@ -902,6 +903,9 @@ header nav a:first-of-type span
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
 	border-radius: 0px;
+}
+.redukce div label{
+	cursor: default;
 }
 
 
