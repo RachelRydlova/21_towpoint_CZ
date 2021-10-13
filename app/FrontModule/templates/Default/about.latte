@@ -32,7 +32,9 @@
                 <a href="https://www.firmy.cz/detail/13255536-towpoint-zasova-zasova.html#hodnoceni" target="_blank" rel="noopener">
                     <img src="https://www.firmy.cz/img-stars/light-13255536.svg" alt="Towpoint Zašová na Firmy.cz" /></a>
             </p>
-            <a href="https://www.vapol.cz" onclick="window.open(this.href);return false"><img src="{$basePath}/assets/img/vapol.png" alt="VAPOL CZ"></a>
+            <a href="https://www.vapol.cz" onclick="window.open(this.href);return false">
+                <img src="{$basePath}/assets/img/vapol.png" alt="VAPOL CZ">
+            </a>
 
         </div>
 
@@ -40,15 +42,11 @@
 </section>
 
 
-
-
-<section id="images">
-    <div>
-        <div>
-            <figure><img src="{$basePath}/assets/img/il4.jpg?" alt="TowPoint Zašová"></figure>
-            <figure><img src="{$basePath}/assets/img/il1.jpg?" alt="TowPoint Holešov"></figure>
-            <figure><img src="{$basePath}/assets/img/il3.jpg?" alt=""></figure>
-            <figure><img src="{$basePath}/assets/img/il2.jpg" alt=""></figure>
-        </div>
+<section id="gallery">
+    <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
+        <img class="carousel-cell" src="{$basePath}/assets/img/il4.jpg?" alt="TowPoint Zašová">
+        <img class="carousel-cell" src="{$basePath}/assets/img/il1.jpg?" alt="TowPoint Holešov">
+        <img class="carousel-cell" src={$basePath}/assets/img/il3.jpg?" alt="">
+        <img class="carousel-cell" src="{$basePath}/assets/img/il2.jpg" alt="">
     </div>
 </section>

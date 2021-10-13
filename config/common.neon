@@ -7,6 +7,8 @@ application:
     mapping:
         *: App\*Module\Presenters\*Presenter
 
+tracy:
+  logSeverity: E_ALL
 
 session:
 	expiration: 14 days
@@ -19,15 +21,11 @@ di:
 
 
 search:
-    in: %appDir%\FrontModule\components
+    in: %appDir%\Model
 
 services:
 	- App\Router\RouterFactory::createRouter
-	- App\Model\BannerModel
-	- App\Model\ApiManager
-	- App\Model\applCache
 	- App\ICarSelectorFactory
-#	- App\Front\components\Forms\ContactFormFactory
 
 
 

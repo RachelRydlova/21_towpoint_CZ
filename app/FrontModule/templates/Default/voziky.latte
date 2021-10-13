@@ -44,14 +44,12 @@
 
 
 
-
-<section id="images">
-    <div>
-        <div>
-            <figure><img src="{$basePath}/assets/img/vozik.jpg" alt="Volne stojici vozik"></figure>
-            <figure><img src="{$basePath}/assets/img/upinaky.jpg" alt="Upinaci pasy"></figure>
-            <figure><img src="{$basePath}/assets/img/dilna-ruka.jpg" alt="Spoluprace na dilne"></figure>
-            <figure><img src="{$basePath}/assets/img/vozik-za-autem.jpg" alt="Vyber voziku"></figure>
-        </div>
+<!-- Flickity gallery slider -->
+<section id="gallery">
+    <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
+        <img class="carousel-cell" src="{$basePath}/assets/img/vozik.jpg?" alt="Volne stojici vozik">
+        <img class="carousel-cell" src="{$basePath}/assets/img/upinaky.jpg?" alt="Upinaci pasy">
+        <img class="carousel-cell" src="{$basePath}/assets/img/dilna-ruka.jpg?" alt="Spoluprace na dilne">
+        <img class="carousel-cell" src="{$basePath}/assets/img/vozik-za-autem.jpg" alt="Vyber voziku">
     </div>
 </section>

@@ -181,22 +181,12 @@ class CarSelector extends Control
     {
         $form = new Form();
 
-//        Debugger::barDump($this->apiManager->getCarManufacturers(1));
-
-        $manItems = ['Preferované' => [], 'Ostatní' => []];
-        if ($mans = $this->apiManager->getCarManufacturers(1)) {
-            foreach ($mans as $man) {
-                $manItems['Preferované'][$man->tcznacka] = $man->name;
-            }
-        }
+        $manItems = [];
         if ($mans = $this->apiManager->getCarManufacturers(0)) {
             foreach ($mans as $man) {
-                if ($man->preferovana === 0) {
-                    $manItems['Ostatní'][$man->tcznacka] = $man->name;
-                }
+                $manItems['Ostatní'][$man->tcznacka] = $man->name;
             }
         }
-
 
         $form->addSelect('manufacturer', 'manu', $manItems)
             ->setPrompt('Značka vozu')
@@ -222,14 +212,6 @@ class CarSelector extends Control
 
         $form->onSuccess[] = [$this, 'handleSaveData'];
 
-//        if ($this->loadValue('manufacturer')){
-//            $form['manufacturer']->setDefaultValue($this->loadValue('manufacturer'));
-
-//            if ($this->loadValue('model')){
-//                $form['model']->setDefaultValue($this->loadValue('model'));
-//            }
-//        }
-
         return $form;
     }
 
@@ -244,42 +226,66 @@ class CarSelector extends Control
     }
 
 
-
-
     public function render(): void
     {
         $this->template->setFile(__DIR__ . '/CarSelector.latte');
 
-        if ($last = $this->loadValue(self::SESS_LAST_SEL_KEY)) {
-            $parts = explode('_', $last);
-            $this->template->lastParts = $parts;
-        }
-
-    // vytvoreni promennych se seznamem znacek
+        // vytvoreni promennych se seznamem znacek
         $preferovane = $this->apiManager->getCarManufacturers(1);
         $ostatni = $this->apiManager->getCarManufacturers(0);
+
         // nastavuji promenne do template
         $this->template->preferovane = $preferovane;
         $this->template->ostatni = $ostatni;
 
-    // vytvoreni promenne se seznamem modelu
+        // vytvoreni promenne se seznamem modelu
         $manId = $this->loadValue('manufacturer');
         $models = $this->apiManager->getCarManufacturerModels($manId);
         $this->template->modely = $models;
 
-    // vytvoreni promenne se seznamem motoru
+        // vytvoreni promenne se seznamem motoru
         $modId = $this->loadValue('model');
         $motors = $this->apiManager->getCarModelVehicles($modId);
         $this->template->motory = $motors;
+        $vehicleItems = [];
+
+        //dotahnu data ze session
+        $kom = $this->loadValue('komfort');
+        $vehId = $this->loadValue('vehicle');
+
+        // vyplnim ze sessiony jiz vyplnene informace
+        if ($manId) {
+            $this['carSelector']['manufacturer']->setDefaultValue($manId);
+            $this['carSelector']['model']->setDisabled(false);
+
+            foreach ($models as $model) {
+                $modelsItems[$model->tcmodel] = $model->fullname;
+            }
+
+            // vytahnu seznam modelu a naplnim jimi select, vypisu co bylo zvoleno
+            if ($modId){
+                $this->handleSetModel($modId);
+                $this['carSelector']['model']->setItems($modelsItems);
+                $this['carSelector']['model']->setDefaultValue($modId);
+                $this['carSelector']['vehicle']->setDisabled(false);
+
+
+                // vytahnu seznam motoru a naplnim jimi select, vypisu co bylo zvoleno
+                if ($vehId) {
+//                    $this['carSelector']['vehicle']->setItems($vehicleItems);
+                    $this['carSelector']['vehicle']->setDefaultValue($vehId);
+
+
+                    $carSelect = [];
+                    $this->template->carSelect = $carSelect;
+
+                    bdump($vehId);
+                    $this->handleSaveData($vehId, $kom);
+                }
+            }
+        }
 
         $this->template->render();
-    }
-
-
-    public function actionDefault()
-    {
-        $this->template->selMan = $this->loadValue('manufacturer');
-
     }
 
 

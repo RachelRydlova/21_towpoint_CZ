@@ -42,14 +42,8 @@ header nav a:first-of-type span
 {
 	float: left;
 	width: 100%;
-/*	padding-bottom: 40px;*/
 	background-color: #ff9900;
-/*	background-image: url("tow-outline.svg"), url("tow-outline2.svg");
-	background-repeat: no-repeat;
-	background-position: 110% 70%, left top;
-	background-size: auto 800px, auto 450px;*/
 	color: white;
-/*	min-height: 300px;*/
 	position: relative;
 	padding-top: 30px;
 	padding-bottom: 30px;
@@ -176,16 +170,10 @@ header nav a:first-of-type span
 	background-color: white;
 }
 
-#imark > *,
-#imodel > *,
-#imotor > *
+
+#sel select > *
 {
 	display: none;
-}
-
-#sel select
-{
-	display: block;
 }
 
 #form .inputs textarea
@@ -671,28 +659,18 @@ header nav a:first-of-type span
 
 
 
-
-
-
-
-
-
-
-
-
-
 #form,
 #form2
 {
 	float: left;
 	width: 100%;
 	padding-bottom: 40px;
-	/*pointer-events: none;*/
 	transition: opacity 250ms linear;
 }
 
 #form2
 {
+
 	opacity: 0.33;
 }
 
@@ -822,6 +800,7 @@ header nav a:first-of-type span
 	margin-right: auto;
 	padding: 20px 0px;
 	border-bottom: 1px solid #525252;
+	cursor: pointer;
 }
 
 .radios:last-of-type
@@ -1135,12 +1114,12 @@ header nav a:first-of-type span
 	-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	-webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
-	cursor: pointer;
 	margin-bottom: 15px;
 }
 
 #gdpr input
 {
+	cursor: pointer;
 	position: absolute;
 	background-color: #525252;
 	width: 34px;

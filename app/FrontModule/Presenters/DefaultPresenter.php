@@ -72,6 +72,7 @@ class DefaultPresenter extends BasePresenter
         $comp = new OrderForm($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($contact) use ($p) {
+            bdump($contact, 'coPosilamZOrderFormu');
             $manufacturer = $p->session->getSection('carSection')->manufacturer;
             $model = $p->session->getSection('carSection')->model;
             $vehicle = $p->session->getSection('carSection')->vehicle;
@@ -80,7 +81,6 @@ class DefaultPresenter extends BasePresenter
 
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
                 'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
-//            Debugger::barDump($carInfo, 'InfoCoPosilamZOrderFormu');
             $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
             $this->apiManager->sendDataToApi($dataToReva);
         };
@@ -111,12 +111,13 @@ class DefaultPresenter extends BasePresenter
         $form->addEmail('email')
             ->setHtmlAttribute('placeholder', 'E-mail')
             ->setHtmlType('email')
-            ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.');
+            ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.')
+            ->setOption('description', 'Vyplňte svoji e-mailovou adresu ve správném formátu.');
         $form->addText('message')
             ->setHtmlAttribute('placeholder', 'Vzkaz')
-            ->setRequired('Vyplňte vzkaz.');
-        $form->addSubmit('send', 'Odeslat')
-            ->setHtmlAttribute('class', 'cta');
+            ->setRequired('Vyplňte vzkaz.')
+            ->setHtmlAttribute('class', 'last');
+        $form->addSubmit('send', 'Odeslat');
         $form->onSuccess[] = [$this, 'PartnerFormSucceeded'];
 
         return $form;
@@ -129,15 +130,8 @@ class DefaultPresenter extends BasePresenter
      */
     public function partnerFormSucceeded(Form $form, $data): void
     {
-        $this->flashMessage('Zpráva byla úspěšně odeslána.', 'success');
-        $this->apiManager->getPartnerData($data);
+        $this->apiManager->sendPartnerData($data);
         $this->redirect('this');
-    }
-
-    public function actionDefault()
-    {
-
-//        $this->template->selMan = $this->session->getSection('carSelector')->manufacturer;
     }
 
 

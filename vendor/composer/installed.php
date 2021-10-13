@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '5d96c2b750cd1d7962b5dbc18cc2dffbad1e3777',
+    'reference' => 'de61cc775c28e168e768a73f7c332a0fecabedd9',
     'name' => 'nette/web-project',
   ),
   'versions' => 
@@ -130,12 +130,12 @@
     ),
     'doctrine/orm' => 
     array (
-      'pretty_version' => '2.10.0',
-      'version' => '2.10.0.0',
+      'pretty_version' => '2.10.1',
+      'version' => '2.10.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '07e15a00382982dc8088093669108d2174e456ea',
+      'reference' => 'f346379c7bf39a9f46771cfd9043e0eb2dd98793',
     ),
     'doctrine/persistence' => 
     array (
@@ -157,21 +157,21 @@
     ),
     'guzzlehttp/promises' => 
     array (
-      'pretty_version' => '1.4.1',
-      'version' => '1.4.1.0',
+      'pretty_version' => '1.5.0',
+      'version' => '1.5.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => '8e7d04f1f6450fef59366c399cfad4b9383aa30d',
+      'reference' => '136a635e2b4a49b9d79e9c8fee267ffb257fdba0',
     ),
     'guzzlehttp/psr7' => 
     array (
-      'pretty_version' => '1.8.2',
-      'version' => '1.8.2.0',
+      'pretty_version' => '1.8.3',
+      'version' => '1.8.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'dc960a912984efb74d0a90222870c72c87f10c91',
+      'reference' => '1afdd860a2566ed3c2b0b4a3de6e23434a79ec85',
     ),
     'latte/latte' => 
     array (
@@ -184,12 +184,12 @@
     ),
     'nette/application' => 
     array (
-      'pretty_version' => 'v3.1.3',
-      'version' => '3.1.3.0',
+      'pretty_version' => 'v3.1.4',
+      'version' => '3.1.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'c1229f66210a7a4a7dd62cf9f1757a393d3c8067',
+      'reference' => 'db6eedc199732ed6cf9982da97a38219e8601c62',
     ),
     'nette/bootstrap' => 
     array (
@@ -211,12 +211,12 @@
     ),
     'nette/component-model' => 
     array (
-      'pretty_version' => 'v3.0.1',
-      'version' => '3.0.1.0',
+      'pretty_version' => 'v3.0.2',
+      'version' => '3.0.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => '66409cf5507c77edb46ffa88cf6a92ff58395601',
+      'reference' => '20a39df12009029c7e425bc5e0439ee4ab5304af',
     ),
     'nette/database' => 
     array (
@@ -247,12 +247,12 @@
     ),
     'nette/forms' => 
     array (
-      'pretty_version' => 'v3.1.4',
-      'version' => '3.1.4.0',
+      'pretty_version' => 'v3.1.5',
+      'version' => '3.1.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => '3883b688d6bc3b7ff0054996a9df9059a8768c4d',
+      'reference' => '2786ebc772cde724dad945e8bc2d7c578d831f4e',
     ),
     'nette/http' => 
     array (
@@ -351,7 +351,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '5d96c2b750cd1d7962b5dbc18cc2dffbad1e3777',
+      'reference' => 'de61cc775c28e168e768a73f7c332a0fecabedd9',
     ),
     'nettrine/annotations' => 
     array (

@@ -49,6 +49,10 @@ $(function () {
     //zobrazeni znacek
     $(document).on('focus','#imark',function(){
         $('#preffered').slideDown(300);
+        $('#selmodely').slideUp(300);
+    });
+    $(document).on('click','#snippet-carSelector-manufacturer',function(e){
+        e.stopImmediatePropagation();
     });
     $(document).on('blur', '#imark', function (){
         $('#preffered').slideUp(300);
@@ -119,6 +123,9 @@ $(function () {
             $('#nabidka').removeClass('loading');
             $('#cenaPevne7').show();
             $('#pref-0, #koule-0, #el-0').prop('checked', true);
+            $('#frm-calculator-calculator :input').prop('disabled', false);
+            $('#frm-orderForm-orderForm :input').prop('disabled', false);
+            $('#redukce-0 , #redukce-1').prop('disabled', true);
         })
     });
     $(document).on('focus','#imotor',function(){
@@ -225,6 +232,19 @@ $(function () {
 
     })
 
+    // odeslani vyplnenych dat po zadani mailu
+    $(document).on('blur', '#frm-orderForm-orderForm-email', function (){
+        // zjistim co vse vyplnil v kontaktu
+        $data = this.value;
+        console.log($data);
+        // handlerem poslu data k dalsimu zpracovani
+        $.nette.ajax({
+            url: '?do=orderForm-sendMail',
+            data: {'orderForm-email': $data}
+        });
+    })
+
+
     // zasuvka prepina redukci
     $(document).on('click', '.el', function (){
         if ($('#el-1').is(':checked')) {
@@ -241,48 +261,6 @@ $(function () {
         return false;
     });
 
-
-
-
-    // // kontrola vyplneni kontaktu a odeslani formu
-    // $('#form2 .cta').click(function() {
-    //
-    //
-    //    // zkontroluju jestli je vyplnen email
-    //     if ($('#frm-orderForm-orderForm-email').empty()) {
-    //         $('#errorEmail').show();
-    //         $('#frm-orderForm-orderForm-email').parent().addClass('error');
-    //     }
-    //    // zkontroluju jestli je vyplneno telefonni cislo
-    //     if ($('#frm-orderForm-orderForm-tel').empty()) {
-    //         $('#errorTel').show();
-    //         $('#frm-orderForm-orderForm-tel').parent().addClass('error');
-    //     }
-    //     //zkontroluju gdpr
-    //     if (!$('.poptavka .yesno').hasClass('sel')) {
-    //         $('.poptavka .yesno').addClass('error');
-    //         $('.poptavka .yesno p').show();
-    //     }
-    //
-    //
-    //     if ($('#errorEmail, #errorTel').hide()){
-    //         $('.poptavka .yesno').removeClass('error');
-    //         $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
-    //         $('#frm-orderForm-orderForm-email').parent().removeClass('error');
-    //         $('.poptavka .yesno p, #errorTel, #errorEmail').hide();
-    //         $(document).addClass('loading');
-    //         $('.final_loader').stop(true).delay(1000).fadeIn(200);
-    //
-    //
-    //     }
-
-
-
-
-
-    // });
-
-
     // FUNKCE
 
     // vytahuju hodnoty vsech radio buttonu na strance
@@ -291,6 +269,5 @@ $(function () {
         $("input:radio[type=radio]:checked").each(function(){ch_list.push($(this).val());});
         return ch_list;
     }
-
 
 })

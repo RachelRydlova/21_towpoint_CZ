@@ -294,23 +294,23 @@ class ApiManager
 
 
         // vytahuji informaci, zda byl zvolen komfort
-         $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
+        $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
 
         // preference Cena x Kvalita
         $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
-         if ($pref == 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
+        if ($pref == 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
 
         // koule Pevne x Odnimatelne
         $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
-         if ($koule == 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
+        if ($koule == 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
 
         // elektrika 7pin x 13pin
         $el = Arrays::get($dataToReva, ['carInfo', 'el']);
-         if ($el == 0) { $el = '7pin'; } else { $el = '13pin'; }
+        if ($el == 0) { $el = '7pin'; } else { $el = '13pin'; }
         $e = Arrays::get($dataToReva, ['carInfo', 'el']);
         if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
 
-         Debugger::barDump($dataToReva, 'dataDoRevy');
+        Debugger::barDump($dataToReva, 'dataDoRevy');
 
 
         $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
@@ -349,25 +349,15 @@ class ApiManager
             'elektrika_cena'=>$ele->price_moc_dph,
             'montaz_cena'=>$el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'},
             'comfort'=>$comfort
-            );
+        );
 
         Debugger::barDump($pole);
-
-
-//        $method = 'POST';
-//        $request = new \GuzzleHttp\Psr7\Request($method, $url, [], json_encode($pole));
-//        $client = new Client();
-//        $response = $client->send($request);
-//        dump(json_decode($response->getBody()->getContents()));
-//        die;
-
-
         $client = new Client();
         $response = $client->request('POST', $url, [
-            'form_params' => $pole
+                'form_params' => $pole
             ]
         );
-        dump(json_decode($response->getBody()->getContents()));
+        bdump(json_decode($response->getBody()->getContents()));
         die();
 
 
@@ -375,13 +365,31 @@ class ApiManager
 
     /**
      * data ze zpravy od partnera -> prozatim nikam neodesilam, bude se predelavat
+     * odeslani dat z formulare partnera na maily
      * @param $data
      */
-    public function getPartnerData($data)
+    public function sendPartnerData($data)
     {
-        Debugger::barDump($data, 'partnerDataVApi');
-    }
+        bdump($data);
+        $post=$_POST;
+        $pole=array('fullname'=>$data['name'].' '.$data['surname'],
+            'position'=>$data['position'],
+            'firma'=>$data['company'],
+            'mesto'=>$data['city'],
+            'psc'=>$data['zipcode'],
+            'email'=>$data['email'],
+            'vzkaz'=>$data['message']);
+        $url='https://reva.vapol.cz/api/api/request-towpoint-partner-contact/?token='.self::get_secret([]);
 
+        $client = new Client();
+        $response = $client->request('POST', $url, [
+                'form_params' => $pole
+            ]
+        );
+//        dump(json_decode($response->getBody()->getContents()));
+        Debugger::log(print_r($data,true),'debug-partner');
+        die();
+    }
 
 
 
