@@ -384,6 +384,29 @@ class ApiManager
 
 
     /**
+     * @param $email
+     */
+    public function sendPreRequest($email)
+    {
+        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+
+        $pole=array(
+            'session_id'=> $this->session->getId(),
+            'final_request'=> 0,
+            'email'=>$email,
+        );
+
+        $client = new Client();
+        $response = $client->request('POST', $url, [
+                'form_params' => $pole
+            ]
+        );
+        bdump(json_decode($response->getBody()->getContents()));
+        die();
+    }
+
+
+    /**
      * data ze zpravy od partnera -> prozatim nikam neodesilam, bude se predelavat
      * odeslani dat z formulare partnera na maily
      * @param $data
