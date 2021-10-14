@@ -27,10 +27,6 @@ $(function () {
         if (arg.currentSlideObject.hasClass('video')) $(arg.currentSlideObject).find('video').get(0).play();
     }
 
-    $(window).load(function (){
-        $('#snippet-calculator-summaryBox > div').hide();
-    });
-
     $(document).ready(function (){
         $('#imark, #imodel, #imotor').click(function (event){
             event.stopPropagation();
@@ -160,6 +156,7 @@ $(function () {
     $(document).on('click', '.radios div', function () {
         // prvni schovam vsechny ceny
         $('#snippet-calculator-summaryBox > div').hide();
+
 
         // vyber a zobrazeni spravne ceny
 

@@ -98,26 +98,25 @@
 {/snippetArea}
 
 <script n:ifset="$carSelect">
-    $(function () {
-        console.log('byla prenactena stranka a spusten script');
+    console.log('byla prenactena stranka a spusten script');
 
-        let value = $(this).attr('data-key');
-        $('#imotor').val(value);
-        $('#nabidka').addClass('loading');
-        $('#selmotory').slideUp(300);
+    let value = $(this).attr('data-key');
+    $('#imotor').val(value);
+    $('#nabidka').addClass('loading');
+    $('#selmotory').slideUp(300);
 
 
-        $.nette.ajax({
-            url: '?do=carSelector-saveData',
-            data: {'carSelector-vehicleId': value}
-        }).then(function (){
-            $('#form2').addClass('shown');
-            $('#nabidka').removeClass('loading');
-            $('#cenaPevne7').show();
-            $('#pref-0, #koule-0, #el-0').prop('checked', true);
-            $('#frm-calculator-calculator :input').prop('disabled', false);
-            $('#frm-orderForm-orderForm :input').prop('disabled', false);
-            $('#redukce-0 , #redukce-1').prop('disabled', true);
-        })
-    })
+    $.nette.ajax({
+        url: '?do=carSelector-saveData',
+        data: {'carSelector-vehicleId': value}
+    }).then(function (){
+        $('#form2').addClass('shown');
+        $('#nabidka').removeClass('loading');
+        $('#cenaPevne7').show();
+        $('#pref-0, #koule-0, #el-0').prop('checked', true);
+        $('#frm-calculator-calculator :input').prop('disabled', false);
+        $('#frm-orderForm-orderForm :input').prop('disabled', false);
+        $('#redukce-0 , #redukce-1').prop('disabled', true);
+    });
+
 </script>

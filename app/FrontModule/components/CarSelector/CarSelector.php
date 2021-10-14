@@ -142,6 +142,7 @@ class CarSelector extends Control
     public function handleSaveData($vehicleId, $comfort): void
     {
         bdump($vehicleId);
+        $this['carSelector']['vehicle']->setDefaultValue($vehicleId);
         // ulozeni motoru a komfortu do session
         $this->saveValue('vehicle', $vehicleId);
         // nacteni dat ze session
@@ -248,50 +249,6 @@ class CarSelector extends Control
         $modId = $this->loadValue('model');
         $motors = $this->apiManager->getCarModelVehicles($modId);
         $this->template->motory = $motors;
-        $vehicleItems = [];
-
-        //dotahnu data ze session
-        $kom = $this->loadValue('komfort');
-        $vehicleId = $this->loadValue('vehicle');
-
-        // vyplnim ze sessiony jiz vyplnene informace
-        if ($manId) {
-            $this['carSelector']['manufacturer']->setDefaultValue($manId);
-            $this['carSelector']['model']->setDisabled(false);
-
-            foreach ($models as $model) {
-                $modelsItems[$model->tcmodel] = $model->fullname;
-            }
-
-            // vytahnu seznam modelu a naplnim jimi select, vypisu co bylo zvoleno
-            if ($modId){
-                $this->handleSetModel($modId);
-                $this['carSelector']['model']->setItems($modelsItems);
-                $this['carSelector']['model']->setDefaultValue($modId);
-                $this['carSelector']['vehicle']->setDisabled(false);
-
-
-                // vytahnu seznam motoru a naplnim jimi select, vypisu co bylo zvoleno
-                if ($vehicleId) {
-                    if ($vehicles = $this->apiManager->getCarModelVehicles($modId)) {
-                        foreach ($vehicles as $category => $vehiclesInCategory) {
-                            $vehicleItems[$category] = [];
-                            foreach ($vehiclesInCategory as $vehicle) {
-                                $vehicleItems[$category][$vehicle->vozidlo_id] = $vehicle->fullname;
-                            }
-                        }
-                    }
-                    $this['carSelector']['vehicle']->setItems($vehicleItems);
-                    $this['carSelector']['vehicle']->setDefaultValue($vehicleId);
-
-                    $carSelect = [];
-                    $this->template->carSelect = $carSelect;
-
-                    $this->handleSaveData($vehicleId, $kom);
-                }
-            }
-        }
-
         $this->template->render();
     }
 

@@ -46,12 +46,6 @@ class DefaultPresenter extends BasePresenter
             $p['calculator']->setPrice($carInfo['vehicleId'], $carInfo['comfort']);
             Debugger::barDump($carInfo);
         };
-
-//        $selMan = $this->session->getSection('carSection')->manufacturer;
-//        $selMod = $this->session->getSection('carSection')->model;
-//        $this['carSelector']['form']['manufacturer']->setDefaultValue($selMan);
-//        Debugger::barDump($selMod, 'zvoleneAutoVComponente');
-
         return $comp;
     }
 
@@ -135,6 +129,63 @@ class DefaultPresenter extends BasePresenter
         $this->apiManager->sendPartnerData($data);
         $this->redirect('this');
     }
+
+    /**
+     * @throws \Throwable
+     */
+    public function actionDefault(): void
+    {
+        //dotahnu data ze session
+        $vehicleItems = [];
+        $kom = $this->session->getSection('carSection')->komfort;
+        $manId = $this->session->getSection('carSection')->manufacturer;
+        $modId = $this->session->getSection('carSection')->model;
+        $vehicleId = $this->session->getSection('carSection')->vehicle;
+        bdump($vehicleId);
+
+
+        // vyplnim ze sessiony jiz vyplnene informace
+        if ($manId) {
+
+            $this['carSelector']['carSelector']['manufacturer']->setDefaultValue($manId);
+            $this['carSelector']['carSelector']['model']->setDisabled(false);
+
+            $models = $this->apiManager->getCarManufacturerModels($manId);
+            foreach ($models as $model) {
+                $modelsItems[$model->tcmodel] = $model->fullname;
+            }
+
+            // vytahnu seznam modelu a naplnim jimi select, vypisu co bylo zvoleno
+            if ($modId){
+                $this['carSelector']->handleSetModel($modId);
+                $this['carSelector']['carSelector']['model']->setItems($modelsItems);
+                $this['carSelector']['carSelector']['model']->setDefaultValue($modId);
+                $this['carSelector']['carSelector']['vehicle']->setDisabled(false);
+
+
+                // vytahnu seznam motoru a naplnim jimi select, vypisu co bylo zvoleno
+                if ($vehicleId) {
+                    $vehicles = $this->apiManager->getCarModelVehicles($modId);
+                    foreach ($vehicles as $category => $vehiclesInCategory) {
+                        $vehicleItems[$category] = [];
+                        foreach ($vehiclesInCategory as $vehicle) {
+                            $vehicleItems[$category][$vehicle->vozidlo_id] = $vehicle->fullname;
+                        bdump($vehicleItems);
+                        }
+                    }
+                    $this['carSelector']['carSelector']['vehicle']->setItems($vehicleItems);
+                    $this['carSelector']['carSelector']['vehicle']->setDefaultValue($vehicleId);
+
+                    $carSelect = [];
+                    $this->template->carSelect = $carSelect;
+
+                    $this['carSelector']->handleSaveData($vehicleId, $kom);
+                }
+            }
+        }
+    }
+
+
 
 
     public function renderDefault(){
