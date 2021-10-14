@@ -143,6 +143,7 @@ class Calculator extends Control
 
         // ulozeni preferenci do session
         $this->saveValue('preferencies', $arrPref);
+        $this->presenter->sendPayload();
     }
 
 

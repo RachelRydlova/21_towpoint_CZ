@@ -273,6 +273,14 @@ class CarSelector extends Control
 
                 // vytahnu seznam motoru a naplnim jimi select, vypisu co bylo zvoleno
                 if ($vehicleId) {
+                    if ($vehicles = $this->apiManager->getCarModelVehicles($modId)) {
+                        foreach ($vehicles as $category => $vehiclesInCategory) {
+                            $vehicleItems[$category] = [];
+                            foreach ($vehiclesInCategory as $vehicle) {
+                                $vehicleItems[$category][$vehicle->vozidlo_id] = $vehicle->fullname;
+                            }
+                        }
+                    }
                     $this['carSelector']['vehicle']->setItems($vehicleItems);
                     $this['carSelector']['vehicle']->setDefaultValue($vehicleId);
 
