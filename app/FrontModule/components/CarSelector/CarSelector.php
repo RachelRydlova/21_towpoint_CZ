@@ -141,6 +141,7 @@ class CarSelector extends Control
      */
     public function handleSaveData($vehicleId, $comfort): void
     {
+        bdump($vehicleId);
         // ulozeni motoru a komfortu do session
         $this->saveValue('vehicle', $vehicleId);
         // nacteni dat ze session
@@ -251,7 +252,7 @@ class CarSelector extends Control
 
         //dotahnu data ze session
         $kom = $this->loadValue('komfort');
-        $vehId = $this->loadValue('vehicle');
+        $vehicleId = $this->loadValue('vehicle');
 
         // vyplnim ze sessiony jiz vyplnene informace
         if ($manId) {
@@ -271,16 +272,14 @@ class CarSelector extends Control
 
 
                 // vytahnu seznam motoru a naplnim jimi select, vypisu co bylo zvoleno
-                if ($vehId) {
-//                    $this['carSelector']['vehicle']->setItems($vehicleItems);
-                    $this['carSelector']['vehicle']->setDefaultValue($vehId);
-
+                if ($vehicleId) {
+                    $this['carSelector']['vehicle']->setItems($vehicleItems);
+                    $this['carSelector']['vehicle']->setDefaultValue($vehicleId);
 
                     $carSelect = [];
                     $this->template->carSelect = $carSelect;
 
-                    bdump($vehId);
-                    $this->handleSaveData($vehId, $kom);
+                    $this->handleSaveData($vehicleId, $kom);
                 }
             }
         }

@@ -90,9 +90,7 @@ class OrderForm extends Control
     public function handleSendMail(string $email)
     {
         Debugger::log(print_r($email,true),'uncomplete_order');
-        Debugger::barDump($email, 'emailVHandleru');
-//        $arrPref = json_decode($preference);
-//        Debugger::barDump($arrPref,'arrayVHnd');
+//        Debugger::barDump($email, 'emailVHandleru');
 
         // ulozeni preferenci do session
         $this->saveValue('email', $email);
@@ -110,6 +108,7 @@ class OrderForm extends Control
 
         $contact = $form->getValues();
         $this->onSuccess($contact);
+        bdump($contact, 'contactonOrderFormSuccess');
         $this->getPresenter()->redirect('Default:thanks');
     }
 
@@ -120,6 +119,27 @@ class OrderForm extends Control
         $this->template->setFile(__DIR__ . '/OrderForm.latte');
         $this->template->render();
     }
+
+
+    /**
+     * @param string $key
+     * @param string $value
+     */
+    public function saveValue($key,$value): void
+    {
+        $this->session->getSection('contact')->$key = $value;
+    }
+
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function loadValue($key)
+    {
+        return $this->session->getSection('contact')->$key;
+    }
+
 
 
 }

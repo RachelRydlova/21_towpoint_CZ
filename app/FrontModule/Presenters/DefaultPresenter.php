@@ -78,11 +78,13 @@ class DefaultPresenter extends BasePresenter
             $vehicle = $p->session->getSection('carSection')->vehicle;
             $comfort = $p->session->getSection('carSection')->comfort;
             $preference = $p->session->getSection('calculator')->preferencies;
+            $email = $p->session->getSection('contact')->email;
 
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
                 'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
             $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
             $this->apiManager->sendDataToApi($dataToReva);
+            $this->apiManager->sendPreRequest($email);
         };
         return $comp;
     }
