@@ -137,11 +137,30 @@ class DefaultPresenter extends BasePresenter
     {
         //dotahnu data ze session
         $vehicleItems = [];
+
+        // Zde musis ukladat SESSION
+        $params = $this->request->getParameters();
+        if (isset($params['carSelector-manId'])) {
+            $this->session->getSection('carSection')->manufacturer = $params['carSelector-manId'];
+            $this->session->getSection('carSection')->model  = null;
+            $this->session->getSection('carSection')->vehicle = null;
+        }
+        if (isset($params['carSelector-modId'])) {
+            $this->session->getSection('carSection')->model = $params['carSelector-modId'];
+            $this->session->getSection('carSection')->vehicle = null;
+        }
+        if (isset($params['carSelector-vehicleId'])) {
+            $this->session->getSection('carSection')->vehicle = $params['carSelector-vehicleId'];
+        }
+
         $kom = $this->session->getSection('carSection')->komfort;
         $manId = $this->session->getSection('carSection')->manufacturer;
         $modId = $this->session->getSection('carSection')->model;
         $vehicleId = $this->session->getSection('carSection')->vehicle;
         bdump($vehicleId);
+
+
+        Debugger::barDump($this->request->getParameters(), 'params');
 
 
         // vyplnim ze sessiony jiz vyplnene informace
@@ -157,9 +176,9 @@ class DefaultPresenter extends BasePresenter
 
             // vytahnu seznam modelu a naplnim jimi select, vypisu co bylo zvoleno
             if ($modId){
-                $this['carSelector']->handleSetModel($modId);
                 $this['carSelector']['carSelector']['model']->setItems($modelsItems);
                 $this['carSelector']['carSelector']['model']->setDefaultValue($modId);
+                $this['carSelector']->handleSetModel($modId);
                 $this['carSelector']['carSelector']['vehicle']->setDisabled(false);
 
 

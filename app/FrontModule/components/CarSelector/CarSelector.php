@@ -72,7 +72,11 @@ class CarSelector extends Control
             $this['carSelector']['model']->setItems($modelsItems);
             $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
+            $this->redrawControl('manufacturer');
             $this->redrawControl('model');
+
+            $this['carSelector']['vehicle']->setItems([]);
+            $this->redrawControl('vehicle');
 
             // prekresluju snippet pro list modelů
             $this->redrawControl('modelyList');
@@ -99,6 +103,10 @@ class CarSelector extends Control
             $this->redrawControl('vehicle');
             $this->redrawControl('img');
         } else {
+            // Nastavim spravne znacku
+            $manId = $this->loadValue('manufacturer');
+            $this->handleSetManufacturer($manId);
+
             $vehicleItems = [];
             if ($vehicles = $this->apiManager->getCarModelVehicles($modId)) {
                 foreach ($vehicles as $category => $vehiclesInCategory) {
@@ -121,6 +129,8 @@ class CarSelector extends Control
             }
 
             $this->redrawControl('carSelectorWrapper');
+            $this['carSelector']['model']->setDefaultValue($modId);
+            $this->redrawControl('model');
             $this->redrawControl('vehicle');
             $this->redrawControl('hiddenData');
 
@@ -141,6 +151,10 @@ class CarSelector extends Control
      */
     public function handleSaveData($vehicleId, $comfort): void
     {
+        // Nastavim spravne model
+        $modId = $this->loadValue('model');
+        $this->handleSetModel($modId);
+
         bdump($vehicleId);
         $this['carSelector']['vehicle']->setDefaultValue($vehicleId);
         // ulozeni motoru a komfortu do session
