@@ -73,6 +73,7 @@ class CarSelector extends Control
             $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('manufacturer');
+            $this->redrawControl('img');
             $this->redrawControl('model');
 
             $this['carSelector']['vehicle']->setItems([]);
@@ -82,6 +83,8 @@ class CarSelector extends Control
             $this->redrawControl('modelyList');
             // ulozeni zvolene znacky do session
             $this->saveValue('manufacturer', $manId);
+            $this->saveValue('model', null);
+            $this->saveValue('vehicle', null);
         }
     }
 
@@ -139,6 +142,7 @@ class CarSelector extends Control
         $this->redrawControl('motoryList');
         // ulozeni zvoleneho modelu do session
         $this->saveValue('model', $modId);
+        $this->saveValue('vehicle', null);
 
     }
 

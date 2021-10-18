@@ -42,24 +42,37 @@ $(function () {
     // VYBER ZNACKA | MODEL | MOTOR
     //
 
-    //zobrazeni znacek
+    //zobrazovani prvku carSelectoru
     $(document).on('focus','#imark',function(){
-        $('#preffered').slideDown(300);
+        $('#selznacky').slideDown(300);
         $('#selmodely').slideUp(300);
-    });
-    $(document).on('click','#snippet-carSelector-manufacturer',function(e){
-        e.stopImmediatePropagation();
+        $('#selmotory').slideUp(300);
     });
     $(document).on('blur', '#imark', function (){
-        $('#preffered').slideUp(300);
+        $('#selznacky').slideUp(300);
+    });
+    $(document).on('focus','#imodel',function(){
+        $('#selmodely').slideDown(300);
+        $('#selznacky').slideUp(300);
+        $('#selmotory').slideUp(300);
+    });
+    $(document).on('blur', '#imodel', function (){
+        $('#selmodely').slideUp(300);
+    });
+    $(document).on('focus','#imotor',function(){
+        $('#selmotory').slideDown(300);
+        $('#selznacky').slideUp(300);
+        $('#selmodely').slideUp(300);
+    });
+    $(document).on('blur', '#imotor', function (){
+        $('#selmotory').slideUp(300);
     });
 
 
     // Výběr značky
-    // Musím zachytit klik na odkaz!
-    $(document).on('click', '#preffered a.znackaLink', function () {
+    $(document).on('click', '.znackaLink', function (e) {
         // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
-        // e.preventDefault();
+        e.preventDefault();
 
         // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
@@ -70,9 +83,9 @@ $(function () {
             url: '?do=carSelector-setManufacturer',
             data: {'carSelector-manId': value}
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
+            $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
             $('#preffered').slideUp(300);
             $('#selmodely').slideDown(300);
-            $('#imodel').removeClass('dis');
         });
 
 
@@ -84,6 +97,7 @@ $(function () {
         e.preventDefault();
         let value = $(this).attr('data-key');
         $('#imodel').val(value);
+        $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
 
         $.nette.ajax({
             url: '?do=carSelector-setModel',
@@ -91,14 +105,7 @@ $(function () {
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
             $('#selmodely').slideUp(300);
             $('#selmotory').slideDown(300);
-            $('#imotor').removeClass('dis');
         });
-    });
-    $(document).on('focus','#imodel',function(){
-        $('#selmodely').slideDown(300);
-    });
-    $(document).on('blur', '#imodel', function (){
-        $('#selmodely').slideUp(300);
     });
 
 
@@ -115,6 +122,7 @@ $(function () {
             url: '?do=carSelector-saveData',
             data: {'carSelector-vehicleId': value}
         }).then(function (){
+            $('html, body').animate({ scrollTop: $("#imotor").offset().top }, 250);
             $('#form2').addClass('shown');
             $('#nabidka').removeClass('loading');
             $('#cenaPevne7').show();
@@ -123,12 +131,6 @@ $(function () {
             $('#frm-orderForm-orderForm :input').prop('disabled', false);
             $('#redukce-0 , #redukce-1').prop('disabled', true);
         })
-    });
-    $(document).on('focus','#imotor',function(){
-        $('#selmotory').slideDown(300);
-    });
-    $(document).on('blur', '#imotor', function (){
-        $('#selmotory').slideUp(300);
     });
 
 
@@ -257,6 +259,9 @@ $(function () {
         $(this).parent().toggleClass('sel');
         return false;
     });
+
+
+
 
     // FUNKCE
 

@@ -43,7 +43,7 @@ class OrderForm extends Control
     {
         $form = new Form();
 
-        $form->getElementPrototype()->setAttribute('div', 'inputs');
+        $form->getElementPrototype()->setAttribute('class', 'inputs');
 
         $staty = ['Česká republika', 'Slovensko', 'Maďarsko'];
 
@@ -77,11 +77,9 @@ class OrderForm extends Control
             ->setRequired('Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.');
 
         $form->addSubmit('success', 'Odeslat')
-            ->setDisabled()
-            ->setAttribute('class', 'cta');
+            ->setDisabled();
 
-
-        $form->onSuccess[] = [$this, 'onOrderFormSuccess'];
+        $form->onSuccess[] = [$this, 'OrderFormSucceeded'];
 
         return $form;
     }
@@ -90,10 +88,10 @@ class OrderForm extends Control
     public function handleSendMail(string $email)
     {
         Debugger::log(print_r($email,true),'uncomplete_order');
-//        Debugger::barDump($email, 'emailVHandleru');
 
         // ulozeni preferenci do session
         $this->saveValue('email', $email);
+        $this->onSuccess($email);
     }
 
 
@@ -102,14 +100,12 @@ class OrderForm extends Control
      * @param Form $form
      * @throws \Throwable
      */
-    public function onOrderFormSuccess(Form $form): void
+    public function orderFormSucceeded(Form $form): void
     {
-        // ulozit kontakty do session
-
         $contact = $form->getValues();
-        $this->onSuccess($contact);
         bdump($contact, 'contactonOrderFormSuccess');
         $this->getPresenter()->redirect('Default:thanks');
+        $this->onSuccess($contact);
     }
 
 

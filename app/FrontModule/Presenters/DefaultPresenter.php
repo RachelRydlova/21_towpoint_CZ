@@ -44,7 +44,7 @@ class DefaultPresenter extends BasePresenter
         $p = $this;
         $comp->onSuccess[] = function ($carInfo) use ($p) {
             $p['calculator']->setPrice($carInfo['vehicleId'], $carInfo['comfort']);
-            Debugger::barDump($carInfo);
+//            Debugger::barDump($carInfo);
         };
         return $comp;
     }
@@ -113,9 +113,10 @@ class DefaultPresenter extends BasePresenter
             ->setHtmlAttribute('placeholder', 'Vzkaz')
             ->setRequired('Vyplňte vzkaz.')
             ->setHtmlAttribute('class', 'last');
-        $form->addSubmit('send', 'Odeslat');
-        $form->onSuccess[] = [$this, 'PartnerFormSucceeded'];
 
+        $form->addSubmit('send', 'Odeslat')
+            ->setAttribute('class', 'cta');
+        $form->onSuccess[] = [$this, 'PartnerFormSucceeded'];
         return $form;
     }
 
@@ -127,6 +128,7 @@ class DefaultPresenter extends BasePresenter
     public function partnerFormSucceeded(Form $form, $data): void
     {
         $this->apiManager->sendPartnerData($data);
+        bdump($data, 'dataVPartnerFormSucceeded');
         $this->redirect('this');
     }
 
@@ -138,7 +140,7 @@ class DefaultPresenter extends BasePresenter
         //dotahnu data ze session
         $vehicleItems = [];
 
-        // Zde musis ukladat SESSION
+        // Zde ukladam SESSION
         $params = $this->request->getParameters();
         if (isset($params['carSelector-manId'])) {
             $this->session->getSection('carSection')->manufacturer = $params['carSelector-manId'];
@@ -154,56 +156,19 @@ class DefaultPresenter extends BasePresenter
         }
 
         $kom = $this->session->getSection('carSection')->komfort;
-        $manId = $this->session->getSection('carSection')->manufacturer;
         $modId = $this->session->getSection('carSection')->model;
         $vehicleId = $this->session->getSection('carSection')->vehicle;
-        bdump($vehicleId);
-
 
         Debugger::barDump($this->request->getParameters(), 'params');
 
-
-        // vyplnim ze sessiony jiz vyplnene informace
-        if ($manId) {
-
-            $this['carSelector']['carSelector']['manufacturer']->setDefaultValue($manId);
-            $this['carSelector']['carSelector']['model']->setDisabled(false);
-
-            $models = $this->apiManager->getCarManufacturerModels($manId);
-            foreach ($models as $model) {
-                $modelsItems[$model->tcmodel] = $model->fullname;
-            }
-
-            // vytahnu seznam modelu a naplnim jimi select, vypisu co bylo zvoleno
-            if ($modId){
-                $this['carSelector']['carSelector']['model']->setItems($modelsItems);
-                $this['carSelector']['carSelector']['model']->setDefaultValue($modId);
-                $this['carSelector']->handleSetModel($modId);
-                $this['carSelector']['carSelector']['vehicle']->setDisabled(false);
-
-
-                // vytahnu seznam motoru a naplnim jimi select, vypisu co bylo zvoleno
-                if ($vehicleId) {
-                    $vehicles = $this->apiManager->getCarModelVehicles($modId);
-                    foreach ($vehicles as $category => $vehiclesInCategory) {
-                        $vehicleItems[$category] = [];
-                        foreach ($vehiclesInCategory as $vehicle) {
-                            $vehicleItems[$category][$vehicle->vozidlo_id] = $vehicle->fullname;
-                        bdump($vehicleItems);
-                        }
-                    }
-                    $this['carSelector']['carSelector']['vehicle']->setItems($vehicleItems);
-                    $this['carSelector']['carSelector']['vehicle']->setDefaultValue($vehicleId);
-
-                    $carSelect = [];
-                    $this->template->carSelect = $carSelect;
-
-                    $this['carSelector']->handleSaveData($vehicleId, $kom);
-                }
+        if (!$this->isAjax()) {
+            $this['carSelector']->handleSetModel($modId);
+            if ($vehicleId) {
+                $this['carSelector']->handleSaveData($vehicleId, $kom);
+                $this->template->carSelect = true;
             }
         }
     }
-
 
 
 

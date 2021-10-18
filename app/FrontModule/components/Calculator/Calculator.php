@@ -45,7 +45,7 @@ class Calculator extends Control
     {
 
         $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
-        Debugger::barDump($prices, 'cenyAPI');
+//        Debugger::barDump($prices, 'cenyAPI');
 
 
         // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
@@ -80,7 +80,7 @@ class Calculator extends Control
             $this->template->data = $data;
         }
 
-        Debugger::barDump($data, 'variantyCen');
+//        Debugger::barDump($data, 'variantyCen');
 
 
 

@@ -121,7 +121,7 @@ header nav a,
 	margin-right: 5px;
 	float: left;
 	text-align: center;
-	/*text-transform: uppercase;*/
+	text-transform: uppercase;
 }
 
 header nav a:last-of-type

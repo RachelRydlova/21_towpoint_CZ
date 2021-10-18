@@ -404,11 +404,11 @@ class ApiManager
             'vzkaz'=>$data['message']);
         $url='https://reva.vapol.cz/api/api/request-towpoint-partner-contact/?token='.self::get_secret([]);
 
-        $client = new Client();
-        $response = $client->request('POST', $url, [
-                'form_params' => $pole
-            ]
-        );
+//        $client = new Client();
+//        $response = $client->request('POST', $url, [
+//                'form_params' => $pole
+//            ]
+//        );
 //        dump(json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'debug-partner');
         die();

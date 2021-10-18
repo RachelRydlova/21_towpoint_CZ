@@ -32,7 +32,7 @@
         {input vehicleId}
     {/snippet}
 
-    <div id="preffered">
+    <div id="selznacky">
         <div class="logos">
             <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
                 <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
@@ -40,7 +40,7 @@
 
         </div>
         <div class="all">
-            <a href="javascript:;" n:foreach="$ostatni as $key => $carInfo" title="{$carInfo->name}" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
+            <a href="javascript:;" title="{$carInfo->name}" n:foreach="$ostatni as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
                 {$carInfo->name}
             </a>
         </div>
