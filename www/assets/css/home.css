@@ -146,7 +146,6 @@ header nav a:first-of-type span
    appearance: none;
 }
 
-
 #sel select,
 #imark,
 #imodel,
@@ -203,7 +202,7 @@ header nav a:first-of-type span
 #form .inputs p.complete
 {
 	color: #d50000;
-	margin-bottom: 15px;
+	margin-bottom: 1em;
 	display: none;
 }
 
@@ -485,6 +484,14 @@ header nav a:first-of-type span
 	padding-left: 35px;
 	float: right;
 }
+
+
+
+
+
+
+
+
 
 
 
@@ -1109,11 +1116,21 @@ header nav a:first-of-type span
 
 .poptavka p
 {
+	display: inline-block;
 	color: #525252;
 	margin-bottom: 20px;
 	text-align: center;
 }
 
+/*.poptavka > span p*/
+/*{*/
+/*	padding: 0px 50px;*/
+/*}*/
+
+/*.poptavka .cta*/
+/*{*/
+/*	margin-top: 15px;*/
+/*}*/
 
 .poptavka p strong
 {
@@ -1147,10 +1164,6 @@ header nav a:first-of-type span
 {
 	display: block;
 	padding: 0px;
-}
-
-p.error {
-	color: #d50000;
 }
 
 .thanks {
