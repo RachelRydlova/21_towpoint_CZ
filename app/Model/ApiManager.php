@@ -363,27 +363,27 @@ class ApiManager
 
     }
 
-    /**
-     * @param $email
-     */
-    public function sendPreRequest($email)
-    {
-        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
-
-        $pole=array(
-            'session_id'=> $this->session->getId(),
-            'final_request'=> 0,
-            'email'=>$email,
-        );
-
-        $client = new Client();
-        $response = $client->request('POST', $url, [
-                'form_params' => $pole
-            ]
-        );
-        bdump(json_decode($response->getBody()->getContents()));
-        die();
-    }
+//    /**
+//     * @param $email
+//     */
+//    public function sendPreRequest($email)
+//    {
+//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+//
+//        $pole=array(
+//            'session_id'=> $this->session->getId(),
+//            'final_request'=> 0,
+//            'email'=>$email,
+//        );
+//
+//        $client = new Client();
+//        $response = $client->request('POST', $url, [
+//                'form_params' => $pole
+//            ]
+//        );
+//        bdump(json_decode($response->getBody()->getContents()));
+//        die();
+//    }
 
 
     /**
@@ -404,12 +404,12 @@ class ApiManager
             'vzkaz'=>$data['message']);
         $url='https://reva.vapol.cz/api/api/request-towpoint-partner-contact/?token='.self::get_secret([]);
 
-//        $client = new Client();
-//        $response = $client->request('POST', $url, [
-//                'form_params' => $pole
-//            ]
-//        );
-//        dump(json_decode($response->getBody()->getContents()));
+        $client = new Client();
+        $response = $client->request('POST', $url, [
+                'form_params' => $pole
+            ]
+        );
+        dump(json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'debug-partner');
         die();
     }

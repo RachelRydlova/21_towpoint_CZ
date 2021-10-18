@@ -62,13 +62,20 @@ class CarSelector extends Control
 
         } else {
 
+            $manItems = [];
+            if ($mans = $this->apiManager->getCarManufacturers(0)) {
+                foreach ($mans as $man) {
+                    $manItems['Ostatní'][$man->tcznacka] = $man->name;
+                }
+            }
+
             $modelsItems = [];
             if ($models = $this->apiManager->getCarManufacturerModels($manId)) {
                 foreach ($models as $model) {
                     $modelsItems[$model->tcmodel] = $model->fullname;
                 }
             }
-            $this['carSelector']['manufacturer']->setDefaultValue($manId);
+            $this['carSelector']['manufacturer']->setDefaultValue($manItems['Ostatní'][$manId]);
             $this['carSelector']['model']->setItems($modelsItems);
             $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
@@ -208,9 +215,11 @@ class CarSelector extends Control
             }
         }
 
-        $form->addSelect('manufacturer', 'manu', $manItems)
-            ->setPrompt('Značka vozu')
-            ->setAttribute('id', 'imark');
+        $form->addText('manufacturer', 'manu')
+//            ->setPrompt('Značka vozu')
+            ->setAttribute('id', 'imark')
+            ->setAttribute('placeholder', 'Značka vozu')
+            ->setAttribute('readonly', 'readonly');
         $form->addHidden('manufacturerId');
 
         $form->addSelect('model', '')

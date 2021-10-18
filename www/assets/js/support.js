@@ -27,12 +27,6 @@ $(function () {
         if (arg.currentSlideObject.hasClass('video')) $(arg.currentSlideObject).find('video').get(0).play();
     }
 
-    $(document).ready(function (){
-        $('#imark, #imodel, #imotor').click(function (event){
-            event.stopPropagation();
-        })
-
-    })
 
 
 
@@ -232,16 +226,16 @@ $(function () {
     })
 
     // odeslani vyplnenych dat po zadani mailu
-    $(document).on('blur', '#frm-orderForm-orderForm-email', function (){
-        // zjistim co vse vyplnil v kontaktu
-        $data = this.value;
-        console.log($data);
-        // handlerem poslu data k dalsimu zpracovani
-        $.nette.ajax({
-            url: '?do=orderForm-sendMail',
-            data: {'orderForm-email': $data}
-        });
-    })
+    // $(document).on('blur', '#frm-orderForm-orderForm-email', function (){
+    //     // zjistim co vse vyplnil v kontaktu
+    //     $email = this.value;
+    //     console.log($email);
+    //     // handlerem poslu data k dalsimu zpracovani
+    //     $.nette.ajax({
+    //         url: '?do=orderForm-sendMail',
+    //         data: {'orderForm-email': $email}
+    //     });
+    // })
 
 
     // zasuvka prepina redukci

@@ -67,12 +67,18 @@ class DefaultPresenter extends BasePresenter
         $p = $this;
         $comp->onSuccess[] = function ($contact) use ($p) {
             bdump($contact, 'coPosilamZOrderFormu');
+
             $manufacturer = $p->session->getSection('carSection')->manufacturer;
             $model = $p->session->getSection('carSection')->model;
             $vehicle = $p->session->getSection('carSection')->vehicle;
             $comfort = $p->session->getSection('carSection')->comfort;
             $preference = $p->session->getSection('calculator')->preferencies;
             $email = $p->session->getSection('contact')->email;
+
+            // defaultne nastavim preference
+            if (!$preference) {
+                $preference = ['0', '0', '0'];
+            }
 
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
                 'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
