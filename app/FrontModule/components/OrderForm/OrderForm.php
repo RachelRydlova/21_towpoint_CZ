@@ -48,36 +48,36 @@ class OrderForm extends Control
         $staty = ['Česká republika', 'Slovensko', 'Maďarsko'];
 
         $form->addText('name', "Jméno")
-            ->setDisabled()
+//            ->setDisabled()
             ->setAttribute('placeholder', 'Jméno');
         $form->addText('surname', "Příjmení")
-            ->setDisabled()
+//            ->setDisabled()
             ->setAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
-            ->setDisabled()
+//            ->setDisabled()
             ->setAttribute('placeholder', 'E-mail')
             ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.');
         $form->addText('tel', "Telefon")
-            ->setDisabled()
+//            ->setDisabled()
             ->setAttribute('placeholder', 'Telefon')
             ->setRequired('Vyplňte své telefonní číslo nejlépe ve formátu +420 123 456 789.');
         $form->addText('psc', "PSČ")
-            ->setDisabled()
+//            ->setDisabled()
             ->setAttribute('placeholder', 'PSČ');
         $form->addText('mesto', "Obec / město")
-            ->setDisabled()
+//            ->setDisabled()
             ->setAttribute('placeholder', 'Obec / město');
         $form->addTextArea('note', "Poznámky")
-            ->setDisabled()
+//            ->setDisabled()
             ->setAttribute('placeholder', 'Poznámky');
-        $form->addSelect('state', 'Stát', $staty)
-            ->setDisabled();
+        $form->addSelect('state', 'Stát', $staty);
+//            ->setDisabled();
         $form->addCheckbox('gdpr')
-            ->setDisabled()
+//            ->setDisabled()
             ->setRequired('Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.');
 
-        $form->addSubmit('success', 'Odeslat')
-            ->setDisabled();
+        $form->addSubmit('success', 'Odeslat');
+//            ->setDisabled();
 
         $form->onSuccess[] = [$this, 'OrderFormSucceeded'];
 
