@@ -167,6 +167,10 @@ header nav a:hover span,
 
 
 
+#imark select
+{
+	display: none;
+}
 
 
 #main,

@@ -122,7 +122,7 @@ header nav a:first-of-type span
 #form  textarea,
 #imark,
 #imodel,
-#imotor
+#imodel
 {
 	float: left;
 	width: 100%;
@@ -149,7 +149,7 @@ header nav a:first-of-type span
 #sel select,
 #imark,
 #imodel,
-#imotor
+#imodel
 {
 	width: calc((100% - 60px) / 3);
 	margin-right: 30px;
