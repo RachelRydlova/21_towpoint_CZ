@@ -166,7 +166,6 @@ class CarSelector extends Control
         $modId = $this->loadValue('model');
         $this->handleSetModel($modId);
 
-        bdump($vehicleId);
         $this['carSelector']['vehicle']->setDefaultValue($vehicleId);
         // ulozeni motoru a komfortu do session
         $this->saveValue('vehicle', $vehicleId);

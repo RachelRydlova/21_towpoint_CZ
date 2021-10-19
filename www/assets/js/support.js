@@ -254,6 +254,14 @@ $(function () {
         return false;
     });
 
+    // kontaktni formular / povinne udaje
+    // $(document).on('click', '#form .cta', function (){
+    //     $('#form .inputs p.complete').show();
+    //     if ($('frm-orderForm-orderForm-email').empty()){
+    //         $('#form .inputs p').style.display = "inline";
+    //     }
+    // })
+
 
 
 

@@ -137,7 +137,7 @@ header nav a span,
 	padding: 10px 20px;
 	float: left;
 	width: 100%;
-
+	cursor: pointer;
 	transition: 100ms transform, 100ms background-color, 100ms color;
 }
 
@@ -154,23 +154,10 @@ header nav a:hover span,
 	transform: translateY(-5px);
 }
 
-.cta.alt
+.cta span > input
 {
-	background-color: white;
+	cursor: pointer;
 }
-
-.cta.alt span
-{
-	background-color: white;
-	color: black;
-}
-
-.cta.alt:hover span
-{
-	background-color: #525252;
-	color: white;
-}
-
 
 
 #imark select

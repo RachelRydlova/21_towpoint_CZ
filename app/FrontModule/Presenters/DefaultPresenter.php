@@ -33,7 +33,6 @@ class DefaultPresenter extends BasePresenter
     /** @var ICarSelectorFactory @inject */
     public $carSelectorFactory;
 
-
     /**
      * formular pro vyber vozu
      * @return CarSelector
@@ -66,14 +65,12 @@ class DefaultPresenter extends BasePresenter
         $comp = new OrderForm($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($contact) use ($p) {
-            bdump($contact, 'coPosilamZOrderFormu');
-
             $manufacturer = $p->session->getSection('carSection')->manufacturer;
             $model = $p->session->getSection('carSection')->model;
             $vehicle = $p->session->getSection('carSection')->vehicle;
             $comfort = $p->session->getSection('carSection')->comfort;
             $preference = $p->session->getSection('calculator')->preferencies;
-            $email = $p->session->getSection('contact')->email;
+//            $email = $p->session->getSection('contact')->email;
 
             // defaultne nastavim preference
             if (!$preference) {
@@ -83,8 +80,11 @@ class DefaultPresenter extends BasePresenter
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
                 'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
             $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
+
             $this->apiManager->sendDataToApi($dataToReva);
-            $this->apiManager->sendPreRequest($email);
+//            $this->apiManager->sendPreRequest($email);
+            bdump($dataToReva);
+            $this->redirect('Default:thanks');
         };
         return $comp;
     }

@@ -45,39 +45,30 @@ class OrderForm extends Control
 
         $form->getElementPrototype()->setAttribute('class', 'inputs');
 
-        $staty = ['Česká republika', 'Slovensko', 'Maďarsko'];
+        $staty = ['Česká republika', 'Slovensko'];
 
         $form->addText('name', "Jméno")
-//            ->setDisabled()
-            ->setAttribute('placeholder', 'Jméno');
+            ->setHtmlAttribute('placeholder', 'Jméno');
         $form->addText('surname', "Příjmení")
-//            ->setDisabled()
-            ->setAttribute('placeholder', 'Příjmení');
+            ->setHtmlAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
-//            ->setDisabled()
-            ->setAttribute('placeholder', 'E-mail')
+            ->setHtmlAttribute('placeholder', 'E-mail')
+            ->setOption('description', 'Vyplňte svoji e-mailovou adresu ve správném formátu.')
             ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.');
         $form->addText('tel', "Telefon")
-//            ->setDisabled()
-            ->setAttribute('placeholder', 'Telefon')
+            ->setHtmlAttribute('placeholder', 'Telefon')
             ->setRequired('Vyplňte své telefonní číslo nejlépe ve formátu +420 123 456 789.');
         $form->addText('psc', "PSČ")
-//            ->setDisabled()
-            ->setAttribute('placeholder', 'PSČ');
+            ->setHtmlAttribute('placeholder', 'PSČ');
         $form->addText('mesto', "Obec / město")
-//            ->setDisabled()
-            ->setAttribute('placeholder', 'Obec / město');
+            ->setHtmlAttribute('placeholder', 'Obec / město');
         $form->addTextArea('note', "Poznámky")
-//            ->setDisabled()
-            ->setAttribute('placeholder', 'Poznámky');
+            ->setHtmlAttribute('placeholder', 'Poznámky');
         $form->addSelect('state', 'Stát', $staty);
-//            ->setDisabled();
         $form->addCheckbox('gdpr')
-//            ->setDisabled()
             ->setRequired('Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.');
 
         $form->addSubmit('success', 'Odeslat');
-//            ->setDisabled();
 
         $form->onSuccess[] = [$this, 'OrderFormSucceeded'];
 
@@ -103,10 +94,7 @@ class OrderForm extends Control
     public function orderFormSucceeded(Form $form): void
     {
         $contact = $form->getValues();
-        bdump($form, 'contactonOrderFormSuccess');
         $this->onSuccess($contact);
-        bdump($form);
-        $this->getPresenter()->redirect('Default:thanks');
     }
 
 

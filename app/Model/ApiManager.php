@@ -310,8 +310,6 @@ class ApiManager
         $e = Arrays::get($dataToReva, ['carInfo', 'el']);
         if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
 
-        Debugger::barDump($dataToReva, 'dataDoRevy');
-
 
         $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
         $data=json_decode(file_get_contents($url));
@@ -351,14 +349,13 @@ class ApiManager
             'comfort'=>$comfort
         );
 
-        Debugger::barDump($pole);
         $client = new Client();
         $response = $client->request('POST', $url, [
                 'form_params' => $pole
             ]
         );
         bdump(json_decode($response->getBody()->getContents()));
-        die();
+//        die();
 
 
     }

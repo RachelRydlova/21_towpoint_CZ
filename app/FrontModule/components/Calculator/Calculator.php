@@ -45,8 +45,6 @@ class Calculator extends Control
     {
 
         $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
-//        Debugger::barDump($prices, 'cenyAPI');
-
 
         // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
         $data = [];
@@ -79,9 +77,6 @@ class Calculator extends Control
             $data['kvalitaOdnimatelne13'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E13->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_13_dph;
             $this->template->data = $data;
         }
-
-//        Debugger::barDump($data, 'variantyCen');
-
 
 
         $this->redrawControl('summaryBox');
@@ -137,9 +132,7 @@ class Calculator extends Control
     {
 
         Debugger::log(print_r($preference,true),'debug-pref');
-//        Debugger::barDump($preference, 'prefererVHandleru');
         $arrPref = json_decode($preference);
-//        Debugger::barDump($arrPref,'arrayVHnd');
 
         // ulozeni preferenci do session
         $this->saveValue('preferencies', $arrPref);
