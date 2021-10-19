@@ -146,6 +146,12 @@ header nav a:first-of-type span
    appearance: none;
 }
 
+#form input:required
+{
+	border: solid #ff9900 1px;
+	box-shadow: inset 3px 4px 5px 0px #ff9900;
+}
+
 #sel select,
 #imark,
 #imodel,
@@ -175,35 +181,6 @@ header nav a:first-of-type span
 #sel option
 {
 	font-family: osb, Arial, Helvetica, sans-serif;
-}
-
-#form .inputs > div p
-{
-	float: left;
-	clear: left;
-	margin-top: 5px;
-	font-size: 12px;
-	color: #d50000;
-	margin-left: 20px;
-	display: none;
-}
-
-#form .inputs > .error p
-{
-	display: inline;
-}
-
-#form .inputs > .error input
-{
-	border: 1px solid #d50000;
-	color: #d50000;
-}
-
-#form .inputs p.complete
-{
-	color: #d50000;
-	margin-bottom: 1em;
-	display: none;
 }
 
 
@@ -484,14 +461,6 @@ header nav a:first-of-type span
 	padding-left: 35px;
 	float: right;
 }
-
-
-
-
-
-
-
-
 
 
 
@@ -1122,15 +1091,6 @@ header nav a:first-of-type span
 	text-align: center;
 }
 
-/*.poptavka > span p*/
-/*{*/
-/*	padding: 0px 50px;*/
-/*}*/
-
-/*.poptavka .cta*/
-/*{*/
-/*	margin-top: 15px;*/
-/*}*/
 
 .poptavka p strong
 {
