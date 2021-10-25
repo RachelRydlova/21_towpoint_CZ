@@ -1226,8 +1226,8 @@ p.error {
 	{
 		max-width: none;
 		width: 100%;
-		padding-left: 50px;
-		padding-right: 50px;
+		padding-left: 25px;
+		padding-right: 25px;
 	}
 }
 
@@ -1635,6 +1635,31 @@ p.error {
 	}
 }
 
+@media screen and (max-width: 737px)
+{
+	#imark, #imodel {
+		display: flex;
+		font-size: 14px;
+		width: calc((100% - 30px) / 2);
+	}
+
+	#imark {
+		margin-right: 20px;
+	}
+
+	#imodel {
+		margin-right: 0;
+	}
+
+	#imotor {
+		font-size: 14px;
+		width: 100%;
+		margin-right: 0px;
+		margin-top: 20px;
+	}
+}
+
+
 
 @media screen and (max-width: 720px)
 {
@@ -1899,25 +1924,14 @@ p.error {
 
 @media screen and (max-width: 520px)
 {
-	#sel select
+	#imark, #imodel, #imotor
 	{
 		width: 100%;
 		margin-bottom: 10px;
+		margin-top: 0;
 	}
 	
-	#sel select:last-of-type
-	{
-		margin-top: 0px;
-		margin-bottom: 5px;
-	}
-	
-	#sel > div.load1,
-	#sel > div.load2
-	{
-		background-position: center 237px;
-	}
-	
-	
+
 	#form .radios > div a
 	{
 		float: right;

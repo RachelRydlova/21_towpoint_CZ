@@ -42,8 +42,9 @@ class DefaultPresenter extends BasePresenter
         $comp = new CarSelector($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($carInfo) use ($p) {
+            if ($carInfo['comfort'] == '') $carInfo['comfort'] = 0;
             $p['calculator']->setPrice($carInfo['vehicleId'], $carInfo['comfort']);
-//            Debugger::barDump($carInfo);
+            Debugger::log(print_r($carInfo,true),'selectedCar');
         };
         return $comp;
     }
@@ -70,11 +71,10 @@ class DefaultPresenter extends BasePresenter
             $vehicle = $p->session->getSection('carSection')->vehicle;
             $comfort = $p->session->getSection('carSection')->comfort;
             $preference = $p->session->getSection('calculator')->preferencies;
-//            $email = $p->session->getSection('contact')->email;
 
             // defaultne nastavim preference
             if (!$preference) {
-                $preference = ['0', '0', '0'];
+                $preference = ['0', '0', '0', '0'];
             }
 
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
@@ -82,10 +82,17 @@ class DefaultPresenter extends BasePresenter
             $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
 
             $this->apiManager->sendDataToApi($dataToReva);
-//            $this->apiManager->sendPreRequest($email);
-            bdump($dataToReva);
+            Debugger::log(print_r($dataToReva,true),'dataToApiManager');
+
             $this->redrawControl('ordForm');
             $this->redirect('Default:thanks');
+        };
+
+        // pri zadani emailu odesilam podklady k spusteni prefinal requestu
+        $comp->onMailSuccess[] = function ($email) use ($p) {
+            $email = $p->session->getSection('contact')->email;
+            $this->apiManager->sendPreRequest($email);
+
         };
         return $comp;
     }

@@ -340,6 +340,7 @@ class ApiManager
             'psc'=>$dataToReva['contact']->psc,
             'mesto'=>$dataToReva['contact']->mesto,
             'stat'=>$dataToReva['contact']->state,
+            'kvalita'=>$pref,
             'typ_tazne'=>$koule,
             'tazne'=>isset($tazne->id_nomenklatura),	// kod produktu - nomenklatura
             'tazne_cena'=>isset($tazne->price_moc_dph),
@@ -355,32 +356,11 @@ class ApiManager
                 'form_params' => $pole
             ]
         );
-        bdump(json_decode($response->getBody()->getContents()));
+        $data = (json_decode($response->getBody()->getContents()));
+        Debugger::log(print_r($data,true),'finalRequest');
 //        die();
 
     }
-
-//    /**
-//     * @param $email
-//     */
-//    public function sendPreRequest($email)
-//    {
-//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
-//
-//        $pole=array(
-//            'session_id'=> $this->session->getId(),
-//            'final_request'=> 0,
-//            'email'=>$email,
-//        );
-//
-//        $client = new Client();
-//        $response = $client->request('POST', $url, [
-//                'form_params' => $pole
-//            ]
-//        );
-//        bdump(json_decode($response->getBody()->getContents()));
-//        die();
-//    }
 
 
     /**
@@ -388,7 +368,7 @@ class ApiManager
      */
     public function sendPreRequest($email)
     {
-        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $pole=array(
             'session_id'=> $this->session->getId(),
@@ -401,7 +381,10 @@ class ApiManager
                 'form_params' => $pole
             ]
         );
-        bdump(json_decode($response->getBody()->getContents()));
+
+        bdump([$url, $pole], 'url a data - prefinalRequest');
+        $data = (json_decode($response->getBody()->getContents()));
+        Debugger::log(print_r($data,true),'prefinalRequest');
         die();
     }
 

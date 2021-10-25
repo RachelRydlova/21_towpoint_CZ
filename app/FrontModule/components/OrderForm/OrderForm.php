@@ -15,6 +15,7 @@ use Nette\Http\Session;
 class OrderForm extends Control
 {
     public $onSuccess;
+    public $onMailSuccess;
 
     /** @var Nette\Http\Session - kompletni session pro nette */
     public $session;
@@ -76,15 +77,18 @@ class OrderForm extends Control
         return $form;
     }
 
-//
-//    public function handleSendMail(string $email)
-//    {
-//        Debugger::log(print_r($email,true),'uncomplete_order');
-//
-//        // ulozeni preferenci do session
-//        $this->saveValue('email', $email);
-//        $this->onSuccess($email);
-//    }
+
+    /**
+     * @param string $email
+     */
+    public function handleSendMail(string $email)
+    {
+        Debugger::log(print_r($email,true),'uncomplete_order');
+
+        // ulozeni preferenci do session
+        $this->saveValue('email', $email);
+        $this->onMailSuccess($email);
+    }
 
 
 

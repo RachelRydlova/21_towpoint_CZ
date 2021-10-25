@@ -136,7 +136,6 @@ class CarSelector extends Control
         $vehicle = $this->loadValue('vehicle');
         $model = $this->loadValue('model');
         $manufacturer = $this->loadValue('manufacturer');
-        $this->saveValue('comfort', $comfort);
 
 
         $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle, 'comfort'=> $comfort];
@@ -150,6 +149,7 @@ class CarSelector extends Control
     public function handleSetComfort($comfort): void
     {
         $vehicleId = $this->loadValue('vehicle');
+        $this->saveValue('comfort', $comfort);
 //
         if ($vehicleId == null){
             // pokud se meni comfort ale v session neni vehicle_id nestane se nic

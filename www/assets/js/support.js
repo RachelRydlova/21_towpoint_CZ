@@ -153,7 +153,6 @@ $(function () {
             $('#cenaPevne7').show();
             $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
         })
-        console.log(value);
     });
 
 
@@ -231,17 +230,17 @@ $(function () {
         });
     })
 
-    // odeslani vyplnenych dat po zadani mailu
-    // $(document).on('blur', '#frm-orderForm-orderForm-email', function (){
-    //     // zjistim co vse vyplnil v kontaktu
-    //     $email = this.value;
-    //     console.log($email);
-    //     // handlerem poslu data k dalsimu zpracovani
-    //     $.nette.ajax({
-    //         url: '?do=orderForm-sendMail',
-    //         data: {'orderForm-email': $email}
-    //     });
-    // })
+    // odeslani vyplnenych dat po zadani mailu / prefinal request
+    $(document).on('blur', '#frm-orderForm-orderForm-email', function (){
+        // zjistim co vse vyplnil v kontaktu
+        let email = document.querySelector('#frm-orderForm-orderForm-email').value;
+        console.log(email);
+        // handlerem poslu data k dalsimu zpracovani
+        $.nette.ajax({
+            url: '?do=orderForm-sendMail',
+            data: {'orderForm-email': email}
+        });
+    })
 
 
     // zasuvka prepina redukci
@@ -253,12 +252,6 @@ $(function () {
         }
     });
 
-
-    // ODESLANI POPTAVKY
-    // $('.poptavka .yesno div, .poptavka .yesno a').click(function(){
-    //     $(this).parent().toggleClass('sel');
-    //     return false;
-    // });
 
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
     $('#form2 .cta').click(function(){
