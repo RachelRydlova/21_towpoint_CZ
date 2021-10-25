@@ -1,3 +1,6 @@
+var uint;
+
+
 $(function () {
 
     // SLIDER BANNER
@@ -70,13 +73,13 @@ $(function () {
 
         // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
-        $('#imark').val(value);
-
+        let title = $(this).attr('title');
 
         $.nette.ajax({
             url: '?do=carSelector-setManufacturer',
             data: {'carSelector-manId': value}
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
+            $('#imark').val(title);
             $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
             $('#preffered').slideUp(300);
             $('#selmodely').slideDown(300);
@@ -90,7 +93,8 @@ $(function () {
     $(document).on('click', '#selmodely a.modelLink', function (e) {
         e.preventDefault();
         let value = $(this).attr('data-key');
-        $('#imodel').val(value);
+        let title = $(this).attr('title');
+        $('#imodel').val(title);
         $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
 
         $.nette.ajax({
@@ -99,6 +103,7 @@ $(function () {
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
             $('#selmodely').slideUp(300);
             $('#selmotory').slideDown(300);
+            $('#imodel').val(title);
         });
     });
 
@@ -107,7 +112,8 @@ $(function () {
     $(document).on('click', '#selmotory a.motorLink', function (e) {
         e.preventDefault();
         let value = $(this).attr('data-key');
-        $('#imotor').val(value);
+        let title = $(this).attr('title');
+        $('#imotor').val(title);
         $('#nabidka').addClass('loading');
         $('#selmotory').slideUp(300);
 
@@ -116,6 +122,7 @@ $(function () {
             url: '?do=carSelector-saveData',
             data: {'carSelector-vehicleId': value}
         }).then(function (){
+            $('#imotor').val(title);
             $('html, body').animate({ scrollTop: $("#imotor").offset().top }, 250);
             $('#form2').addClass('shown');
             $('#nabidka').removeClass('loading');
@@ -220,9 +227,6 @@ $(function () {
             url: '?do=calculator-setPref',
             data: {'calculator-preference': param}
         });
-        console.log(value);
-        console.log(param);
-
     })
 
     // odeslani vyplnenych dat po zadani mailu
@@ -254,15 +258,50 @@ $(function () {
         return false;
     });
 
-    // kontaktni formular / povinne udaje
-    // $(document).on('click', '#form .cta', function (){
-    //     $('#form .inputs p.complete').show();
-    //     if ($('frm-orderForm-orderForm-email').empty()){
-    //         $('#form .inputs p').style.display = "inline";
-    //     }
-    // })
+    // kontrola jestli jsou vyplneny povinne udaje, nastylovani
+    $('#form2 .cta').click(function(){
 
 
+        // zjistim jestli je vyplneny email
+        let mail = $('#frm-orderForm-orderForm-email').value;
+        if (mail == ' ')
+        {
+            $('#frm-orderForm-orderForm-email').parent().removeClass();
+            $('.inputs p.complete').hide();
+        } else {
+            $('#frm-orderForm-orderForm-email').parent().addClass('error');
+            $('.inputs p.complete').show();
+        }
+
+        // zjistim jestli je vyplneny telefon
+        let tel = $('#frm-orderForm-orderForm-tel').value;
+        if (!tel){
+            $('#frm-orderForm-orderForm-tel').parent().addClass('error');
+            $('.inputs p.complete').show();
+        }
+
+        // potvrzeno GDPR?
+        let gdpr = 0;
+        if ($('#frm-orderForm-orderForm-gdpr').is(':checked')){
+            gdpr = 1;
+        }
+        // let gdpr = $('#frm-orderForm-orderForm-gdpr').value;
+        console.log(gdpr);
+        if (gdpr == 0){
+            $('.poptavka span > p').show().addClass('error');
+            $('.inputs p.complete').show();
+        } else {
+            $('.poptavka span > p').removeClass('error');
+            $('.poptavka span > p.hidden').hide();
+
+        }
+
+    });
+
+
+    // $(this).addClass('loading');
+    // $('.final_loader').stop(true).delay(1000).fadeIn(200);
+    // $('#form .yesno, #form .inputs > div, .poptavka .yesno').addClass('error');
 
 
     // FUNKCE

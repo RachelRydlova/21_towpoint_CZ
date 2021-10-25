@@ -57,13 +57,17 @@
             {ifset $data}
                 {foreach $data as $item => $value}
                     <div id="{$item}" class="hidden">
-                        <h2> Cena včetně montáže s DPH: {$value|number:0, ',', ' '} Kč</h2>
-                        <p>Cena je orientační a&nbsp;může se dle technického provedení vozidla mírně lišit, pro více informací kontaktujte naši zákaznickou linku.</p>
+{*                        {if value == 0}{$value}{/if}*}
+                        {if $value == 0}
+                            <h2 class="no">Pro zvolené vozidlo bohužel aktuálně nemáme k dispozici kompletní nabídku.</h2>
+                            <p class="no">Přesto nám odešlete tuto svoji poptávku a naši specialisté se Vám ozvou s individuálním návrhem řešení.</p>
+                        {else}
+                            <h2> Cena včetně montáže s DPH: {$value|number:0, ',', ' '} Kč</h2>
+                            <p>Cena je orientační a&nbsp;může se dle technického provedení vozidla mírně lišit, pro více informací kontaktujte naši zákaznickou linku.</p>
+                        {/if}
                     </div>
+
                 {/foreach}
-            {else}
-                <h2 class="no">Pro zvolené vozidlo bohužel aktuálně nemáme k&nbsp;dispozici kompletní&nbsp;nabídku.</h2>
-                <p>Přesto nám odešlete tuto svoji poptávku a&nbsp;naši specialisté se Vám ozvou s&nbsp;individuálním návrhem řešení.</p>
             {/ifset}
         {/snippet}
     </div>

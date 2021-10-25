@@ -44,6 +44,7 @@ class OrderForm extends Control
         $form = new Form();
 
         $form->getElementPrototype()->setAttribute('class', 'inputs');
+//        $form->getElementPrototype()->novalidate = "novalidate";
 
         $staty = ['Česká republika', 'Slovensko'];
 

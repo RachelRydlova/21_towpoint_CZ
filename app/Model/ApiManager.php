@@ -262,12 +262,12 @@ class ApiManager
     public function sendDataToApi($dataToReva)
     {
         // vytahnu info o znacce
-        $secret = self::countApiToken(array('onlyFavorities'=>'1'));
-        $url='https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=1&secret='.$secret;
+        $secret = self::countApiToken(array('onlyFavorities'=>'0'));
+        $url='https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret='.$secret;
         $data=json_decode(file_get_contents($url));
         $znacky=$data->data;
         $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
-        foreach ($znacky as $item) if ($manufacturerId==$item->tcznacka) $outznacka=$item->name;
+        if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId==$item->tcznacka) $outznacka=$item->name;
 
 
         // vytahnu info o modelu
@@ -314,7 +314,6 @@ class ApiManager
         $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
         $data=json_decode(file_get_contents($url));
 
-
         $out=$data->data;
         $tazne=$out->{$pref}->{$koule}->tazne;
         $ele=$out->{$pref}->{$koule}->elektro->{$e};
@@ -322,6 +321,7 @@ class ApiManager
 
         $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
+        bdump($dataToReva);
         $pole=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
@@ -340,6 +340,7 @@ class ApiManager
             'mesto'=>$dataToReva['contact']->mesto,
             'stat'=>$dataToReva['contact']->state,
             'typ_tazne'=>$koule,
+            bdump($tazne),
             'tazne'=>$tazne->id_nomenklatura,	// kod produktu - nomenklatura
             'tazne_cena'=>$tazne->price_moc_dph,
             'typ_elektrika'=>$e,
@@ -356,7 +357,6 @@ class ApiManager
         );
         bdump(json_decode($response->getBody()->getContents()));
 //        die();
-
 
     }
 

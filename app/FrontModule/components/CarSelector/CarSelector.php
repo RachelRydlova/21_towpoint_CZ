@@ -17,17 +17,12 @@ use Nette\Http\Session;
 class CarSelector extends Control
 {
 
-    public const SESS_LAST_SEL_KEY = 'carSelectorLastSelect';
-
-
     /** @var ApiManager */
     private $apiManager;
 
     public $onSuccess;
 
-    /**
-     * @var Nette\Http\Session - kompletni session pro nette
-     */
+    /** @var Nette\Http\Session - kompletni session pro nette */
     protected $session;
 
     /**
@@ -50,15 +45,10 @@ class CarSelector extends Control
     public function handleSetManufacturer($manId): void
     {
         if (!$manId) {
-            $this['carSelector']['model']->setItems([]);
-            $this['carSelector']['model']->setDisabled();
-            $this['carSelector']['vehicle']->setItems([]);
-            $this['carSelector']['vehicle']->setDisabled();
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('img');
             $this->redrawControl('model');
             $this->redrawControl('vehicle');
-
 
         } else {
 
@@ -69,21 +59,12 @@ class CarSelector extends Control
                 }
             }
 
-            $modelsItems = [];
-            if ($models = $this->apiManager->getCarManufacturerModels($manId)) {
-                foreach ($models as $model) {
-                    $modelsItems[$model->tcmodel] = $model->fullname;
-                }
-            }
             $this['carSelector']['manufacturer']->setDefaultValue($manItems['Ostatní'][$manId]);
-            $this['carSelector']['model']->setItems($modelsItems);
-            $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('manufacturer');
             $this->redrawControl('img');
             $this->redrawControl('model');
 
-            $this['carSelector']['vehicle']->setItems([]);
             $this->redrawControl('vehicle');
 
             // prekresluju snippet pro list modelů
@@ -104,10 +85,6 @@ class CarSelector extends Control
     public function handleSetModel($modId): void
     {
         if (!$modId) {
-            $this['carSelector']['model']->setItems([]);
-            $this['carSelector']['model']->setDisabled();
-            $this['carSelector']['vehicle']->setItems([]);
-            $this['carSelector']['vehicle']->setDisabled();
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('model');
             $this->redrawControl('vehicle');
@@ -117,21 +94,6 @@ class CarSelector extends Control
             $manId = $this->loadValue('manufacturer');
             $this->handleSetManufacturer($manId);
 
-            $vehicleItems = [];
-            if ($vehicles = $this->apiManager->getCarModelVehicles($modId)) {
-                foreach ($vehicles as $category => $vehiclesInCategory) {
-                    $vehicleItems[$category] = [];
-                    foreach ($vehiclesInCategory as $vehicle) {
-                        $vehicleItems[$category][$vehicle->vozidlo_id] = $vehicle->fullname;
-                    }
-                }
-            }
-            $this['carSelector']['vehicle']->setItems($vehicleItems);
-            $this['carSelector']['vehicle']->setDisabled(false);
-            // Hidden prvky
-            $this['carSelector']['modelId']->setDefaultValue($modId);
-            $this['carSelector']['vehicleId']->setDefaultValue(null);
-
             // Image modelu
             if ($img = $this->apiManager->getModelImage($modId)) {
                 $this->template->img = $img;
@@ -139,10 +101,10 @@ class CarSelector extends Control
             }
 
             $this->redrawControl('carSelectorWrapper');
-            $this['carSelector']['model']->setDefaultValue($modId);
+            $modInfo = $this->apiManager->getModelApiRow($manId, $modId);
+            $this['carSelector']['model']->setDefaultValue($modInfo->fullname);
             $this->redrawControl('model');
             $this->redrawControl('vehicle');
-            $this->redrawControl('hiddenData');
 
         }
         // prekresluju snippet pro list motorů
@@ -166,7 +128,8 @@ class CarSelector extends Control
         $modId = $this->loadValue('model');
         $this->handleSetModel($modId);
 
-        $this['carSelector']['vehicle']->setDefaultValue($vehicleId);
+        $vehInfo = $this->apiManager->getVehicleApiRow($modId,$vehicleId);
+        $this['carSelector']['vehicle']->setDefaultValue($vehInfo->fullname);
         // ulozeni motoru a komfortu do session
         $this->saveValue('vehicle', $vehicleId);
         // nacteni dat ze session
@@ -214,26 +177,30 @@ class CarSelector extends Control
             }
         }
 
-        $form->addText('manufacturer', 'manu')
+        $form->addText('manufacturer', 'manufacturer')
 //            ->setPrompt('Značka vozu')
-            ->setAttribute('id', 'imark')
-            ->setAttribute('placeholder', 'Značka vozu')
-            ->setAttribute('readonly', 'readonly');
+            ->setHtmlAttribute('id', 'imark')
+            ->setHtmlAttribute('placeholder', 'Značka vozu')
+            ->setHtmlAttribute('readonly', 'readonly');
         $form->addHidden('manufacturerId');
 
-        $form->addSelect('model', '')
-            ->setPrompt('Model vozu')
-            ->setAttribute('id', 'imodel')
-            ->setDisabled();
+        $form->addText('model', 'model')
+//            ->setPrompt('Model vozu')
+            ->setHtmlAttribute('id', 'imodel')
+            ->setHtmlAttribute('placeholder', 'Model vozu')
+//            ->setDisabled();
+            ->setHtmlAttribute('readonly', 'readonly');
         $form->addHidden('modelId');
 
-        $form->addSelect('vehicle', 'vehicle')
-            ->setPrompt('Motorizace')
-            ->setAttribute('id', 'imotor')
-            ->setDisabled();
+        $form->addText('vehicle', 'vehicle')
+//            ->setPrompt('Motorizace')
+            ->setHtmlAttribute('id', 'imotor')
+            ->setHtmlAttribute('placeholder', 'Motorizace')
+//            ->setDisabled();
+            ->setHtmlAttribute('readonly', 'readonly');
 
         $form->addHidden('vehicleId')
-            ->setAttribute('id', 'carSelectorVehicleIdHidden');
+            ->setHtmlAttribute('id', 'carSelectorVehicleIdHidden');
 
         $form->addCheckbox('komfort');
         $form->addSubmit('success', 'confirm');

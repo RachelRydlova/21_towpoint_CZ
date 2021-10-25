@@ -69,7 +69,7 @@
                 <div n:foreach="$motory as $category => $vehiclesInCategory">
                     {$category}
                     <div n:foreach="$vehiclesInCategory as $vehicle => $item">
-                        <a href="javascript:;" title="{$item->fullname}" data-key="{(int) $item->vozidlo_id}" class="motorLink">
+                        <a href="javascript:;" title="{$item->fullname}" data-key="{(int) $item->vozidlo_id}" class="motorLink" value="{$item->fullname}">
                             {$item->fullname}
                         </a>
                     </div>

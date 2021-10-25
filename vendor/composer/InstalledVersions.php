@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'de61cc775c28e168e768a73f7c332a0fecabedd9',
+    'reference' => '967a64b3f518a1c0ebad8a209ede4abc41011369',
     'name' => 'nette/web-project',
   ),
   'versions' => 
@@ -93,12 +93,12 @@ private static $installed = array (
     ),
     'doctrine/common' => 
     array (
-      'pretty_version' => '3.1.2',
-      'version' => '3.1.2.0',
+      'pretty_version' => '3.2.0',
+      'version' => '3.2.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a036d90c303f3163b5be8b8fde9b6755b2be4a3a',
+      'reference' => '6d970a11479275300b5144e9373ce5feacfa9b91',
     ),
     'doctrine/dbal' => 
     array (
@@ -129,12 +129,12 @@ private static $installed = array (
     ),
     'doctrine/inflector' => 
     array (
-      'pretty_version' => '2.0.3',
-      'version' => '2.0.3.0',
+      'pretty_version' => '2.0.4',
+      'version' => '2.0.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '9cf661f4eb38f7c881cac67c75ea9b00bf97b210',
+      'reference' => '8b7ff3e4b7de6b2c84da85637b59fd2880ecaa89',
     ),
     'doctrine/instantiator' => 
     array (
@@ -156,12 +156,12 @@ private static $installed = array (
     ),
     'doctrine/orm' => 
     array (
-      'pretty_version' => '2.10.1',
-      'version' => '2.10.1.0',
+      'pretty_version' => '2.10.2',
+      'version' => '2.10.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f346379c7bf39a9f46771cfd9043e0eb2dd98793',
+      'reference' => '81d472f6f96b8b571cafefe8d2fef89ed9446a62',
     ),
     'doctrine/persistence' => 
     array (
@@ -183,12 +183,12 @@ private static $installed = array (
     ),
     'guzzlehttp/promises' => 
     array (
-      'pretty_version' => '1.5.0',
-      'version' => '1.5.0.0',
+      'pretty_version' => '1.5.1',
+      'version' => '1.5.1.0',
       'aliases' => 
       array (
       ),
-      'reference' => '136a635e2b4a49b9d79e9c8fee267ffb257fdba0',
+      'reference' => 'fe752aedc9fd8fcca3fe7ad05d419d32998a06da',
     ),
     'guzzlehttp/psr7' => 
     array (
@@ -300,21 +300,21 @@ private static $installed = array (
     ),
     'nette/neon' => 
     array (
-      'pretty_version' => 'v3.2.2',
-      'version' => '3.2.2.0',
+      'pretty_version' => 'v3.3.0',
+      'version' => '3.3.0.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'e4ca6f4669121ca6876b1d048c612480e39a28d5',
+      'reference' => '33d262a0c4fb6c6371385f6dc8532f4e32c20ebc',
     ),
     'nette/php-generator' => 
     array (
-      'pretty_version' => 'v3.6.2',
-      'version' => '3.6.2.0',
+      'pretty_version' => 'v3.6.3',
+      'version' => '3.6.3.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'bce6abcd4090ab5eec24b78f26c753c6525a425c',
+      'reference' => 'fa374ae7b36be45241fd0b5acd49479a6d1227a3',
     ),
     'nette/robot-loader' => 
     array (
@@ -336,21 +336,21 @@ private static $installed = array (
     ),
     'nette/schema' => 
     array (
-      'pretty_version' => 'v1.2.1',
-      'version' => '1.2.1.0',
+      'pretty_version' => 'v1.2.2',
+      'version' => '1.2.2.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'f5ed39fc96358f922cedfd1e516f0dadf5d2be0d',
+      'reference' => '9a39cef03a5b34c7de64f551538cbba05c2be5df',
     ),
     'nette/security' => 
     array (
-      'pretty_version' => 'v3.1.4',
-      'version' => '3.1.4.0',
+      'pretty_version' => 'v3.1.5',
+      'version' => '3.1.5.0',
       'aliases' => 
       array (
       ),
-      'reference' => 'a78bbb9d2260fffd898701b1ebdafcc797acb663',
+      'reference' => 'c120893f561b09494486c66594720b2abcb099b2',
     ),
     'nette/tester' => 
     array (
@@ -377,7 +377,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'de61cc775c28e168e768a73f7c332a0fecabedd9',
+      'reference' => '967a64b3f518a1c0ebad8a209ede4abc41011369',
     ),
     'nettrine/annotations' => 
     array (
