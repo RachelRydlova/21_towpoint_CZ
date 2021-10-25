@@ -33,8 +33,7 @@ header nav a:first-of-type span
 	background-color: #ff9900;
 	color: white;
 	position: relative;
-	padding-top: 30px;
-	padding-bottom: 30px;
+	padding-bottom: 10px;
 }
 
 #sel > div:not(.subn)
@@ -153,11 +152,15 @@ header nav a:first-of-type span
 #imodel,
 #imotor
 {
-	width: calc((100% - 100px) / 3);
+	width: calc((100% - 60px) / 3);
 	margin-right: 30px;
 	padding-right: 50px;
 	background-color: white;
 }
+
+#imotor {
+	margin-right: 0;
+	}
 
 
 #sel select > *
@@ -1650,7 +1653,7 @@ p.error {
 	{
 		width: 100%;
 		margin-right: 0px;
-		margin-top: 5px;
+		margin-top: 20px;
 	}
 	
 	#sel h2

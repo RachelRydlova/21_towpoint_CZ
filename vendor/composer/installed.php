@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '967a64b3f518a1c0ebad8a209ede4abc41011369',
+    'reference' => 'c0c89dc5aaeada28a40a575c78a3123c61bdf1ff',
     'name' => 'nette/web-project',
   ),
   'versions' => 
@@ -351,7 +351,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '967a64b3f518a1c0ebad8a209ede4abc41011369',
+      'reference' => 'c0c89dc5aaeada28a40a575c78a3123c61bdf1ff',
     ),
     'nettrine/annotations' => 
     array (

@@ -311,6 +311,7 @@ class ApiManager
         if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
 
 
+
         $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
         $data=json_decode(file_get_contents($url));
 
@@ -340,12 +341,11 @@ class ApiManager
             'mesto'=>$dataToReva['contact']->mesto,
             'stat'=>$dataToReva['contact']->state,
             'typ_tazne'=>$koule,
-            bdump($tazne),
-            'tazne'=>$tazne->id_nomenklatura,	// kod produktu - nomenklatura
-            'tazne_cena'=>$tazne->price_moc_dph,
+            'tazne'=>isset($tazne->id_nomenklatura),	// kod produktu - nomenklatura
+            'tazne_cena'=>isset($tazne->price_moc_dph),
             'typ_elektrika'=>$e,
-            'elektrika'=>$ele->id_nomenklatura,	// kod produktu - nomenklatura
-            'elektrika_cena'=>$ele->price_moc_dph,
+            'elektrika'=> isset($ele->id_nomenklatura),	// kod produktu - nomenklatura
+            'elektrika_cena'=>isset($ele->price_moc_dph),
             'montaz_cena'=>$el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'},
             'comfort'=>$comfort
         );

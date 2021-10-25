@@ -85,7 +85,7 @@ $(function () {
             $('#selmodely').slideDown(300);
         });
 
-
+        console.log(value, title, '-> VYBER znacky');
     });
 
 
@@ -105,6 +105,7 @@ $(function () {
             $('#selmotory').slideDown(300);
             $('#imodel').val(title);
         });
+        console.log(value, title, '-> VYBER modelu');
     });
 
 
@@ -127,11 +128,12 @@ $(function () {
             $('#form2').addClass('shown');
             $('#nabidka').removeClass('loading');
             $('#cenaPevne7').show();
-            $('#pref-0, #koule-0, #el-0').prop('checked', true);
+            $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
             $('#frm-calculator-calculator :input').prop('disabled', false);
             $('#frm-orderForm-orderForm :input').prop('disabled', false);
             $('#redukce-0 , #redukce-1').prop('disabled', true);
         })
+        console.log(value, title, '-> VYBER motoru');
     });
 
 
@@ -253,29 +255,30 @@ $(function () {
 
 
     // ODESLANI POPTAVKY
-    $('.poptavka .yesno div, .poptavka .yesno a').click(function(){
-        $(this).parent().toggleClass('sel');
-        return false;
-    });
+    // $('.poptavka .yesno div, .poptavka .yesno a').click(function(){
+    //     $(this).parent().toggleClass('sel');
+    //     return false;
+    // });
 
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
     $('#form2 .cta').click(function(){
 
-
         // zjistim jestli je vyplneny email
-        let mail = $('#frm-orderForm-orderForm-email').value;
-        if (mail == ' ')
+        let mail = document.querySelector('#frm-orderForm-orderForm-email').value;
+        if (mail)
         {
             $('#frm-orderForm-orderForm-email').parent().removeClass();
-            $('.inputs p.complete').hide();
         } else {
             $('#frm-orderForm-orderForm-email').parent().addClass('error');
             $('.inputs p.complete').show();
         }
+        console.log(mail);
 
         // zjistim jestli je vyplneny telefon
-        let tel = $('#frm-orderForm-orderForm-tel').value;
-        if (!tel){
+        let tel = document.querySelector('#frm-orderForm-orderForm-tel').value;
+        if (tel){
+            $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
+        } else {
             $('#frm-orderForm-orderForm-tel').parent().addClass('error');
             $('.inputs p.complete').show();
         }
@@ -285,8 +288,6 @@ $(function () {
         if ($('#frm-orderForm-orderForm-gdpr').is(':checked')){
             gdpr = 1;
         }
-        // let gdpr = $('#frm-orderForm-orderForm-gdpr').value;
-        console.log(gdpr);
         if (gdpr == 0){
             $('.poptavka span > p').show().addClass('error');
             $('.inputs p.complete').show();
@@ -296,12 +297,16 @@ $(function () {
 
         }
 
+        if (mail && tel){
+            $('.inputs p.complete').hide();
+            if (gdpr == 1) {
+                $('#frm-orderForm-orderForm').addClass('loading');
+                $('.final_loader').stop(true).delay(1000).fadeIn(200);
+            }
+        }
+
     });
 
-
-    // $(this).addClass('loading');
-    // $('.final_loader').stop(true).delay(1000).fadeIn(200);
-    // $('#form .yesno, #form .inputs > div, .poptavka .yesno').addClass('error');
 
 
     // FUNKCE

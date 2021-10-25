@@ -1,63 +1,62 @@
-{form orderForm}
+    {form orderForm}
 
-    <div class="subn step step3">
-        <h2>Kontaktní údaje</h2>
-    </div>
-    <section id="form">
-        <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
+        <div class="subn step step3">
+            <h2>Kontaktní údaje</h2>
+        </div>
+        <section id="form">
+            <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
 
-        <!-- Jednoduché vykreslení chyb -->
-{*        <ul class="errors" n:if="$form->hasErrors()">*}
-{*            <li n:foreach="$form->errors as $error">{$error}</li>*}
-{*        </ul>*}
+            <!-- Jednoduché vykreslení chyb -->
+    {*        <ul class="errors" n:if="$form->hasErrors()">*}
+    {*            <li n:foreach="$form->errors as $error">{$error}</li>*}
+    {*        </ul>*}
 
-        <div>
-            <div class="inputs">
-                <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+            <div>
+                <div class="inputs">
+                    <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
 
-                {input note}
-                <div>  {input name}  </div>
-                <div>  {input surname}  </div>
-                <div class="required">
-                    {input email}
-                    <p>Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+                    {input note}
+                    <div>  {input name}  </div>
+                    <div>  {input surname}  </div>
+                    <div class="required">
+                        {input email}
+                        <p>Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+                    </div>
+                    <div class="required">
+                        {input tel}
+                        <p>Vyplňte své telefonní číslo &ndash; nejlépe ve&nbsp;formátu +420&nbsp;123&nbsp;456&nbsp;789.</p>
+                    </div>
+                    <div>  {input psc}  </div>
+                    <div>  {input mesto}  </div>
+                    <div>  {input state}  </div>
                 </div>
-                <div class="required">
-                    {input tel}
-                    <p>Vyplňte své telefonní číslo &ndash; nejlépe ve&nbsp;formátu +420&nbsp;123&nbsp;456&nbsp;789.</p>
-                </div>
-                <div>  {input psc}  </div>
-                <div>  {input mesto}  </div>
-                <div>  {input state}  </div>
             </div>
+
+
+        </section>
+
+
+        <div class="subn step step4">
+            <h2>Odeslat nezávaznou poptávku</h2>
         </div>
-
-
-    </section>
-
-
-    <div class="subn step step4">
-        <h2>Odeslat nezávaznou poptávku</h2>
-    </div>
-    <div class="poptavka">
-        <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
-        <div id="gdpr">
-{*            <div>*}
-            <input n:name="gdpr">
-{*            </div>*}
+        <div class="poptavka">
+            <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
+            <div id="gdpr">
+                <input n:name="gdpr">
+            </div>
+            <span>
+                <p>Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení</p>
+                <p class="hidden error">Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>
+            </span>
         </div>
-        <span>
-            <p>Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení</p>
-            <p class="hidden error">Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>
-        </span>
-    </div>
-    <a class="cta" onclick="this.querySelector('input').click()">
-        <span>
-            {input success}
-        </span>
-    </a>
+        <a class="cta">
+            <span>
+                {input success}
+            </span>
+        </a>
 
-    <div class="final_loader"><div>Odesíláme požadavek, mějte strpení...</div></div>
+        <div class="final_loader"><div>Odesíláme požadavek, mějte strpení...</div></div>
 
-{/form}
+    {/form}
+
 

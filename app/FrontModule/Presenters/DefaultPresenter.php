@@ -84,6 +84,7 @@ class DefaultPresenter extends BasePresenter
             $this->apiManager->sendDataToApi($dataToReva);
 //            $this->apiManager->sendPreRequest($email);
             bdump($dataToReva);
+            $this->redrawControl('ordForm');
             $this->redirect('Default:thanks');
         };
         return $comp;

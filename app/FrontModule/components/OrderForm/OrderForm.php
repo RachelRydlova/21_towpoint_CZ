@@ -54,7 +54,6 @@ class OrderForm extends Control
             ->setHtmlAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
             ->setHtmlAttribute('placeholder', 'E-mail')
-            ->setOption('description', 'Vyplňte svoji e-mailovou adresu ve správném formátu.')
             ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.');
         $form->addText('tel', "Telefon")
             ->setHtmlAttribute('placeholder', 'Telefon')
@@ -70,6 +69,7 @@ class OrderForm extends Control
             ->setRequired('Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.');
 
         $form->addSubmit('success', 'Odeslat');
+
 
         $form->onSuccess[] = [$this, 'OrderFormSucceeded'];
 

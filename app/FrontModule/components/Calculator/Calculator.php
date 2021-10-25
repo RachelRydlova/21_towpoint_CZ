@@ -87,12 +87,12 @@ class Calculator extends Control
         /*   KVALITA  */
         if ($prices->kvalita->pevne->tazne !== false){
             // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
-            if ($prices->cena->pevne->elektro->E7 !== false){
+            if ($prices->kvalita->pevne->elektro->E7 !== false){
                 $data['kvalitaPevne7'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E7->price_moc_dph + $prices->kvalita->pevne->montaz_cena_7_dph;
             } else { $data['kvalitaPevne7'] = '0'; }
 
             // v druhe moznosti pocitam preference > kvalita + pevne + 13pin + montaz
-            if ($prices->cena->pevne->elektro->E13 !== false) {
+            if ($prices->kvalita->pevne->elektro->E13 !== false) {
                 $data['kvalitaPevne13'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E13->price_moc_dph + $prices->kvalita->pevne->montaz_cena_13_dph;
             } else { $data['kvalitaPevne13'] = '0'; }
 
@@ -101,12 +101,12 @@ class Calculator extends Control
         if ($prices->kvalita->odnimatelne->tazne !== false) {
 
             // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
-            if ($prices->cena->pevne->elektro->E7 !== false) {
+            if ($prices->kvalita->pevne->elektro->E7 !== false) {
                 $data['kvalitaOdnimatelne7'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E7->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_7_dph;
             } else { $data['kvalitaOdnimatelne7'] = '0'; }
 
             // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
-            if ($prices->cena->pevne->elektro->E13 !== false) {
+            if ($prices->kvalita->pevne->elektro->E13 !== false) {
                 $data['kvalitaOdnimatelne13'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E13->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_13_dph;
             } else { $data['kvalitaOdnimatelne13'] = '0'; }
 

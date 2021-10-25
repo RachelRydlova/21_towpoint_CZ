@@ -92,7 +92,7 @@ final class Versions
   'tracy/tracy' => 'v2.8.7@8e708de7c611f626c8792d43f1c78812ea24e6f6',
   'nette/tester' => 'v2.4.1@b54326b3c1a2c6c76d2662a06b5ad5a10d822e98',
   'symfony/thanks' => 'v1.2.10@e9c4709560296acbd4fe9e12b8d57a925aa7eae8',
-  'nette/web-project' => 'dev-main@967a64b3f518a1c0ebad8a209ede4abc41011369',
+  'nette/web-project' => 'dev-main@c0c89dc5aaeada28a40a575c78a3123c61bdf1ff',
 );
 
     private function __construct()
