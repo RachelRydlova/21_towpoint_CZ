@@ -158,9 +158,16 @@ header nav a:first-of-type span
 	background-color: white;
 }
 
-#imotor {
+#imotor
+{
 	margin-right: 0;
-	}
+}
+
+#imodel:disabled,
+#imotor:disabled
+{
+	opacity: 0.5;
+}
 
 
 #sel select > *

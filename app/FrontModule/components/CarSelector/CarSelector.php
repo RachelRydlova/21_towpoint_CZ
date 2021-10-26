@@ -60,6 +60,7 @@ class CarSelector extends Control
             }
 
             $this['carSelector']['manufacturer']->setDefaultValue($manItems['Ostatní'][$manId]);
+            $this['carSelector']['model']->setDisabled(false);
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('manufacturer');
             $this->redrawControl('img');
@@ -103,6 +104,7 @@ class CarSelector extends Control
             $this->redrawControl('carSelectorWrapper');
             $modInfo = $this->apiManager->getModelApiRow($manId, $modId);
             $this['carSelector']['model']->setDefaultValue($modInfo->fullname);
+            $this['carSelector']['vehicle']->setDisabled(false);
             $this->redrawControl('model');
             $this->redrawControl('vehicle');
 
@@ -178,26 +180,23 @@ class CarSelector extends Control
         }
 
         $form->addText('manufacturer', 'manufacturer')
-//            ->setPrompt('Značka vozu')
             ->setHtmlAttribute('id', 'imark')
             ->setHtmlAttribute('placeholder', 'Značka vozu')
             ->setHtmlAttribute('readonly', 'readonly');
         $form->addHidden('manufacturerId');
 
         $form->addText('model', 'model')
-//            ->setPrompt('Model vozu')
             ->setHtmlAttribute('id', 'imodel')
             ->setHtmlAttribute('placeholder', 'Model vozu')
-//            ->setDisabled();
-            ->setHtmlAttribute('readonly', 'readonly');
+            ->setHtmlAttribute('readonly', 'readonly')
+            ->setDisabled();
         $form->addHidden('modelId');
 
         $form->addText('vehicle', 'vehicle')
-//            ->setPrompt('Motorizace')
             ->setHtmlAttribute('id', 'imotor')
             ->setHtmlAttribute('placeholder', 'Motorizace')
-//            ->setDisabled();
-            ->setHtmlAttribute('readonly', 'readonly');
+            ->setHtmlAttribute('readonly', 'readonly')
+            ->setDisabled();
 
         $form->addHidden('vehicleId')
             ->setHtmlAttribute('id', 'carSelectorVehicleIdHidden');
