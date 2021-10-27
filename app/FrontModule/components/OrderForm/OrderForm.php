@@ -54,11 +54,9 @@ class OrderForm extends Control
         $form->addText('surname', "Příjmení")
             ->setHtmlAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
-            ->setHtmlAttribute('placeholder', 'E-mail')
-            ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.');
+            ->setHtmlAttribute('placeholder', 'E-mail');
         $form->addText('tel', "Telefon")
-            ->setHtmlAttribute('placeholder', 'Telefon')
-            ->setRequired('Vyplňte své telefonní číslo nejlépe ve formátu +420 123 456 789.');
+            ->setHtmlAttribute('placeholder', 'Telefon');
         $form->addText('psc', "PSČ")
             ->setHtmlAttribute('placeholder', 'PSČ');
         $form->addText('mesto', "Obec / město")
@@ -66,8 +64,7 @@ class OrderForm extends Control
         $form->addTextArea('note', "Poznámky")
             ->setHtmlAttribute('placeholder', 'Poznámky');
         $form->addSelect('state', 'Stát', $staty);
-        $form->addCheckbox('gdpr')
-            ->setRequired('Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.');
+        $form->addCheckbox('gdpr');
 
         $form->addSubmit('success', 'Odeslat');
 

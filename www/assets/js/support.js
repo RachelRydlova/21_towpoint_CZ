@@ -40,29 +40,31 @@ $(function () {
     //
 
     //zobrazovani prvku carSelectoru
-    $(document).on('focus','#imark',function(){
-        $('#selznacky').slideDown(300);
-        $('#selmodely').slideUp(300);
-        $('#selmotory').slideUp(300);
+    $(document).on('click','#imark',function(){
+        value = this.value;
+        console.log(value);
+        $('#mark').slideDown(300);
+        $('#model').slideUp(300);
+        $('#motor').slideUp(300);
     });
     $(document).on('blur', '#imark', function (){
-        $('#selznacky').slideUp(300);
+        $('#mark').slideUp(300);
     });
     $(document).on('focus','#imodel',function(){
-        $('#selmodely').slideDown(300);
-        $('#selznacky').slideUp(300);
-        $('#selmotory').slideUp(300);
+        $('#model').slideDown(300);
+        $('#mark').slideUp(300);
+        $('#motor').slideUp(300);
     });
     $(document).on('blur', '#imodel', function (){
-        $('#selmodely').slideUp(300);
+        $('#model').slideUp(300);
     });
     $(document).on('focus','#imotor',function(){
-        $('#selmotory').slideDown(300);
-        $('#selznacky').slideUp(300);
-        $('#selmodely').slideUp(300);
+        $('#motor').slideDown(300);
+        $('#mark').slideUp(300);
+        $('#model').slideUp(300);
     });
     $(document).on('blur', '#imotor', function (){
-        $('#selmotory').slideUp(300);
+        $('#motor').slideUp(300);
     });
 
 
@@ -82,7 +84,7 @@ $(function () {
             $('#imark').val(title);
             $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
             $('#preffered').slideUp(300);
-            $('#selmodely').slideDown(300);
+            $('#model').slideDown(300);
         });
 
         console.log(value, title, '-> VYBER znacky');
@@ -90,7 +92,7 @@ $(function () {
 
 
     // Výběr modelu
-    $(document).on('click', '#selmodely a.modelLink', function (e) {
+    $(document).on('click', '#model a.modelLink', function (e) {
         e.preventDefault();
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
@@ -101,8 +103,8 @@ $(function () {
             url: '?do=carSelector-setModel',
             data: {'carSelector-modId': value}
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
-            $('#selmodely').slideUp(300);
-            $('#selmotory').slideDown(300);
+            $('#model').slideUp(300);
+            $('#motor').slideDown(300);
             $('#imodel').val(title);
         });
         console.log(value, title, '-> VYBER modelu');
@@ -110,13 +112,13 @@ $(function () {
 
 
     // Výběr motoru
-    $(document).on('click', '#selmotory a.motorLink', function (e) {
+    $(document).on('click', '#motor a.motorLink', function (e) {
         e.preventDefault();
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
         $('#imotor').val(title);
         $('#nabidka').addClass('loading');
-        $('#selmotory').slideUp(300);
+        $('#motor').slideUp(300);
 
 
         $.nette.ajax({
@@ -254,7 +256,9 @@ $(function () {
 
 
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
-    $('#form2 .cta').click(function(){
+    $('#form2 .cta').click(function(e){
+
+        e.preventDefault();
 
         // zjistim jestli je vyplneny email
         let mail = document.querySelector('#frm-orderForm-orderForm-email').value;
@@ -295,6 +299,7 @@ $(function () {
             if (gdpr == 1) {
                 $('#frm-orderForm-orderForm').addClass('loading');
                 $('.final_loader').stop(true).delay(1000).fadeIn(200);
+                $('#frm-orderForm-orderForm').submit();
             }
         }
 

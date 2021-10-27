@@ -181,21 +181,19 @@ class CarSelector extends Control
 
         $form->addText('manufacturer', 'manufacturer')
             ->setHtmlAttribute('id', 'imark')
-            ->setHtmlAttribute('placeholder', 'Značka vozu')
-            ->setHtmlAttribute('readonly', 'readonly');
+            ->setHtmlAttribute('data-confirm', 'coTuMaByt')
+            ->setHtmlAttribute('placeholder', 'Značka vozu');
         $form->addHidden('manufacturerId');
 
         $form->addText('model', 'model')
             ->setHtmlAttribute('id', 'imodel')
             ->setHtmlAttribute('placeholder', 'Model vozu')
-            ->setHtmlAttribute('readonly', 'readonly')
             ->setDisabled();
         $form->addHidden('modelId');
 
         $form->addText('vehicle', 'vehicle')
             ->setHtmlAttribute('id', 'imotor')
             ->setHtmlAttribute('placeholder', 'Motorizace')
-            ->setHtmlAttribute('readonly', 'readonly')
             ->setDisabled();
 
         $form->addHidden('vehicleId')

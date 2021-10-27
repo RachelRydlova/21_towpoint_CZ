@@ -3,7 +3,6 @@
 
 
 
-
     <div n:snippet="img">
         <figure>
 
@@ -33,7 +32,7 @@
     {/snippet}
 
 
-    <div id="selznacky">
+    <div id="mark">
         <div class="logos">
             <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
                 <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
@@ -48,7 +47,7 @@
     </div>
 
     {snippet modelyList}
-        <div id="selmodely">
+        <div id="model">
             <div class="all">
                 {if is_array($modely)}
                     <div n:ifset="$modely" n:foreach="$modely as $model => $modelInfo">
@@ -63,7 +62,7 @@
     {/snippet}
 
     {snippet motoryList}
-        <div id="selmotory">
+        <div id="motor">
             <div class="all">
                 {if $motory}
                 <div n:foreach="$motory as $category => $vehiclesInCategory">
@@ -112,7 +111,7 @@
     let value = $(this).attr('data-key');
     $('#imotor').val(value);
     $('#nabidka').addClass('loading');
-    $('#selmotory').slideUp(300);
+    $('#motor').slideUp(300);
 
 
     $.nette.ajax({
