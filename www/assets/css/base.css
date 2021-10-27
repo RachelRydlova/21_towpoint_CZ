@@ -1,3 +1,13 @@
+:root {
+
+	/* COLORS */
+	--color-white: #FFFFFF;
+	--color-orange: #FF9900;
+	--color-gray: #707070;
+	--color-darkGray: #525252;
+	--color-lightGray: #EBEBEB;
+}
+
 @font-face
 {
 	font-family: osr;
@@ -27,7 +37,7 @@ body
 {
 	margin: 0;
 	padding: 0;
-	font-family: osr, Arial, Helvetica, sans-serif;
+	font-family: "Segoe UI",osr, Arial, Helvetica, sans-serif;
 	-webkit-text-size-adjust: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0.5);
 	-ms-text-size-adjust: 100%;
@@ -212,66 +222,6 @@ header nav a:hover span,
 
 
 
-
-
-#vyrobci
-{
-	float: left;
-	width: 100%;
-	text-align: center;
-	padding: 40px;
-	background-color: #ebebeb;
-}
-
-#vyrobci div
-{
-	margin-right: 30px;
-	display: inline-block;
-	vertical-align: middle;
-	padding: 0 25px;
-	width: 234px;
-}
-
-#vyrobci div:last-of-type
-{
-	margin-right: 0;
-}
-
-#vyrobci img
-{
-	width: 100%;
-	/*	width: 234px;
-        height: 60px;*/
-	display: block;
-}
-
-#vyrobci div:nth-of-type(5) img
-{
-	margin-top: 5px;
-}
-
-
-
-#service_net
-{
-	float: left;
-	width: 100%;
-	background-color: #525252;
-}
-
-#service_net > div
-{
-	max-width: 1650px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 40px 0;
-	color: white;
-	line-height: 1.5em;
-	font-size: 18px;
-	text-align: justify;
-}
-
-
 /* GALLERY SLIDER*/
 
 /* external css: flickity.css */
@@ -301,11 +251,105 @@ header nav a:hover span,
 
 
 
+/* FOOTER */
+
+footer {
+	clear: both;
+	position: relative;
+}
+
+.recenze {
+	height: 8.75rem;
+	background: var(--color-lightGray);
+	padding: 1rem 7.7rem;
+	margin-bottom: 1.5625rem;
+}
+
+.recenze h1 {
+	font: normal normal normal 35px/47px Segoe UI;
+	color: var(--color-gray);
+}
+
+.recenze p {
+	font: normal normal bold 35px/47px Segoe UI;
+	color: var(--color-darkGray);
+}
+
+.benefit,
+.vyrobci {
+	height: 15.25rem;
+	background: var(--color-darkGray);
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	padding-left: 18rem;
+	padding-right:  22rem;
+}
+
+.benefit div {
+	text-align: center;
+}
+
+.benefit p {
+	color: var(--color-lightGray);
+	font: normal normal normal 16px/21px Segoe UI;
+	text-align: center;
+	width: 10.0625rem;
+}
+
+.benefit img {
+	align-items: center;
+	width: 87px;
+	height: 88px;
+}
+
+.vyrobci {
+	max-height: 8.1875rem;
+	background-color: var(--color-lightGray);
+	padding-left: 12rem;
+	padding-right: 12rem;
+}
+
+.vyrobci img {
+	max-height: 11rem;
+	max-width: 11rem;
+}
+
+.vyrobci img:last-of-type {
+	max-height: 9rem;
+}
+
+
+footer img.tazak {
+	position: absolute;
+	max-height: 31.8125rem;
+	bottom: 10rem;
+	right: 6rem;
+}
+
+
+
+
+/* END FOOTER */
+
+
+
+
+
+
+
+/*
+*
+** MEDIA QUERIES
+*
+*/
+
+
 @media screen and (max-width: 1750px)
 {
 	header,
-	#main h1,
-	#service_net > div
+	#main h1
 	{
 		max-width: none;
 		padding-left: 50px;
@@ -314,70 +358,6 @@ header nav a:hover span,
 }
 
 
-
-
-@media screen and (max-width: 1300px)
-{
-	header > a.logo
-	{
-		background-image: url("../img/logo.svg");
-		background-size: auto 100%;
-		width: 125px;
-	}
-}
-
-
-/*
-	sirka 4
-*/
-@media screen and (max-width: 1660px) {
-
-	#vyrobci {
-		padding-left: calc((100% - 1200px) / 2);
-		padding-right: calc((100% - 1200px) / 2);
-	}
-
-	#vyrobci div:nth-of-type(4) {
-		margin-right: 0;
-	}
-
-	#vyrobci div {
-		margin-bottom: 20px;
-	}
-}
-
-/*
-	sirka 3
-*/
-@media screen and (max-width: 1040px) {
-	#vyrobci {
-		padding-left: calc((100% - 800px) / 2);
-		padding-right: calc((100% - 800px) / 2);
-	}
-
-	#vyrobci div:nth-of-type(3) {
-		margin-right: 0;
-		margin-bottom: 20px;
-	}
-
-	#vyrobci div:nth-of-type(1),
-	#vyrobci div:nth-of-type(2) {
-		margin-bottom: 20px;
-	}
-}
-
-
-
-
-
-@media screen and (max-width: 1100px)
-{
-	header nav
-	{
-		font-size: 12px;
-		padding-top: 34px;
-	}
-}
 
 
 
@@ -459,9 +439,119 @@ header nav a:hover span,
 	{
 		font-size: 26px;
 	}
+
+	footer img.tazak {
+		max-height: 25rem;
+	}
+
+	.recenze h1,
+	.recenze p {
+		font-size: 30px;
+	}
+
+	.benefit {
+		max-height: 12rem;
+	}
+
+	.vyrobci img {
+		max-width: 8rem;
+	}
 }
 
 
+@media screen and (max-width: 1400px)
+{
+	.recenze {
+		padding-top: 1.5rem;
+	}
+	.recenze p{
+		font-size: 26px;
+		line-height: 2rem;
+	}
+	.vyrobci {
+		max-height: 7.1875rem;
+		/*padding-left: 9rem;*/
+		/*padding-right: 9rem;*/
+	}
+}
+
+
+@media screen and (max-width: 1300px)
+{
+	header > a.logo
+	{
+		background-image: url("../img/logo.svg");
+		background-size: auto 100%;
+		width: 125px;
+	}
+
+	.recenze {
+		max-height: 6rem;
+		padding-top: 0.5rem;
+		margin-bottom: 1rem;
+	}
+
+	.recenze p {
+		font-size: 22px;
+		line-height: 1rem;
+	}
+
+	.vyrobci {
+		max-height: 6.1875rem;
+		padding-left: 5rem;
+		padding-right: 5rem;
+	}
+
+	.vyrobci img {
+		max-width: 8rem;
+	}
+
+	.benefit {
+		padding-left: 13rem;
+		padding-right: 18rem;
+	}
+}
+
+
+@media screen and (max-width: 1100px)
+{
+	header nav
+	{
+		font-size: 12px;
+		padding-top: 34px;
+	}
+
+	.recenze {
+		padding: 1rem 2rem;
+	}
+
+	.recenze p,
+	.recenze h1 {
+		font-size: 20px;
+	}
+
+	.benefit {
+		max-height: 9rem;
+		padding-left: 6rem;
+		padding-right: 9rem;
+	}
+
+	.benefit img {
+		width: 60px;
+		height: 60px;
+	}
+
+	footer img.tazak {
+		max-height: 15rem;
+		right: 3rem;
+	}
+
+	.vyrobci {
+		max-height: 8.1875rem;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}
 
 
 @media screen and (max-width: 840px)
@@ -481,45 +571,21 @@ header nav a:hover span,
 	{
 		margin-right: 0;
 	}
-}
 
-
-@media screen and (max-width: 800px) {
-	#vyrobci {
-		padding-left: calc((100% - 550px) / 2);
-		padding-right: calc((100% - 550px) / 2);
+	.vyrobci {
+		max-height: 6rem;
 	}
-
-	#vyrobci div:nth-of-type(2),
-	#vyrobci div:nth-of-type(4) {
-		margin-right: 0;
-	}
-
-	#vyrobci div:nth-of-type(3) {
-		margin-right: 30px;
-		margin-bottom: 20px;
-	}
-
-	#vyrobci div:nth-of-type(1),
-	#vyrobci div:nth-of-type(2),
-	#vyrobci div:nth-of-type(4) {
-		margin-bottom: 20px;
-	}
-
-	#vyrobci div:nth-of-type(5) {
-		margin-top: 10px;
+	.vyrobci img {
+		max-width: 6rem;
 	}
 }
-
-
 
 
 
 @media screen and (max-width: 720px)
 {
 	header,
-	#main h1,
-	#service_net > div
+	#main h1
 	{
 		padding-left: 25px;
 		padding-right: 25px;
@@ -537,14 +603,7 @@ header nav a:hover span,
 		right: 125px;
 		width: calc(100% - 310px);
 	}
-
-	#service_net > div
-	{
-		font-size: 16px;
-		text-align: center;
-	}
 }
-
 
 
 
@@ -554,39 +613,14 @@ header nav a:hover span,
 	{
 		width: 100%;
 	}
-}
 
-
-@media screen and (max-width: 548px) {
-	#vyrobci {
-		padding-left: 25px;
-		padding-right: 25px;
+	.vyrobci {
+		max-height: 5rem;
 	}
-
-	#vyrobci div,
-	#vyrobci div:nth-of-type(2),
-	#vyrobci div:nth-of-type(4),
-	#vyrobci div:nth-of-type(5),
-	#vyrobci div:nth-of-type(3),
-	#vyrobci div:last-of-type {
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-		width: 234px;
-	}
-
-	#vyrobci div:nth-of-type(5) {
-		margin-top: 30px;
-	}
-
-	#vyrobci div:last-of-type {
-		margin-top: 30px;
+	.vyrobci img {
+		max-width: 4rem;
 	}
 }
-
-
-
-
 
 @media screen and (max-width: 480px)
 {
