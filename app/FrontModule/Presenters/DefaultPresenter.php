@@ -37,8 +37,8 @@ class DefaultPresenter extends BasePresenter
      * formular pro vyber vozu
      * @return CarSelector
      */
-     protected function createComponentCarSelector()
-     {
+    protected function createComponentCarSelector()
+    {
         $comp = new CarSelector($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($carInfo) use ($p) {

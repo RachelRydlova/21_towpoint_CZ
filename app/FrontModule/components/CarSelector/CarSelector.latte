@@ -54,6 +54,9 @@
                         <a href="javascript:;" title="{$modelInfo->fullname}" data-key="{(int) $modelInfo->tcmodel}" class="modelLink">
                             {$modelInfo->fullname}
                         </a>
+                        <figure>
+                            <img n:ifset="$modelInfo->modelimageurl" n:if="$modelInfo->modelimageurl" src="{$modelInfo->modelimageurl}" alt="" style="max-height: 250px; width: auto;">
+                        </figure>
                     </div>
                 {/if}
             </div>

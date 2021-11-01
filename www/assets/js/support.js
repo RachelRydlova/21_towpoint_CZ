@@ -110,6 +110,12 @@ $(function () {
         console.log(value, title, '-> VYBER modelu');
     });
 
+    // Náhled vozidla u modelu
+    $(document).on('hover', '#model .all > div', function (){
+        $('#model .all figure').hide();
+        $(this).children().show();
+    })
+
 
     // Výběr motoru
     $(document).on('click', '#motor a.motorLink', function (e) {

@@ -426,6 +426,21 @@ header nav a:first-of-type span
 	float: left;
 }
 
+#model .all figure {
+	display: none;
+	position: absolute;
+	right: 15rem;
+	vertical-align:bottom;
+	z-index: 5;
+}
+
+#model .all img {
+	margin-bottom: 10rem;
+}
+
+#model div div:last-child {
+	padding-bottom: 13rem;
+}
 
 
 
@@ -975,43 +990,6 @@ header nav a:first-of-type span
 	padding-bottom: 50px;
 }
 
-#nabidka table
-{
-	border: 1px solid gray;
-	margin-left: auto;
-	margin-right: auto;
-	clear: both;
-	color: #525252;
-	font-size: 20px;
-	border-collapse: collapse;
-}
-
-#nabidka table th
-{
-	padding: 15px;
-	text-align: left;
-	border: 1px solid gray;
-	font-weight: normal;
-	font-family: ossb, Arial, Helvetica, sans-serif;
-}
-
-#nabidka table td
-{
-	padding: 15px;
-	text-align: right;
-	border: 1px solid gray;
-}
-
-#nabidka table .total
-{
-	background-color: #ebebeb;
-}
-
-#nabidka table .total td
-{
-	font-family: ossb, Arial, Helvetica, sans-serif;
-	font-size: 26px;
-}
 
 #nabidka.loading
 {
@@ -1068,6 +1046,15 @@ header nav a:first-of-type span
 .hidden {
 	display: none;
 }
+
+#nabidka img.tazNabidka {
+	max-width: 7.8125rem;
+	max-height: 10.875rem;
+	position: absolute;
+	right: 21rem;
+	bottom: 1rem;
+}
+
 
 
 .poptavka
@@ -1260,6 +1247,11 @@ p.error {
 		width: 640px;
 		margin-left: calc((100% - 640px) /3*2);
 	}
+
+	#nabidka img.tazNabidka
+	{
+		right: 17%;
+	}
 }
 
 
@@ -1316,6 +1308,10 @@ p.error {
 		background-position: 120% top, -40% top, top;
 		background-size: auto 80%, auto 80%, auto;
 	}
+	#nabidka img.tazNabidka
+	{
+		right: 13%;
+	}
 }
 
 
@@ -1364,6 +1360,10 @@ p.error {
 		margin-left: 0px;
 		margin-right: 70px;
 	}
+	#nabidka img.tazNabidka
+	{
+		right: 12%;
+	}
 }
 
 
@@ -1379,6 +1379,10 @@ p.error {
 	#mark .logos a img
 	{
 		width: 50px;
+	}
+	#nabidka img.tazNabidka
+	{
+		right: 11%;
 	}
 }
 
@@ -1413,6 +1417,10 @@ p.error {
 	.yesno:nth-of-type(5)
 	{
 		width: 100%;	
+	}
+	#nabidka img.tazNabidka
+	{
+		right: 9%;
 	}
 }
 
@@ -1536,6 +1544,10 @@ p.error {
 	{
 		font-size: 14px;
 	}
+	#nabidka img.tazNabidka
+	{
+		right: 8%;
+	}
 }
 
 
@@ -1546,6 +1558,12 @@ p.error {
 	{
 		background-position: 130% center, -60% top, top;
 		background-size: auto 80%, auto 80%, auto;
+	}
+	#nabidka img.tazNabidka
+	{
+		max-height: 9rem;
+		bottom: 2rem;
+		right: 6%;
 	}
 }
 
@@ -1580,6 +1598,17 @@ p.error {
 	{
 		max-width: 600px;
 	}
+
+	#nabidka img.tazNabidka
+	{
+		display: none;
+	}
+
+	footer img.tazak
+	{
+		display: none;
+	}
+
 }
 
 

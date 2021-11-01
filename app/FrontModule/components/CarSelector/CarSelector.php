@@ -101,6 +101,7 @@ class CarSelector extends Control
                 $this->redrawControl('img');
             }
 
+
             $this->redrawControl('carSelectorWrapper');
             $modInfo = $this->apiManager->getModelApiRow($manId, $modId);
             $this['carSelector']['model']->setDefaultValue($modInfo->fullname);

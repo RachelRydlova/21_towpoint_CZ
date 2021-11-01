@@ -82,8 +82,8 @@
 		<footer>
 
 			<section class="recenze">
-				<h1> Proč si vybrat nás? </h1>
-				<p> Nenecháme Vás odjet s něčím, co bychom si sami na auto nedali. </p>
+				<h1> {block recenzeTitle}{/block} </h1>
+				<p>  {block recenze}{/block}</p>
 			</section>
 
 			<section class="benefit">
@@ -108,7 +108,7 @@
 				</div>
 			</section>
 
-			<img class="tazak" src="{$basePath}/assets/image/maskot/tazakSluchatka.png" alt="pan Tazak na prijmu">
+			<img class="tazak" src="{block tazak}{/block}" alt="pan Tazak udava recenze">
 
 
 
