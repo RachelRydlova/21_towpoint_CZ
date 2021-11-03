@@ -1,33 +1,82 @@
+
 {block title}Karavany | TowPoint{/block}
 
 {block head}
     <link href="{$basePath}/assets/css/karavany.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/contactForm.css" rel="stylesheet">
 {/block}
 
 
+{block recenzeTitle} Proč si vybrat nás? {/block}
+
+{block recenze} Pohodlně si u nás vyberete také z chytrého telefonu či tabletu. {/block}
+
+{block tazak} {$basePath}/assets/image/maskot/tazakPhone.png{/block}
+
 
 {block content}
-<section id="main">
-    <h1>Tažné pro karavany</h1>
-</section>
+    <section id="main">
+        <a n:href="Default:what">
+            <img class="backLink" src="{$basePath}/assets/image/sipka.png" alt="sipka k presmerovani zpet">
+        </a>
+        <h1>Obytné vozy</h1>
+    </section>
 
 
 
 
-<section id="doc">
-    <div>
-        <h2>Tažné zařízení pro obytné vozy</h2>
-        <p>Sháníte tažné zařízení pro obytný vůz?</p>
-        <p>Kontaktujte nás na čísle <a href="tel:+420702111702"><b>702 111 702</b></a> nebo na adrese <a href = "mailto: info@towpoint.cz">info@towpoint.cz</a></p>
+    <section id="doc">
+        <div>
+            <h2>Tažné zařízení pro obytné vozy</h2>
+            <p>Sháníte tažné zařízení pro obytný vůz?</p>
+            <p>Kontaktujte nás na čísle <a href="tel:+420702111702"><b>702 111 702</b></a> nebo na adrese <a href = "mailto: info@towpoint.cz">info@towpoint.cz</a></p>
 
-        <h2>Jak to probíhá?</h2>
-        <div class="thin">
-            <p>Kvůli vysoké rozmanitosti provedení obytných vozů nám stačí sdělit VIN kód vozidla, podle kterého si u výrobce dohledáme přesnou specifikaci podvozku Vašeho vozu. Díky tomu jsme rychle schopni uvést přesnou cenu montáže.</p>
-            <p>Zařízení pro obytné vozy nám dodává německá firma AL-KO (SAWIKO), která je špičkou v oboru. Samozřejmostí je jak pevný, tak odnímatelný kulový čep dle Vaší volby.</p>
-            <p>Pokud je potřeba prodloužit nosný rám nástavby, tak demontujeme nosníky, namontujeme výztuhy, které jsou přípravou na nový, delší rám a pak následně i na tažné zařízení s elektroinstalací.</p>
-            <p>Pro zapsání tažného zařízení do technického průkazu vozidla je stejný postup jako u osobního vozidla. Nemusíte na zdlouhavou STK.  Od nás dostanete typový list, se kterým stačí zajít na dopravní inspektorát, kde Vám údaje zapíší.</p>
+            <h2>Jak to probíhá?</h2>
+            <div class="thin">
+                <p>Kvůli vysoké rozmanitosti provedení obytných vozů nám stačí sdělit VIN kód vozidla, podle kterého si u výrobce dohledáme přesnou specifikaci podvozku Vašeho vozu. Díky tomu jsme rychle schopni uvést přesnou cenu montáže.</p>
+                <p>Zařízení pro obytné vozy nám dodává německá firma AL-KO (SAWIKO), která je špičkou v oboru. Samozřejmostí je jak pevný, tak odnímatelný kulový čep dle Vaší volby.</p>
+                <p>Pokud je potřeba prodloužit nosný rám nástavby, tak demontujeme nosníky, namontujeme výztuhy, které jsou přípravou na nový, delší rám a pak následně i na tažné zařízení s elektroinstalací.</p>
+                <p>Pro zapsání tažného zařízení do technického průkazu vozidla je stejný postup jako u osobního vozidla. Nemusíte na zdlouhavou STK.  Od nás dostanete typový list, se kterým stačí zajít na dopravní inspektorát, kde Vám údaje zapíší.</p>
+            </div>
+
+
         </div>
+    </section>
 
+
+    <!-- CONTACT Form -->
+    <section id="form">
+        {form partnerForm}
+            <div class="subn step">
+                <h2>Kontaktní údaje</h2>
+            </div>
+            <div class="inputs">
+                <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+                <div>  {input name}  </div>
+                <div>  {input surname}  </div>
+                <div>  {input position}  </div>
+                <div>  {input company}  </div>
+                <div>  {input city}  </div>
+                <div>  {input zipcode}  </div>
+                <div required>
+                    {input email}
+                    <p id="errorEmail">Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+                </div>
+
+                <div class="last">  {input message}  </div>
+                <a class="cta">
+                        <span>
+                            {input send}
+                        </span>
+                </a>
+            </div>
+        {/form}
+    </section>
+    <!-- End Form -->
+
+
+
+    <section class="doc">
         <h2>Další příslušenství pro obytné vozy </h2>
         <p>Na prodloužený rám, případně na zadní stranu vozu, jsme schopni namontovat i jiné doplňky. </p> <br>
         <ul>
@@ -36,18 +85,20 @@
             <li>nosiče na kola připevněné k rámu zadní strany vozu</li>
             <li>a další příslušenství</li>
         </ul>
+    </section>
+
+
+
+    <!-- Flickity gallery slider -->
+<footer>
+    <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar6.jpg?" alt="Tazne zarizeni na karavanu">
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar1.jpg?" alt="Kararavan s kolem">
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar5.jpg?" alt="Nosic kol na karavanu">
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar7.jpg?" alt="Karavan v prirode">
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar2.jpg?" alt="Zada karavanu">
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar8.jpg?" alt="Karavan v plne vybave">
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar3.jpg?" alt="Detail zadni casti karavanu">
+        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar4.jpg?" alt="Detail tazneho na karavanu">
     </div>
-</section>
-
-
-<!-- Flickity gallery slider -->
-<div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar6.jpg?" alt="Tazne zarizeni na karavanu">
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar1.jpg?" alt="Kararavan s kolem">
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar5.jpg?" alt="Nosic kol na karavanu">
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar7.jpg?" alt="Karavan v prirode">
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar2.jpg?" alt="Zada karavanu">
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar8.jpg?" alt="Karavan v plne vybave">
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar3.jpg?" alt="Detail zadni casti karavanu">
-    <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar4.jpg?" alt="Detail tazneho na karavanu">
-</div>
+</footer>

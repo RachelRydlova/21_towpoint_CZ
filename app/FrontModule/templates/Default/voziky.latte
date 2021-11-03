@@ -2,54 +2,104 @@
 
 {block head}
     <link href="{$basePath}/assets/css/voziky.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/contactForm.css" rel="stylesheet">
 {/block}
 
 
+{block recenzeTitle} Proč si vybrat nás? {/block}
 
-{block content}
-<section id="main">
-    <h1>Servis přívěsných vozíků</h1>
-</section>
+{block recenze} Pohodlně si u nás vyberete také z chytrého telefonu či tabletu. {/block}
 
-
+{block tazak} {$basePath}/assets/image/maskot/tazakPhone.png{/block}
 
 
-<section id="doc">
-    <div>
-        <div class="titlenote">
-            <p>Servis přívěsných vozíků probíhá v našich montážních střediscích TowPoint. Zajišťujeme kvalifikované opravy, výměny, seřízení a přípravu na STK. Využíváme sortiment značek AL-KO, KNOTT, Steelpress SPP a MULTIPA.</p>
-            <h2>Rozsah vykonávaných služeb:</h2>
+
+    {block content}
+    <section id="main">
+        <a n:href="Default:what">
+            <img class="backLink" src="{$basePath}/assets/image/sipka.png" alt="sipka k presmerovani zpet">
+        </a>
+        <h1>Servis vozíků</h1>
+    </section>
+
+
+
+
+    <section id="doc">
+        <div>
+            <div class="titlenote">
+                <p>Servis přívěsných vozíků probíhá v našich montážních střediscích TowPoint. Zajišťujeme kvalifikované opravy, výměny, seřízení a přípravu na STK. Využíváme sortiment značek AL-KO, KNOTT, Steelpress SPP a MULTIPA.</p>
+                <h2>Rozsah vykonávaných služeb:</h2>
+            </div>
+            <ul>
+                <li>Servis brzdového systému včetně nájezdových brzd</li>
+                <li>Příprava na STK</li>
+                <li>Oprava elektroinstalací</li>
+                <li>Montáž světel</li>
+                <li>Opravy podvozků</li>
+                <li>Výměny plachet</li>
+                <li>Výměna opotřebovaných dílů (klouby, panty, tlumiče, kolečka, ložiska)</li>
+                <li>Dodávka náhradních dílů</li>
+                <li>Prodej upínací techniky</li>
+                <li>Oprava náprav</li>
+            </ul>
+
+
+            <p>V případě zájmu volejte na telefonní číslo <a href="tel:+420702111702"><b>702 111 702</b></a>.
+                Zde také rádi zodpovíme veškeré dotazy.
+            </p>
+
+
         </div>
-        <ul>
-            <li>Servis brzdového systému včetně nájezdových brzd</li>
-            <li>Příprava na STK</li>
-            <li>Oprava elektroinstalací</li>
-            <li>Montáž světel</li>
-            <li>Opravy podvozků</li>
-            <li>Výměny plachet</li>
-            <li>Výměna opotřebovaných dílů (klouby, panty, tlumiče, kolečka, ložiska)</li>
-            <li>Dodávka náhradních dílů</li>
-            <li>Prodej upínací techniky</li>
-            <li>Oprava náprav</li>
-        </ul>
+    </section>
 
 
-        <p>V případě zájmu volejte na telefonní číslo <a href="tel:+420702111702"><b>702 111 702</b></a>.
-            Zde také rádi zodpovíme veškeré dotazy.
-        </p>
+    <!-- CONTACT Form -->
+    <section id="form">
+        {form partnerForm}
+            <div class="subn step">
+                <h2>Kontaktní údaje</h2>
+            </div>
+            <div class="inputs">
+                <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+                <div>  {input name}  </div>
+                <div>  {input surname}  </div>
+                <div>  {input position}  </div>
+                <div>  {input company}  </div>
+                <div>  {input city}  </div>
+                <div>  {input zipcode}  </div>
+                <div required>
+                    {input email}
+                    <p id="errorEmail">Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+                </div>
+
+                <div class="last">  {input message}  </div>
+                <a class="cta">
+                        <span>
+                            {input send}
+                        </span>
+                </a>
+            </div>
+        {/form}
+    </section>
+    <!-- End Form -->
 
 
-    </div>
-</section>
 
 
 
-<!-- Flickity gallery slider -->
-<section id="gallery">
-    <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
-        <img class="carousel-cell" src="{$basePath}/assets/img/vozik.jpg?" alt="Volne stojici vozik">
-        <img class="carousel-cell" src="{$basePath}/assets/img/upinaky.jpg?" alt="Upinaci pasy">
-        <img class="carousel-cell" src="{$basePath}/assets/img/dilna-ruka.jpg?" alt="Spoluprace na dilne">
-        <img class="carousel-cell" src="{$basePath}/assets/img/vozik-za-autem.jpg" alt="Vyber voziku">
-    </div>
-</section>
+
+
+
+
+    <!-- Flickity gallery slider -->
+    <footer>
+        <section id="gallery">
+            <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
+                <img class="carousel-cell" src="{$basePath}/assets/img/vozik.jpg?" alt="Volne stojici vozik">
+                <img class="carousel-cell" src="{$basePath}/assets/img/upinaky.jpg?" alt="Upinaci pasy">
+                <img class="carousel-cell" src="{$basePath}/assets/img/dilna-ruka.jpg?" alt="Spoluprace na dilne">
+                <img class="carousel-cell" src="{$basePath}/assets/img/vozik-za-autem.jpg" alt="Vyber voziku">
+            </div>
+        </section>
+    </footer>

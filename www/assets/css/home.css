@@ -1699,6 +1699,12 @@ p.error {
 
 @media screen and (max-width: 720px)
 {
+	#model,
+	#motor {
+		width: 100%;
+	}
+
+
 	#sel form select
 	{
 		width: calc((100% - 30px) / 2);
@@ -1977,6 +1983,10 @@ p.error {
 	#form .radios > div
 	{
 		width: 100%;
+	}
+
+	#model {
+		margin-left: 0;
 	}
 }
 

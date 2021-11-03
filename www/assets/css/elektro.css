@@ -1,0 +1,50 @@
+    header nav a:nth-of-type(2) span
+    {
+        background-color: var(--color-darkGray);
+
+        -moz-transform: translateY(-5px);
+        -webkit-transform: translateY(-5px);
+        -o-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+
+    p {
+        font-weight: 600;
+        line-height: 1.5rem;
+    }
+
+    #doc {
+        line-height: 1rem;
+        font-size: 20px;
+        color: var(--color-darkGray);
+    }
+
+    #doc > div h2:first-child{
+        padding-top: 4em;
+    }
+
+    #doc h2 {
+        margin-top: 2em;
+        margin-bottom: 1em;
+        font-weight: normal;
+        font-family: osb, Arial, Helvetica, sans-serif;
+        font-size: 26px;
+    }
+
+    #doc .thin p {
+        margin-bottom: 1.1em;
+    }
+
+
+    #doc > div
+    {
+        max-width: 1650px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 40px 0;
+    }
+
+    footer img.tazak {
+        max-height: 21rem;
+    }

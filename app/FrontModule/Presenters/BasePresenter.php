@@ -25,8 +25,8 @@ class BasePresenter extends Presenter
 //        ':Front:Default:voziky' => 'Servis vozíků',
 //        ':Front:Default:nosice' => 'Nosiče kol',
         ':Front:Default:how' => 'Jak to funguje',
-        ':Front:Default:about' => 'O nás'
-//        ':Front:Default:partner' => 'Pro partnery'
+        ':Front:Default:about' => 'O nás',
+        ':Front:Default:partner' => 'Blog'
     ];
 
 

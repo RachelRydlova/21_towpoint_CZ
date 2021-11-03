@@ -1,0 +1,75 @@
+{block title}Hybridy a elektromobily | TowPoint{/block}
+
+{block head}
+    <link href="{$basePath}/assets/css/elektro.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/contactForm.css" rel="stylesheet">
+{/block}
+
+
+{block recenzeTitle} Proč si vybrat nás? {/block}
+
+{block recenze} Pohodlně si u nás vyberete také z chytrého telefonu či tabletu. {/block}
+
+{block tazak} {$basePath}/assets/image/maskot/tazakPhone.png{/block}
+
+
+{block content}
+    <section id="main">
+        <a n:href="Default:what">
+            <img class="backLink" src="{$basePath}/assets/image/sipka.png" alt="sipka k presmerovani zpet">
+        </a>
+        <h1>HYBRIDY, PLUG-IN HYBRIDY A ELEKTROMOBILY</h1>
+    </section>
+
+
+    <section id="doc">
+        <div>
+            <h2>Tažné zařízení pro vozy s hybridními pohony</h2>
+            <p>Vyplňte formulář níže a my Vám zavoláme.</p>
+            <p>Případně nás kontaktujte na čísle <a href="tel:+420702111702"><b>702 111 702</b></a> nebo na adrese <a href = "mailto: info@towpoint.cz">info@towpoint.cz</a></p>
+
+            <h2>Jak to probíhá?</h2>
+            <div class="thin">
+                <p>Tažná zařízení a elektroinstalace na MHEV, HEV, PHEV jsou prakticky totožné, až na výjimky, s konvenčními vozidly se spalovacími motory.</p>
+                <p>Na elektromobily (BEV) a vodíkové vozy (FCV) se řídí údaji o zatížení tažného zařízení výrobcem konkrétního vozu, které naleznete ve velkém technickém průkazu vašeho vozidla. Více info zde.</p>
+                <p>Nevyznáte se v označení hybridních vozů? Více info zde.</p>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+    <!-- CONTACT Form -->
+    <section id="form">
+        {form partnerForm}
+            <div class="subn step">
+                <h2>Kontaktní údaje</h2>
+            </div>
+            <div class="inputs">
+                <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+                <div>  {input name}  </div>
+                <div>  {input surname}  </div>
+                <div>  {input position}  </div>
+                <div>  {input company}  </div>
+                <div>  {input city}  </div>
+                <div>  {input zipcode}  </div>
+                <div required>
+                    {input email}
+                    <p id="errorEmail">Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+                </div>
+
+                <div class="last">  {input message}  </div>
+                <a class="cta">
+                    <span>
+                        {input send}
+                    </span>
+                </a>
+            </div>
+        {/form}
+    </section>
+    <!-- End Form -->
+
+

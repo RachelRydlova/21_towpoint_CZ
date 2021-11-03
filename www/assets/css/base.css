@@ -1,7 +1,7 @@
 :root {
 
 	/* COLORS */
-	--color-white: #FFFFFF;
+	--color-white: rgba(255, 255, 255, 0.77);
 	--color-orange: #FF9900;
 	--color-gray: #707070;
 	--color-darkGray: #525252;
@@ -82,7 +82,13 @@ input:-moz-placeholder {  color: inherit;  opacity: 1;}
 	padding: 0;
 }
 
-
+img.backLink {
+	position: absolute;
+	top: 10.7rem;
+	left: 2.5rem;
+	width: 2.8125rem;
+	height: 2.8125rem;
+}
 
 
 header
@@ -316,7 +322,7 @@ footer {
 }
 
 .vyrobci img {
-	max-height: 11rem;
+	max-height: 5rem;
 	max-width: 11rem;
 }
 
@@ -349,15 +355,27 @@ footer img.tazak {
 *
 */
 
+@media screen and (max-width: 1850px) {
+	img.backLink {
+		left: 5%;
+	}
+
+	#main h1 {
+		padding-left: 5%;
+	}
+}
 
 @media screen and (max-width: 1750px)
 {
-	header,
-	#main h1
+	header
 	{
 		max-width: none;
 		padding-left: 50px;
 		padding-right: 50px;
+	}
+
+	#main h1 {
+		padding-left: 9rem;
 	}
 }
 
@@ -368,6 +386,11 @@ footer img.tazak {
 
 @media screen and (max-width: 1600px)
 {
+	img.backLink {
+		width: 2.15rem;
+		height: 2.15rem;
+	}
+
 	header nav
 	{
 		position: absolute;
@@ -598,9 +621,14 @@ footer img.tazak {
 
 	#main h1
 	{
+		padding-left: 6rem;
 		padding-top: 20px;
 		padding-bottom: 20px;
 		font-size: 20px;
+	}
+
+	img.backLink {
+		top: 9.2rem;
 	}
 
 	header nav
@@ -608,6 +636,7 @@ footer img.tazak {
 		right: 125px;
 		width: calc(100% - 310px);
 	}
+
 	.benefit {
 		max-height: 8rem;
 	}
@@ -688,6 +717,10 @@ footer img.tazak {
 	{
 		top: 17px;
 		width: calc(100% - 270px);
+	}
+
+	img.backLink {
+		top: 7rem;
 	}
 }
 
