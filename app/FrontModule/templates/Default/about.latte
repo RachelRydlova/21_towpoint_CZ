@@ -5,6 +5,19 @@
     <link href="{$basePath}/assets/css/onas.css" rel="stylesheet">
 {/block}
 
+
+
+{block recenzeTitle} Nenecháme Vás v tom tápat. {/block}
+
+{block recenze} Ušetřete čas a zavolejte nám, my už Vám s výběrem poradíme. {/block}
+
+{block tazak} {$basePath}/assets/image/maskot/tazakSluchatka.png{/block}
+
+
+
+
+
+
 {block content}
 
 <section id="main">
@@ -22,31 +35,64 @@
             <li>V&nbsp;České republice jsme jedničkou na trhu tažných zařízení a&nbsp;elektroinstalací</li>
             <li>Ve svém oboru máme odborné zkušenosti, které Vám rádi předáme na našich prodejnách či na&nbsp;<a href="tel:+420702111702">zákaznické&nbsp;lince</a></li>
         </ul>
-
-
-        <div>
-            <h2>Kontaktní údaje</h2>
-            <h3>Provozovatel:</h3>
-            <p>VAPOL CZ s.&nbsp;r.&nbsp;o.<br>Zašová 270<br>756&nbsp;51 Zašová<br>702&nbsp;111&nbsp;702<br>towpoint@vapol.cz
-                <br><br>
-                <a href="https://www.firmy.cz/detail/13255536-towpoint-zasova-zasova.html#hodnoceni" target="_blank" rel="noopener">
-                    <img src="https://www.firmy.cz/img-stars/light-13255536.svg" alt="Towpoint Zašová na Firmy.cz" /></a>
-            </p>
-            <a href="https://www.vapol.cz" onclick="window.open(this.href);return false">
-                <img src="{$basePath}/assets/img/vapol.png" alt="VAPOL CZ">
-            </a>
-
-        </div>
-
+    </div>
+    <div>
+        <ul class="right">
+            <li>Široká síť montážních míst pokrývá téměř celé území České republiky. </li>
+            <li>Namontovat tažné si můžete nechat v tom nejbližším nebo kterémkoliv jiném. Třeba cestou na dovolenou.</li>
+        </ul>
+        <img src="{$basePath}/assets/image/mapaCR.png" alt="">
     </div>
 </section>
 
 
-<section id="gallery">
-    <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
-        <img class="carousel-cell" src="{$basePath}/assets/img/il4.jpg?" alt="TowPoint Zašová">
-        <img class="carousel-cell" src="{$basePath}/assets/img/il1.jpg?" alt="TowPoint Holešov">
-        <img class="carousel-cell" src={$basePath}/assets/img/il3.jpg?" alt="">
-        <img class="carousel-cell" src="{$basePath}/assets/img/il2.jpg" alt="">
+<section class="info">
+    <div>
+        <div>
+            <i class="fa fa-phone-alt" aria-hidden="true"></i>
+            <h2>702 111 702</h2>
+        </div>
+        <div>
+            <i class="fa fa-envelope"></i>
+            <h2>towpoint@vapol.cz</h2>
+        </div>
+        <div>
+            <i class="fa fa-thumbs-up"></i>
+            <h2>facebook.com/TowPointCZ</h2>
+        </div>
     </div>
+    <div>
+        <i class="fa fa-map-marker-alt"></i>
+        <h1>Sídlo firmy:</h1>
+        <h2>Towpoint Zašová</h2>
+        <h2>756 51 Zašová 270</h2>
+    </div>
+    <div>
+        <h1>Provozovatel:</h1>
+        <a href="https://www.vapol.cz" onclick="window.open(this.href);return false">
+            <img src="{$basePath}/assets/img/vapol.png" alt="VAPOL CZ">
+        </a>
+    </div>
+</section>
+
+
+
+<section class="recenzeFirmy">
+    <a href="https://www.firmy.cz/detail/326182-vapol-cz-zasova.html#pridat-hodnoceni" target="_blank" rel="noopener">
+        <img src="https://www.firmy.cz/img/widgets/logo-svetle-pozadi-text.svg" alt="VAPOL CZ na Firmy.cz" />
+    </a>
+</section>
+
+
+
+<section id="gallery">
+    <div class="step subn">
+        <h2>Fotogalerie</h2>
+    </div>
+    <img src="{$basePath}/assets/img/il4.jpg?" alt="TowPoint Zašová">
+    <img src="{$basePath}/assets/img/il1.jpg?" alt="TowPoint Holešov">
+    <img src="{$basePath}/assets/img/il3.jpg?" alt="">
+    <img src="{$basePath}/assets/img/il1.jpg?" alt="TowPoint Holešov">
+    <img src="{$basePath}/assets/img/il2.jpg" alt="">
+    <img src="{$basePath}/assets/img/il4.jpg?" alt="TowPoint Zašová">
 </section>

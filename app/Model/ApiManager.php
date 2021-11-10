@@ -135,7 +135,7 @@ class ApiManager
      * @return mixed|null
      * @throws Throwable
      */
-    public function getCarManufacturers($onlyFav = 1)
+    public function getCarManufacturers($onlyFav = 0)
     {
         $cacheKey = 'remote.manufacturers.'.$onlyFav;
         $token = self::countApiToken([$onlyFav]);
@@ -182,7 +182,7 @@ class ApiManager
      * @return mixed|null
      * @throws Throwable
      */
-    public function getManufacturerApiRow($manId, $onlyFav = 1)
+    public function getManufacturerApiRow($manId, $onlyFav = 0)
     {
         $data = $this->getCarManufacturers($onlyFav);
         foreach ($data as $row) {
