@@ -30,7 +30,11 @@
 }
 
 
-
+html {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
 
 
 body
@@ -75,25 +79,15 @@ input:-moz-placeholder {  color: inherit;  opacity: 1;}
 
 *, *:before, *:after
 {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+	box-sizing: inherit;
 	margin: 0;
 	padding: 0;
-}
-
-img.backLink {
-	position: absolute;
-	top: 10.7rem;
-	left: 2.5rem;
-	width: 2.8125rem;
-	height: 2.8125rem;
 }
 
 
 header
 {
-	max-width: 1650px;
+	max-width: 86.84%; /* 1650px */
 	margin-left: auto;
 	margin-right: auto;
 	padding: 30px 0;
@@ -194,6 +188,7 @@ header nav a:hover span,
 
 
 #main,
+#title,
 .subn
 {
 	float: left;
@@ -203,8 +198,10 @@ header nav a:hover span,
 }
 
 #main h1,
+#title h1,
 .subn h2
 {
+	max-width: 86.84%;
 	font-size: 32px;
 	max-width: 1650px;
 	margin-left: auto;
@@ -219,17 +216,15 @@ header nav a:hover span,
 	background-color: #ebebeb;
 }
 
-.subn h2
+.subn.step h2
 {
+	position: relative;
 	font-size: 22px;
 	font-weight: normal;
 	font-family: ossb, Arial, Helvetica, sans-serif;
-	padding: 30px 0;
+	padding: 30px 0px;
 	color: #525252;
 }
-
-
-
 
 
 /* GALLERY SLIDER*/
@@ -338,9 +333,6 @@ footer img.tazak {
 	right: 6rem;
 }
 
-
-
-
 /* END FOOTER */
 
 
@@ -355,41 +347,32 @@ footer img.tazak {
 *
 */
 
-@media screen and (max-width: 1850px) {
-	img.backLink {
-		left: 5%;
-	}
 
-	#main h1 {
-		padding-left: 5%;
-	}
-}
+@media screen and (max-width: 1767px){
 
-@media screen and (max-width: 1750px)
-{
-	header
-	{
+	#main h1,
+	header,
+	.subn {
 		max-width: none;
 		padding-left: 50px;
 		padding-right: 50px;
 	}
+}
 
-	#main h1 {
-		padding-left: 9rem;
+@media screen and (max-width: 1750px) {
+	#form > div:not(.subn),
+	#sel > div:not(.subn),
+	#title,
+	.subn {
+		max-width: none;
+		width: 100%;
+		padding-left: 50px;
+		padding-right: 50px;
 	}
 }
 
-
-
-
-
-
 @media screen and (max-width: 1600px)
 {
-	img.backLink {
-		width: 2.15rem;
-		height: 2.15rem;
-	}
 
 	header nav
 	{
@@ -581,6 +564,18 @@ footer img.tazak {
 	}
 }
 
+@media screen and (max-width: 977px) {
+	#title h1,
+	#main h1,
+	.subn.step h2 {
+		font-size: 18px;
+	}
+	#title img {
+		width: 25px;
+		height: 25px;
+	}
+}
+
 
 @media screen and (max-width: 840px)
 {
@@ -613,22 +608,25 @@ footer img.tazak {
 @media screen and (max-width: 720px)
 {
 	header,
-	#main h1
+	#main h1,
+	#title,
+	.subn
 	{
 		padding-left: 25px;
 		padding-right: 25px;
 	}
 
-	#main h1
+	#main h1,
+	#title h1,
+	.subn.step h2
 	{
-		/*padding-left: 6rem;*/
 		padding-top: 20px;
 		padding-bottom: 20px;
 		font-size: 20px;
 	}
 
-	img.backLink {
-		top: 9.2rem;
+	.subn.step h2 {
+		font-size: 14px;
 	}
 
 	header nav
@@ -717,10 +715,6 @@ footer img.tazak {
 	{
 		top: 17px;
 		width: calc(100% - 270px);
-	}
-
-	img.backLink {
-		top: 7rem;
 	}
 }
 
