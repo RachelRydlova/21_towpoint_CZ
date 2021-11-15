@@ -43,7 +43,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
     <script src="{$basePath}/assets/js/jquery.iosslider.min.js"></script>
-    <script src="{$basePath}/assets/js/base.js"></script>
+    <script src="{$basePath}/assets/js/mmenu.js"></script>
+
+    <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
 
     <!-- Flickity gallery JS -->
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
@@ -65,7 +67,7 @@
 
 <header>
     <a n:href="Default:" title="přejít na titulní stránku" class="logo"></a>
-    <nav n:inner-foreach="App\Presenters\BasePresenter::$mainMenu as $link => $caption">
+    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption">
         <a class="nav-link {if $presenter->isLinkCurrent($link)}active{/if}" n:href="$link"><span>{$caption}</span></a>
     </nav>
     <a href="#" id="mmenu"><span>Menu</span></a>

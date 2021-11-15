@@ -268,7 +268,7 @@ class ApiManager
         $znacky=$data->data;
         $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
         if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId==$item->tcznacka) $outznacka=$item->name;
-
+        if (!$outznacka) {$outznacka = "";}
 
         // vytahnu info o modelu
         $secret = self::countApiToken(array('tcznacka'=>$manufacturerId));
@@ -296,6 +296,10 @@ class ApiManager
         // vytahuji informaci, zda byl zvolen komfort
         $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
 
+        // nastavim spravne stat
+        $state = 'CZ';
+        if ($dataToReva['contact']->state == 1) { $state = 'SK';}
+
         // preference Cena x Kvalita
         $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
         if ($pref == 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
@@ -311,7 +315,6 @@ class ApiManager
         if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
 
 
-
         $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
         $data=json_decode(file_get_contents($url));
 
@@ -320,7 +323,7 @@ class ApiManager
         $ele=$out->{$pref}->{$koule}->elektro->{$e};
         $el0=$out->{$pref}->{$koule};
 
-        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
 
         bdump($dataToReva);
         $pole=array(
@@ -339,7 +342,7 @@ class ApiManager
             'tel'=>$dataToReva['contact']->tel,
             'psc'=>$dataToReva['contact']->psc,
             'mesto'=>$dataToReva['contact']->mesto,
-            'stat'=>$dataToReva['contact']->state,
+            'stat'=>$state,
             'kvalita'=>$pref,
             'typ_tazne'=>$koule,
             'tazne'=>isset($tazne->id_nomenklatura),	// kod produktu - nomenklatura
@@ -374,6 +377,7 @@ class ApiManager
             'session_id'=> $this->session->getId(),
             'final_request'=> 0,
             'email'=>$email,
+            'znacka'=> 0,
         );
 
         $client = new Client();

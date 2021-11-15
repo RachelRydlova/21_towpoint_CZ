@@ -54,7 +54,7 @@
 
     <div id="nabidka">
         {snippet summaryBox}
-            {ifset $data}
+            {if isset($data)}
                 {foreach $data as $item => $value}
                     <div id="{$item}" class="hidden">
 {*                        {if value == 0}{$value}{/if}*}
@@ -71,7 +71,10 @@
                     </div>
 
                 {/foreach}
-            {/ifset}
+            {else}
+                <h2 class="no">Pro zvolené vozidlo bohužel aktuálně nemáme k dispozici kompletní nabídku.</h2>
+                <p class="no">Přesto nám odešlete tuto svoji poptávku a naši specialisté se Vám ozvou s individuálním návrhem řešení.</p>
+            {/if}
         {/snippet}
     </div>
 

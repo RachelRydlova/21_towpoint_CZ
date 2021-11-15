@@ -29,6 +29,14 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route('/dekujeme', 'Front:Default:thanks');
         $router[] = new Nette\Application\Routers\Route('/dekujeme', 'Front:Default:thanksPartner');
 
+        $router[] = new Nette\Application\Routers\Route('/blog', 'Front:Blog:default');
+        $router[] = new Nette\Application\Routers\Route('/clanek-typy-tazneho', 'Front:Blog:typyTazneho');
+        $router[] = new Nette\Application\Routers\Route('/clanek-elektroinstalace', 'Front:Blog:elektroinstalace');
+        $router[] = new Nette\Application\Routers\Route('/clanek-tahani', 'Front:Blog:tahani');
+        $router[] = new Nette\Application\Routers\Route('/clanek-montaz', 'Front:Blog:montaz');
+        $router[] = new Nette\Application\Routers\Route('/clanek-pece-o-tazne', 'Front:Blog:peceOTazne');
+        $router[] = new Nette\Application\Routers\Route('/clanek-tazne-hybrid', 'Front:Blog:tazneHybrid');
+
         $router->addRoute('<module>/<presenter>/<action>/[<id>/]', 'Front:Default:default');
 
 

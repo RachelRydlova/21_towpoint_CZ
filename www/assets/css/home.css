@@ -343,7 +343,6 @@ header nav a:first-of-type span
 #mark .all a:hover
 {
 	text-decoration: underline;
-	font-weight: 900;
 }
 
 #mark p,

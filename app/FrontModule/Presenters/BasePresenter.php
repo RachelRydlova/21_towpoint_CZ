@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Presenters;
+namespace App\Frontmodule\Presenters;
 
 
 use Nette\Application\UI\Presenter;
@@ -26,7 +26,7 @@ class BasePresenter extends Presenter
 //        ':Front:Default:nosice' => 'Nosiče kol',
         ':Front:Default:how' => 'Jak to funguje',
         ':Front:Default:about' => 'O nás',
-        ':Front:Default:partner' => 'Blog'
+        ':Front:Blog:default' => 'Blog'
     ];
 
 
