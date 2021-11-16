@@ -7,15 +7,12 @@ namespace App\FrontModule\Presenters;
 use App\FrontModule\components\Calculator;
 use App\FrontModule\components\CarSelector;
 use App\FrontModule\components\OrderForm;
-//use App\FrontModule\Forms;
 use App\ICarSelectorFactory;
 use App\Model\applCache;
-use App\Frontmodule\Presenters\BasePresenter;
-use Doctrine\Common\Util\Debug;
+use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use App\Model\BannerModel;
 use App\Model\ApiManager;
-use Nette\Http\Session;
 use Tracy\Debugger;
 
 
@@ -33,26 +30,6 @@ class DefaultPresenter extends BasePresenter
 
     /** @var ICarSelectorFactory @inject */
     public $carSelectorFactory;
-
-//    /** @var ContactFormFactory */
-//    private ContactFormFactory $contactFormFactory;
-
-
-//    public function __construct(Forms\ContactFormFactory $contactFactory)
-//    {
-//
-//        $this->contactFormFactory = $contactFactory;
-//    }
-
-
-//    protected function createComponentContactForm(): Form
-//    {
-//        return $this->contactFormFactory->create(function (): void {
-//            $this->redirect('Default:');
-//        });
-//    }
-
-
 
 
 

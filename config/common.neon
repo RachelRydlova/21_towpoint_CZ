@@ -26,8 +26,6 @@ search:
 services:
 	- App\Router\RouterFactory::createRouter
 	- App\ICarSelectorFactory
-	- App\Forms\FormFactory
-#	- App\FrontModule\Forms\ContactFormFactory
 
 
 
