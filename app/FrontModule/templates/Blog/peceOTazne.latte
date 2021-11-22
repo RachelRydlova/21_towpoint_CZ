@@ -1,28 +1,50 @@
 {block title}Blog TowPoint{/block}
 
-{block head}
-    <link href="{$basePath}/assets/css/blog.css" rel="stylesheet">
-{/block}
-
-{block recenzeTitle} Proč si vybrat nás? {/block}
-
-{block recenze} Máme skladem více než 5 500 kusů tažných zařízení. {/block}
-
 {block tazak} {$basePath}/assets/image/maskot/tazakDilna.png{/block}
 
 
 {block content}
+    <section id="title">
+        <h1>
+            <a n:href="Blog:default"><i class="fa fa-chevron-circle-left"></i></a>
+            Blog
+        </h1>
+    </section>
 
-    <section id="main">
-        <h1>Blog</h1>
+
+    <section class="desc ele">
+        <div>
+
+            <h2>Péče o tažné zařízení </h2>
+            <p>Ano, čtete správně, i tažné zařízení vyžaduje péči, aby co nejlépe pracovalo a vydrželo co nejdéle. V článku níže Vám pan Tažák dá pár Tipů.</p>
+            <img src="{$basePath}/assets/image/maskot/tazakNevi.png" alt="jak spravne tahat">
+        </div>
     </section>
 
 
 
-    <section id="doc">
+    <section class="porovnani">
         <div>
-
+            <div class="dark">
+                <p>Pro prodloužení životnosti nasazujte krytku, ať Vám koule nezačne rezivět. Redukci zásuvky po použití schovejte na suché místo, samotnou zástrčku sklopte.</p>
+            </div>
+            <div class="dark">
+                <div>
+                    <p>Další rady jsou pro majitele odnímatelného kulového čepu. Udržujte v čistotě jak část tažného, do které se koule nasazuje, tak tu část, kterou nasazujete, abyste předešli korozi. Nezapomeňte čep uzamykat. Dojde tak k jeho kompletnímu zajištění.</p>
+                </div>
+            </div>
         </div>
+
+        <div>
+            <div class="light center">
+                <p class="lighter">Udržujte tedy tažné zařízení v čistotě.</p>
+                <div>
+                    <img class="orangeImg" src="{$basePath}/assets/image/obrazky/Pece/peceotz.jpg" alt="jak se starat o tazne">
+                </div>
+                <p class="lighter">Pokud je přívěs vybavený stabilizačním systémem, tak kulový čep ničím nemažte. Jestliže máte pocit, že by Vaše koule mohla být nadměrně opotřebená, využijte kalibr na kouli. Správný průměr je 50 mm, průměr pod 49 mm by mohl způsobit nepříjemnost, tak si dejte pozor.</p>
+            </div>
+        </div>
+
     </section>
 
 

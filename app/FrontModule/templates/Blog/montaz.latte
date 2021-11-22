@@ -1,27 +1,73 @@
 {block title}Blog TowPoint{/block}
 
-{block head}
-    <link href="{$basePath}/assets/css/blog.css" rel="stylesheet">
-{/block}
-
-{block recenzeTitle} Proč si vybrat nás? {/block}
-
-{block recenze} Máme skladem více než 5 500 kusů tažných zařízení. {/block}
-
 {block tazak} {$basePath}/assets/image/maskot/tazakDilna.png{/block}
 
 
 {block content}
 
-    <section id="main">
-        <h1>Blog</h1>
+    <section id="title">
+        <h1>
+            <a n:href="Blog:default"><i class="fa fa-chevron-circle-left"></i></a>
+            Blog
+        </h1>
+    </section>
+
+    <section class="desc ele">
+        <div>
+            <h2> Je okolo montáže hodně „papírování“? </h2>
+            <p>Rozhodně ne, nemusíte ani chodit na STK a vypisovat hromady papírů. Od nás po montáži obdržíte vyplněný typový list a s tímto listem jen zajdete na příslušný úřad a necháte si tažné zařízení dopsat do technického průkazu (do 10 dnů od montáže).</p>
+            <img src="{$basePath}/assets/image/maskot/tazakNevi.png" alt="jak vybrat tazne">
+        </div>
+    </section>
+
+    <section class="porovnani sm">
+        <div>
+            <div class="dark">
+                <h3>Co když si chci namontovat tažné sám?</h3>
+                <p>Rozhodnete-li se namontovat tažné zařízení svépomocí nebo v servisu bez pověření k montáži, můžete tak učinit. Po montáži je <strong>nutné</strong> s vozidlem <strong>navštívit STK</strong>. Technici prověří typovou vhodnost tažného zařízení pro vozidlo, značku schváleného typu a správnost montáže, včetně zapojení a funkčnosti elektroinstalace. Na základě kontroly obdržíte protokol STK, který pak předložíte při přihlášení. V tomto případě typový list nepotřebujete. </p>
+                <br><p>Kontrola na STK Vás může vyjít na <strong>250,- Kč</strong> a poplatek za přihlášení tažného zařízení na úřadě činí <strong>100,- Kč</strong>.</p>
+            </div>
+            <div class="dark">
+                <div>
+                    <h3>Postup při montáži v našem středisku</h3>
+                    <p>Nejprve si na naší zákaznické lince domluvíte termín montáže a poskytnete údaje k přichystání typového listu. Poté už jen dojedete s vozidlem, namontujeme Vám tažné zařízení, obdržíte typový list a s tímto listem zajdete na úřad. Je to velmi snadné a v případě jakýchkoliv problémů Vám naši kolegové rádi poradí.</p>
+                    <br><p>V tomto případě platíte poplatek pouze na úřadě za přihlášení tažného zařízení <strong>50,- Kč</strong>.</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="light">
+                <div>
+                    <h3>Vzor typového listu</h3>
+                    <img src="{$basePath}/assets/image/obrazky/papirovani/typList.jpg" alt="vzor typoveho listu">
+                </div>
+            </div>
+            <div class="light">
+                <div>
+                    <h3>Potřebné doklady k zápisu:</h3>
+                    <ul>
+                        <li>Vyplněný formulář</li>
+                        <li>Velký technický průkaz (TP)</li>
+                        <li>Osvědčení o registraci vozidla (ORV / malý TP)</li>
+                        <li>Typový list</li>
+                        <li>Soukromá osoba - občanský průkaz</li>
+                        <li>Právnická osoba - živnostenský list</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
     </section>
 
 
-
-    <section id="doc">
+    <section class="attention overeno">
         <div>
-
+            <h3>Pamatujte!</h3>
+            <p>Tažné zařízení je tedy možné namontovat i svépomocí. V tom případě je, ale nezbytné postupovat přesně podle manuálu a dát si pozor především na správné připojení elektroinstalace, což může být značný problém především u moderních vozů.</p>
+            <br>
+            <p><strong>S námi můžete ušetřit nejen peníze, ale i čas a nervy. Svěřte Váš vůz do péče našim odborníkům.</strong></p>
+            <img src="{$basePath}/assets/image/obrazky/papirovani/mechanik.jpg" alt="papir na tazne zarizeni">
         </div>
     </section>
 

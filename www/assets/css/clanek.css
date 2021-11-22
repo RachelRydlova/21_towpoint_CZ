@@ -213,8 +213,8 @@
         padding-top: 1em;
     }
 
-    .porovnani {
-        max-width: 1316px;
+    .porovnani,
+    .attention div {
         padding: 2rem 0;
         margin: 0 auto;
     }
@@ -223,6 +223,7 @@
         display: flex;
         flex-direction: row;
         gap: 140px;
+        justify-content: center
     }
     .porovnani > div:last-of-type {
         gap: 30px;
@@ -235,31 +236,26 @@
     .porovnani div.dark,
     .porovnani div.light {
         width: 705px;
-        height: 300px;
-        padding: 4rem;
+        padding: 3rem;
         color: var(--color-lightGray);
         text-align: center;
     }
 
-    .porovnani div.dark h3{
+    .porovnani div.dark h3,
+    .porovnani div.light h3,
+    .attention h3 {
         font: normal normal 600 34px/30px Segoe UI;
         margin-bottom: 1.5rem;
     }
-    .porovnani div.dark p{
+    .porovnani div.dark p,
+    .porovnani div.dark p {
         font: normal normal 300 22px/30px Segoe UI;
     }
 
     .porovnani div.light {
-        height: 610px;
+        height: auto;
+        /*height: 610px;*/
         color: var(--color-darkGray);
-    }
-
-    .porovnani div.light h3 {
-        font: normal normal 600 34px/30px Segoe UI;
-        margin-bottom: 1.5rem;
-    }
-    .porovnani div.dark p {
-        font: normal normal 300 22px/30px Segoe UI;
     }
 
 
@@ -273,11 +269,95 @@
 
 
 
+    /* clanek o tahani */
+
+    .infografika {
+        width: 61.5625%; /* 590 / 1920 */
+        margin: 0 auto;
+        padding: 4em 0;
+
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        row-gap: 3em;
+    }
+
+    .porovnani .lightbox img {
+        height: 100%;
+    }
+
+    .infografika img {
+        border: 1.3em solid var(--color-orange);
+        max-width: 45%;
+    }
+
+    section.porovnani img.orangeImg {
+        border: 1.3em solid var(--color-orange);
+        width: 100%;
+        height: auto;
+    }
+
+    .attention p {
+        font: normal normal normal 33px/40px Segoe UI;
+    }
+    .attention p strong {
+        font: normal normal 600 36px/40px Segoe UI;
+    }
+
+    .attention {
+        color: var(--color-darkGray);
+        text-align: center;
+
+        width: 100%;
+        background-image: url("../image/obrazky/tahani/Attention.png");
+        background-repeat: no-repeat;
+        background-position: 125% 44%;
+        background-size: auto 700px;
+        background-color: #F8F8F8;
+        background-blend-mode: soft-light;
+    }
+    .attention div {
+        max-width: 1316px;
+    }
 
 
+    .attention img {
+        margin: 3em auto;
+        border: .4em solid var(--color-orange);
+        max-width: 43.59375%;
+    }
+
+    section.overeno {
+        background-image: url("../image/obrazky/papirovani/overeno.png");
+        background-blend-mode: color-burn;
+    }
 
 
+    .porovnani .sm h3 {
+        font: normal normal 600 34px/30px Segoe UI;
+    }
 
+
+    .porovnani .sm p {
+        font: normal normal 300 22px/30px Segoe UI;
+    }
+
+    section.sm img {
+        width: auto;
+        height: 450px;
+    }
+
+
+    .light ul {
+        list-style: circle;
+        text-align: left;
+        padding-left: 5%;
+    }
+
+    .light li {
+        font: normal normal 300 35px/55px Segoe UI;
+    }
 
 
     .dark,
@@ -292,6 +372,28 @@
         color: var(--color-gray);
     }
 
+    .porovnani div.center {
+        margin: 0 auto;
+        width: 1020px;
+    }
+
+    .porovnani div.center div {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        justify-content: space-around;
+    }
+
+    .porovnani div.center p {
+        margin-top: 30px;
+        font: normal normal 600 20px/36px Segoe UI;
+    }
+
+    .porovnani div.center p.lighter {
+        font: normal normal 300 33px/36px Segoe UI;
+        padding-bottom: 1em;
+    }
+
     .right {
         float: right;
     }
@@ -300,6 +402,62 @@
         float: left;
     }
 
+
+    .doc {
+        float: left;
+        width: 100%;
+        line-height: 1.5em;
+        font-size: 20px;
+        color: var(--color-darkGray);
+        padding-bottom: 40px;
+
+    }
+
+
+    .doc > div {
+        max-width: 1650px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 5rem;
+    }
+
+    .doc img {
+        max-width: 70%;
+        opacity: 0.04;
+        position: absolute;
+        left: 10%;
+        top: 65%;
+        z-index: -10;
+    }
+
+    .doc > div ul {
+        opacity: 1;
+        padding: 2em 0;
+    }
+
+    .doc ul li
+    {
+        display: block;
+        background-image: url("../img/dot-col.svg");
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-position: left 0.25em;
+        padding-left: 60px;
+        padding-bottom: 1.6em;
+        font: normal normal 600 27px/36px Segoe UI;
+        color: var(--color-gray);
+    }
+
+    .doc ul li a
+    {
+        text-decoration: underline;
+    }
+
+    .doc ul li a {
+        text-decoration: none;
+        color: var(--color-orange);
+        font-weight: 500;
+    }
 
 
 

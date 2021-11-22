@@ -80,7 +80,7 @@ $(function () {
         $.nette.ajax({
             url: '?do=carSelector-setManufacturer',
             data: {'carSelector-manId': value}
-        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
+        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
             $('#imark').val(title);
             $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
             $('#preffered').slideUp(300);
@@ -102,7 +102,7 @@ $(function () {
         $.nette.ajax({
             url: '?do=carSelector-setModel',
             data: {'carSelector-modId': value}
-        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax akce
+        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
             $('#model').slideUp(300);
             $('#motor').slideDown(300);
             $('#imodel').val(title);

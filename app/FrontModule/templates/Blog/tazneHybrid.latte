@@ -1,30 +1,43 @@
 {block title}Blog TowPoint{/block}
 
-{block head}
-    <link href="{$basePath}/assets/css/blog.css" rel="stylesheet">
-{/block}
-
-{block recenzeTitle} Proč si vybrat nás? {/block}
-
-{block recenze} Máme skladem více než 5 500 kusů tažných zařízení. {/block}
-
 {block tazak} {$basePath}/assets/image/maskot/tazakDilna.png{/block}
 
 
 {block content}
 
-    <section id="main">
-        <h1>Blog</h1>
+    <section id="title">
+        <h1>
+            <a n:href="Blog:default"><i class="fa fa-chevron-circle-left"></i></a>
+            Blog
+        </h1>
     </section>
 
 
-
-    <section id="doc">
+    <section class="desc ele">
         <div>
-
+            <h2>Tažné zařízení pro hybridní a čistě elektrické vozy? </h2>
+            <p>Tažná zařízení a elektroinstalace na <strong>MHEV, HEV, PHEV</strong> jsou prakticky totožné, až na výjimky, s konvenčními vozidly se spalovacími motory.</p>
+            <img src="{$basePath}/assets/image/maskot/tazakNevi.png" alt="jak spravne tahat">
         </div>
     </section>
 
+
+    <section class="doc">
+        <div>
+            <img src="{$basePath}/assets/image/obrazky/hybridy/tazneelektro.png" alt="tazne na hybridy">
+            <ul>
+                <li>Tažné zařízení na elektromobily <strong>(BEV)</strong> a vodíkové vozy <strong>(FCV)</strong> se řídí údaji o zatížení tažného zařízení výrobcem konkrétního vozu, které naleznete ve velkém technickém průkazu vašeho vozidla.
+                    <a n:href="Blog:tahani">Více info zde.</a>
+                </li>
+                <li>Mild-hybrid <strong>MHEV</strong>, 24 V nebo 48 V, posílení klasického spalovacího motoru.</li>
+                <li>Hybrid <strong>HEV</strong>, dobíjí spalovací motor, pomáhá a pohání i samostatně na elektřinu.</li>
+                <li>Plug.in hybrid <strong>PHEV</strong>, stejné jako hybrid jen s větší baterií, která už vyžaduje kratší nabíjení ze sítě.</li>
+                <li>Elektromobil <strong>BEV</strong>, jediné pohonné ústrojí vozu je elektromotor.</li>
+                <li>Vodíkový elektromobil <strong>FCV</strong>, elektromobil, jemuž energii dodávají vodíkové palivové články.</li>
+
+            </ul>
+        </div>
+    </section>
 
 {/block}
 

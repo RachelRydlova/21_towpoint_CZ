@@ -1,29 +1,90 @@
 {block title}Blog TowPoint{/block}
 
 {block head}
-    <link href="{$basePath}/assets/css/blog.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/onas.css" rel="stylesheet">
 {/block}
 
-{block recenzeTitle} Proč si vybrat nás? {/block}
-
-{block recenze} Máme skladem více než 5 500 kusů tažných zařízení. {/block}
 
 {block tazak} {$basePath}/assets/image/maskot/tazakDilna.png{/block}
 
 
 {block content}
 
-    <section id="main">
-        <h1>Blog</h1>
+    <section id="title">
+        <h1>
+            <a n:href="Blog:default"><i class="fa fa-chevron-circle-left"></i></a>
+            Blog
+        </h1>
     </section>
 
 
-
-    <section id="doc">
+    <section class="desc ele">
         <div>
-
+            <h2>  Co můžu táhnout na tažné kouli? </h2>
+            <p>  automobily jsou stále častěji vybavovány složitými elektronickými systémy a výběr elektroinstalace vyžaduje značné vědomosti. Elektroinstalace propojuje světelné okruhy vozidla a přívěsu. Na vozidle je zakončena zásuvkou. </p>
+            <img src="{$basePath}/assets/image/maskot/tazakNevi.png" alt="jak spravne tahat">
         </div>
     </section>
+
+
+
+    <section class="porovnani">
+        <div>
+            <div class="dark">
+                <h3>Jaký vozík můžu tahat? </h3>
+                <p>Pro klasický nebržděný vozík do 750kg, nebo nosič kol postačí řidičské oprávnění sk. B. Pro bržděný vozík nad 750kg už je však potřeba řidičské oprávnění skupiny BE a výše.</p>
+            </div>
+            <div class="dark">
+                <div>
+                    <h3>Kolik může vozidlo tahat?</h3>
+                    <p>Každé vozidlo a tažné zařízení má určeno, kolik může maximálně tahat. Například pokud tažné zařízení utáhne 1 500kg a vozidlo 750kg, nepřekračujte hodnotu 750kg na přívěsném vozíku.</p>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="light center">
+                <h3>Odpověď najdete ve velkém technickém průkazu</h3>
+                <div>
+                    <a href="#img_1"><img src="{$basePath}/assets/image/obrazky/TP/starTPmin.png" alt="stary technicky prukaz"></a>
+                    <a href="#img_2"><img src="{$basePath}/assets/image/obrazky/TP/novTPmin.png" alt="novy technicky prukaz"></a>
+                    <a href="#img_3"><img src="{$basePath}/assets/image/obrazky/TP/privesTPmin.png" alt="technicky prukaz pro prives"></a>
+                </div>
+                <a href="#_1" class="lightbox trans" id="img_1"><img src="{$basePath}/assets/image/obrazky/TP/starTP.png" alt=""></a>
+                <a href="#_2" class="lightbox trans" id="img_2"><img src="{$basePath}/assets/image/obrazky/TP/novTP.png" alt=""></a>
+                <a href="#_2" class="lightbox trans" id="img_3"><img src="{$basePath}/assets/image/obrazky/TP/privesTP.png" alt=""></a>
+
+
+                <div>
+                    <p>Starý technický průkaz</p>
+                    <p>Nový technický průkaz</p>
+                    <p>Technický průkaz od přívěsu</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    
+    <section class="infografika">
+        <img src="{$basePath}/assets/image/obrazky/tahani/vozik.jpg" alt="jak tahat vozik na kouli">
+        <img src="{$basePath}/assets/image/obrazky/tahani/vozik2.jpg" alt="tahani voziku">
+        <img src="{$basePath}/assets/image/obrazky/tahani/prives.jpg" alt="prives za osobnim vozem">
+        <img src="{$basePath}/assets/image/obrazky/tahani/lod.jpg" alt="lod na taznem zarizeni">
+    </section>
+
+    <section class="attention">
+        <div>
+            <h3>Pamatujte! Správné rozložení váhy je základ.</h3>
+            <p>Pokud vezete těžký náklad, snažte se ho rozprostřít po celé ložné ploše vozíku. O něco málo větší váhu můžete naložit dopředu, ale platí zde jednoduché pravidlo, oje vozíku byste bez větších problémů měli sami zvednout rukama.</p>
+            <p>Dejte také pozor na překročení maximální povolené hmotnosti jak u vozíku, tak u celé soupravy, jejíž limit bývá nejčastěji překročen.</p>
+            <img src="{$basePath}/assets/image/obrazky/tahani/privez.jpg" alt="jak netahat vozik">
+        </div>
+    </section>
+
+
+
+
+
 
 
 {/block}
