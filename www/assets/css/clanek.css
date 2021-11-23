@@ -36,14 +36,15 @@
         float: right;
     }
 
-
     main {
+        float: left;
+        margin-bottom: 8em;
+    }
+
+    main > section {
         clear: both;
-        height: 100%;
         max-width: 86.84%; /* 1650px */
-        margin-left: auto;
-        margin-right: auto;
-        padding: 30px 0;
+        margin: 0 auto;
     }
 
     main h1 {
@@ -63,17 +64,21 @@
     }
 
     .mainCont > div {
-        width: 62%;
-        height: 18.75rem;
-        margin-right: 7.5rem;
-        margin-left: 8rem;
+        display: flex;
+        float: left;
+        align-items: center;
+        max-width: 66.5%;
     }
 
+    .mainCont div.light {
+        float: right;
+    }
 
-
-    .mainCont,
     .dodavatele {
-    display: flow-root;
+        clear: both;
+        float: left;
+        background-color: var(--color-lightGray);
+        text-align: center;
     }
 
 
@@ -83,21 +88,15 @@
         margin-bottom: 5rem;
     }
 
-    .mainCont div img {
-        margin-left: .5rem;
-        margin-top: .5rem;
-        max-width: 23rem;
-        float: left;
-        line-height: 1rem;
-        height: 17.6875rem;
+    .mainCont img {
+        width: 30%;
+        padding: 1em;
     }
 
 
     .description {
-        padding: 4.5rem;
-        display: table-cell;
-        height: 18rem;
         text-align: center;
+        padding: 0 2em;
     }
 
     .description h3 {
@@ -109,48 +108,15 @@
         letter-spacing: 1px;
     }
 
-    main .mainCont img.right,
-    .dodavatele img.right{
-        float: right;
-        margin-right: .5rem;
-    }
-
-    .mainCont > div:last-of-type,
-    .dodavatele > div:last-of-type{
-        margin-bottom: 3rem;
-    }
-
-
-
-    .dodavatele {
-        background-color: #F8F8F8;
-        text-align: center;
-    }
-
-    .dodavatele > div {
-        display: flex;
-        max-width: 50%;
-        max-height: 300px;
-        align-items: center;
-        flex-wrap: nowrap;
-        margin: 0 16rem;
-        color: white;
-        opacity: 0.8;
-    }
-
     .dodavatele img {
         width: 300px;
     }
 
-    .dodavatele div img.right {
-        float: right;
-    }
 
-    .dodavatele div.bg-white{
+    .block div.bg-white{
         background-color: white;
         width: 130%;
         height: 270px;
-        margin: 0 10px;
         position: relative;
 
         display: flex;
@@ -160,19 +126,32 @@
 
 
     .dodavatele .titlenote {
-        display: block;
-        max-width: 62%;
-        margin: 4rem auto;
+        max-width: 70%;
+        margin: 3em auto;
         color: var(--color-darkGray);
-        text-align: center;
     }
 
-    .dodavatele > .titlenote h3 {
+    .dodavatele .block {
+        float: left;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dodavatele .block > div {
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        color: white;
+        opacity: 0.8;
+    }
+
+    .dodavatele .titlenote h3 {
         padding-bottom: 1em;
         font: normal normal 600 36px/40px Segoe UI;
     }
 
-    .dodavatele > .titlenote p {
+    .dodavatele .titlenote p {
         font: normal normal 300 26px/40px Segoe UI;
     }
 
@@ -187,22 +166,22 @@
         right: 10px;
     }
 
-    .dodavatele div.westfalia {
+    .block div.westfalia {
         background-color: #22489D ;
     }
-    .dodavatele div.steinhof {
+    .block div.steinhof {
         background-color: #1D1D1B  ;
     }
-    .dodavatele div.autohak {
+    .block div.autohak {
         background-color: #E42431  ;
     }
-    .dodavatele div.ej {
+    .block div.ej {
         background-color: #3E97AA;
     }
-    .dodavatele div.ej img {
+    .block div.ej img {
         width: 240px;
     }
-    .dodavatele div.ecs {
+    .block div.ecs {
         background-color: #1B1C20   ;
     }
 
@@ -484,6 +463,15 @@
         .desc img {
             max-height: 19rem;
         }
+        .description {
+            padding: 3rem;
+        }
+        .description h3 {
+            font-size: 1.8em;
+        }
+        .mainCont > div {
+            max-width: 100%;
+        }
     }
 
     @media screen and (max-width: 1450px)
@@ -501,6 +489,8 @@
         .desc img {
             max-height: 16rem;
         }
+
+
     }
 
     @media screen and (max-width: 1300px)
@@ -518,6 +508,16 @@
         .desc img {
             max-height: 14rem;
         }
+
+        .description {
+            padding: 1em;
+        }
+        .description h3 {
+            font-size: 1.5em;
+        }
+        .description p {
+            font-size: .9em;
+        }
     }
 
     @media screen and (max-width: 1000px)
@@ -527,7 +527,8 @@
         }
         .desc h2 {
             padding-bottom: .1em;
-            font: normal normal 600 25px/53px Segoe UI;;
+            line-height: 1em;
+            font-size: 25px;
         }
         .desc p {
             line-height: 1em;
@@ -539,3 +540,19 @@
         }
     }
 
+    @media screen and (max-width: 850px)
+    {
+        .mainCont > div {
+            flex-direction: column;
+        }
+        .mainCont img {
+            width: 100%;
+        }
+        main {
+            margin-bottom: 2em;
+        }
+
+        .desc img {
+            display: none;
+        }
+    }

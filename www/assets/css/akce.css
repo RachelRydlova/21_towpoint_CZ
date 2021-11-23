@@ -1,0 +1,146 @@
+
+
+main {
+    padding: 4rem 0;
+    margin: 0 auto;
+    clear: both;
+}
+
+article {
+    display: flex;
+    justify-content: center;
+    color: var(--color-darkGray);
+}
+
+
+article > div {
+    padding-left: 3rem;
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+article h1 {
+    font: normal normal 600 62px Segoe UI;
+}
+
+article h3 {
+    font: normal normal 600 40px Segoe UI;
+}
+
+article a {
+    color: var(--color-orange);
+    font: normal normal 600 27px Segoe UI;
+}
+
+article img {
+    width: 28%;
+}
+
+/* akce detail */
+
+main section {
+    max-width: 80%;
+    margin: 0 auto;
+    color: var(--color-darkGray);
+}
+
+main section h1 {
+    font-size: 2.2em;
+    margin-bottom: 1em;
+}
+main section h3 {
+    font-size: 1.5em;
+    margin: .5em 0;
+}
+main section p {
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+
+main section a {
+    color: var(--color-orange);
+}
+
+footer img.tazak {
+    max-height: 18em;
+}
+
+
+
+
+
+
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1100px)
+{
+    article h1 {
+        font-size: 3em;
+    }
+
+    article h3 {
+        font-size: 2em;
+    }
+    article a {
+        font-size: 1.5em;
+    }
+
+    main section p {
+        font-size: 1em;
+    }
+
+    article img {
+        width: 40%;
+    }
+
+    footer img.tazak {
+        display: none;
+    }
+
+    main section {
+        max-width: 90%;
+    }
+    main section h1 {
+        font-size: 1.8em;
+        margin-bottom: .7em;
+    }
+
+}
+
+@media screen and (max-width: 850px)
+{
+    article h1 {
+        font-size: 2em;
+    }
+
+    article h3 {
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 460px)
+{
+    article {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    article > div {
+        padding-left: 0;
+        text-align: center;
+    }
+    article img {
+        width: 80%;
+    }
+    article h1 {
+        font-size: 2em;
+    }
+
+    article h3 {
+        font-size: 1em;
+    }
+}

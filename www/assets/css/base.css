@@ -374,75 +374,6 @@ footer img.tazak {
 @media screen and (max-width: 1600px)
 {
 
-	header nav
-	{
-		position: absolute;
-		right: 150px;
-		top: 45px;
-		background-color: white;
-		padding: 0 10px;
-		z-index: 20;
-		width: calc(100% - 360px);
-		box-shadow: 0 10px 0 rgba(0,0,0,0.33);
-		display: none;
-	}
-
-	header nav a
-	{
-		width: calc((100% - 20px)/3);
-		margin-bottom: 10px;
-	}
-
-	header nav a:nth-of-type(3)
-	{
-		margin-right: 0;
-	}
-
-	#mmenu
-	{
-		float: right;
-		display: inline;
-		background-color: #f90;
-		text-transform: uppercase;
-		font-size: 15px;
-		font-weight: bold;
-		color: white;
-		margin-top: 30px;
-	}
-
-	#mmenu > span
-	{
-		background-color: #f90;
-		color: white;
-		padding: 8px;
-		padding-left: 35px;
-		float: left;
-		width: 100%;
-		background-image: url("../img/mmicon.svg");
-		background-size: 15px;
-		background-repeat: no-repeat;
-		background-position: 10px center;
-
-		transition: 100ms transform, 100ms background-color, 100ms color;
-	}
-
-	#mmenu:hover > span,
-	#mmenu.sel > span
-	{
-		text-decoration: none;
-		background-color: #525252;
-
-		-moz-transform: translateY(-5px);
-		-webkit-transform: translateY(-5px);
-		-o-transform: translateY(-5px);
-		-ms-transform: translateY(-5px);
-		transform: translateY(-5px);
-	}
-
-	#mmenu.sel > span
-	{
-		background-image: url("../img/close.svg");
-	}
 
 
 	#main h1
@@ -520,6 +451,9 @@ footer img.tazak {
 		padding-left: 13rem;
 		padding-right: 18rem;
 	}
+
+
+
 }
 
 
@@ -600,6 +534,76 @@ footer img.tazak {
 	}
 	.vyrobci img {
 		max-width: 6rem;
+	}
+
+	header nav
+	{
+		position: absolute;
+		right: 150px;
+		top: 45px;
+		background-color: white;
+		padding: 0 10px;
+		z-index: 20;
+		width: calc(100% - 360px);
+		box-shadow: 0 10px 0 rgba(0,0,0,0.33);
+		display: none;
+	}
+
+	header nav a
+	{
+		width: calc((100% - 20px)/3);
+		margin-bottom: 10px;
+	}
+
+	header nav a:nth-of-type(3)
+	{
+		margin-right: 0;
+	}
+
+	#mmenu
+	{
+		float: right;
+		display: inline;
+		background-color: #f90;
+		text-transform: uppercase;
+		font-size: 15px;
+		font-weight: bold;
+		color: white;
+		margin-top: 30px;
+	}
+
+	#mmenu > span
+	{
+		background-color: #f90;
+		color: white;
+		padding: 8px;
+		padding-left: 35px;
+		float: left;
+		width: 100%;
+		background-image: url("../img/mmicon.svg");
+		background-size: 15px;
+		background-repeat: no-repeat;
+		background-position: 10px center;
+
+		transition: 100ms transform, 100ms background-color, 100ms color;
+	}
+
+	#mmenu:hover > span,
+	#mmenu.sel > span
+	{
+		text-decoration: none;
+		background-color: #525252;
+
+		-moz-transform: translateY(-5px);
+		-webkit-transform: translateY(-5px);
+		-o-transform: translateY(-5px);
+		-ms-transform: translateY(-5px);
+		transform: translateY(-5px);
+	}
+
+	#mmenu.sel > span
+	{
+		background-image: url("../img/close.svg");
 	}
 }
 

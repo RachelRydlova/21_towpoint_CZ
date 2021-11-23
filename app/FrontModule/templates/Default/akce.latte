@@ -1,0 +1,44 @@
+{* zde se zobrazuji prokliky na detail akci,
+    dostanou se zde i pres hlavni banner,
+    doplnuje se rucne, je na vybrane*}
+
+
+
+{block title}Akce a soutěže | TowPoint{/block}
+
+{block recenzeTitle} Proč si vybrat nás? {/block}
+
+{block recenze} Pohodlně si u nás vyberete také z chytrého telefonu či tabletu. {/block}
+
+
+{block head}
+    <link href="{$basePath}/assets/css/akce.css" rel="stylesheet">
+{/block}
+
+{block tazak} {$basePath}/assets/image/maskot/tazakSluchatka.png{/block}
+
+
+{block content}
+
+
+
+<section id="title">
+    <h1>
+        <a n:href="Default:akce"><i class="fa fa-chevron-circle-left"></i></a>
+        Akce a soutěže
+    </h1>
+</section>
+
+<main>
+    <article>
+        <img src="{$basePath}/assets/image/akce/akce1000.png" alt="akce 1000 Korun na tazne">
+        <div>
+            <h1>Sleva 1 000 Kč</h1>
+            <h3>na montáž tažného</h3>
+            <a n:href="Default:akce1000montaz"> Více zde <i class="fa fa-arrow-right"></i> </a>
+        </div>
+    </article>
+
+</main>
+
+

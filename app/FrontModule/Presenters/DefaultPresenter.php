@@ -190,4 +190,10 @@ class DefaultPresenter extends BasePresenter
         $this->template->b = $this->bannerModel->getBannerData();
     }
 
+    public function renderAkce()
+    {
+        // data z banner
+        $this->template->b = $this->bannerModel->getBannerData();
+    }
+
 }

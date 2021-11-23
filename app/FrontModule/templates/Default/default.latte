@@ -25,6 +25,12 @@
                 {foreach $b[0] as $bid => $bi}
                     <div class="item{$bid == 0 ? ' current' : ''}{$b[1][$bid] == 'mp4' ? ' video' : ''}">
                         {if $b[1][$bid] == 'jpg'}
+                            {if $bi == '01'}
+                                <a n:href="Default:akce1000montaz" style="cursor: pointer">
+                                    <img src="{$basePath}/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
                             <img src="{$basePath}/ftp/cz/{$bi}.jpg" alt="">
                             <img src="{$basePath}/ftp/cz/{$bi}-sml.jpg" alt="">
                         {/if}
