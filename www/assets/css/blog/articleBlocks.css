@@ -1,0 +1,176 @@
+/* clanek s porovnani dva sloupce*/
+
+
+    section.ele h2 {
+        padding-top: .5em;
+    }
+
+    .porovnani,
+    .attention div {
+        padding: 2rem 0;
+        margin: 0 auto;
+    }
+
+    .porovnani > div {
+        display: flex;
+        flex-direction: row;
+        gap: 10%;
+        justify-content: center
+    }
+    .porovnani > div:last-of-type {
+        gap: 2%;
+    }
+
+    .porovnani > div div {
+        flex-direction: column;
+    }
+
+    .porovnani div.dark,
+    .porovnani div.light {
+        width: 35%;
+        padding: 3%;
+        color: var(--color-lightGray);
+        text-align: center;
+        font-weight: 300;
+    }
+
+    .porovnani div.light {
+        height: auto;
+        color: var(--color-darkGray);
+    }
+
+
+    section.porovnani img {
+        width: 100%;
+        height: auto;
+        margin-top: 1em;
+    }
+
+    .dark,
+    .dark p {
+        background-color: var(--color-gray);
+        color: var(--color-white);
+    }
+
+
+    .light {
+        background-color: var(--color-lightGray);
+        color: var(--color-gray);
+    }
+
+    .porovnani div.center {
+        margin: 0 auto;
+        width: 1020px;
+    }
+
+    .porovnani div.center div {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        justify-content: space-around;
+    }
+
+    .porovnani p.lighter {
+        font-weight: 300;
+        padding-top: 1em;
+        font-size: 1.5em;
+    }
+    .porovnani p.lighter:first-of-type {
+        font-size: 2.5em;
+        padding-top: 0;
+    }
+
+
+    section.porovnani img.orangeImg {
+        border: 1.3em solid var(--color-orange);
+        width: 100%;
+        height: auto;
+    }
+
+
+    .light ul {
+        list-style: circle;
+        text-align: left;
+        padding: 5%;
+    }
+
+    .light li {
+        font-weight: 300;
+        font-size: 1.5em;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    **
+    *** MEDIA QUERIES
+    **
+    */
+
+
+
+
+
+
+    @media screen and (max-width: 850px)
+    {
+        .porovnani h3 {
+            font-size: 1.2em;
+            padding-bottom: .2em;
+        }
+        .porovnani > div {
+            gap: 3%;
+        }
+        .porovnani div.dark,
+        .porovnani div.light {
+            width: 40%;
+        }
+    }
+
+    @media screen and (max-width: 800px)
+    {
+        .porovnani > div {
+            flex-direction: column;
+            gap: 0;
+            align-items: center;
+            margin-bottom: 2em;
+        }
+        .porovnani div {
+            row-gap: 2em;
+        }
+
+        .porovnani div.light,
+        .porovnani div.dark {
+            width: 85%;
+        }
+        .porovnani p.lighter {
+            font-size: 1em;
+        }
+        .porovnani p.lighter:first-of-type {
+            font-size: 2em;
+        }
+    }
+
+    @media screen and (max-width: 600px)
+    {
+        .porovnani h3 {
+            font-size: 1.2em;
+            margin-bottom: .5em;
+        }
+        .porovnani div {
+            row-gap: 1em;
+        }
+    }

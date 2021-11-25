@@ -1,0 +1,52 @@
+
+
+
+    #hybrid {
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 0;
+    }
+    #hybrid .backimg {
+        opacity: .05;
+        position: absolute;
+        left: 12em;
+        width: 75%;
+        height: auto;
+    }
+    #hybrid #doc > div {
+        background-image: none;
+        padding-top: 3em;
+        padding-bottom: 1em;
+        max-width: 80%;
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /*
+    **
+    *** MEDIA QUERIES
+    **
+    */
+
+    @media screen and (max-width: 1300px)
+    {
+        #hybrid .backimg {
+            width: 50%;
+        }
+    }
+
+
+    @media screen and (max-width: 800px)
+    {
+        #hybrid .backimg {
+            display: none;
+        }
+    }

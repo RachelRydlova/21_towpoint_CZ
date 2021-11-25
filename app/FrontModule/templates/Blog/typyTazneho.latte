@@ -1,5 +1,11 @@
 {block title}Blog{/block}
 
+{block head}
+    <link href="{$basePath}/assets/css/blog/comparse.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/blog/tazne.css" rel="stylesheet">
+{/block}
+
+
 {block recenzeTitle} Proč si vybrat nás? {/block}
 
 {block recenze} Máme skladem více než 5 500 kusů tažných zařízení. {/block}
@@ -25,12 +31,14 @@
         </div>
     </section>
 
+    <section  id="basic" class="wrapper">
+        <div class="titlenote">
+            <h3>Uchycení koule</h3>
+        </div>
+        <article>
 
+            <div class="line">
 
-    <main>
-        <section class="mainCont">
-            <h1>Uchycení koule</h1>
-            <div class="dark">
                 <img src="{$basePath}/assets/image/obrazky/koule/pevne.png" alt="">
                 <div class="description">
                     <h3>Pevný čep na 2 šrouby</h3>
@@ -38,15 +46,16 @@
                     </p>
                 </div>
             </div>
-            <div class="light">
+            <div class="line">
+                <img class="smallView" src="{$basePath}/assets/image/obrazky/koule/vertikal.png" alt="vertikalni tazne zarizeni">
                 <div class="description">
                     <h3>Odnímatelný vertikálně</h3>
                     <p>Odnímatelné čepy v sobě snoubí nejvyšší pohodlí a bezpečnost používání. Montáž ani demontáž nevyžadují použití fyzické síly nebo jakéhokoliv nářadí. Jedinečné technické řešení narušuje zadní linie vozu pouze minimálně.
                     </p>
                 </div>
-                <img src="{$basePath}/assets/image/obrazky/koule/vertikal.png" alt="">
+                <img class="bigView" src="{$basePath}/assets/image/obrazky/koule/vertikal.png" alt="vertikalni tazne zarizeni">
             </div>
-            <div class="dark">
+            <div class="line">
                 <img src="{$basePath}/assets/image/obrazky/koule/bajonet.png" alt="">
                 <div class="description">
                     <h3>Odnímatelný horizontálně</h3>
@@ -54,30 +63,30 @@
                     </p>
                 </div>
             </div>
-            <div class="light">
+            <div class="line">
+                <img class="smallView" src="{$basePath}/assets/image/obrazky/koule/cep.png" alt="prirubovy cep">
                 <div class="description">
                     <h3>Přírubový čep</h3>
                     <p>Kovaná koule přišroubovaná dvěma šrouby čelně k držáku není již tak běžným provedením. Tyto čepy jsou obvyklé u užitkových vozidel.
                     </p>
                 </div>
-                <img src="{$basePath}/assets/image/obrazky/koule/cep.png" alt="">
+                <img class="bigView" src="{$basePath}/assets/image/obrazky/koule/cep.png" alt="prirubovy cep">
             </div>
-        </section>
-    </main>
+        </article>
+    </section>
 
 
-    <section class="dodavatele">
+    <section class="wrapper">
         <div class="titlenote">
             <h3>Volíte raději <strong>prémiovou značku a kvalitu</strong> nebo <strong>ekonomickou variantu?</strong></h3>
             <p>Častým parametrem výběru je také značka. V naší nabídce naleznete hned 3 evropské výrobce s mezinárodní působností a prémiovou kvalitou. Tito výrobci disponují nejen prvotřídní kvalitou, ale i vlastními vývojovými a testovacími centry, díky kterým splňují veškeré náročné a rozsáhlé certifikace. Díky velkosériové výrobě jsou však i tyto prémiové značky ekonomicky dostupné.
             </p>
         </div>
-        <div class="block">
-            <div class="left westfalia">
-                <div class="bg-white">
-                    <a href="">
-                        <img src="{$basePath}/assets/image/loga/westfalia.png" alt="vyrobce westfalia">
-                        <i class="fa fa-play-circle"></i>
+        <article>
+            <div class="line">
+                <div class="logo">
+                    <a href="https://www.youtube.com/watch?v=nw1Xz_0xLDc">
+                        <img src="{$basePath}/assets/image/obrazky/westfalia.png" alt="vyrobce westfalia">
                     </a>
                 </div>
                 <div class="description">
@@ -86,24 +95,27 @@
                     </p>
                 </div>
             </div>
-            <div class="right steinhof">
+            <div class="line">
+                <div class="logo smallView">
+                    <a href="https://www.youtube.com/watch?v=B64b50pk4OU&t=1s">
+                        <img src="{$basePath}/assets/image/obrazky/steinhof.png" alt="vyrobce steinhof">
+                    </a>
+                </div>
                 <div class="description">
                     <h3>STEINHOF</h3>
                     <p>Evropský výrobce s tradicí od roku 1960 vlastnící technický institut. Ideální poměr ceny a kvality vytvářející bezkonkurenční výrobek.
                     </p>
                 </div>
-                <div class="bg-white">
-                    <a href="">
-                        <img src="{$basePath}/assets/image/loga/steinhof.png" alt="vyrobce steinhof">
-                        <i class="fa fa-play-circle"></i>
+                <div class="logo bigView">
+                    <a href="https://www.youtube.com/watch?v=B64b50pk4OU&t=1s">
+                        <img src="{$basePath}/assets/image/obrazky/steinhof.png" alt="vyrobce steinhof">
                     </a>
                 </div>
             </div>
-            <div class="left autohak">
-                <div class="bg-white">
-                    <a href="">
-                        <img src="{$basePath}/assets/image/loga/ah.png" alt="vyrobce autohak">
-                        <i class="fa fa-play-circle"></i>
+            <div class="line">
+                <div class="logo">
+                    <a href="https://www.youtube.com/watch?v=4Ph40uCX7O8">
+                        <img src="{$basePath}/assets/image/obrazky/ah.png" alt="vyrobce autohak">
                     </a>
                 </div>
                 <div class="description">
@@ -112,7 +124,7 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </article>
     </section>
 
 

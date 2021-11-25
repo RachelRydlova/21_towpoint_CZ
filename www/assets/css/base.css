@@ -85,6 +85,32 @@ input:-moz-placeholder {  color: inherit;  opacity: 1;}
 }
 
 
+/* social icons */
+
+aside {
+	position: fixed;
+	z-index: 100;
+	border-bottom-right-radius: 1em;
+	border-top-right-radius: 1em;
+	padding-left: .5em;
+	top: 40em;
+	height: 8em;
+	width: 3em;
+	background-color: var(--color-gray);
+	background-image: url("../image/ikony/social/bubbles.png");
+	background-size: contain;
+}
+
+aside div {
+	padding-top: 1em;
+	display: flex;
+	flex-direction: column;
+	row-gap: 1em;
+}
+
+/**/
+
+
 header
 {
 	max-width: 86.84%; /* 1650px */

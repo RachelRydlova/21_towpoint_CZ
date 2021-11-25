@@ -1,9 +1,18 @@
+
+{block head}
+    <link href="{$basePath}/assets/css/blog/hybrid.css" rel="stylesheet">
+{/block}
+
+
+
+
 {block title}Blog TowPoint{/block}
 
 {block tazak} {$basePath}/assets/image/maskot/tazakDilna.png{/block}
 
 
 {block content}
+
 
     <section id="title">
         <h1>
@@ -13,31 +22,33 @@
     </section>
 
 
-    <section class="desc ele">
-        <div>
-            <h2>Tažné zařízení pro hybridní a čistě elektrické vozy? </h2>
-            <p>Tažná zařízení a elektroinstalace na <strong>MHEV, HEV, PHEV</strong> jsou prakticky totožné, až na výjimky, s konvenčními vozidly se spalovacími motory.</p>
-            <img src="{$basePath}/assets/image/maskot/tazakNevi.png" alt="jak spravne tahat">
-        </div>
-    </section>
+        <section class="desc ele">
+            <div>
+                <h2>Tažné zařízení pro hybridní a čistě elektrické vozy? </h2>
+                <p>Tažná zařízení a elektroinstalace na <strong>MHEV, HEV, PHEV</strong> jsou prakticky totožné, až na výjimky, s konvenčními vozidly se spalovacími motory.</p>
+                <img src="{$basePath}/assets/image/maskot/tazakNevi.png" alt="jak spravne tahat">
+            </div>
+        </section>
 
 
-    <section class="doc">
-        <div>
-            <img src="{$basePath}/assets/image/obrazky/hybridy/tazneelektro.png" alt="tazne na hybridy">
-            <ul>
-                <li>Tažné zařízení na elektromobily <strong>(BEV)</strong> a vodíkové vozy <strong>(FCV)</strong> se řídí údaji o zatížení tažného zařízení výrobcem konkrétního vozu, které naleznete ve velkém technickém průkazu vašeho vozidla.
-                    <a n:href="Blog:tahani">Více info zde.</a>
-                </li>
-                <li>Mild-hybrid <strong>MHEV</strong>, 24 V nebo 48 V, posílení klasického spalovacího motoru.</li>
-                <li>Hybrid <strong>HEV</strong>, dobíjí spalovací motor, pomáhá a pohání i samostatně na elektřinu.</li>
-                <li>Plug.in hybrid <strong>PHEV</strong>, stejné jako hybrid jen s větší baterií, která už vyžaduje kratší nabíjení ze sítě.</li>
-                <li>Elektromobil <strong>BEV</strong>, jediné pohonné ústrojí vozu je elektromotor.</li>
-                <li>Vodíkový elektromobil <strong>FCV</strong>, elektromobil, jemuž energii dodávají vodíkové palivové články.</li>
+    <main id="hybrid">
+        <section id="doc">
+            <div>
+                <img class="backimg" src="{$basePath}/assets/image/obrazky/hybridy/tazneelektro.png" alt="tazne na hybridy">
+                <ul>
+                    <li>Tažné zařízení na elektromobily <strong>(BEV)</strong> a vodíkové vozy <strong>(FCV)</strong> se řídí údaji o zatížení tažného zařízení výrobcem konkrétního vozu, které naleznete ve velkém technickém průkazu vašeho vozidla.
+                        <a n:href="Blog:tahani">Více info zde.</a>
+                    </li>
+                    <li>Mild-hybrid <strong>MHEV</strong>, 24 V nebo 48 V, posílení klasického spalovacího motoru.</li>
+                    <li>Hybrid <strong>HEV</strong>, dobíjí spalovací motor, pomáhá a pohání i samostatně na elektřinu.</li>
+                    <li>Plug.in hybrid <strong>PHEV</strong>, stejné jako hybrid jen s větší baterií, která už vyžaduje kratší nabíjení ze sítě.</li>
+                    <li>Elektromobil <strong>BEV</strong>, jediné pohonné ústrojí vozu je elektromotor.</li>
+                    <li>Vodíkový elektromobil <strong>FCV</strong>, elektromobil, jemuž energii dodávají vodíkové palivové články.</li>
 
-            </ul>
-        </div>
-    </section>
+                </ul>
+            </div>
+        </section>
+    </main>
 
 {/block}
 

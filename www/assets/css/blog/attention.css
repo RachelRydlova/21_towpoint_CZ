@@ -1,0 +1,45 @@
+
+
+    .attention {
+        color: var(--color-darkGray);
+        text-align: center;
+
+        width: 100%;
+        background-image: url("../../image/obrazky/tahani/Attention.png");
+        background-repeat: no-repeat;
+        background-position: 125% 44%;
+        background-size: auto 700px;
+        background-color: #F8F8F8;
+        background-blend-mode: soft-light;
+    }
+    .attention div {
+        width: 80%;
+    }
+
+
+    .attention img {
+        margin: 3em auto;
+        border: .4em solid var(--color-orange);
+        max-width: 43.59375%;
+    }
+
+
+
+
+
+
+
+
+    /*
+    **
+    *** MEDIA QUERIES
+    **
+    */
+
+
+    @media screen and (max-width: 1000px)
+    {
+        .attention img {
+            max-width: 80%;
+        }
+    }

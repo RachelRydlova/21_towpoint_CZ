@@ -29,8 +29,9 @@
     <link href="{$basePath}/assets/css/base.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/slides.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/map.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/blog.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/clanek.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/blog/blog.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/blog/clanek.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/langMenu.css" rel="stylesheet">
 
 
     <!-- Templates CSS Files -->
@@ -67,6 +68,15 @@
 <!-- ======= Header ======= -->
 
 <header>
+    <div class="lang-menu">
+        <div class="selected-lang">
+            <i class="fa fa-angle-down"></i>
+        </div>
+        <ul>
+            <li><a href="https://www.towpoint.cz/" class="cz"></a></li>
+            <li><a href="https://www.towpoint.sk/" class="sk"></a></li>
+        </ul>
+    </div>
     <a n:href="Default:" title="přejít na titulní stránku" class="logo"></a>
     <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption">
         <a class="nav-link {if $presenter->isLinkCurrent($link)}active{/if}" n:href="$link"><span>{$caption}</span></a>
@@ -75,6 +85,19 @@
 </header>
 
 <!-- End Header -->
+
+<!-- ======= Social icons  ======= -->
+<aside>
+    <div>
+        <a href="https://www.facebook.com/TowPointCZ">
+            <img src="{$basePath}/assets/image/ikony/social/fb.png" alt="facebook">
+        </a>
+        <a href="tel:+420702111702">
+            <img src="{$basePath}/assets/image/ikony/social/hotLink.png" alt="hotlink">
+        </a>
+    </div>
+</aside>
+<!-- ======= END Social icons  ======= -->
 
 
 <!-- ======= MAIN Section ======= -->

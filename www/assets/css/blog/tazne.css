@@ -1,0 +1,35 @@
+
+
+
+
+
+
+
+
+    /*
+    **
+    *** MEDIA QUERIES
+    **
+    */
+
+
+    @media screen and (max-width: 1600px)
+    {
+        #basic .line img {
+            width: 50%;
+        }
+    }
+
+    @media screen and (max-width: 850px)
+    {
+        #basic .line {
+            margin: 0;
+        }
+    }
+
+    @media screen and (max-width: 600px)
+    {
+        #basic .line img {
+            width: 100%;
+        }
+    }

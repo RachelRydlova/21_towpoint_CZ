@@ -1,0 +1,244 @@
+
+    /* FONT */
+
+    p {
+        font-size: 1.375em; /* 22px */
+    }
+    h3 {
+        font-size: 2.0625em; /* 33px */
+    }
+    h2 {
+        font-size: 2.5em; /* 40px */
+    }
+    h1 {
+        font-size: 3.75em; /* 60px */
+    }
+
+
+/* main orange title */
+    .desc {
+        clear: both;
+        display: block;
+        width: 100%;
+        position: relative;
+        height: auto;
+        background-color: var(--color-orange);
+        color: white;
+        text-align: center;
+        padding: 1em;
+    }
+
+
+    .desc > div {
+        margin: 0 auto;
+        max-width: 55%;
+    }
+
+    .desc h2 {
+        padding-top: 2em;
+        padding-bottom: 1em;
+        font-weight: 600;
+    }
+
+
+    .desc img {
+        position: absolute;
+        right: 8%;
+        bottom: 5%;
+        max-height: 22rem;
+        float: right;
+        z-index: 10;
+    }
+
+/* end main orange title */
+
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    main {
+        float: left;
+        margin-bottom: 8em;
+    }
+
+    main > section {
+        clear: both;
+        margin: 0 auto;
+    }
+
+    main h1 {
+        text-align: center;
+        color: var(--color-gray);
+        margin: 1em auto;
+    }
+
+    .description {
+        text-align: center;
+        padding: 0 2em;
+    }
+
+    .description h3 {
+        padding-bottom: 1em;
+    }
+
+    .description p {
+        letter-spacing: 1px;
+    }
+
+
+
+
+
+    /*
+    **
+    *** MEDIA QUERIES
+    **
+    */
+
+
+    @media screen and (max-width: 1600px)
+    {
+        .desc h2 {
+            padding-top: 1em;
+        }
+        .desc img {
+            max-height: 19rem;
+        }
+        .description {
+            padding: 3rem;
+        }
+    }
+
+    @media screen and (max-width: 1450px)
+    {
+        h1 {
+            font-size: 3em;
+        }
+        h2 {
+            font-size: 2em;
+        }
+        h3  {
+            font-size: 1.6em;
+        }
+        p {
+            font-size: 1em;
+        }
+
+        .desc h2 {
+            padding-bottom: .7em;
+        }
+        .desc p {
+            line-height: 1em;
+        }
+        .desc img {
+            max-height: 16rem;
+        }
+
+
+
+    }
+
+    @media screen and (max-width: 1300px)
+    {
+        .desc h2 {
+            padding-bottom: .4em;
+            line-height: 1em;
+        }
+        .desc p {
+            line-height: 1em;
+        }
+        .desc img {
+            max-height: 14rem;
+        }
+
+        .description {
+            padding: 1em;
+        }
+        footer img.tazak {
+            display: none;
+        }
+
+
+    }
+
+    @media screen and (max-width: 1000px)
+    {
+        h1 {
+            font-size: 2em;
+        }
+        h2 {
+            font-size: 1.6em;
+        }
+        h3  {
+            font-size: 1.3em;
+        }
+        p {
+            font-size: .9em;
+        }
+
+        .desc img {
+            max-height: 11rem;
+            right: 5%;
+            bottom: 10%;
+        }
+
+        article .description {
+            padding: 1.2em;
+        }
+        .description h3 {
+            padding-bottom: .2em;
+        }
+    }
+
+    @media screen and (max-width: 850px)
+    {
+        main {
+            margin-bottom: 2em;
+        }
+
+        .desc img {
+            display: none;
+        }
+
+        .description h3 {
+            padding-bottom: .2em;
+        }
+    }
+
+
+
+
+    @media screen and (max-width: 600px)
+    {
+        .desc h2 {
+            line-height: 1em;
+        }
+        .desc > div {
+            max-width: 90%;
+        }
+    }

@@ -9,6 +9,10 @@
         transform: translateY(-5px);
     }
 
+    #doc a {
+        color: var(--color-orange);
+    }
+
     p {
         font-weight: 600;
         line-height: 1.5rem;

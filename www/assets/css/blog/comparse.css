@@ -1,0 +1,167 @@
+/* section special blocks */
+
+    .wrapper {
+        background-color: var(--color-lightGray);
+        clear: both;
+        padding: 1em 0;
+    }
+    #basic .wrapper {
+        padding-top: 0;
+    }
+
+    .wrapper .titlenote {
+        text-align: center;
+        margin: 3em auto;
+        color: var(--color-darkGray);
+    }
+    .wrapper .titlenote h3 {
+        padding-bottom: .8em;
+        font-weight: 600;
+        /*font: normal normal 600 36px/40px Segoe UI;*/
+    }
+    .dodavatele .titlenote p {
+        font-weight: 300;
+        /*font: normal normal 300 26px/40px Segoe UI;*/
+    }
+
+    .wrapper > div,
+    .wrapper article {
+        max-width: 70%;
+        margin: 0 auto;
+    }
+
+    .wrapper article {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    article .line {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+
+    article div.logo {
+        width: 85%;
+    }
+
+    article .line:nth-of-type(1) .description{ background-color: #4C6AAE;}
+    article .line:nth-of-type(1) { border: 8px solid #4C6AAE; margin-right: 24%;}
+    article .line:nth-of-type(2) .description { background-color: #484846;}
+    article .line:nth-of-type(2) { border: 8px solid #484846; margin-left: 24%;}
+    article .line:nth-of-type(3) .description { background-color: #E74D58;}
+    article .line:nth-of-type(3) { border: 8px solid #E74D58; margin-right: 24%;}
+
+    article .line img {
+        width: 94%;
+        padding: 0 1.5em;
+    }
+
+    article .description {
+        padding: 1.5em;
+        color: var(--color-white);
+    }
+    .line div.smallView,
+    .line img.smallView {
+        display: none;
+    }
+
+    #basic {
+        background-color: var(--color-white);
+    }
+    #basic .line {
+        background-color: var(--color-gray);
+        border: 8px solid var(--color-gray);
+    }
+    #basic .description {
+        background-color: var(--color-gray);
+    }
+    #basic .line img {
+        padding: 0;
+    }
+    #basic .line:nth-of-type(2n) {background-color: var(--color-lightGray); border:  8px solid var(--color-lightGray); margin-left: 24%;}
+    #basic .line:nth-of-type(2n) .description { background-color: var(--color-lightGray); color: var(--color-gray)}
+
+
+    .line i {
+        font-size: 1.5em;
+        padding: 0.1em;
+        color: red;
+        border: red solid 2px;
+        border-radius: 50%;
+        margin-right: .2em;
+        float: right;
+    }
+
+/* end section special blocks */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+**
+*** MEDIA QUERIES
+**
+*/
+
+
+
+
+
+
+
+    @media screen and (max-width: 1450px)
+    {
+        article .line:nth-of-type(1) {margin-right: 23%;}
+        article .line:nth-of-type(2) {margin-left: 23%;}
+        article .line:nth-of-type(3) {margin-right: 23%;}
+
+        .wrapper article {
+            max-width: 90%;
+        }
+    }
+
+
+
+    @media screen and (max-width: 1000px)
+    {
+        article .line {
+            flex-direction: column;
+            margin-bottom: 1em;
+        }
+        .line div.smallView,
+        .line img.smallView {
+            display: inherit;
+        }
+        .line div.bigView,
+        .line img.bigView {
+            display: none;
+        }
+
+        article .line:nth-of-type(1n+1) {margin: 0;}
+        #basic .line:nth-of-type(1n+1) {margin: 0;}
+    }
