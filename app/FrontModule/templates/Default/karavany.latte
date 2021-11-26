@@ -2,6 +2,7 @@
 {block title}Karavany | TowPoint{/block}
 
 {block head}
+    <link href="{$basePath}/assets/css/home.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/karavany.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/contactForm.css" rel="stylesheet">
 {/block}
@@ -43,33 +44,7 @@
 
 
     <!-- CONTACT Form -->
-    <section id="form">
-        {form partnerForm}
-            <div class="subn step">
-                <h2>Kontaktní údaje</h2>
-            </div>
-            <div class="inputs">
-                <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
-                <div>  {input name}  </div>
-                <div>  {input surname}  </div>
-                <div>  {input position}  </div>
-                <div>  {input company}  </div>
-                <div>  {input city}  </div>
-                <div>  {input zipcode}  </div>
-                <div required>
-                    {input email}
-                    <p id="errorEmail">Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
-                </div>
-
-                <div class="last">  {input message}  </div>
-                <a class="cta">
-                        <span>
-                            {input send}
-                        </span>
-                </a>
-            </div>
-        {/form}
-    </section>
+    {control orderForm}
     <!-- End Form -->
 
 

@@ -28,10 +28,6 @@ class DefaultPresenter extends BasePresenter
     /** @var applCache @inject */
     public $cache;
 
-    /** @var ICarSelectorFactory @inject */
-    public $carSelectorFactory;
-
-
 
     /**
      * formular pro vyber vozu
@@ -101,7 +97,7 @@ class DefaultPresenter extends BasePresenter
      * formular do sekce "pro partnery"
      * @return Form
      */
-    protected function createComponentPartnerForm(): Form
+    protected function createComponentContactForm(): Form
     {
         $form = new Form;
         $form->addText('name')
@@ -110,27 +106,26 @@ class DefaultPresenter extends BasePresenter
         $form->addText('surname')
             ->setHtmlAttribute('placeholder', 'Příjmení')
             ->setRequired('Vyplňte prosím své příjmení');
-        $form->addText('position')
-            ->setHtmlAttribute('placeholder', 'Pozice');
-        $form->addText('company')
-            ->setHtmlAttribute('placeholder', 'Název firmy');
-        $form->addText('city')
-            ->setHtmlAttribute('placeholder', 'Město');
-        $form->addText('zipcode')
-            ->setHtmlAttribute('placeholder', 'PSČ');
         $form->addEmail('email')
             ->setHtmlAttribute('placeholder', 'E-mail')
             ->setHtmlType('email')
             ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.')
             ->setOption('description', 'Vyplňte svoji e-mailovou adresu ve správném formátu.');
+        $form->addText('phone', 'Telefon')
+            ->setHtmlType('phone')
+            ->setHtmlAttribute('placeholder', 'Telefon');
+        $form->addText('city')
+            ->setHtmlAttribute('placeholder', 'Město');
+        $form->addText('zipcode')
+            ->setHtmlAttribute('placeholder', 'PSČ');
         $form->addText('message')
-            ->setHtmlAttribute('placeholder', 'Vzkaz')
+            ->setHtmlAttribute('placeholder', 'Poznámka (dotaz, popis, zavady, atp.)')
             ->setRequired('Vyplňte vzkaz.')
             ->setHtmlAttribute('class', 'last');
 
         $form->addSubmit('send', 'Odeslat')
             ->setAttribute('class', 'cta');
-        $form->onSuccess[] = [$this, 'PartnerFormSucceeded'];
+        $form->onSuccess[] = [$this, 'ContactFormSucceeded'];
         return $form;
     }
 
@@ -139,10 +134,10 @@ class DefaultPresenter extends BasePresenter
      * @param $data
      * @throws Nette\Application\AbortException
      */
-    public function partnerFormSucceeded(Form $form, $data): void
+    public function contactFormSucceeded(Form $form, $data): void
     {
-        $this->apiManager->sendPartnerData($data);
-        bdump($data, 'dataVPartnerFormSucceeded');
+        $this->apiManager->sendContactData($data);
+        bdump($data, 'dataVContactFormSucceeded');
         $this->redirect('this');
     }
 

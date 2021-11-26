@@ -71,12 +71,6 @@ input, textarea
 }
 
 
-input::-webkit-input-placeholder {  color: inherit;  opacity: 1;}
-input::-moz-placeholder {  color: inherit;  opacity: 1;}
-input:-ms-input-placeholder {  color: inherit;  opacity: 1;}
-input:-moz-placeholder {  color: inherit;  opacity: 1;}
-
-
 *, *:before, *:after
 {
 	box-sizing: inherit;
@@ -93,7 +87,7 @@ aside {
 	border-bottom-right-radius: 1em;
 	border-top-right-radius: 1em;
 	padding-left: .5em;
-	top: 40em;
+	top: 50%;
 	height: 8em;
 	width: 3em;
 	background-color: var(--color-gray);

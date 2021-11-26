@@ -2,7 +2,6 @@ header nav a:first-of-type span
 {
 	background-color: #525252;
 	
-	-moz-transform: translateY(-5px);
 	-webkit-transform: translateY(-5px);
 	-o-transform: translateY(-5px);
 	-ms-transform: translateY(-5px);
@@ -131,7 +130,6 @@ header nav a:first-of-type span
 	font-size: 18px;
 	border: 1px solid gray;
 	-webkit-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
-	-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	color: #525252;
 
@@ -142,7 +140,6 @@ header nav a:first-of-type span
 
 	border-radius: 20px;
 	-webkit-appearance: none;
-   -moz-appearance: none;
    appearance: none;
 }
 
@@ -236,10 +233,8 @@ header nav a:first-of-type span
 	left: 0px;
 	top: 50%;
 
-	-moz-transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
 
@@ -286,7 +281,6 @@ header nav a:first-of-type span
 	background-color: white;
 	display: inline-block;
 	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	border-radius: 50%;
 	width: 150px;
 	height: 150px;
@@ -306,10 +300,8 @@ header nav a:first-of-type span
 	top: 50%;
 	width: 80px;
 
-	-moz-transform: translateX(-50%) translateY(-50%);
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-o-transform: translateX(-50%) translateY(-50%);
-	-ms-transform: translateX(-50%) translateY(-50%);
 	transform: translateX(-50%) translateY(-50%);
 }
 
@@ -475,7 +467,6 @@ header nav a:first-of-type span
 	border: 1px solid #525252;
 
 	-webkit-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
-	-moz-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 }
 
@@ -574,7 +565,6 @@ header nav a:first-of-type span
 
 #map .img > div
 {
-	-moz-transform: translateX(-50%) translateY(-50%);
 	-webkit-transform: translateX(-50%) translateY(-50%);
 	-o-transform: translateX(-50%) translateY(-50%);
 	-ms-transform: translateX(-50%) translateY(-50%);
@@ -729,11 +719,9 @@ header nav a:first-of-type span
 	border: 1px solid #525252;
 	
 	-webkit-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
-	-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	
 	-webkit-border-radius: 50px;
-	-moz-border-radius: 50px;
 	border-radius: 50px;
 	
 	cursor: pointer;
@@ -750,7 +738,6 @@ header nav a:first-of-type span
 	top: 7px;
 	
 	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	border-radius: 50%;
 	
 	transition: 150ms all;
@@ -846,11 +833,9 @@ header nav a:first-of-type span
 	border: 1px solid #525252;
 
 	-webkit-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
-	-moz-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 
 	-webkit-border-radius: 50px;
-	-moz-border-radius: 50px;
 	border-radius: 50px;
 
 	cursor: pointer;
@@ -868,7 +853,6 @@ header nav a:first-of-type span
 	top: 9px;
 
 	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	border-radius: 50%;
 }
 
@@ -885,7 +869,6 @@ header nav a:first-of-type span
 {
 	cursor: auto;
 	-webkit-border-radius: 0px;
-	-moz-border-radius: 0px;
 	border-radius: 0px;
 }
 .redukce div label{
@@ -906,7 +889,6 @@ header nav a:first-of-type span
 	background-size: 25px;
 
 	-webkit-border-radius: 0%;
-	-moz-border-radius: 0%;
 	border-radius: 0%;
 }
 
@@ -953,14 +935,8 @@ header nav a:first-of-type span
 }
 
 #form input::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form input::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form input:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form input:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
 
 #form textarea::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form textarea::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form textarea:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-#form textarea:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
 
 
 #form .clr
@@ -1072,9 +1048,7 @@ header nav a:first-of-type span
 	height: 50px;
 	position: relative;
 	border: 1px solid #525252;
-	-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	-webkit-border-radius: 50px;
-	-moz-border-radius: 50px;
 	margin-bottom: 15px;
 }
 
@@ -1089,7 +1063,6 @@ header nav a:first-of-type span
 	left: 7px;
 	top: 7px;
 	-webkit-border-radius: 50%;
-	-moz-border-radius: 50%;
 	border-radius: 50%;
 	transition: 150ms all;
 }
@@ -1165,10 +1138,8 @@ p.error {
 	text-align: center;
 	font-family: osb, Arial, Helvetica, sans-serif;
 	
-	-moz-transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
-	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
 
@@ -1742,7 +1713,6 @@ p.error {
 		padding-left: 25px;
 		padding-right: 25px;
 
-		-moz-transform: none;
 		-webkit-transform: none;
 		-o-transform: none;
 		-ms-transform: none;

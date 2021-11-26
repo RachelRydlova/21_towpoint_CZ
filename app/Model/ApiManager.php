@@ -320,10 +320,12 @@ class ApiManager
 
         $out=$data->data;
         $tazne=$out->{$pref}->{$koule}->tazne;
+        if (!isset($tazne)) {$tazne = 0;};
         $ele=$out->{$pref}->{$koule}->elektro->{$e};
         $el0=$out->{$pref}->{$koule};
 
         $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='https://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         bdump($dataToReva);
         $pole=array(
@@ -345,11 +347,12 @@ class ApiManager
             'stat'=>$state,
             'kvalita'=>$pref,
             'typ_tazne'=>$koule,
-            'tazne'=>isset($tazne->id_nomenklatura),	// kod produktu - nomenklatura
-            'tazne_cena'=>isset($tazne->price_moc_dph),
+            'tazne'=> $tazne->id_nomenklatura ?? 0,
+//            'tazne'=> $tazne->id_nomenklatura,	// kod produktu - nomenklatura
+            'tazne_cena'=> $tazne->price_moc_dph ?? 0,
             'typ_elektrika'=>$e,
-            'elektrika'=> isset($ele->id_nomenklatura),	// kod produktu - nomenklatura
-            'elektrika_cena'=>isset($ele->price_moc_dph),
+            'elektrika'=> $ele->id_nomenklatura ?? 0,	// kod produktu - nomenklatura
+            'elektrika_cena'=> $ele->price_moc_dph ?? 0,
             'montaz_cena'=>$el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'},
             'comfort'=>$comfort
         );
@@ -372,6 +375,7 @@ class ApiManager
     public function sendPreRequest($email)
     {
         $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='https://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $pole=array(
             'session_id'=> $this->session->getId(),
@@ -398,7 +402,7 @@ class ApiManager
      * odeslani dat z formulare partnera na maily
      * @param $data
      */
-    public function sendPartnerData($data)
+    public function sendContactData($data)
     {
         bdump($data);
         $post=$_POST;
