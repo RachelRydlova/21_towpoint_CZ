@@ -64,15 +64,21 @@
 </head>
 
 <body>
+
+<!-- Messenger Plugin chatu Code -->
+{*<div id="fb-root"></div>*}
+
+<!-- Your Plugin chatu code -->
+{*<div id="fb-customer-chat" class="fb-customerchat"></div>*}
+
+
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 <!-- ======= Header ======= -->
 
 <header>
     <div class="lang-menu">
-        <div class="selected-lang">
-            <i class="fa fa-angle-down"></i>
-        </div>
+        <div class="selected-lang"></div>
         <ul>
             <li><a href="https://www.towpoint.cz/" class="cz"></a></li>
             <li><a href="https://www.towpoint.sk/" class="sk"></a></li>
@@ -111,14 +117,6 @@
 
 <footer>
 
-    <section class="recenze">
-{*        <h1> Naši zákazníci o nás řekli: </h1>*}
-
-
-        <iframe width="100%" height="90%" src="https://www.firmy.cz/detail/13255536-towpoint-zasova-zasova.html?widget&limit=3"
-                style="border: none;" frameborder="0">
-        </iframe>
-    </section>
 
     <section class="benefit">
         <div>
@@ -144,6 +142,28 @@
 
     <img class="tazak" src="{block tazak}{/block}" alt="pan Tazak udava recenze">
 
+    <section id="sklikRecenze">
+        <h1> Naši zákazníci o nás řekli: </h1>
+        <div>
+            <div>
+                <p><img src="{$basePath}/assets/image/uvozovky.png" alt="uvozovky">
+                   Velmi vstřícná a příjemná komunikace, výborné vyřízení komplikované objednávky.</p>
+            </div>
+            <div>
+                <p><img src="{$basePath}/assets/image/uvozovky.png" alt="uvozovky">
+                   Vše super. Levně, rychle a efektivně :)</p>
+            </div>
+            <div>
+                <p><img src="{$basePath}/assets/image/uvozovky.png" alt="uvozovky">
+                   Rychlé vyřízení mé objednávky. Když nebyl objednaný produkt k dispozici, byl mi nabídnut jiný, podobný ve stejné kvalitě i ceně</p>
+            </div>
+        </div>
+
+
+{*        <iframe width="100%" height="90%" src="https://www.firmy.cz/detail/13255536-towpoint-zasova-zasova.html?widget&limit=3"*}
+{*                style="border: none;" frameborder="0">*}
+{*        </iframe>*}
+    </section>
 
     <section class="vyrobci">
         <img src="{$basePath}/assets/image/loga/steinhof.png" alt="Steinhof">
@@ -165,3 +185,27 @@
 </body>
 </html>
 
+
+
+
+
+{*<script>*}
+{*    var chatbox = document.getElementById('fb-customer-chat');*}
+{*    chatbox.setAttribute("page_id", "103634337704714");*}
+{*    chatbox.setAttribute("attribution", "biz_inbox");*}
+
+{*    window.fbAsyncInit = function() {*}
+{*        FB.init({*}
+{*            xfbml            : true,*}
+{*            version          : 'v12.0'*}
+{*        });*}
+{*    };*}
+
+{*    (function(d, s, id) {*}
+{*        var js, fjs = d.getElementsByTagName(s)[0];*}
+{*        if (d.getElementById(id)) return;*}
+{*        js = d.createElement(s); js.id = id;*}
+{*        js.src = 'https://connect.facebook.net/cs_CZ/sdk/xfbml.customerchat.js';*}
+{*        fjs.parentNode.insertBefore(js, fjs);*}
+{*    }(document, 'script', 'facebook-jssdk'));*}
+{*</script>*}

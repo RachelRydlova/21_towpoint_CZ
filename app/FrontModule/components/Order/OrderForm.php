@@ -4,7 +4,6 @@
 namespace App\FrontModule\components;
 
 
-use Doctrine\Common\Util\Debug;
 use Nette;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
@@ -45,7 +44,6 @@ class OrderForm extends Control
         $form = new Form();
 
         $form->getElementPrototype()->setAttribute('class', 'inputs');
-//        $form->getElementPrototype()->novalidate = "novalidate";
 
         $staty = ['Česká republika', 'Slovensko'];
 

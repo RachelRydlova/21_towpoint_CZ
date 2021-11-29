@@ -13,6 +13,7 @@ use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Tracy\Debugger;
 use Nette\Http\Session;
+use Nepada\AutocompleteInput\AutocompleteInput;
 
 class CarSelector extends Control
 {

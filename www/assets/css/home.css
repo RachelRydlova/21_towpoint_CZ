@@ -420,13 +420,13 @@ header nav a:first-of-type span
 #model .all figure {
 	display: none;
 	position: absolute;
-	right: 15rem;
+	right: 10em;
 	vertical-align:bottom;
 	z-index: 5;
 }
 
 #model .all img {
-	margin-bottom: 10rem;
+	width: 100%;
 }
 
 #model div div:last-child {
@@ -1518,6 +1518,12 @@ p.error {
 	{
 		right: 8%;
 	}
+	#model .all figure {
+		right: 5em;
+	}
+	#model .all img {
+		width: 80%;
+	}
 }
 
 
@@ -1638,6 +1644,12 @@ p.error {
 	{
 		width: 100%;
 		margin-right: 0px;
+	}
+	#model .all figure {
+		right: 0;
+	}
+	#model .all img {
+		width: 50%;
 	}
 }
 

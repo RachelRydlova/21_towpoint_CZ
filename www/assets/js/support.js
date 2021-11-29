@@ -40,28 +40,17 @@ $(function () {
     //
 
     //zobrazovani prvku carSelectoru
-    $(document).on('click','#imark',function(){
-        value = this.value;
-        console.log(value);
+    $(document).on('focus','#imark',function(){
         $('#mark').slideDown(300);
         $('#model').slideUp(300);
         $('#motor').slideUp(300);
     });
-    $(document).on('blur', '#imark', function (){
-        $('#mark').slideUp(300);
-    });
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
-        $('#mark').slideUp(300);
         $('#motor').slideUp(300);
-    });
-    $(document).on('blur', '#imodel', function (){
-        $('#model').slideUp(300);
     });
     $(document).on('focus','#imotor',function(){
         $('#motor').slideDown(300);
-        $('#mark').slideUp(300);
-        $('#model').slideUp(300);
     });
     $(document).on('blur', '#imotor', function (){
         $('#motor').slideUp(300);
@@ -83,7 +72,7 @@ $(function () {
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
             $('#imark').val(title);
             $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
-            $('#preffered').slideUp(300);
+            $('#mark').slideUp(300);
             $('#model').slideDown(300);
         });
 

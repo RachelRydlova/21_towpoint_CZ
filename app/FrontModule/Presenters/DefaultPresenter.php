@@ -56,6 +56,7 @@ class DefaultPresenter extends BasePresenter
 
     /**
      * odeslani objednavky s kontaktnimi udaji i informacemi o zvolenem voze
+     * posila se i jako kontaktni formular z webu
      * @return OrderForm
      */
     protected function createComponentOrderForm(){
@@ -93,53 +94,6 @@ class DefaultPresenter extends BasePresenter
         return $comp;
     }
 
-    /**
-     * formular do sekce "pro partnery"
-     * @return Form
-     */
-    protected function createComponentContactForm(): Form
-    {
-        $form = new Form;
-        $form->addText('name')
-            ->setHtmlAttribute('placeholder', 'Jméno')
-            ->setRequired('Vyplňte prosím své jméno');
-        $form->addText('surname')
-            ->setHtmlAttribute('placeholder', 'Příjmení')
-            ->setRequired('Vyplňte prosím své příjmení');
-        $form->addEmail('email')
-            ->setHtmlAttribute('placeholder', 'E-mail')
-            ->setHtmlType('email')
-            ->setRequired('Vyplňte svoji e-mailovou adresu ve správném formátu.')
-            ->setOption('description', 'Vyplňte svoji e-mailovou adresu ve správném formátu.');
-        $form->addText('phone', 'Telefon')
-            ->setHtmlType('phone')
-            ->setHtmlAttribute('placeholder', 'Telefon');
-        $form->addText('city')
-            ->setHtmlAttribute('placeholder', 'Město');
-        $form->addText('zipcode')
-            ->setHtmlAttribute('placeholder', 'PSČ');
-        $form->addText('message')
-            ->setHtmlAttribute('placeholder', 'Poznámka (dotaz, popis, zavady, atp.)')
-            ->setRequired('Vyplňte vzkaz.')
-            ->setHtmlAttribute('class', 'last');
-
-        $form->addSubmit('send', 'Odeslat')
-            ->setAttribute('class', 'cta');
-        $form->onSuccess[] = [$this, 'ContactFormSucceeded'];
-        return $form;
-    }
-
-    /**
-     * @param Form $form
-     * @param $data
-     * @throws Nette\Application\AbortException
-     */
-    public function contactFormSucceeded(Form $form, $data): void
-    {
-        $this->apiManager->sendContactData($data);
-        bdump($data, 'dataVContactFormSucceeded');
-        $this->redirect('this');
-    }
 
     /**
      * @throws \Throwable
