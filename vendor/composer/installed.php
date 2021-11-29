@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => 'f10f47b843d44ac374360fa9846c4f034acd112e',
+    'reference' => '964c0ab24bb3cdd3d356bdd98d00c57d0cf82715',
     'name' => 'nette/web-project',
   ),
   'versions' => 
@@ -200,15 +200,6 @@
       ),
       'reference' => 'c120893f561b09494486c66594720b2abcb099b2',
     ),
-    'nette/tester' => 
-    array (
-      'pretty_version' => 'v2.4.1',
-      'version' => '2.4.1.0',
-      'aliases' => 
-      array (
-      ),
-      'reference' => 'b54326b3c1a2c6c76d2662a06b5ad5a10d822e98',
-    ),
     'nette/utils' => 
     array (
       'pretty_version' => 'v3.2.6',
@@ -225,7 +216,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => 'f10f47b843d44ac374360fa9846c4f034acd112e',
+      'reference' => '964c0ab24bb3cdd3d356bdd98d00c57d0cf82715',
     ),
     'psr/container' => 
     array (

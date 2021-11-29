@@ -13,7 +13,6 @@ use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use Tracy\Debugger;
 use Nette\Http\Session;
-use Nepada\AutocompleteInput\AutocompleteInput;
 
 class CarSelector extends Control
 {
@@ -53,7 +52,7 @@ class CarSelector extends Control
 
         } else {
 
-            $manItems = [];
+            $manItems = ['Ostatní'];
             if ($mans = $this->apiManager->getCarManufacturers(0)) {
                 foreach ($mans as $man) {
                     $manItems['Ostatní'][$man->tcznacka] = $man->name;
