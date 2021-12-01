@@ -9,6 +9,7 @@ use App\FrontModule\components\CarSelector;
 use App\FrontModule\components\OrderForm;
 use App\ICarSelectorFactory;
 use App\Model\applCache;
+use App\FrontModule\Forms\ContactFormFactory;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
 use App\Model\BannerModel;
@@ -27,6 +28,13 @@ class DefaultPresenter extends BasePresenter
 
     /** @var applCache @inject */
     public $cache;
+    private ContactFormFactory $contactFormFactory;
+
+
+    public function __construct(ContactFormFactory $contactFormFactory)
+    {
+        $this->contactFormFactory = $contactFormFactory;
+    }
 
 
     /**
@@ -92,6 +100,18 @@ class DefaultPresenter extends BasePresenter
 
         };
         return $comp;
+    }
+
+
+    /**
+     * kontaktni formular
+     * @return Form
+     */
+    protected function createComponentContactForm(): Form
+    {
+        return $this->contactFormFactory->create(function (): void {
+            $this->redirect('this');
+        });
     }
 
 

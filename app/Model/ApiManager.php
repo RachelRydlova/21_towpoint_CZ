@@ -268,7 +268,7 @@ class ApiManager
         $znacky=$data->data;
         $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
         if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId==$item->tcznacka) $outznacka=$item->name;
-        if (!$outznacka) {$outznacka = "";}
+        if (!isset($outznacka)) {$outznacka = "";}
 
         // vytahnu info o modelu
         $secret = self::countApiToken(array('tcznacka'=>$manufacturerId));
@@ -348,7 +348,6 @@ class ApiManager
             'kvalita'=>$pref,
             'typ_tazne'=>$koule,
             'tazne'=> $tazne->id_nomenklatura ?? 0,
-//            'tazne'=> $tazne->id_nomenklatura,	// kod produktu - nomenklatura
             'tazne_cena'=> $tazne->price_moc_dph ?? 0,
             'typ_elektrika'=>$e,
             'elektrika'=> $ele->id_nomenklatura ?? 0,	// kod produktu - nomenklatura
@@ -381,7 +380,7 @@ class ApiManager
             'session_id'=> $this->session->getId(),
             'final_request'=> 0,
             'email'=>$email,
-            'znacka'=> 0,
+            'znacka'=> '',
         );
 
         $client = new Client();
@@ -398,34 +397,36 @@ class ApiManager
 
 
     /**
-     * data ze zpravy od partnera -> prozatim nikam neodesilam, bude se predelavat
-     * odeslani dat z formulare partnera na maily
-     * @param $data
+     * @param $values
      */
-    public function sendContactData($data)
+    public function sendContactForm($values)
     {
-        bdump($data);
-        $post=$_POST;
-        $pole=array('fullname'=>$data['name'].' '.$data['surname'],
-            'position'=>$data['position'],
-            'firma'=>$data['company'],
-            'mesto'=>$data['city'],
-            'psc'=>$data['zipcode'],
-            'email'=>$data['email'],
-            'vzkaz'=>$data['message']);
-        $url='https://reva.vapol.cz/api/api/request-towpoint-partner-contact/?token='.self::get_secret([]);
+        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+
+        $pole=array(
+            'session_id'=> $this->session->getId(),
+            'final_request'=> 1,
+            'znacka'=>'0',
+            'notes'=>$values['note'],
+            'name'=>$values['name'],
+            'surname'=>$values['surname'],
+            'email'=>$values['email'],
+            'tel'=>$values['tel'],
+            'psc'=>$values['psc'],
+            'mesto'=>$values['mesto'],
+            'stat'=>$values['state'],
+            'gdpr'=>$values['gdpr'],
+        );
+        bdump($pole);
 
         $client = new Client();
         $response = $client->request('POST', $url, [
                 'form_params' => $pole
             ]
         );
-        dump(json_decode($response->getBody()->getContents()));
-        Debugger::log(print_r($data,true),'debug-partner');
+        $data = (json_decode($response->getBody()->getContents()));
+        Debugger::log(print_r($data,true),'contactFormRequest');
+        Debugger::barDump($url);
         die();
     }
-
-
-
-
 }

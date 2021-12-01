@@ -130,19 +130,19 @@ class Calculator extends Control
 
         $form->addRadioList('pref', "Preference:", ['Cena','Kvalita'])
             ->setAttribute('id', 'pref')
-            ->setDisabled()
+            ->setDisabled(true)
             ->setDefaultValue('0');
         $form->addRadioList('koule', "Upevnění koule:", ['Pevné','Odnímatelné'])
             ->setAttribute('id', 'koule')
-            ->setDisabled()
+            ->setDisabled(true)
             ->setDefaultValue('0');
         $form->addRadioList('zasuvka', "Zásuvka:", ['7pinová','13pinová'])
             ->setAttribute('id', 'el')
-            ->setDisabled()
+            ->setDisabled(true)
             ->setDefaultValue('0');
         $form->addRadioList('redukce', "Redukce zdarma:", ['7→13','13→7'])
             ->setAttribute('id', 'redukce')
-            ->setDisabled()
+            ->setDisabled(true)
             ->setDefaultValue('0');
 
         $form->onSuccess[] = [$this, 'onFormSuccess'];

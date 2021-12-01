@@ -24,30 +24,11 @@
         {input vehicle}
     </div>
 
-    {snippet hiddenData}
-        {input modelId}
-        {input vehicleId}
-    {/snippet}
-
-
-    <div id="mark">
-        <div class="logos">
-            <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
-                <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
-            </a>
-
-        </div>
-        <div class="all">
-            <a href="javascript:;" title="{$carInfo->name}" n:foreach="$ostatni as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
-                {$carInfo->name}
-            </a>
-        </div>
-    </div>
 
     {snippet modelyList}
         <div id="model">
             <div class="all">
-                {if is_array($modely)}
+                {if isset($modely)}
                     <div n:ifset="$modely" n:foreach="$modely as $model => $modelInfo">
                         <a href="javascript:;" title="{$modelInfo->fullname}" data-key="{(int) $modelInfo->tcmodel}" class="modelLink">
                             {$modelInfo->fullname}
@@ -65,7 +46,7 @@
     {snippet motoryList}
         <div id="motor">
             <div class="all">
-                {if $motory}
+                {if isset($motory)}
                 <div n:foreach="$motory as $category => $vehiclesInCategory">
                     {$category}
                     <div n:foreach="$vehiclesInCategory as $vehicle => $item">
@@ -106,7 +87,32 @@
 
 {/snippetArea}
 
-<script n:ifset="$carSelect">
+{snippet manuf}
+    <div id="mark">
+        <div class="logos">
+            <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
+                <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
+            </a>
+
+        </div>
+        <div class="all">
+            <a href="javascript:;" title="{$carInfo->name}" n:foreach="$ostatni as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
+                {$carInfo->name}
+            </a>
+        </div>
+    </div>
+{/snippet}
+
+{snippet manId}
+    <span n:ifset="$manId" id="manIdValue" class="hidden">{$manId}</span>
+{/snippet}
+
+{snippet modId}
+    <span n:ifset="$modId" id="modIdValue" class="hidden">{$modId}</span>
+{/snippet}
+
+
+<script>
     console.log('byla prenactena stranka a spusten script');
 
     let value = $(this).attr('data-key');

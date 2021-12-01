@@ -22,6 +22,8 @@ class CarSelector extends Control
 
     public $onSuccess;
 
+    private $search;
+
     /** @var Nette\Http\Session - kompletni session pro nette */
     protected $session;
 
@@ -36,13 +38,51 @@ class CarSelector extends Control
         $this->session    = $session;
     }
 
+    /**
+     * vyhledavani v inputu carSelectoru - znacka vozu
+     * @param $search
+     */
+    public function handleSearchManuf($search)
+    {
+        $this->search = strtoupper($search);
+
+//       $res =  Nette\Utils\Strings::contains("AUDI",$this->search);
+
+        // vytvoreni promennych se seznamem znacek
+        $preferovane = $this->apiManager->getCarManufacturers(1);
+        $ostatni = $this->apiManager->getCarManufacturers(0);
+
+
+        // pokud je neco v search, tak plnim pole autami obsahujici co je v search
+        bdump($this->search);
+        if ($this->search) {
+            foreach ($preferovane as $key => $pref){
+                if (!Nette\Utils\Strings::contains($pref->name,$this->search)){
+                    unset($preferovane[$key]);
+                }
+            }
+            foreach ($ostatni as $key => $os) {
+                if (!Nette\Utils\Strings::contains($os->name,$this->search)) {
+                    unset($ostatni[$key]);
+                }
+            }
+            bdump($preferovane);
+        }
+
+            // nastavuji promenne do template a prekresluji znacky
+        $this->template->preferovane = $preferovane;
+        $this->template->ostatni = $ostatni;
+        $this->redrawControl('manuf');
+
+    }
+
 
     /**
      * funkce pro zachyceni zvolene znacky vozu ve formulari
      * @param $manId
      * @throws \Throwable
      */
-    public function handleSetManufacturer($manId): void
+    public function handleSetManufacturer($manId, $search = null): void
     {
         if (!$manId) {
             $this->redrawControl('carSelectorWrapper');
@@ -59,17 +99,37 @@ class CarSelector extends Control
                 }
             }
 
-            $this['carSelector']['manufacturer']->setDefaultValue($manItems['Ostatní'][$manId]);
-            $this['carSelector']['model']->setDisabled(false);
-            $this->redrawControl('carSelectorWrapper');
-            $this->redrawControl('manufacturer');
-            $this->redrawControl('img');
-            $this->redrawControl('model');
+            // poslu si manId do sablony
+            $this->template->manId = $manId;
+            $this->redrawControl('manId');
 
-            $this->redrawControl('vehicle');
 
             // prekresluju snippet pro list modelů
+            $models = $this->apiManager->getCarManufacturerModels($manId);
+            $search = strtoupper($search);
+                // pokud je neco v search, tak plnim pole autami obsahujici co je v search
+                if ($search) {
+                    foreach ($models as $key => $mod){
+                        $modelName = strtoupper($mod->fullname);
+                        if (!Nette\Utils\Strings::contains($modelName,$search)){
+                            unset($models[$key]);
+                        }
+                    }
+                }
+
+
+
+            // nastavuji promenne do template a prekresluji znacky
+            $this->template->modely = $models;
+
+            $this['carSelector']['manufacturer']->setDefaultValue($manItems['Ostatní'][$manId]);
+            $this->redrawControl('carSelectorWrapper');
+            $this->redrawControl('model');
             $this->redrawControl('modelyList');
+            $this->redrawControl('vehicle');
+
+            $this['carSelector']['model']->setDisabled(false);
+
             // ulozeni zvolene znacky do session
             $this->saveValue('manufacturer', $manId);
             $this->saveValue('model', null);
@@ -83,7 +143,7 @@ class CarSelector extends Control
      * @param $modId
      * @throws \Throwable
      */
-    public function handleSetModel($modId): void
+    public function handleSetModel($modId, $search = null): void
     {
         if (!$modId) {
             $this->redrawControl('carSelectorWrapper');
@@ -101,17 +161,43 @@ class CarSelector extends Control
                 $this->redrawControl('img');
             }
 
+            // poslu si modId do sablony
+            $this->template->modId = $modId;
+            $this->redrawControl('modId');
 
-            $this->redrawControl('carSelectorWrapper');
-            $modInfo = $this->apiManager->getModelApiRow($manId, $modId);
-            $this['carSelector']['model']->setDefaultValue($modInfo->fullname);
+
+            // prekresluju snippet pro list motoru
+            $motors = $this->apiManager->getCarModelVehicles($modId);
+            $search = strtoupper($search);
+            bdump($motors);
+            // pokud je neco v search, tak plnim pole autami obsahujici co je v search
+            if ($search) {
+                foreach ($motors as $category => $motInCat){
+                    foreach ($motInCat as $mot => $item){
+                        $motorName = strtoupper($item->name);
+                        if (!Nette\Utils\Strings::contains($motorName,$search)){
+                            unset($motors[$category]);
+                        }
+                    }
+                }
+            }
+
+            // nastavuji promenne do template a prekresluji motory
+            $this->template->motory = $motors;
+
+
+
+//            $this->redrawControl('carSelectorWrapper');
+//            $modInfo = $this->apiManager->getModelApiRow($manId, $modId);
+//            $this['carSelector']['model']->setDefaultValue($modInfo->fullname);
             $this['carSelector']['vehicle']->setDisabled(false);
-            $this->redrawControl('model');
-            $this->redrawControl('vehicle');
+//
+//            $this->redrawControl('model');
+//            $this->redrawControl('vehicle');
+            // prekresluju snippet pro list motorů
+            $this->redrawControl('motoryList');
 
         }
-        // prekresluju snippet pro list motorů
-        $this->redrawControl('motoryList');
         // ulozeni zvoleneho modelu do session
         $this->saveValue('model', $modId);
         $this->saveValue('vehicle', null);
@@ -182,23 +268,26 @@ class CarSelector extends Control
 
         $form->addText('manufacturer', 'manufacturer')
             ->setHtmlAttribute('id', 'imark')
-            ->setHtmlAttribute('data-confirm', 'coTuMaByt')
+            ->setHtmlAttribute('autocomplete', 'off')
+            ->setHtmlAttribute('name', 'search')
             ->setHtmlAttribute('placeholder', 'Značka vozu');
-        $form->addHidden('manufacturerId');
+//        $form->addHidden('manufacturerId');
 
         $form->addText('model', 'model')
             ->setHtmlAttribute('id', 'imodel')
+            ->setHtmlAttribute('autocomplete', 'off')
             ->setHtmlAttribute('placeholder', 'Model vozu')
             ->setDisabled();
-        $form->addHidden('modelId');
+//        $form->addHidden('modelId');
 
         $form->addText('vehicle', 'vehicle')
             ->setHtmlAttribute('id', 'imotor')
+            ->setHtmlAttribute('autocomplete', 'off')
             ->setHtmlAttribute('placeholder', 'Motorizace')
             ->setDisabled();
 
-        $form->addHidden('vehicleId')
-            ->setHtmlAttribute('id', 'carSelectorVehicleIdHidden');
+//        $form->addHidden('vehicleId')
+//            ->setHtmlAttribute('id', 'carSelectorVehicleIdHidden');
 
         $form->addCheckbox('komfort');
         $form->addSubmit('success', 'confirm');
@@ -227,19 +316,24 @@ class CarSelector extends Control
         $preferovane = $this->apiManager->getCarManufacturers(1);
         $ostatni = $this->apiManager->getCarManufacturers(0);
 
+
         // nastavuji promenne do template
-        $this->template->preferovane = $preferovane;
-        $this->template->ostatni = $ostatni;
+        if (!$this->search) {
+            $this->template->preferovane = $preferovane;
+            $this->template->ostatni = $ostatni;
+        }
 
         // vytvoreni promenne se seznamem modelu
-        $manId = $this->loadValue('manufacturer');
-        $models = $this->apiManager->getCarManufacturerModels($manId);
-        $this->template->modely = $models;
+//        $manId = $this->loadValue('manufacturer');
+//        if (!$this->search) {
+//            $models = $this->apiManager->getCarManufacturerModels($manId);
+//            $this->template->modely = $models;
+//        }
 
         // vytvoreni promenne se seznamem motoru
-        $modId = $this->loadValue('model');
-        $motors = $this->apiManager->getCarModelVehicles($modId);
-        $this->template->motory = $motors;
+//        $modId = $this->loadValue('model');
+//        $motors = $this->apiManager->getCarModelVehicles($modId);
+//        $this->template->motory = $motors;
         $this->template->render();
     }
 

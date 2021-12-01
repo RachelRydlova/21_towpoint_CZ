@@ -1,6 +1,5 @@
 var uint;
 
-
 $(function () {
 
     // SLIDER BANNER
@@ -32,18 +31,17 @@ $(function () {
 
 
 
-
-
-
     //
     // VYBER ZNACKA | MODEL | MOTOR
     //
 
-    //zobrazovani prvku carSelectoru
+    //zobrazeni prvku carSelectoru
     $(document).on('focus','#imark',function(){
-        $('#mark').slideDown(300);
-        $('#model').slideUp(300);
-        $('#motor').slideUp(300);
+        $('#mark').show();
+        $('#model, #motor').hide();
+    });
+    $(document).on('blur', '#imark', function (){
+        $('#mark').slideUp(300);
     });
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
@@ -51,6 +49,8 @@ $(function () {
     });
     $(document).on('focus','#imotor',function(){
         $('#motor').slideDown(300);
+        $('#form2').addClass('loading').removeClass('shown');
+        $('#frm-calculator-calculator :input').prop('disabled', true);
     });
     $(document).on('blur', '#imotor', function (){
         $('#motor').slideUp(300);
@@ -62,6 +62,9 @@ $(function () {
         // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
         e.preventDefault();
 
+        $('#sel').addClass('loading');
+        $('#motor').prop('disabled',true).val('').addClass('dis');
+
         // potrebuji snimat odkaz, nejcasteji se to dela data atributem
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
@@ -72,20 +75,62 @@ $(function () {
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
             $('#imark').val(title);
             $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
-            $('#mark').slideUp(300);
-            $('#model').slideDown(300);
+            $('#mark').hide();
+            $('#model').show();
+            $('#sel').removeClass('loading');
+            $('#form2').removeClass('shown');
         });
 
         console.log(value, title, '-> VYBER znacky');
     });
 
+    $(document).on('keyup', '#imodel', function (e) {
+        // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
+        e.preventDefault();
+
+        $('#imodel').addClass('loading');
+        // $('#motor').prop('disabled',true).val('').addClass('dis');
+
+        let manId = $('#manIdValue').text();
+        let search = $(this).val();
+
+        $.nette.ajax({
+            url: '?do=carSelector-setManufacturer',
+            data: {'carSelector-manId': manId, 'carSelector-search': search}
+        }).then(function () {
+            console.log(manId, search);
+            $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
+            $('#imodel').removeClass('loading');
+            if ($('#model').is(":hidden")){
+                $('#model').show();
+            }
+            $('#imodel').val(search).focus();
+        });
+    });
+
+
+    $(document).on('keyup', '#imark', function (e) {
+        const value = $(this).val();
+            console.log(value);
+            $('#imark').addClass('loading');
+
+            $.nette.ajax({
+                url: '?do=carSelector-searchManuf',
+                data: {'carSelector-search': value}
+            }).then(function (){
+                $('#imark').removeClass('loading');
+                $('#mark').show();
+            })
+    })
+
 
     // Výběr modelu
     $(document).on('click', '#model a.modelLink', function (e) {
         e.preventDefault();
+        $('#sel').addClass('loading');
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
-        $('#imodel').val(title);
+        // $('#imodel').val(title);
         $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
 
         $.nette.ajax({
@@ -95,9 +140,37 @@ $(function () {
             $('#model').slideUp(300);
             $('#motor').slideDown(300);
             $('#imodel').val(title);
+            $('#sel').removeClass('loading');
+            $('#form2').removeClass('shown');
         });
         console.log(value, title, '-> VYBER modelu');
     });
+
+    // vyhledavani v inputu motoru
+    $(document).on('keyup', '#imotor', function (e) {
+        // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
+        e.preventDefault();
+
+        $('#imotor').addClass('loading');
+
+        let modId = $('#modIdValue').text();
+        let search = $(this).val();
+
+        $.nette.ajax({
+            url: '?do=carSelector-setModel',
+            data: {'carSelector-modId': modId, 'carSelector-search': search}
+        }).then(function () {
+            console.log(manId, search);
+            $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
+            $('#imotor').removeClass('loading');
+            if ($('#motor').is(":hidden")){
+                $('#motor').show();
+            }
+            $('#imotor').val(search).focus();
+        });
+    });
+
+
 
     // Náhled vozidla u modelu
     $(document).on('hover', '#model .all > div', function (){
@@ -105,15 +178,15 @@ $(function () {
         $(this).children().show();
     })
 
-
     // Výběr motoru
     $(document).on('click', '#motor a.motorLink', function (e) {
         e.preventDefault();
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
+
         $('#imotor').val(title);
-        $('#nabidka').addClass('loading');
         $('#motor').slideUp(300);
+        $('#sel').addClass('loading');
 
 
         $.nette.ajax({
@@ -122,13 +195,14 @@ $(function () {
         }).then(function (){
             $('#imotor').val(title);
             $('html, body').animate({ scrollTop: $("#imotor").offset().top }, 250);
-            $('#form2').addClass('shown');
-            $('#nabidka').removeClass('loading');
-            $('#cenaPevne7').show();
             $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
+
             $('#frm-calculator-calculator :input').prop('disabled', false);
             $('#frm-orderForm-orderForm :input').prop('disabled', false);
             $('#redukce-0 , #redukce-1').prop('disabled', true);
+            $('#sel').removeClass('loading');
+            $('#form2').removeClass('loading').addClass('shown');
+            $('#cenaPevne7').show();
         })
         console.log(value, title, '-> VYBER motoru');
     });
@@ -136,19 +210,21 @@ $(function () {
 
     // Komfortni vybava
     $(document).on('click', '#frm-carSelector-carSelector-komfort', function (){
+        $('#form2').removeClass('shown');
+        $('#sel').addClass('loading');
+
         let value = 0;
         if ($('#frm-carSelector-carSelector-komfort').is(':checked')) {
             value = 1;
         }
-        $('#nabidka').addClass('loading');
+        $('#form2').addClass('loading');
         $.nette.ajax({
             url: '?do=carSelector-setComfort',
             data: {'carSelector-comfort': value}
         }).then(function (){
-            $('#form2').addClass('shown');
-            $('#nabidka').removeClass('loading');
             $('#cenaPevne7').show();
             $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
+            $('#form2, #sel').addClass('shown').removeClass('loading');
         })
     });
 
@@ -215,17 +291,15 @@ $(function () {
         }
     })
 
+    // zasuvka prepina redukci
+    $(document).on('click', '.el', function (){
+        if ($('#el-1').is(':checked')) {
+            $('#redukce-1').prop('checked', true);
+        } else {
+            $('#redukce-0').prop('checked', true);
+        }
+    });
 
-    // pri zmene na radiobuttonech posilam hodnoty do handleru
-    $(document).on('click', '#frm-calculator-calculator', function (){
-        // vytahnu info o zvolenych preferencich
-        value = get_selected_radios_array();
-        param = JSON.stringify(value);
-        $.nette.ajax({
-            url: '?do=calculator-setPref',
-            data: {'calculator-preference': param}
-        });
-    })
 
     // odeslani vyplnenych dat po zadani mailu / prefinal request
     $(document).on('blur', '#frm-orderForm-orderForm-email', function (){
@@ -240,14 +314,6 @@ $(function () {
     })
 
 
-    // zasuvka prepina redukci
-    $(document).on('click', '.el', function (){
-        if ($('#el-1').is(':checked')) {
-            $('#redukce-1').prop('checked', true);
-        } else {
-            $('#redukce-0').prop('checked', true);
-        }
-    });
 
 
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
@@ -297,6 +363,14 @@ $(function () {
                 $('#frm-orderForm-orderForm').submit();
             }
         }
+
+        // vytahnu info o zvolenych preferencich
+            value = get_selected_radios_array();
+            param = JSON.stringify(value);
+            $.nette.ajax({
+                url: '?do=calculator-setPref',
+                data: {'calculator-preference': param}
+            });
 
     });
 

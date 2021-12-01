@@ -665,13 +665,14 @@ header nav a:first-of-type span
 
 #form2
 {
-
+	clear: both;
 	opacity: 0.33;
 }
 
 #form.shown,
 #form2.shown
 {
+	float: left;
 	opacity: 1;
 	pointer-events: auto;
 }
@@ -971,7 +972,8 @@ header nav a:first-of-type span
 	min-height: 50px;
 }
 
-#nabidka.loading::after
+#nabidka.loading::after,
+#form2 .loading::after
 {
 	content: "";
 	background-color: rgba(255,255,255,0.8);
