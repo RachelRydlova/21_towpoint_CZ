@@ -86,17 +86,17 @@ class DefaultPresenter extends BasePresenter
                 'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
             $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
 
-            $this->apiManager->sendDataToApi($dataToReva);
+            $p->apiManager->sendDataToApi($dataToReva);
             Debugger::log(print_r($dataToReva,true),'dataToApiManager');
 
-            $this->redrawControl('ordForm');
-            $this->redirect('Default:thanks');
+            $p->redrawControl('ordForm');
+            $p->redirect('Default:thanks');
         };
 
         // pri zadani emailu odesilam podklady k spusteni prefinal requestu
         $comp->onMailSuccess[] = function ($email) use ($p) {
             $email = $p->session->getSection('contact')->email;
-            $this->apiManager->sendPreRequest($email);
+            $p->apiManager->sendPreRequest($email);
 
         };
         return $comp;
@@ -110,7 +110,7 @@ class DefaultPresenter extends BasePresenter
     protected function createComponentContactForm(): Form
     {
         return $this->contactFormFactory->create(function (): void {
-            $this->redirect('this');
+            $this->redirect('Default:thanksContact');
         });
     }
 

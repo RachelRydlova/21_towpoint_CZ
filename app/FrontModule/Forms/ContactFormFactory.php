@@ -57,8 +57,6 @@ final class ContactFormFactory
 
         $form->addSubmit('success', 'Odeslat');
 
-//        $form->onSuccess[] = [$this, 'ContactFormSucceeded'];
-
         $form->onSuccess[] = function (Form $form, array $values) use ($onSuccess): void {
             $this->apiManager->sendContactForm($values);
             Debugger::log(print_r($values, true), 'kontaktniFormular');
@@ -67,20 +65,5 @@ final class ContactFormFactory
         return $form;
 	}
 
-//    /**
-//     * @param Form $form
-//     * @throws \Throwable
-//     */
-//    public function contactFormSucceeded(Form $form): void
-//    {
-//        $contact = $form->getValues();
-//        $this->onSuccess($contact);
-//    }
-//
-//    public function render(): void
-//    {
-//        $this->template->setFile(__DIR__ . '/form.latte');
-//        $this->template->render();
-//    }
 }
 

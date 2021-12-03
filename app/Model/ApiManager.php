@@ -324,8 +324,8 @@ class ApiManager
         $ele=$out->{$pref}->{$koule}->elektro->{$e};
         $el0=$out->{$pref}->{$koule};
 
-        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-//        $url='https://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         bdump($dataToReva);
         $pole=array(
@@ -373,8 +373,8 @@ class ApiManager
      */
     public function sendPreRequest($email)
     {
-        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-//        $url='https://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $pole=array(
             'session_id'=> $this->session->getId(),
@@ -401,7 +401,8 @@ class ApiManager
      */
     public function sendContactForm($values)
     {
-        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $pole=array(
             'session_id'=> $this->session->getId(),
