@@ -32,7 +32,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => '8fcce2ce93861be6112e4a48adb7a92a00e8324d',
+    'reference' => '8496ae3d2d3542235275a04bb69f64c85d6be374',
     'name' => 'nette/web-project',
   ),
   'versions' => 
@@ -242,7 +242,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => '8fcce2ce93861be6112e4a48adb7a92a00e8324d',
+      'reference' => '8496ae3d2d3542235275a04bb69f64c85d6be374',
     ),
     'psr/container' => 
     array (

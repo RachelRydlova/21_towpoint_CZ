@@ -58,7 +58,11 @@ final class ContactFormFactory
         $form->addSubmit('success', 'Odeslat');
 
         $form->onSuccess[] = function (Form $form, array $values) use ($onSuccess): void {
-            $this->apiManager->sendContactForm($values);
+            $dataToReva = ['contact' => $values, 'carInfo' => []];
+
+            $this->apiManager->sendDataToApi($dataToReva);
+
+//            $this->apiManager->sendContactForm($values);
             Debugger::log(print_r($values, true), 'kontaktniFormular');
             $onSuccess();
         };

@@ -1,0 +1,21 @@
+    header nav a:nth-of-type(2) span
+    {
+        background-color: #525252;
+
+        -moz-transform: translateY(-5px);
+        -webkit-transform: translateY(-5px);
+        -o-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+
+
+    .thanks {
+        height: 20em;
+        text-align: center;
+        padding-top: 5em;
+    }
+
+    footer img.tazak {
+        max-height: 19em;
+    }

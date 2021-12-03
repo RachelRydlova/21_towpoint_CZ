@@ -33,10 +33,9 @@
 			<div>
 
 				<div class="inputs">
-					<p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+					<p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat.</p>
 
 
-{*						{input $input}*}
 					{input note}
 					<div>  {input name}  </div>
 					<div>  {input surname}  </div>
@@ -55,13 +54,23 @@
 				</div>
 			</div>
 		</section>
+		<div class="poptavka">
+			<div id="gdpr">
+				<input n:name="gdpr">
+			</div>
+			<span>
+                <p>Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení</p>
+                <p class="hidden error">Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>
+            </span>
+		</div>
 		<a class="cta">
             <span>
                 {input success}
             </span>
 		</a>
 
-		<div class="final_loader"><div>Odesíláme zprávu, mějte strpení...</div></div>
+		<div class="final_loader"><div>Odesíláme požadavek, mějte strpení...</div></div>
+
 
 	</form>
 {/define}

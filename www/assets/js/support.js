@@ -57,6 +57,7 @@ $(function () {
         $('#motor').slideUp(300);
     });
 
+    let $mb_to;
 
     // Výběr značky
     $(document).on('click', '.znackaLink', function (e) {
@@ -84,8 +85,47 @@ $(function () {
 
         console.log(value, title, '-> VYBER znacky');
     });
+    // vyhledávání značky
+    $(document).on('keyup', '#imark', function () {
+        const value = $(this).val();
+        console.log(value);
+        $('#imark').addClass('loading');
 
-    let $mb_to;
+        clearTimeout($mb_to);
+        $mb_to = setTimeout(function (){
+
+            $.nette.ajax({
+                url: '?do=carSelector-searchManuf',
+                data: {'carSelector-search': value}
+            }).then(function (){
+                $('#imark').removeClass('loading');
+                $('#mark').show();
+            });
+        }, 300)
+    });
+
+    // Výběr modelu
+    $(document).on('click', '#model a.modelLink', function (e) {
+        e.preventDefault();
+        $('#sel').addClass('loading');
+        let value = $(this).attr('data-key');
+        let title = $(this).attr('title');
+        // $('#imodel').val(title);
+        $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
+
+        $.nette.ajax({
+            url: '?do=carSelector-setModel',
+            data: {'carSelector-modId': value}
+        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
+            $('#model').slideUp(300);
+            $('#motor').slideDown(300);
+            $('#imodel').val(title);
+            $('#sel').removeClass('loading');
+            $('#form2').removeClass('shown');
+        });
+        console.log(value, title, '-> VYBER modelu');
+    });
+    // vyhledávání modelu
     $(document).on('keyup', '#imodel', function () {
 
 
@@ -110,42 +150,11 @@ $(function () {
             });
         }, 300)
     });
-
-    $(document).on('keyup', '#imark', function () {
-        const value = $(this).val();
-            console.log(value);
-            $('#imark').addClass('loading');
-
-            $.nette.ajax({
-                url: '?do=carSelector-searchManuf',
-                data: {'carSelector-search': value}
-            }).then(function (){
-                $('#imark').removeClass('loading');
-                $('#mark').show();
-            })
+    // Náhled vozidla u modelu
+    $(document).on('hover', '#model .all > div', function (){
+        $('#model .all figure').hide();
+        $(this).children().show();
     })
-
-    // Výběr modelu
-    $(document).on('click', '#model a.modelLink', function (e) {
-        e.preventDefault();
-        $('#sel').addClass('loading');
-        let value = $(this).attr('data-key');
-        let title = $(this).attr('title');
-        // $('#imodel').val(title);
-        $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
-
-        $.nette.ajax({
-            url: '?do=carSelector-setModel',
-            data: {'carSelector-modId': value}
-        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
-            $('#model').slideUp(300);
-            $('#motor').slideDown(300);
-            $('#imodel').val(title);
-            $('#sel').removeClass('loading');
-            $('#form2').removeClass('shown');
-        });
-        console.log(value, title, '-> VYBER modelu');
-    });
 
     // vyhledavani v inputu motoru
     $(document).on('keyup', '#imotor', function () {
@@ -156,26 +165,21 @@ $(function () {
         let search = $(this).val();
         console.log(modId, search);
 
-        $.nette.ajax({
-            url: '?do=carSelector-setModel',
-            data: {'carSelector-modId': modId, 'carSelector-search': search}
-        }).then(function () {
-            $('#imotor').removeClass('loading');
-            if ($('#motor').is(":hidden")){
-                $('#motor').show();
-            }
-            $('#imotor').val(search).focus();
-        });
+        clearTimeout($mb_to);
+        $mb_to = setTimeout(function (){
+
+            $.nette.ajax({
+                url: '?do=carSelector-setModel',
+                data: {'carSelector-modId': modId, 'carSelector-search': search}
+            }).then(function () {
+                $('#imotor').removeClass('loading');
+                if ($('#motor').is(":hidden")){
+                    $('#motor').show();
+                }
+                $('#imotor').val(search).focus();
+            });
+        }, 300)
     });
-
-
-
-    // Náhled vozidla u modelu
-    $(document).on('hover', '#model .all > div', function (){
-        $('#model .all figure').hide();
-        $(this).children().show();
-    })
-
     // Výběr motoru
     $(document).on('click', '#motor a.motorLink', function (e) {
         e.preventDefault();
@@ -185,7 +189,6 @@ $(function () {
         $('#imotor').val(title);
         $('#motor').slideUp(300);
         $('#sel').addClass('loading');
-
 
         $.nette.ajax({
             url: '?do=carSelector-saveData',
@@ -225,7 +228,6 @@ $(function () {
             $('#form2, #sel').addClass('shown').removeClass('loading');
         })
     });
-
 
     // KONFIGURATOR S KALKULACKOU
     $(document).on('click', '.radios div', function () {
@@ -313,30 +315,33 @@ $(function () {
 
 
 
-
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
     $('#form2 .cta').click(function(e){
 
         e.preventDefault();
 
         // zjistim jestli je vyplneny email
-        let mail = document.querySelector('#frm-orderForm-orderForm-email').value;
-        if (mail)
+        let mailId = $('#frm-orderForm-orderForm-email');
+        let mail = mailId.val();
+        if (!mail || mail.length === 0 )
         {
-            $('#frm-orderForm-orderForm-email').parent().removeClass();
-        } else {
-            $('#frm-orderForm-orderForm-email').parent().addClass('error');
+            mailId.parent().addClass('error');
             $('.inputs p.complete').show();
+        } else {
+            mailId.parent().removeClass('error');
+            $('.inputs p.complete').hide();
         }
         console.log(mail);
 
         // zjistim jestli je vyplneny telefon
-        let tel = document.querySelector('#frm-orderForm-orderForm-tel').value;
-        if (tel){
-            $('#frm-orderForm-orderForm-tel').parent().removeClass('error');
-        } else {
-            $('#frm-orderForm-orderForm-tel').parent().addClass('error');
+        let telId = $('#frm-orderForm-orderForm-tel');
+        let tel = telId.val();
+        if (!tel || tel.length === 0){
+            telId.parent().addClass('error');
             $('.inputs p.complete').show();
+        } else {
+            telId.parent().removeClass('error');
+            $('.inputs p.complete').hide();
         }
 
         // potvrzeno GDPR?
@@ -344,7 +349,7 @@ $(function () {
         if ($('#frm-orderForm-orderForm-gdpr').is(':checked')){
             gdpr = 1;
         }
-        if (gdpr == 0){
+        if (gdpr === 0){
             $('.poptavka span > p').show().addClass('error');
             $('.inputs p.complete').show();
         } else {
@@ -355,23 +360,73 @@ $(function () {
 
         if (mail && tel){
             $('.inputs p.complete').hide();
-            if (gdpr == 1) {
-                $('#frm-orderForm-orderForm').addClass('loading');
+            if (gdpr === 1) {
+                $('#frm-orderForm-orderForm').addClass('loading').submit();
                 $('.final_loader').stop(true).delay(1000).fadeIn(200);
-                $('#frm-orderForm-orderForm').submit();
             }
         }
 
         // vytahnu info o zvolenych preferencich
-            value = get_selected_radios_array();
-            param = JSON.stringify(value);
-            $.nette.ajax({
-                url: '?do=calculator-setPref',
-                data: {'calculator-preference': param}
-            });
+        value = get_selected_radios_array();
+        param = JSON.stringify(value);
+        $.nette.ajax({
+            url: '?do=calculator-setPref',
+            data: {'calculator-preference': param}
+        });
 
     });
 
+
+
+    // kontrola jestli jsou vyplneny povinne udaje v kontaktnim formulari
+    $('#frm-contactForm .cta').click(function(e){
+        e.preventDefault();
+
+        // zjistim jestli je vyplneny email
+        let mailId = $('#frm-contactForm-email');
+        let mail = mailId.val();
+        if (!mail || mail.length === 0) {
+            mailId.parent().addClass('error');
+            $('.inputs p.complete').show();
+        } else {
+            mailId.parent().removeClass('error');
+            $('.inputs p.complete').hide();
+        }
+        console.log(mail);
+
+        // zjistim jestli je vyplneny telefon
+        let telId = $('#frm-contactForm-tel');
+        let tel = telId.val();
+        if (!tel || tel.length === 0) {
+            telId.parent().addClass('error');
+            $('.inputs p.complete').show();
+        } else {
+            telId.parent().removeClass('error');
+            $('.inputs p.complete').hide();
+        }
+
+        // potvrzeno GDPR?
+        let gdpr = 0;
+        if ($('#frm-contactForm-gdpr').is(':checked')){
+            gdpr = 1;
+        }
+        if (gdpr === 0){
+            $('.poptavka span > p').show().addClass('error');
+            $('.inputs p.complete').show();
+        } else {
+            $('.poptavka span > p').removeClass('error');
+            $('.poptavka span > p.hidden').hide();
+
+        }
+
+        if (mail && tel){
+            $('.inputs p.complete').hide();
+            if (gdpr === 1) {
+                $('#frm-contactForm').addClass('loading').submit();
+                $('.final_loader').stop(true).delay(1000).fadeIn(200);
+            }
+        }
+    });
 
 
     // FUNKCE

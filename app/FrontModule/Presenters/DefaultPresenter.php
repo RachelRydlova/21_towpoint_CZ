@@ -109,8 +109,9 @@ class DefaultPresenter extends BasePresenter
      */
     protected function createComponentContactForm(): Form
     {
-        return $this->contactFormFactory->create(function (): void {
-            $this->redirect('Default:thanksContact');
+        $p = $this;
+        return $p->contactFormFactory->create(function () use ($p): void {
+            $p->redirect('Default:thanksContact');
         });
     }
 

@@ -262,67 +262,73 @@ class ApiManager
     public function sendDataToApi($dataToReva)
     {
         // vytahnu info o znacce
-        $secret = self::countApiToken(array('onlyFavorities'=>'0'));
-        $url='https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret='.$secret;
-        $data=json_decode(file_get_contents($url));
-        $znacky=$data->data;
-        $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
-        if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId==$item->tcznacka) $outznacka=$item->name;
-        if (!isset($outznacka)) {$outznacka = "";}
+        $secret = self::countApiToken(array('onlyFavorities' => '0'));
+        $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
+        $data = json_decode(file_get_contents($url));
+        $znacky = $data->data;
 
-        // vytahnu info o modelu
-        $secret = self::countApiToken(array('tcznacka'=>$manufacturerId));
-        $url='https://www.vapol.cz/remote-cars/models-by-manufacturer?tcznacka='.$manufacturerId.'&secret='.$secret;
-        $data=json_decode(file_get_contents($url));
-        $modely=$data->data;
-        $modelId = Arrays::get($dataToReva, ['carInfo', 'modelId']);
-        if (is_array($modely)) foreach ($modely as $item) if ($modelId==$item->tcmodel) $outmodel=$item->fullname;
+        if ($dataToReva['carInfo']) {
 
-        // vytahnu info o motoru
-        $motory=array();
-        $secret= self::countApiToken(array('tcmodel'=>$modelId));
-        $url='https://www.vapol.cz/remote-cars/vehicles-by-model/?tcmodel='.$modelId.'&secret='.$secret;
-        $data=json_decode(file_get_contents($url));
-        $motory0=(Array)$data->data;
-        if (is_array($motory0)) foreach ($motory0 as $typ=>$item)
-        {
-            foreach ($item as $item0) $motory[]=$item0;
+            $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
+            if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId == $item->tcznacka) $outznacka = $item->name;
+            if (!isset($outznacka)) {
+                $outznacka = "";
+            }
+
+            // vytahnu info o modelu
+            $secret = self::countApiToken(array('tcznacka' => $manufacturerId));
+            $url = 'https://www.vapol.cz/remote-cars/models-by-manufacturer?tcznacka=' . $manufacturerId . '&secret=' . $secret;
+            $data = json_decode(file_get_contents($url));
+            $modely = $data->data;
+            $modelId = Arrays::get($dataToReva, ['carInfo', 'modelId']);
+            if (is_array($modely)) foreach ($modely as $item) if ($modelId == $item->tcmodel) $outmodel = $item->fullname;
+
+            // vytahnu info o motoru
+            $motory = array();
+            $secret = self::countApiToken(array('tcmodel' => $modelId));
+            $url = 'https://www.vapol.cz/remote-cars/vehicles-by-model/?tcmodel=' . $modelId . '&secret=' . $secret;
+            $data = json_decode(file_get_contents($url));
+            $motory0 = (array)$data->data;
+            if (is_array($motory0)) foreach ($motory0 as $typ => $item) {
+                foreach ($item as $item0) $motory[] = $item0;
+            }
+            $ismotory = (count($motory) > 0);
+            $vehicleId = Arrays::get($dataToReva, ['carInfo', 'vehicleId']);
+            foreach ($motory as $item) if ($vehicleId == $item->vozidlo_id) $outmotor = $item->fullname;
+
+
+            // vytahuji informaci, zda byl zvolen komfort
+            $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
+
+
+            // nastavim spravne stat
+            $state = 'CZ';
+            if ($dataToReva['contact']->state == 1) { $state = 'SK';}
+
+            // preference Cena x Kvalita
+            $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
+            if ($pref == 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
+
+            // koule Pevne x Odnimatelne
+            $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
+            if ($koule == 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
+
+            // elektrika 7pin x 13pin
+            $el = Arrays::get($dataToReva, ['carInfo', 'el']);
+            if ($el == 0) { $el = '7pin'; } else { $el = '13pin'; }
+            $e = Arrays::get($dataToReva, ['carInfo', 'el']);
+            if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
+
+
+            $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
+            $data=json_decode(file_get_contents($url));
+
+            $out=$data->data;
+            $tazne=$out->{$pref}->{$koule}->tazne;
+            if (!isset($tazne)) {$tazne = 0;};
+            $ele=$out->{$pref}->{$koule}->elektro->{$e};
+            $el0=$out->{$pref}->{$koule};
         }
-        $ismotory=(count($motory)>0);
-        $vehicleId = Arrays::get($dataToReva, ['carInfo', 'vehicleId']);
-        foreach ($motory as $item) if ($vehicleId==$item->vozidlo_id) $outmotor=$item->fullname;
-
-
-        // vytahuji informaci, zda byl zvolen komfort
-        $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
-
-        // nastavim spravne stat
-        $state = 'CZ';
-        if ($dataToReva['contact']->state == 1) { $state = 'SK';}
-
-        // preference Cena x Kvalita
-        $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
-        if ($pref == 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
-
-        // koule Pevne x Odnimatelne
-        $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
-        if ($koule == 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
-
-        // elektrika 7pin x 13pin
-        $el = Arrays::get($dataToReva, ['carInfo', 'el']);
-        if ($el == 0) { $el = '7pin'; } else { $el = '13pin'; }
-        $e = Arrays::get($dataToReva, ['carInfo', 'el']);
-        if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
-
-
-        $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
-        $data=json_decode(file_get_contents($url));
-
-        $out=$data->data;
-        $tazne=$out->{$pref}->{$koule}->tazne;
-        if (!isset($tazne)) {$tazne = 0;};
-        $ele=$out->{$pref}->{$koule}->elektro->{$e};
-        $el0=$out->{$pref}->{$koule};
 
 //        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
         $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
@@ -331,12 +337,12 @@ class ApiManager
         $pole=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
-            'znacka'=>$outznacka,
-            'manufacturer_id'=>$manufacturerId,
-            'model'=>$outmodel,
-            'model_id'=>$modelId,
-            'motor'=>$outmotor,
-            'vehicle_id'=>$vehicleId,
+            'znacka'=>$outznacka ?? 0,
+            'manufacturer_id'=>$manufacturerId ?? 0,
+            'model'=>$outmodel ?? 0,
+            'model_id'=>$modelId ?? 0,
+            'motor'=>$outmotor ?? 0,
+            'vehicle_id'=>$vehicleId ?? 0,
             'notes'=>$dataToReva['contact']->note,
             'name'=>$dataToReva['contact']->name,
             'surname'=>$dataToReva['contact']->surname,
@@ -404,7 +410,7 @@ class ApiManager
 //        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
         $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
-        $pole=array(
+        $data=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
             'znacka'=>'0',
@@ -418,16 +424,16 @@ class ApiManager
             'stat'=>$values['state'],
             'gdpr'=>$values['gdpr'],
         );
-        bdump($pole);
+        bdump($data);
 
         $client = new Client();
         $response = $client->request('POST', $url, [
-                'form_params' => $pole
+                'form_params' => $data
             ]
         );
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'contactFormRequest');
         Debugger::barDump($url);
-        die();
+//        die();
     }
 }
