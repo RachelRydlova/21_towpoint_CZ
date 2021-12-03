@@ -39,11 +39,10 @@
     {block head}{/block}
 
     <!-- font awesome icons -->
-    <link href="{$basePath}/assets/css/all.css" rel="stylesheet">
-    <script type="text/javascript" src="{$basePath}/assets/js/all.js"></script>
+    <link href="{$basePath}/assets/css/fa.css" rel="stylesheet">
+    <script type="text/javascript" src="{$basePath}/assets/js/fa.js"></script>
 
     <!-- Main JS File -->
-    <script src="{$basePath}/assets/js/mq.genie.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
     <script src="{$basePath}/assets/js/jquery.iosslider.min.js"></script>
@@ -167,8 +166,9 @@
 <!-- End Footer -->
 
 <div id="preloader"></div>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
 
 
 
@@ -178,23 +178,23 @@
 </html>
 
 
-{*<script>*}
-{*    var chatbox = document.getElementById('fb-customer-chat');*}
-{*    chatbox.setAttribute("page_id", "103634337704714");*}
-{*    chatbox.setAttribute("attribution", "biz_inbox");*}
+<script>
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "103634337704714");
+    chatbox.setAttribute("attribution", "biz_inbox");
 
-{*    window.fbAsyncInit = function() {*}
-{*        FB.init({*}
-{*            xfbml            : true,*}
-{*            version          : 'v12.0'*}
-{*        });*}
-{*    };*}
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v12.0'
+        });
+    };
 
-{*    (function(d, s, id) {*}
-{*        var js, fjs = d.getElementsByTagName(s)[0];*}
-{*        if (d.getElementById(id)) return;*}
-{*        js = d.createElement(s); js.id = id;*}
-{*        js.src = 'https://connect.facebook.net/cs_CZ/sdk/xfbml.customerchat.js';*}
-{*        fjs.parentNode.insertBefore(js, fjs);*}
-{*    }(document, 'script', 'facebook-jssdk'));*}
-{*</script>*}
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/cs_CZ/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>

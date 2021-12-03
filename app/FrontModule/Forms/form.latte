@@ -1,0 +1,67 @@
+{define form $formName}
+	<form n:name=$formName>
+	<ul class=error n:ifcontent>
+		<li n:foreach="$form->ownErrors as $error">{$error}</li>
+	</ul>
+
+	<table>
+	<tr n:foreach="$form->controls as $input"
+		n:if="!$input->getOption(rendered) && $input->getOption(type) !== hidden"
+		n:class="$input->required ? required">
+
+		<th>{label $input /}</th>
+		<td>{input $input} <span class=error n:ifcontent>{$input->error}</span></td>
+	</tr>
+	</table>
+	</form>
+{/define}
+
+
+{* for contact form *}
+{define contact $formName}
+	<form n:name=$formName>
+
+		<div class="subn step">
+			<h2>Kontaktní údaje</h2>
+		</div>
+
+		<section id="form">
+			<ul class=error n:ifcontent>
+				<li n:foreach="$form->ownErrors as $error">{$error}</li>
+			</ul>
+
+			<div>
+
+				<div class="inputs">
+					<p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+
+
+{*						{input $input}*}
+					{input note}
+					<div>  {input name}  </div>
+					<div>  {input surname}  </div>
+					<div class="required">
+						{input email}
+						<p>Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+					</div>
+					<div class="required">
+						{input tel}
+						<p>Vyplňte své telefonní číslo &ndash; nejlépe ve&nbsp;formátu +420&nbsp;123&nbsp;456&nbsp;789.</p>
+					</div>
+					<div>  {input psc}  </div>
+					<div>  {input mesto}  </div>
+					<div>  {input state}  </div>
+
+				</div>
+			</div>
+		</section>
+		<a class="cta">
+            <span>
+                {input success}
+            </span>
+		</a>
+
+		<div class="final_loader"><div>Odesíláme zprávu, mějte strpení...</div></div>
+
+	</form>
+{/define}

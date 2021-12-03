@@ -5,6 +5,7 @@ $(function () {
     // SLIDER BANNER
     $(window).load(function(){
 
+        window.addEventListener('wheel', { passive: false });
         if ($('.iosSlider .slider .item').length>=1)
         {
             $('.iosSlider').iosSlider({
@@ -84,32 +85,33 @@ $(function () {
         console.log(value, title, '-> VYBER znacky');
     });
 
-    $(document).on('keyup', '#imodel', function (e) {
-        // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
-        e.preventDefault();
+    let $mb_to;
+    $(document).on('keyup', '#imodel', function () {
+
 
         $('#imodel').addClass('loading');
-        // $('#motor').prop('disabled',true).val('').addClass('dis');
-
         let manId = $('#manIdValue').text();
         let search = $(this).val();
 
-        $.nette.ajax({
-            url: '?do=carSelector-setManufacturer',
-            data: {'carSelector-manId': manId, 'carSelector-search': search}
-        }).then(function () {
-            console.log(manId, search);
-            $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
-            $('#imodel').removeClass('loading');
-            if ($('#model').is(":hidden")){
-                $('#model').show();
-            }
-            $('#imodel').val(search).focus();
-        });
+        clearTimeout($mb_to);
+        $mb_to = setTimeout(function (){
+
+
+            $.nette.ajax({
+                url: '?do=carSelector-setManufacturer',
+                data: {'carSelector-manId': manId, 'carSelector-search': search}
+            }).then(function () {
+                console.log(manId, search);
+                $('#imodel').removeClass('loading');
+                if ($('#model').is(":hidden")){
+                    $('#model').show();
+                }
+                $('#imodel').val(search).focus();
+            });
+        }, 300)
     });
 
-
-    $(document).on('keyup', '#imark', function (e) {
+    $(document).on('keyup', '#imark', function () {
         const value = $(this).val();
             console.log(value);
             $('#imark').addClass('loading');
@@ -122,7 +124,6 @@ $(function () {
                 $('#mark').show();
             })
     })
-
 
     // Výběr modelu
     $(document).on('click', '#model a.modelLink', function (e) {
@@ -147,21 +148,18 @@ $(function () {
     });
 
     // vyhledavani v inputu motoru
-    $(document).on('keyup', '#imotor', function (e) {
-        // Tady tímto řádkem zakážu aby to udělalo default akci presmerovani
-        e.preventDefault();
+    $(document).on('keyup', '#imotor', function () {
 
         $('#imotor').addClass('loading');
 
         let modId = $('#modIdValue').text();
         let search = $(this).val();
+        console.log(modId, search);
 
         $.nette.ajax({
             url: '?do=carSelector-setModel',
             data: {'carSelector-modId': modId, 'carSelector-search': search}
         }).then(function () {
-            console.log(manId, search);
-            $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
             $('#imotor').removeClass('loading');
             if ($('#motor').is(":hidden")){
                 $('#motor').show();

@@ -1,0 +1,32 @@
+
+
+    #towNote {
+        margin: 0 auto;
+        clear: both;
+
+        height: 500px;
+        width: 477px;
+        background-color: var(--color-lightGray );
+    }
+
+    #towNote div {
+        padding: 1em;
+        text-align: center;
+        background-color: var(--color-darkGray);
+        color: white;
+        /*font-weight: 300;*/
+    }
+
+    #doc #towNote p {
+        float: none;
+    }
+
+    #doc #towNote div.orange {
+        background-color: var(--color-orange);
+        color: var(--color-darkGray);
+    }
+
+    #doc #towNote > img {
+        max-width: 100%;
+        padding: .5em;
+    }
