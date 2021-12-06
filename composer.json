@@ -20,8 +20,9 @@
 		"latte/latte": "^2.9",
 		"tracy/tracy": "^2.8",
 		"contributte/console": "^0.9.1",
-		"guzzlehttp/guzzle": "7.4"
-	},
+		"guzzlehttp/guzzle": "7.4",
+      	"ext-json": "*"
+    },
 	"autoload": {
 		"psr-4": {
 			"App\\": "app"

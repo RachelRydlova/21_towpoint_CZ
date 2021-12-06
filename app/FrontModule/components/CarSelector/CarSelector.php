@@ -156,7 +156,6 @@ class CarSelector extends Control
             // prekresluju snippet pro list motoru
             $motors = $this->apiManager->getCarModelVehicles($modId);
             $search = strtoupper($search);
-            bdump($motors);
             // pokud je neco v search, tak plnim pole autami obsahujici co je v search
             if ($search) {
                 $motors = (array) $motors;

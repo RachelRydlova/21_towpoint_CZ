@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '8496ae3d2d3542235275a04bb69f64c85d6be374',
+    'reference' => '81ae02b05e1ac35cbbbfee40128919ba4a84aa90',
     'name' => 'nette/web-project',
   ),
   'versions' => 
@@ -216,7 +216,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '8496ae3d2d3542235275a04bb69f64c85d6be374',
+      'reference' => '81ae02b05e1ac35cbbbfee40128919ba4a84aa90',
     ),
     'psr/container' => 
     array (

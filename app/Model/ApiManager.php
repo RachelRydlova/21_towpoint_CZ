@@ -254,10 +254,10 @@ class ApiManager
     }
 
 
-
     /**
      * posilani vsech zvolenych dat o autu a kontakt do API na revu
      * @param $dataToReva
+     * @throws GuzzleException
      */
     public function sendDataToApi($dataToReva)
     {
@@ -330,13 +330,14 @@ class ApiManager
             $el0=$out->{$pref}->{$koule};
         }
 
-//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         bdump($dataToReva);
         $pole=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
+//            'typ_pozadavku' => 1,
             'znacka'=>$outznacka ?? 0,
             'manufacturer_id'=>$manufacturerId ?? 0,
             'model'=>$outmodel ?? 0,
@@ -370,7 +371,6 @@ class ApiManager
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'finalRequest');
 //        die();
-
     }
 
 
@@ -379,8 +379,8 @@ class ApiManager
      */
     public function sendPreRequest($email)
     {
-//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $pole=array(
             'session_id'=> $this->session->getId(),
@@ -407,12 +407,16 @@ class ApiManager
      */
     public function sendContactForm($values)
     {
-//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
-        $data=array(
+        // nastavim typ pozadavku
+//        $typ_pozadavku = 2;
+
+        $pole =array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
+//            'typ_pozadavku' => $typ_pozadavku,
             'znacka'=>'0',
             'notes'=>$values['note'],
             'name'=>$values['name'],
@@ -424,11 +428,11 @@ class ApiManager
             'stat'=>$values['state'],
             'gdpr'=>$values['gdpr'],
         );
-        bdump($data);
+        bdump($pole);
 
         $client = new Client();
         $response = $client->request('POST', $url, [
-                'form_params' => $data
+                'form_params' => $pole
             ]
         );
         $data = (json_decode($response->getBody()->getContents()));

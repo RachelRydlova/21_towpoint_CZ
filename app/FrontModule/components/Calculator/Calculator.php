@@ -112,7 +112,7 @@ class Calculator extends Control
 
             $this->template->data = $data;
         }
-        bdump($data, 'dostupneVariantyMontaze');
+//        bdump($data, 'dostupneVariantyMontaze');
 
 
         $this->redrawControl('summaryBox');
