@@ -261,6 +261,7 @@ class ApiManager
      */
     public function sendDataToApi($dataToReva)
     {
+        bdump($dataToReva, 'dataPoslaneDoApiManageru');
         // vytahnu info o znacce
         $secret = self::countApiToken(array('onlyFavorities' => '0'));
         $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
@@ -303,21 +304,21 @@ class ApiManager
 
             // nastavim spravne stat
             $state = 'CZ';
-            if ($dataToReva['contact']->state == 1) { $state = 'SK';}
+            if ($dataToReva['contact']['state'] == 1) { $state = 'SK';}
 
             // preference Cena x Kvalita
             $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
-            if ($pref == 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
+            if ($pref === 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
 
             // koule Pevne x Odnimatelne
             $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
-            if ($koule == 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
+            if ($koule === 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
 
             // elektrika 7pin x 13pin
             $el = Arrays::get($dataToReva, ['carInfo', 'el']);
-            if ($el == 0) { $el = '7pin'; } else { $el = '13pin'; }
+            if ($el === 0 || '') { $el = '7pin'; } else { $el = '13pin'; }
             $e = Arrays::get($dataToReva, ['carInfo', 'el']);
-            if ($e == 0) { $e = 'E7'; } else { $e = 'E13'; }
+            if ($e === 0) { $e = 'E7'; } else { $e = 'E13'; }
 
 
             $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
@@ -325,42 +326,45 @@ class ApiManager
 
             $out=$data->data;
             $tazne=$out->{$pref}->{$koule}->tazne;
-            if (!isset($tazne)) {$tazne = 0;};
+            if (!isset($tazne)) {$tazne = 0;}
             $ele=$out->{$pref}->{$koule}->elektro->{$e};
             $el0=$out->{$pref}->{$koule};
+            if (!$el0){ $el0 = 0;}
+            $montaz = $el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'};
         }
 
-        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+
+//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         bdump($dataToReva);
         $pole=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
 //            'typ_pozadavku' => 1,
-            'znacka'=>$outznacka ?? 0,
+            'znacka'=>$outznacka ?? 'default',
             'manufacturer_id'=>$manufacturerId ?? 0,
             'model'=>$outmodel ?? 0,
             'model_id'=>$modelId ?? 0,
             'motor'=>$outmotor ?? 0,
             'vehicle_id'=>$vehicleId ?? 0,
-            'notes'=>$dataToReva['contact']->note,
-            'name'=>$dataToReva['contact']->name,
-            'surname'=>$dataToReva['contact']->surname,
-            'email'=>$dataToReva['contact']->email,
-            'tel'=>$dataToReva['contact']->tel,
-            'psc'=>$dataToReva['contact']->psc,
-            'mesto'=>$dataToReva['contact']->mesto,
-            'stat'=>$state,
-            'kvalita'=>$pref,
-            'typ_tazne'=>$koule,
+            'notes'=>$dataToReva['contact']['note'],
+            'name'=>$dataToReva['contact']['name'],
+            'surname'=>$dataToReva['contact']['surname'],
+            'email'=>$dataToReva['contact']['email'],
+            'tel'=>$dataToReva['contact']['tel'],
+            'psc'=>$dataToReva['contact']['psc'],
+            'mesto'=>$dataToReva['contact']['mesto'],
+            'stat'=>$state ?? $dataToReva['contact']['state'],
+            'kvalita'=>$pref ?? 0,
+            'typ_tazne'=>$koule ?? 0,
             'tazne'=> $tazne->id_nomenklatura ?? 0,
             'tazne_cena'=> $tazne->price_moc_dph ?? 0,
-            'typ_elektrika'=>$e,
+            'typ_elektrika'=>$e ?? 0,
             'elektrika'=> $ele->id_nomenklatura ?? 0,	// kod produktu - nomenklatura
             'elektrika_cena'=> $ele->price_moc_dph ?? 0,
-            'montaz_cena'=>$el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'},
-            'comfort'=>$comfort
+            'montaz_cena'=> $montaz ?? 0,
+            'comfort'=>$comfort ?? 0
         );
 
         $client = new Client();
@@ -379,65 +383,25 @@ class ApiManager
      */
     public function sendPreRequest($email)
     {
-        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+//        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
-        $pole=array(
+        $data=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 0,
             'email'=>$email,
-            'znacka'=> '',
+            'znacka'=> 'prefinal',
         );
 
         $client = new Client();
         $response = $client->request('POST', $url, [
-                'form_params' => $pole
+                'form_params' => $data
             ]
         );
 
-        bdump([$url, $pole], 'url a data - prefinalRequest');
+        bdump([$url, $data], 'url a data - prefinalRequest');
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'prefinalRequest');
         die();
-    }
-
-
-    /**
-     * @param $values
-     */
-    public function sendContactForm($values)
-    {
-        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
-
-        // nastavim typ pozadavku
-//        $typ_pozadavku = 2;
-
-        $pole =array(
-            'session_id'=> $this->session->getId(),
-            'final_request'=> 1,
-//            'typ_pozadavku' => $typ_pozadavku,
-            'znacka'=>'0',
-            'notes'=>$values['note'],
-            'name'=>$values['name'],
-            'surname'=>$values['surname'],
-            'email'=>$values['email'],
-            'tel'=>$values['tel'],
-            'psc'=>$values['psc'],
-            'mesto'=>$values['mesto'],
-            'stat'=>$values['state'],
-            'gdpr'=>$values['gdpr'],
-        );
-        bdump($pole);
-
-        $client = new Client();
-        $response = $client->request('POST', $url, [
-                'form_params' => $pole
-            ]
-        );
-        $data = (json_decode($response->getBody()->getContents()));
-        Debugger::log(print_r($data,true),'contactFormRequest');
-        Debugger::barDump($url);
-//        die();
     }
 }

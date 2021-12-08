@@ -58,7 +58,7 @@ final class ContactFormFactory
         $form->addSubmit('success', 'Odeslat');
 
         $form->onSuccess[] = function (Form $form, array $values) use ($onSuccess): void {
-            $dataToReva = ['contact' => $values, 'carInfo' => []];
+            $dataToReva = ['contact' => $values, 'carInfo' => ['znacka' => 'default']];
 
             $this->apiManager->sendDataToApi($dataToReva);
 
