@@ -54,11 +54,13 @@ final class ContactFormFactory
             ->setHtmlAttribute('placeholder', 'Poznámky');
         $form->addSelect('state', 'Stát', $staty);
         $form->addCheckbox('gdpr');
+        $form->addHidden('type');
+
 
         $form->addSubmit('success', 'Odeslat');
 
         $form->onSuccess[] = function (Form $form, array $values) use ($onSuccess): void {
-            $dataToReva = ['contact' => $values, 'carInfo' => ['znacka' => 'default']];
+            $dataToReva = ['contact' => $values, 'carInfo' => []];
 
             $this->apiManager->sendDataToApi($dataToReva);
 

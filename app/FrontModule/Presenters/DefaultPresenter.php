@@ -115,6 +115,16 @@ class DefaultPresenter extends BasePresenter
         });
     }
 
+    public function actionKaravany()
+    {
+        $this['contactForm']['type']->setDefaultValue(2);
+    }
+
+    public function actionVoziky()
+    {
+        $this['contactForm']['type']->setDefaultValue(3);
+    }
+
 
     /**
      * @throws \Throwable
