@@ -15,13 +15,13 @@ class Bootstrap
         // Configure application
         $configurator = new Configurator;
 
-        // Enable Nette Debugger for error visualisation & logging
-        $configurator->setDebugMode(array('192.168.3.101')); // Rachel VPN
-        $configurator->setDebugMode('79.170.255.230'); // enable for your remote IP
 
 		$appDir = dirname(__DIR__);
 
         $configurator->enableTracy($appDir . '/log');
+        // Enable Nette Debugger for error visualisation & logging
+        $configurator->setDebugMode(array('192.168.3.101')); // Rachel VPN
+        $configurator->setDebugMode('79.170.255.230'); // enable for your remote IP
 
 		$configurator->setTimeZone('Europe/Prague');
 		$configurator->setTempDirectory($appDir . '/temp');
