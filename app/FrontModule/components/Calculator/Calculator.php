@@ -49,6 +49,7 @@ class Calculator extends Control
         // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
         $data = [];
 
+
         /*   CENA    */
         if ($prices->cena->pevne->tazne !== false) {
 
@@ -112,7 +113,7 @@ class Calculator extends Control
 
             $this->template->data = $data;
         }
-//        bdump($data, 'dostupneVariantyMontaze');
+        bdump($data, 'dostupneVariantyMontaze');
 
 
         $this->redrawControl('summaryBox');

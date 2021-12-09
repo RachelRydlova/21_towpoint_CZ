@@ -2,9 +2,10 @@ parameters:
 
 
 application:
-   # catchExceptions: true
+    catchExceptions: true
     errorPresenter: Error
     mapping:
+        Error: App\*Presenter
         *: App\*Module\Presenters\*Presenter
 
 tracy:
