@@ -5,7 +5,7 @@ application:
 #    catchExceptions: true
     errorPresenter: Error
     mapping:
-        Error: App\*Presenter
+#        Error: App\*Presenter
         *: App\*Module\Presenters\*Presenter
 
 tracy:
