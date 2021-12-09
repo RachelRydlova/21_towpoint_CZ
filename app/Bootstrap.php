@@ -11,14 +11,18 @@ class Bootstrap
 {
 	public static function boot(): Configurator
 	{
-		$configurator = new Configurator;
+
+        // Configure application
+        $configurator = new Configurator;
+
+        // Enable Nette Debugger for error visualisation & logging
+        $configurator->setDebugMode(array('192.168.3.101')); // Rachel VPN
+        $configurator->setDebugMode('79.170.255.230'); // enable for your remote IP
+
 		$appDir = dirname(__DIR__);
 
         $configurator->enableTracy($appDir . '/log');
 
-		//$configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
-        $configurator->setDebugMode('79.170.255.230'); // enable for your remote IP
-        $configurator->setDebugMode('93.89.111.34'); // enable for your remote IP
 		$configurator->setTimeZone('Europe/Prague');
 		$configurator->setTempDirectory($appDir . '/temp');
 
