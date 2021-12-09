@@ -18,7 +18,7 @@ class Bootstrap
 
 		//$configurator->setDebugMode('secret@23.75.345.200'); // enable for your remote IP
         $configurator->setDebugMode('79.170.255.230'); // enable for your remote IP
-        $configurator->setDebugMode('185.163.181.194'); // enable for your remote IP
+        $configurator->setDebugMode('93.89.111.34'); // enable for your remote IP
 		$configurator->setTimeZone('Europe/Prague');
 		$configurator->setTempDirectory($appDir . '/temp');
 

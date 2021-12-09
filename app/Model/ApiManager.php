@@ -303,8 +303,10 @@ class ApiManager
 
 
             // nastavim spravne stat
-            $state = 'CZ';
-            if ($dataToReva['contact']['state'] == 1) { $state = 'SK';}
+            $state = $dataToReva['contact']['state'];
+            if ($state == 1)
+                { $state = 'SK';}
+            else {$state = 'CZ';}
 
             // preference Cena x Kvalita
             $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
@@ -342,7 +344,7 @@ class ApiManager
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
             'request_type' => $dataToReva['contact']['type'],
-            'znacka'=>$outznacka ?? 'default',
+            'znacka'=>$outznacka ?? 'nezadano',
             'manufacturer_id'=>$manufacturerId ?? 0,
             'model'=>$outmodel ?? 0,
             'model_id'=>$modelId ?? 0,
@@ -355,7 +357,7 @@ class ApiManager
             'tel'=>$dataToReva['contact']['tel'],
             'psc'=>$dataToReva['contact']['psc'],
             'mesto'=>$dataToReva['contact']['mesto'],
-            'stat'=>$state ?? $dataToReva['contact']['state'],
+            'stat'=>$state ?? 'CZ',
             'kvalita'=>$pref ?? 0,
             'typ_tazne'=>$koule ?? 0,
             'tazne'=> $tazne->id_nomenklatura ?? 0,
