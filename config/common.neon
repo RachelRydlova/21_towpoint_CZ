@@ -21,7 +21,7 @@ di:
 
 
 search:
-    in: %appDir%\Model
+    in: %appDir%/Model
 
 services:
 	- App\Router\RouterFactory::createRouter

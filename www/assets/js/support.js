@@ -5,7 +5,8 @@ $(function () {
     // SLIDER BANNER
     $(window).load(function(){
 
-        window.addEventListener('wheel', { passive: false });
+        // window.addEventListener('wheel', { passive: false });
+
         if ($('.iosSlider .slider .item').length>=1)
         {
             $('.iosSlider').iosSlider({

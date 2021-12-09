@@ -420,7 +420,7 @@ header nav a:first-of-type span
 #model .all figure {
 	display: none;
 	position: absolute;
-	right: 10em;
+	right: 5em;
 	vertical-align:bottom;
 	z-index: 5;
 }
@@ -1521,10 +1521,13 @@ p.error {
 		right: 8%;
 	}
 	#model .all figure {
-		right: 5em;
+		right: -2em;
 	}
 	#model .all img {
-		width: 80%;
+		width: 60%;
+	}
+	#model div div:last-child {
+		padding-bottom: 4rem;
 	}
 }
 
@@ -1589,6 +1592,12 @@ p.error {
 
 }
 
+@media screen and (max-width: 850px)
+{
+	#model .all figure {
+		z-index: -10;
+	}
+}
 
 @media screen and (max-width: 790px)
 {
@@ -1596,7 +1605,6 @@ p.error {
 	{
 		text-align: center;
 		background-image: none;
-/*		background-position: center top;*/
 		padding-left: 0px;
 		padding: 0px;
 		padding-bottom: 20px;
@@ -2203,5 +2211,13 @@ p.error {
 	{
 		width: 5px;
 		height: 5px;
+	}
+}
+
+
+@media screen and (max-width: 400px)
+{
+	#model .all figure {
+		right: -4em;
 	}
 }
