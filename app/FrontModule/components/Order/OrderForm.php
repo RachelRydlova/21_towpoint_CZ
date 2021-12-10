@@ -63,7 +63,8 @@ class OrderForm extends Control
             ->setHtmlAttribute('placeholder', 'Poznámky');
         $form->addSelect('state', 'Stát', $staty);
         $form->addCheckbox('gdpr');
-        $form->addHidden('type');
+        $form->addHidden('type')
+            ->setDefaultValue(1);
 
         $form->addSubmit('success', 'Odeslat');
 

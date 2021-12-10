@@ -77,6 +77,8 @@ class DefaultPresenter extends BasePresenter
             $comfort = $p->session->getSection('carSection')->comfort;
             $preference = $p->session->getSection('calculator')->preferencies;
 
+
+
             // defaultne nastavim preference
             if (!$preference) {
                 $preference = ['0', '0', '0', '0'];
@@ -115,12 +117,12 @@ class DefaultPresenter extends BasePresenter
         });
     }
 
-    public function actionKaravany()
+    public function actionKaravany(): void
     {
         $this['contactForm']['type']->setDefaultValue(2);
     }
 
-    public function actionVoziky()
+    public function actionVoziky(): void
     {
         $this['contactForm']['type']->setDefaultValue(3);
     }
@@ -131,6 +133,8 @@ class DefaultPresenter extends BasePresenter
      */
     public function actionDefault(): void
     {
+
+
         //dotahnu data ze session
         $vehicleItems = [];
 

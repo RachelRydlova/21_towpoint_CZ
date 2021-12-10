@@ -339,11 +339,10 @@ class ApiManager
         $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
 //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
-        bdump($dataToReva);
+        Debugger::log($dataToReva, 'dataZpracovavaneVApiManageru');
         $pole=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
-            'request_type' => $dataToReva['contact']['type'],
             'znacka'=>$outznacka ?? 'nezadano',
             'manufacturer_id'=>$manufacturerId ?? 0,
             'model'=>$outmodel ?? 0,
@@ -366,17 +365,18 @@ class ApiManager
             'elektrika'=> $ele->id_nomenklatura ?? 0,	// kod produktu - nomenklatura
             'elektrika_cena'=> $ele->price_moc_dph ?? 0,
             'montaz_cena'=> $montaz ?? 0,
-            'comfort'=>$comfort ?? 0
+            'comfort'=>$comfort ?? 0,
+            'request_type' => $dataToReva['contact']['type'] ?? 1
         );
-        Debugger::log($url, 'urlApi');
 
         $client = new Client();
         $response = $client->request('POST', $url, [
                 'form_params' => $pole
             ]
         );
+        Debugger::log($url, 'urlApi');
         $data = (json_decode($response->getBody()->getContents()));
-        Debugger::log(print_r($data,true),'finalRequest');
+        Debugger::log(print_r($data,true . $pole),'finalRequest');
 //        die();
     }
 
