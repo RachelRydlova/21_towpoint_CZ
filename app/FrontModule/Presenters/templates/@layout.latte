@@ -66,24 +66,6 @@
 
 <body>
 
-
-<!-- Messenger Plugin chatu Code -->
-<div id="fb-root"></div>
-
-<!-- Your Plugin chatu code -->
-<div id="fb-customer-chat" class="fb-customerchat">
-</div>
-
-<script>
-    var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "103634337704714");
-    chatbox.setAttribute("attribution", "biz_inbox");
-</script>
-
-
-
-
-
 <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
 <!-- ======= Header ======= -->
