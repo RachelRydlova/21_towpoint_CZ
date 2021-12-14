@@ -386,6 +386,7 @@ class ApiManager
     public function sendPreRequest($email)
     {
         $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
+        // na local nejde posilat z duvodu odlisnych PHP verzi
 //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $data=array(

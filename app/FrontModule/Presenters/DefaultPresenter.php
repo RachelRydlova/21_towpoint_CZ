@@ -172,7 +172,9 @@ class DefaultPresenter extends BasePresenter
 
     public function renderDefault(){
         // data pro banner
-        $this->template->b = $this->bannerModel->getBannerData();
+        $b = $this->bannerModel->getBannerData();
+        $this->template->b = $b[0];
+        $this->template->format = $b[1];
     }
 
     public function renderAkce()
