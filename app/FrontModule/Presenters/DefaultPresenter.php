@@ -134,6 +134,7 @@ class DefaultPresenter extends BasePresenter
     public function actionDefault(): void
     {
 
+        $this['contactForm']['type']->setDefaultValue(1);
 
         //dotahnu data ze session
         $vehicleItems = [];

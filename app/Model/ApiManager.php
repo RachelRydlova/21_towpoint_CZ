@@ -339,7 +339,6 @@ class ApiManager
         $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
 //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
-        Debugger::log($dataToReva, 'dataZpracovavaneVApiManageru');
         $pole=array(
             'session_id'=> $this->session->getId(),
             'final_request'=> 1,
@@ -376,7 +375,7 @@ class ApiManager
         );
         Debugger::log($url, 'urlApi');
         $data = (json_decode($response->getBody()->getContents()));
-        Debugger::log(print_r($data,true . $pole),'finalRequest');
+        Debugger::log(print_r($data,true),'finalRequest');
 //        die();
     }
 
