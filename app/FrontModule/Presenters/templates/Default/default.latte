@@ -27,15 +27,15 @@
                         {if ($format[$bi]|lower) == 'jpg'}
                             {if $bi == '01'}
                                 <a n:href="Default:akce1000montaz" style="cursor: pointer">
-                                    <img src="{$basePath}/ftp/cz/{$bi}.jpg" alt="">
-                                    <img src="{$basePath}/ftp/cz/{$bi}-sml.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                                 </a>
                             {/if}
-                            <img src="{$basePath}/ftp/cz/{$bi}.jpg" alt="">
-                            <img src="{$basePath}/ftp/cz/{$bi}-sml.jpg" alt="">
+                            <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                            <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                         {/if}
                         {if ($format[$bi]|lower) == 'mp4'}
-                            <video playsinline muted> <source src="{$basePath}/ftp/cz/{$bi}.mp4" type="video/mp4"></video>
+                            <video playsinline muted> <source src="{$basePath}/assets/ftp/cz/{$bi}.mp4" type="video/mp4"></video>
                         {/if}
                     </div>
                 {/foreach}
