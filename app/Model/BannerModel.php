@@ -17,7 +17,7 @@ class BannerModel
      * @return array $b, $link
      */
     public function getBannerData(){
-        $d = opendir('../www/ftp/cz/');
+        $d = opendir('../www/assets/ftp/cz/');
         $b = [];
         $link = [];
 
