@@ -27,12 +27,12 @@
                         {if ($format[$bi]|lower) == 'jpg'}
 
 {*                            rucne se nastavi nazev banneru, pokud je akce*}
-{*                            {if $bi == '03'}*}
-{*                                <a n:href="Default:akce1000montaz" style="cursor: pointer">*}
-{*                                    <img src="{$basePath}/ftp/cz/{$bi}.jpg" alt="">*}
-{*                                    <img src="{$basePath}/ftp/cz/{$bi}-sml.jpg" alt="">*}
-{*                                </a>*}
-{*                            {/if}*}
+                            {if $bi == '03'}
+                                <a n:href="Default:akce1000montaz" style="cursor: pointer">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
                             <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                             <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                         {/if}
