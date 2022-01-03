@@ -2,7 +2,8 @@ parameters:
 
 
 application:
-    catchExceptions: true
+#    na produkci odkomentovat
+#    catchExceptions: true
     errorPresenter: Error
     mapping:
 #        Error: App\*Presenter
