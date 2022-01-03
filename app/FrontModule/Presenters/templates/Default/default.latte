@@ -25,6 +25,7 @@
                 {foreach $b as $bid => $bi}
                     <div class="item{$bid == 0 ? ' current' : ''}{($format[$bi]|lower) == 'mp4' ? ' video' : ''}">
                         {if ($format[$bi]|lower) == 'jpg'}
+
 {*                            rucne se nastavi nazev banneru, pokud je akce*}
 {*                            {if $bi == '03'}*}
 {*                                <a n:href="Default:akce1000montaz" style="cursor: pointer">*}
