@@ -18,7 +18,7 @@ class BannerModel
      */
     public function getBannerData(){
 
-        $d = opendir('../www/ftp/cz/');
+        $d = opendir('../www/assets/ftp/cz/');
 
         while ($file = readdir($d)) if ($file != '.' && $file != '..') {
             preg_match('#([0-9]{2})(-sml)?\.(jpg|mp4)#', $file, $pole);
