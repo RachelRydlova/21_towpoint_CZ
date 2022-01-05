@@ -261,7 +261,7 @@ class ApiManager
      */
     public function sendDataToApi($dataToReva)
     {
-        bdump($dataToReva, 'dataPoslaneDoApiManageru');
+        Debugger::log($dataToReva, 'dataPoslaneDoApiManageru');
         // vytahnu info o znacce
         $secret = self::countApiToken(array('onlyFavorities' => '0'));
         $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
@@ -314,7 +314,9 @@ class ApiManager
 
             // koule Pevne x Odnimatelne
             $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
-            if ($koule === 0) { $koule = 'pevne'; } else { $koule = 'odnimatelne'; }
+            if ($koule == 1)
+                { $koule = 'odnimatelne';}
+            else { $koule = 'pevne'; }
 
             // elektrika 7pin x 13pin
             $el = Arrays::get($dataToReva, ['carInfo', 'el']);
@@ -357,7 +359,7 @@ class ApiManager
             'mesto'=>$dataToReva['contact']['mesto'],
             'stat'=>$state ?? 'CZ',
             'kvalita'=>$pref ?? 0,
-            'typ_tazne'=>$koule ?? 0,
+            'typ_tazne'=>$koule ?? '',
             'tazne'=> $tazne->id_nomenklatura ?? 0,
             'tazne_cena'=> $tazne->price_moc_dph ?? 0,
             'typ_elektrika'=>$e ?? 0,
@@ -374,6 +376,7 @@ class ApiManager
             ]
         );
         Debugger::log($url, 'urlApi');
+        Debugger::log($pole, 'dataOdeslaneNaApi');
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'finalRequest');
 //        die();
