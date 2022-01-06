@@ -71,7 +71,9 @@
 
 <header>
     <div class="lang-menu">
-        <div class="selected-lang"></div>
+        <div class="selected-lang">
+        </div>
+        <i id="langArrow" class="fa fa-angle-down"></i>
         <ul>
             <li><a href="https://www.towpoint.cz/" class="cz"></a></li>
             <li><a href="https://www.towpoint.sk/" class="sk"></a></li>
@@ -111,52 +113,74 @@
 <footer>
 
 
-    <section class="benefit">
-        <div>
-            <img src="{$basePath}/assets/image/ikony/jednicka.png" alt="jednicka na trhu v taznych">
-            <p>Jednička na trhu tažných zařízení</p>
-        </div>
-
-        <div>
-            <img src="{$basePath}/assets/image/ikony/poradenstvi.png" alt="">
-            <p>Profesionální poradenství</p>
-        </div>
-
-        <div>
-            <img src="{$basePath}/assets/image/ikony/dilna.png" alt="">
-            <p>Montážní místa po celé ČR</p>
-        </div>
-
-        <div>
-            <img src="{$basePath}/assets/image/ikony/darek.png" alt="">
-            <p>Vždy něco navíc</p>
-        </div>
-    </section>
-
     <img class="tazak" src="{block tazak}{/block}" alt="pan Tazak udava recenze">
 
     <section id="sklikRecenze">
         <h1> Naši zákazníci o nás řekli: </h1>
-        <div>
-            <div>
-                <p><img src="{$basePath}/assets/image/uvozovky.png" alt="uvozovky">
-                   Velmi vstřícná a příjemná komunikace, výborné vyřízení komplikované objednávky.</p>
-            </div>
-            <div>
-                <p><img src="{$basePath}/assets/image/uvozovky.png" alt="uvozovky">
-                   Vše super. Levně, rychle a efektivně :)</p>
-            </div>
-            <div>
-                <p><img src="{$basePath}/assets/image/uvozovky.png" alt="uvozovky">
-                   Rychlé vyřízení mé objednávky. Když nebyl objednaný produkt k dispozici, byl mi nabídnut jiný, podobný ve stejné kvalitě i ceně</p>
-            </div>
+        <div class="pre-footer">
+            <ul class="reviews">
+                <li>
+                    <blockquote>
+                        Velmi vstřícná a příjemná komunikace, výborné vyřízení komplikované objednávky.</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        Vše super. Levně, rychle a efektivně :)</p>
+                    </blockquote>
+                </li>
+                <li>
+                    <blockquote>
+                        Rychlé vyřízení mé objednávky. Když nebyl objednaný produkt k dispozici, byl mi nabídnut jiný, podobný ve stejné kvalitě i ceně</p>
+                    </blockquote>
+                </li>
+            </ul>
         </div>
+
 
 
 {*        <iframe width="100%" height="90%" src="https://www.firmy.cz/detail/13255536-towpoint-zasova-zasova.html?widget&limit=3"*}
 {*                style="border: none;" frameborder="0">*}
 {*        </iframe>*}
     </section>
+
+
+
+
+
+
+
+
+    <section class="recenze">
+        <h1> {block recenzeTitle}{/block} </h1>
+        <p>  {block recenze}{/block}</p>
+    </section>
+
+
+    <section class="benefit">
+        <div>
+            <img src="{$basePath}/assets/image/ikony/quality.png" alt="jednicka na trhu v taznych">
+            <p>Jednička na trhu tažných zařízení</p>
+        </div>
+
+        <div>
+            <img src="{$basePath}/assets/image/ikony/call.png" alt="">
+            <p>Profesionální poradenství</p>
+        </div>
+
+        <div>
+            <a n:href="Default:about">
+            <img src="{$basePath}/assets/image/ikony/shop.png" alt="">
+            <p>Montážní místa po celé ČR</p>
+            </a>
+        </div>
+
+        <div>
+            <img src="{$basePath}/assets/image/ikony/gift.png" alt="">
+            <p>Obdržíte vždy něco navíc</p>
+        </div>
+    </section>
+
 
     <section class="vyrobci">
         <img src="{$basePath}/assets/image/loga/steinhof.png" alt="Steinhof">

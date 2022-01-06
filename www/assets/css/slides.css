@@ -86,18 +86,14 @@
 #topSlide .next,
 #topSlide .prev
 {
+	margin-left: .5em;
 	position: absolute;
 	top: 50%;
 	width: 50px;
 	height: 100px;
-	background-color: rgba(255,255,255,0.5);
-	background-image: url("prev.svg");
-	background-repeat: no-repeat;
-	background-size: auto 50px;
-	background-position: center center;
 	z-index: 10;
-	display: none;
-	
+	color: var(--color-lightGray);
+
 	-moz-transform: translateY(-50%);
 	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
@@ -107,20 +103,11 @@
 
 #topSlide .next
 {
+	margin-right: .5em;
 	left: auto;
 	right: 0px;
-	background-image: url("next.svg");
 }
 
-#topSlide .prev:hover
-{
-	background-position: calc(50% - 5px) center;
-}
-
-#topSlide .next:hover
-{
-	background-position: calc(50% + 5px) center;
-}
 
 
 

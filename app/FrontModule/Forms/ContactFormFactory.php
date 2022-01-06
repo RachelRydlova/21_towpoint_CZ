@@ -51,7 +51,7 @@ final class ContactFormFactory
         $form->addText('mesto', "Obec / město")
             ->setHtmlAttribute('placeholder', 'Obec / město');
         $form->addTextArea('note', "Poznámky")
-            ->setHtmlAttribute('placeholder', 'Poznámky');
+            ->setHtmlAttribute('placeholder', 'Poznámky - VIN, popis, závady, ...');
         $form->addSelect('state', 'Stát', $staty);
         $form->addCheckbox('gdpr');
         $form->addHidden('type');

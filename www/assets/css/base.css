@@ -1,8 +1,8 @@
 :root {
 
 	/* COLORS */
-	--color-white: rgba(255, 255, 255, 0.77);
-	--color-orange: #FF9900;
+	--color-white: #fff;
+	--color-orange: rgb(255, 153, 0);
 	--color-gray: #707070;
 	--color-darkGray: #525252;
 	--color-lightGray: #EBEBEB;
@@ -55,13 +55,17 @@ a:active { outline: none; }
 
 a
 {
-	color: inherit;
+	color: var(--color-orange);
 	text-decoration: none;
 }
 
 a:hover
 {
 	text-decoration: underline;
+}
+
+#title a {
+	color: var(--color-lightGray);
 }
 
 input, textarea
@@ -231,6 +235,11 @@ header nav a:hover span,
 	font-family: osb, Arial, Helvetica, sans-serif;
 }
 
+#main h1,
+#title h1 {
+	text-transform: uppercase;
+}
+
 .subn
 {
 	background-color: #ebebeb;
@@ -284,25 +293,27 @@ footer {
 }
 
 .recenze {
-	height: 8.75rem;
+	height: 6em;
 	background: var(--color-lightGray);
-	padding: 1rem 7.7rem;
-	margin-bottom: 1.5625rem;
+	padding: 1em 7.7em;
+	margin-bottom: .8em;
 }
 
 .recenze h1 {
-	font: normal normal normal 35px/47px Segoe UI;
+	font-weight: 100;
+	font-size: 1.5em;
 	color: var(--color-gray);
 }
 
 .recenze p {
-	font: normal normal bold 35px/47px Segoe UI;
+	font-weight: 700;
+	font-size: 1.5em;
 	color: var(--color-darkGray);
 }
 
 .benefit,
 .vyrobci {
-	height: 15.25rem;
+	height: 11em;
 	background: var(--color-darkGray);
 	display: flex;
 	flex-direction: row;
@@ -348,7 +359,7 @@ footer {
 
 footer img.tazak {
 	position: absolute;
-	max-height: 31.8125rem;
+	max-height: 18em;
 	bottom: 10rem;
 	right: 6rem;
 }
@@ -401,15 +412,6 @@ footer img.tazak {
 		font-size: 26px;
 	}
 
-	footer img.tazak {
-		max-height: 25rem;
-	}
-
-	.recenze h1,
-	.recenze p {
-		font-size: 30px;
-	}
-
 	.benefit {
 		max-height: 12rem;
 	}
@@ -422,17 +424,8 @@ footer img.tazak {
 
 @media screen and (max-width: 1400px)
 {
-	.recenze {
-		padding-top: 1.5rem;
-	}
-	.recenze p{
-		font-size: 26px;
-		line-height: 2rem;
-	}
 	.vyrobci {
 		max-height: 7.1875rem;
-		/*padding-left: 9rem;*/
-		/*padding-right: 9rem;*/
 	}
 }
 
@@ -444,17 +437,6 @@ footer img.tazak {
 		background-image: url("../img/logo.svg");
 		background-size: auto 100%;
 		width: 125px;
-	}
-
-	.recenze {
-		max-height: 6rem;
-		padding-top: 0.5rem;
-		margin-bottom: 1rem;
-	}
-
-	.recenze p {
-		font-size: 22px;
-		line-height: 1rem;
 	}
 
 	.vyrobci {
@@ -472,7 +454,10 @@ footer img.tazak {
 		padding-right: 18rem;
 	}
 
-
+	footer img.tazak {
+		bottom: 8em;
+		max-height: 16em;
+	}
 
 }
 
@@ -483,15 +468,6 @@ footer img.tazak {
 	{
 		font-size: 12px;
 		padding-top: 34px;
-	}
-
-	.recenze {
-		padding: 0rem 2rem;
-	}
-
-	.recenze p,
-	.recenze h1 {
-		font-size: 20px;
 	}
 
 	.benefit {
@@ -506,9 +482,7 @@ footer img.tazak {
 	}
 
 	footer img.tazak {
-		max-height: 15rem;
-		bottom: 18rem;
-		right: 7rem;
+		display: none;
 	}
 
 	.vyrobci {
@@ -527,6 +501,14 @@ footer img.tazak {
 	#title img {
 		width: 25px;
 		height: 25px;
+	}
+
+	.recenze {
+		height: 5em;
+	}
+	.recenze h1,
+	.recenze p {
+		font-size: 1em;
 	}
 }
 
@@ -668,6 +650,16 @@ footer img.tazak {
 		width: 50px;
 		height: 50px;
 	}
+
+	.recenze {
+		height: 4em;
+		padding: 1em 3.7em;
+	}
+
+	.recenze p {
+		font-size: .9em;
+		font-weight: 600;
+	}
 }
 
 
@@ -691,14 +683,6 @@ footer img.tazak {
 		width: 5.0625rem;
 		line-height: 0.8rem;
 	}
-	.recenze {
-		height: 6rem;
-	}
-	.recenze h1,
-	.recenze p {
-		font-size: 17px;
-	}
-
 
 	.vyrobci {
 		max-height: 7rem;
@@ -709,6 +693,14 @@ footer img.tazak {
 	}
 	.vyrobci img {
 		max-width: 4rem;
+	}
+}
+
+@media screen and (max-width: 520px)
+{
+	.recenze {
+		height: 6em;
+		margin-bottom: .5em;
 	}
 }
 

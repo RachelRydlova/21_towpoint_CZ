@@ -3,22 +3,37 @@
 }
 
 .lang-menu {
+    display: inline-flex;
     position: absolute;
     top: 1em;
-    right: 3em;
+    right: 7em;
 }
 .lang-menu .selected-lang {
     cursor: pointer;
+    width: 32px;
+    height: 32px
+}
+
+.lang-menu i {
+    font-size: .8em;
+    float: right;
+}
+
+#langArrow {
+    color: #707070;
+    margin-left: .3em;
+    padding-top: .3em;
 }
 
 .lang-menu .selected-lang:before {
     content: '';
     display: inline-block;
     width: 32px;
-    height: 32px;
+    height: 25px;
     background-image: url("../image/ikony/cz.jpg");
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
+    border: .1px solid var(--color-gray);
 }
 
 .lang-menu ul {
@@ -33,11 +48,12 @@
     display: none;
     position: absolute;
     top: 26px;
-    right: -10px;
+    right: 1px;
 }
 
 
 .lang-menu ul li {
+    text-align: center;
     list-style: none;
     border: 1px solid var(--color-white);
 }
@@ -56,10 +72,9 @@
     content: '';
     display: inline-block;
     width: 32px;
-    height: 32px;
+    height: 25px;
     vertical-align: middle;
-    /*margin-right: 10px;*/
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
 }
 
@@ -83,11 +98,29 @@
 *
 */
 
-
-@media screen and (max-width: 840px)
+@media screen and (max-width: 1768px)
 {
-    .lang-menu .selected-lang:before {
-        width: 17px;
+    .lang-menu {
+        right: 3em;
+    }
+}
+
+@media screen and (max-width: 730px)
+{
+    .lang-menu {
+        right: 1em;
+    }
+}
+
+@media screen and (max-width: 480px)
+{
+    .lang-menu {
+        right: 1.5em;
+        top: .5em;
+    }
+    .lang-menu .selected-lang:before,
+    .lang-menu .selected-lang {
+        width: 25px;
         height: 17px;
     }
 }

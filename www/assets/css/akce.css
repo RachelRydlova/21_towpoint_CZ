@@ -61,12 +61,10 @@ main section p {
 }
 
 main section a {
-    color: var(--color-orange);
+    color: var(--color-darkGray);
+    font-weight: bold;
 }
 
-footer img.tazak {
-    max-height: 18em;
-}
 
 
 
@@ -95,10 +93,6 @@ footer img.tazak {
 
     article img {
         width: 40%;
-    }
-
-    footer img.tazak {
-        display: none;
     }
 
     main section {

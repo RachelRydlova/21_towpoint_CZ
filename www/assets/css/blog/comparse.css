@@ -3,10 +3,8 @@
     .wrapper {
         background-color: var(--color-lightGray);
         clear: both;
-        padding: 1em 0;
-    }
-    #basic .wrapper {
-        padding-top: 0;
+        margin: 4em 0;
+        padding: 1em;
     }
 
     .wrapper .titlenote {
@@ -16,12 +14,10 @@
     }
     .wrapper .titlenote h3 {
         padding-bottom: .8em;
-        font-weight: 600;
-        /*font: normal normal 600 36px/40px Segoe UI;*/
+        font-weight: 400;
     }
     .dodavatele .titlenote p {
         font-weight: 300;
-        /*font: normal normal 300 26px/40px Segoe UI;*/
     }
 
     .wrapper > div,

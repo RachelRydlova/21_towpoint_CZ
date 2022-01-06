@@ -22,6 +22,7 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route('/karavany', 'Front:Default:karavany');
         $router[] = new Nette\Application\Routers\Route('/jak-to-funguje', 'Front:Default:how');
         $router[] = new Nette\Application\Routers\Route('/co-nabizime', 'Front:Default:what');
+        $router[] = new Nette\Application\Routers\Route('/elektro', 'Front:Default:elektro');
         $router[] = new Nette\Application\Routers\Route('/nosice-kol', 'Front:Default:nosice');
         $router[] = new Nette\Application\Routers\Route('/servis-voziku', 'Front:Default:voziky');
         $router[] = new Nette\Application\Routers\Route('/o-nas', 'Front:Default:about');
