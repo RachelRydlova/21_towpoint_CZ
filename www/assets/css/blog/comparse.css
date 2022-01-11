@@ -1,60 +1,51 @@
 /* section special blocks */
 
-    .wrapper {
-        background-color: var(--color-lightGray);
-        clear: both;
-        margin: 4em 0;
-        padding: 1em;
+    #basic .titlenote {
+        float: none;
     }
 
     .wrapper .titlenote {
         text-align: center;
-        margin: 3em auto;
+        margin: 3em auto 1em auto;
         color: var(--color-darkGray);
     }
-    .wrapper .titlenote h3 {
+    .wrapper .titlenote h2 {
         padding-bottom: .8em;
         font-weight: 400;
+    }
+    .wrapper .titlenote h3 {
+        font-weight: 600;
     }
     .dodavatele .titlenote p {
         font-weight: 300;
     }
 
+    .wrapper .titlenote strong {
+        font-weight: 600;
+    }
+
     .wrapper > div,
     .wrapper article {
-        max-width: 70%;
         margin: 0 auto;
+        float: left;
     }
 
     .wrapper article {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-content: flex-start;
+        margin-bottom: 4em;
+        padding: 2em 10em;
     }
 
     article .line {
-        background-color: white;
         display: flex;
         align-items: center;
         position: relative;
     }
 
     article div.logo {
+        background-color: var(--color-white);
         width: 85%;
     }
 
-    article .line:nth-of-type(1) .description{ background-color: #4C6AAE;}
-    article .line:nth-of-type(1) { border: 8px solid #4C6AAE; margin-right: 24%;}
-    article .line:nth-of-type(2) .description { background-color: #484846;}
-    article .line:nth-of-type(2) { border: 8px solid #484846; margin-left: 24%;}
-    article .line:nth-of-type(3) .description { background-color: #E74D58;}
-    article .line:nth-of-type(3) { border: 8px solid #E74D58; margin-right: 24%;}
-
-    article .line img {
-        width: 94%;
-        padding: 0 1.5em;
-    }
 
     article .description {
         padding: 1.5em;
@@ -66,23 +57,40 @@
     }
 
     #basic {
+        clear: both;
+        float: left;
         background-color: var(--color-white);
     }
-    #basic .line {
+    .line {
+        float: left;
+        max-width: 65em;
         background-color: var(--color-gray);
         border: 8px solid var(--color-gray);
     }
-    #basic .description {
+    .description {
         background-color: var(--color-gray);
     }
-    #basic .line img {
+    .line img {
         padding: 0;
     }
-    #basic .line:nth-of-type(2n) {background-color: var(--color-lightGray); border:  8px solid var(--color-lightGray); margin-left: 24%;}
-    #basic .line:nth-of-type(2n) .description { background-color: var(--color-lightGray); color: var(--color-gray)}
+    .line:nth-of-type(2n) {float: right; background-color: var(--color-lightGray); border:  8px solid var(--color-lightGray);}
+    .line:nth-of-type(2n) .description { background-color: var(--color-lightGray); color: var(--color-gray)}
 
 
-    .line i {
+
+    .line.west .description { background-color: #4C6AAE; color: var(--color-white)}
+    .line.west { border: 8px solid #4C6AAE; background-color: #4C6AAE;}
+    .line.stein .description { background-color: #484846; color: var(--color-white)}
+    .line.stein { border: 8px solid #484846; background-color: #484846;}
+    .line.hak .description { background-color: #E74D58;}
+    .line.hak { border: 8px solid #E74D58; background-color: #E74D58;}
+    .line.ej .description { background-color: #3E97AA;}
+    .line.ej { border: 8px solid #3E97AA; background-color: #3E97AA;}
+    .line.ecs .description { background-color: #1B1C20;}
+    .line.ecs { border: 8px solid #1B1C20; background-color: #1B1C20;}
+
+
+.line i {
         font-size: 1.5em;
         padding: 0.1em;
         color: red;
@@ -99,25 +107,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 **
 *** MEDIA QUERIES
@@ -125,28 +114,30 @@
 */
 
 
-
-
-
-
-
     @media screen and (max-width: 1450px)
     {
-        article .line:nth-of-type(1) {margin-right: 23%;}
-        article .line:nth-of-type(2) {margin-left: 23%;}
-        article .line:nth-of-type(3) {margin-right: 23%;}
-
-        .wrapper article {
-            max-width: 90%;
+        #basic .line:nth-of-type(2n) {
+            float: left;
         }
+
     }
-
-
 
     @media screen and (max-width: 1000px)
     {
+        .wrapper article {
+            padding: 2em 3em;
+        }
+
+    }
+
+    @media screen and (max-width: 600px)
+    {
+        .wrapper article {
+            padding: 1em 2em;
+        }
+
         article .line {
-            flex-direction: column;
+            display: block;
             margin-bottom: 1em;
         }
         .line div.smallView,
@@ -159,5 +150,12 @@
         }
 
         article .line:nth-of-type(1n+1) {margin: 0;}
-        #basic .line:nth-of-type(1n+1) {margin: 0;}
+
+        article .description {
+            padding: .5em;
+        }
+
+        article div.logo {
+            width: 100%;
+        }
     }

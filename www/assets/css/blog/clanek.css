@@ -4,10 +4,10 @@
 }
 
 
-    /* FONT */
+    /* FONTS */
 
     p {
-        font-size: 1.375em; /* 22px */
+        font-size: 1em;
     }
     h3 {
         font-size: 2em
@@ -68,24 +68,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     main {
         float: left;
         margin-bottom: 8em;
@@ -113,11 +95,11 @@
         font-weight: 600;
     }
 
-    .description p {
-        letter-spacing: 1px;
-        font-size: 1em;
-        font-weight: normal;
-    }
+    /*.description p {*/
+    /*    letter-spacing: 1px;*/
+    /*    font-size: 1em;*/
+    /*    font-weight: normal;*/
+    /*}*/
 
 
 

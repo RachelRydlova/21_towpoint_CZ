@@ -3,9 +3,6 @@
 
 
 
-
-
-
     /*
     **
     *** MEDIA QUERIES
@@ -15,9 +12,14 @@
 
     @media screen and (max-width: 1600px)
     {
-        #basic .line img {
-            width: 50%;
+        #vyrobci.line img {
+            width: 100%;
         }
+    }
+
+    @media screen and (max-width: 1300px)
+    {
+
     }
 
     @media screen and (max-width: 850px)

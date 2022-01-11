@@ -13,14 +13,26 @@
         background-blend-mode: soft-light;
     }
     .attention div {
-        width: 80%;
+        width: 70%;
     }
 
 
     .attention img {
         margin: 3em auto;
         border: .4em solid var(--color-orange);
-        max-width: 43.59375%;
+        max-width: 100%;
+    }
+
+    .attention h3 {
+        font-size: 2em;
+        padding-bottom: 1em;
+    }
+
+    .attention p {
+        padding-bottom: 0.5em;
+        font-size: 1.5em;
+        font-weight: 300;
+        line-height: 1em;
     }
 
 

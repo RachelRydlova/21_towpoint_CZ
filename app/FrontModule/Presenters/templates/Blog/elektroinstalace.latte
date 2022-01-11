@@ -7,7 +7,9 @@
 
 {block title}Blog TowPoint{/block}
 
-{block tazak} {$basePath}/assets/image/maskot/tazakSluchatka.png{/block}
+{block recenzeTitle} Proč si vybrat nás? {/block}
+{block recenze} Pokud se Vám zdá cena s montáží drahá, ušijeme Vám na míru i cenu dodání zboží.{/block}
+{block tazak} {$basePath}/assets/image/maskot/tazakPalec.png{/block}
 
 
 {block content}
@@ -64,18 +66,16 @@
     </section>
 
 
-
-    <section class="wrapper">
+    <section  id="basic" class="wrapper">
         <div class="titlenote">
-            <h3>Volíte raději <strong>prémiovou značku a kvalitu</strong> nebo <strong>ekonomickou variantu?</strong></h3>
+            <h2>Volíte raději <strong>prémiovou značku a kvalitu</strong> nebo <strong>ekonomickou variantu?</strong></h2>
             <p>Častým parametrem výběru je také značka. V naší nabídce naleznete hned 3 evropské výrobce s mezinárodní působností a prémiovou kvalitou. Tito výrobci disponují nejen prvotřídní kvalitou, ale i vlastními vývojovými a testovacími centry, díky kterým splňují veškeré náročné a rozsáhlé certifikace. Díky velkosériové výrobě jsou však i tyto prémiové značky ekonomicky dostupné.
             </p>
         </div>
-
         <article>
             <div class="line ej">
                 <div class="logo">
-                    <a href="https://www.youtube.com/watch?v=SYWRGVwsrxA">
+                    <a href="https://www.youtube.com/watch?v=SYWRGVwsrxA" target="_blank">
                         <img src="{$basePath}/assets/image/obrazky/ej.png" alt="vyrobce erich jaeger">
                     </a>
                 </div>
@@ -84,27 +84,26 @@
                     <p> Jeden z největších výrobců typových elektrosvazků tažných zařízení na světě. Podnik s více jak 90letou tradicí v elektro-průmyslu, zastoupený na všech kontinentech. Prvododavatel koncernu VW, PSA a Renaul. </p>
                 </div>
             </div>
-            <div class="line westfalia">
+            <div class="line west">
                 <div class="logo smallView">
-                    <a href="https://www.youtube.com/watch?v=RgHh0fBSSgE">
+                    <a href="https://www.youtube.com/watch?v=RgHh0fBSSgE" target="_blank">
                         <img src="{$basePath}/assets/image/obrazky/westfalia.png" alt="vyrobce westfalia">
                     </a>
                 </div>
                 <div class="description">
                     <h3>WESTFALIA </h3>
                     <p>Přední německý výrobce prémiových tažných zařízení. Disponuje nejvyšší kvalitou zpracování a jedinečnou antikorozní povrchovou úpravou KTL. Westfalia je hlavní dodavatel tažných zařízení do prvovýroby po celém světě.
-                    </p>
                 </div>
                 <div class="logo bigView">
-                    <a href="https://www.youtube.com/watch?v=RgHh0fBSSgE">
-                        <img src="{$basePath}/assets/image/obrazky/westfalia.png" alt="vyrobce westfalia">
+                    <a href="https://www.youtube.com/watch?v=B64b50pk4OU&t=1s" target="_blank">
+                        <img src="{$basePath}/assets/image/obrazky/steinhof.png" alt="vyrobce steinhof">
                     </a>
                 </div>
             </div>
             <div class="line ecs">
                 <div class="logo">
-                    <a href="https://www.youtube.com/watch?v=l8Ha_kBy5To">
-                        <img src="{$basePath}/assets/image/obrazky/ecs.png" alt="vyrobce autohak">
+                    <a href="https://www.youtube.com/watch?v=l8Ha_kBy5To" target="_blank">
+                        <img src="{$basePath}/assets/image/obrazky/ecs.png" alt="vyrobce ecs">
                     </a>
                 </div>
                 <div class="description">
@@ -113,55 +112,7 @@
                 </div>
             </div>
         </article>
-
-
-
-
-{*    <section class="dodavatele">*}
-{*        <div class="titlenote">*}
-{*            <h3>Volíte raději <strong>prémiovou značku a kvalitu</strong> nebo <strong>ekonomickou variantu?</strong></h3>*}
-{*            <p> Častým parametrem výběru je také značka. V naší nabídce naleznete hned 3 evropské výrobce s mezinárodní působností a prémiovou kvalitou. Tito výrobci disponují nejen prvotřídní kvalitou, ale i vlastními vývojovými a testovacími centry, díky kterým splňují veškeré náročné a rozsáhlé certifikace. Díky velkosériové výrobě jsou však i tyto prémiové značky ekonomicky dostupné.</p>*}
-
-{*        </div>*}
-{*        <div class="right ej">*}
-{*            <div class="bg-white">*}
-{*                <a href="">*}
-{*                    <img src="{$basePath}/assets/image/loga/ej.png" alt="vyrobce westfalia">*}
-{*                    <i class="fa fa-play-circle"></i>*}
-{*                </a>*}
-{*            </div>*}
-{*            <div class="description">*}
-{*                <h3>ERICH JAEGER </h3>*}
-{*                <p> Jeden z největších výrobců typových elektrosvazků tažných zařízení na světě. Podnik s více jak 90letou tradicí v elektro-průmyslu, zastoupený na všech kontinentech. Prvododavatel koncernu VW, PSA a Renaul. </p>*}
-{*            </div>*}
-{*        </div>*}
-{*        <div class="left westfalia">*}
-{*            <div class="bg-white">*}
-{*                <a href="">*}
-{*                    <img src="{$basePath}/assets/image/loga/westfalia.png" alt="vyrobce westfalia">*}
-{*                    <i class="fa fa-play-circle"></i>*}
-{*                </a>*}
-{*            </div>*}
-{*            <div class="description">*}
-{*                <h3>WESTFALIA </h3>*}
-{*                <p>Přední německý výrobce prémiových tažných zařízení. Disponuje nejvyšší kvalitou zpracování a jedinečnou antikorozní povrchovou úpravou KTL. Westfalia je hlavní dodavatel tažných zařízení do prvovýroby po celém světě.*}
-{*                </p>*}
-{*            </div>*}
-{*        </div>*}
-{*        <div class="right ecs">*}
-{*            <div class="bg-white">*}
-{*                <a href="">*}
-{*                    <img src="{$basePath}/assets/image/loga/ecs.png" alt="vyrobce autohak">*}
-{*                    <i class="fa fa-play-circle"></i>*}
-{*                </a>*}
-{*            </div>*}
-{*            <div class="description">*}
-{*                <h3>ECS</h3>*}
-{*                <p> Nizozemský výrobce kvalitních elektroinstalací se během 30 let stal lídrem na trhu. S více než 8 000 druhy elektroinstalací nabízí řešení pro každé vozidlo. V případě potřeby, je možné využít kódování vozidla online.</p>*}
-{*            </div>*}
-{*        </div>*}
-{*    </section>*}
-
+    </section>
 
 
 

@@ -31,11 +31,13 @@
         padding: 3%;
         color: var(--color-lightGray);
         text-align: center;
-        font-weight: 300;
     }
 
+    .porovnani div.dark h3 {
+        font-weight: 600;
+    }
     .porovnani div.light {
-        height: auto;
+        height: 100%;
         color: var(--color-darkGray);
     }
 
@@ -48,6 +50,7 @@
 
     .dark,
     .dark p {
+        font-weight: 300;
         background-color: var(--color-gray);
         color: var(--color-white);
     }
