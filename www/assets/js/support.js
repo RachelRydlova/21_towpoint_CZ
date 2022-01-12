@@ -358,12 +358,16 @@ $(function () {
             $('.poptavka span > p.hidden').hide();
 
         }
+        let vehicleId = $('#imotor').val();
 
+        // pro odeslani pozadavku musi byt vyplnen email, telefon a zvolen motor
         if (mail && tel){
             $('.inputs p.complete').hide();
             if (gdpr === 1) {
-                $('#frm-orderForm-orderForm').addClass('loading').submit();
-                $('.final_loader').stop(true).delay(1000).fadeIn(200);
+                if (vehicleId) {
+                    $('#frm-orderForm-orderForm').addClass('loading').submit();
+                    $('.final_loader').stop(true).delay(1000).fadeIn(200);
+                }
             }
         }
 
