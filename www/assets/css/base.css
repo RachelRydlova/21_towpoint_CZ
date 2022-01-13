@@ -360,6 +360,10 @@ footer {
 	max-width: 11rem;
 }
 
+.vyrobci img:last-of-type {
+	max-height: 4rem;
+}
+
 footer img.tazak {
 	position: absolute;
 	max-height: 17em;
