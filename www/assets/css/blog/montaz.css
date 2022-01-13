@@ -6,4 +6,9 @@
 section.overeno {
     background-image: url("../../image/obrazky/papirovani/overeno.png");
     background-blend-mode: color-burn;
+    margin-bottom: 4em;
+}
+
+section.porovnani {
+    margin-bottom: 6em;
 }

@@ -20,7 +20,7 @@
     .attention img {
         margin: 3em auto;
         border: .4em solid var(--color-orange);
-        max-width: 100%;
+        max-width: 60%;
     }
 
     .attention h3 {

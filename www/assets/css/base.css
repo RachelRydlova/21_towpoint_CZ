@@ -64,6 +64,10 @@ a:hover
 	text-decoration: underline;
 }
 
+b {
+	font-weight: 600;
+}
+
 #title a {
 	color: var(--color-lightGray);
 }
@@ -138,7 +142,7 @@ header::after
 header nav
 {
 	float: right;
-	font-size: 16px;
+	font-size: 15px;
 	padding-top: 30px;
 	font-weight: bold;
 }
@@ -293,10 +297,10 @@ footer {
 }
 
 .recenze {
-	height: 6em;
+	min-height: 6em;
 	background: var(--color-lightGray);
 	padding: 1em 7.7em;
-	margin-bottom: .8em;
+	margin-bottom: 1.5em;
 }
 
 .recenze h1 {
@@ -306,6 +310,7 @@ footer {
 }
 
 .recenze p {
+	max-width: 92%;
 	font-weight: 700;
 	font-size: 1.5em;
 	color: var(--color-darkGray);
@@ -328,8 +333,11 @@ footer {
 }
 
 .benefit p {
-	color: var(--color-lightGray);
-	font: normal normal normal 16px/21px Segoe UI;
+	color: #E1DEDE;
+
+	font-weight: 300;
+	font-size: 1em;
+	line-height: 1em;
 	text-align: center;
 	width: 10.0625rem;
 }
