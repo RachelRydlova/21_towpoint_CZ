@@ -320,9 +320,9 @@ class ApiManager
 
             // elektrika 7pin x 13pin
             $el = Arrays::get($dataToReva, ['carInfo', 'el']);
-            if ($el === 0 || '') { $el = '7pin'; } else { $el = '13pin'; }
+            if ($el == 0 || '') { $el = '7pin'; } else { $el = '13pin'; }
             $e = Arrays::get($dataToReva, ['carInfo', 'el']);
-            if ($e === 0) { $e = 'E7'; } else { $e = 'E13'; }
+            if ($e == 0 || '') { $e = 'E7'; } else { $e = 'E13'; }
 
 
             $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
@@ -335,6 +335,7 @@ class ApiManager
             $el0=$out->{$pref}->{$koule};
             if (!$el0){ $el0 = 0;}
             $montaz = $el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'};
+
         }
 
 
@@ -375,7 +376,7 @@ class ApiManager
                 'form_params' => $pole
             ]
         );
-        Debugger::log($url, 'urlApi');
+        Debugger::log($url, 'urlOdeslanehoApi');
         Debugger::log($pole, 'dataOdeslaneNaApi');
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'finalRequest');
