@@ -13,12 +13,16 @@ class BannerModel
 {
 
     /**
-     * vyberu nazvy souboru ve ftp/cz bez pripon
+     * vyberu nazvy souboru ve bannery/cz bez pripon
      * @return array $b, $link
      */
     public function getBannerData(){
 
+        /* pro local */
+//        $d = opendir('../www/bannery');
+        /* pro produkci */
         $d = opendir('../www/assets/ftp/cz/');
+
 
         while ($file = readdir($d)) if ($file != '.' && $file != '..') {
             preg_match('#([0-9]{2})(-sml)?\.(jpg|mp4)#', $file, $pole);
