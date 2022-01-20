@@ -18,9 +18,6 @@ class BannerModel
      */
     public function getBannerData(){
 
-        /* pro local */
-//        $d = opendir('../www/bannery');
-        /* pro produkci */
         $d = opendir('../www/assets/ftp/cz/');
 
 
