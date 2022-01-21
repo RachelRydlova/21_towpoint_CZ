@@ -171,6 +171,7 @@ class DefaultPresenter extends BasePresenter
 
 
     public function renderDefault(){
+
         //facebook pixel
         $fbpixel = "
         <script>

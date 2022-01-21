@@ -906,19 +906,16 @@ header nav a:first-of-type span
 	font-size: 18px
 }
 
-a.question {
-	position: absolute;
-	margin-left: 8em;
-	font-weight: bold;
+.koule label,
+.el label {
+	cursor: pointer;
 }
 
-.el a.question {
-	margin-left: 4.5em;
-}
-
-a.question:hover,
-a.question:active {
-	text-decoration: none;
+.koule h3::after,
+.el h3::after {
+	content: "?";
+	color: var(--color-orange);
+	margin-left: 10px;
 }
 
 
