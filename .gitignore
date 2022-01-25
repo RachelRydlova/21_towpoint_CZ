@@ -2,7 +2,6 @@
 config/local.neon
 /log
 /temp
-/www/assets/ftp
-/www/bannery/
+/www/assets/ftp/cz
 .htaccess
 

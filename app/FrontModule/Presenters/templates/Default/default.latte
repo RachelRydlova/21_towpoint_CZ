@@ -30,7 +30,25 @@
 
                             {*rucne se nastavi nazev banneru, pokud je akce*}
                             {if $bi == '01'}
-                                <a n:href="Default:akce1000montaz" style="cursor: pointer">
+                                <a n:href="Default:akce1000montaz" style="cursor: pointer" target="_blank">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
+                            {if $bi == '03'}
+                                <a href="https://www.facebook.com/TowPointCZ" style="cursor: pointer" target="_blank">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
+                            {if $bi == '04'}
+                                <a n:href="Default:elektro" style="cursor: pointer" target="_blank">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
+                            {if $bi == '05'}
+                                <a n:href="Default:voziky" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                                 </a>
