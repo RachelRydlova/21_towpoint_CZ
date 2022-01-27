@@ -261,81 +261,106 @@ class ApiManager
      */
     public function sendDataToApi($dataToReva)
     {
-        Debugger::log($dataToReva, 'dataPoslaneDoApiManageru');
-        // vytahnu info o znacce
-        $secret = self::countApiToken(array('onlyFavorities' => '0'));
-        $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
-        $data = json_decode(file_get_contents($url));
-        $znacky = $data->data;
+        if ($dataToReva == null || $dataToReva == 0) {
+            die();
+        } else {
 
-        if ($dataToReva['carInfo']) {
 
-            $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
-            if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId == $item->tcznacka) $outznacka = $item->name;
-            if (!isset($outznacka)) {
-                $outznacka = "";
-            }
-
-            // vytahnu info o modelu
-            $secret = self::countApiToken(array('tcznacka' => $manufacturerId));
-            $url = 'https://www.vapol.cz/remote-cars/models-by-manufacturer?tcznacka=' . $manufacturerId . '&secret=' . $secret;
+            Debugger::log($dataToReva, 'dataPoslaneDoApiManageru');
+            // vytahnu info o znacce
+            $secret = self::countApiToken(array('onlyFavorities' => '0'));
+            $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
             $data = json_decode(file_get_contents($url));
-            $modely = $data->data;
-            $modelId = Arrays::get($dataToReva, ['carInfo', 'modelId']);
-            if (is_array($modely)) foreach ($modely as $item) if ($modelId == $item->tcmodel) $outmodel = $item->fullname;
+            $znacky = $data->data;
 
-            // vytahnu info o motoru
-            $motory = array();
-            $secret = self::countApiToken(array('tcmodel' => $modelId));
-            $url = 'https://www.vapol.cz/remote-cars/vehicles-by-model/?tcmodel=' . $modelId . '&secret=' . $secret;
-            $data = json_decode(file_get_contents($url));
-            $motory0 = (array)$data->data;
-            if (is_array($motory0)) foreach ($motory0 as $typ => $item) {
-                foreach ($item as $item0) $motory[] = $item0;
+            if ($dataToReva['carInfo']) {
+
+                $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
+                if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId == $item->tcznacka) $outznacka = $item->name;
+                if (!isset($outznacka)) {
+                    $outznacka = "";
+                }
+
+                // vytahnu info o modelu
+                $secret = self::countApiToken(array('tcznacka' => $manufacturerId));
+                $url = 'https://www.vapol.cz/remote-cars/models-by-manufacturer?tcznacka=' . $manufacturerId . '&secret=' . $secret;
+                $data = json_decode(file_get_contents($url));
+                $modely = $data->data;
+                $modelId = Arrays::get($dataToReva, ['carInfo', 'modelId']);
+                if (is_array($modely)) foreach ($modely as $item) if ($modelId == $item->tcmodel) $outmodel = $item->fullname;
+
+                // vytahnu info o motoru
+                $motory = array();
+                $secret = self::countApiToken(array('tcmodel' => $modelId));
+                $url = 'https://www.vapol.cz/remote-cars/vehicles-by-model/?tcmodel=' . $modelId . '&secret=' . $secret;
+                $data = json_decode(file_get_contents($url));
+                $motory0 = (array)$data->data;
+                if (is_array($motory0)) foreach ($motory0 as $typ => $item) {
+                    foreach ($item as $item0) $motory[] = $item0;
+                }
+                $ismotory = (count($motory) > 0);
+                $vehicleId = Arrays::get($dataToReva, ['carInfo', 'vehicleId']);
+                foreach ($motory as $item) if ($vehicleId == $item->vozidlo_id) $outmotor = $item->fullname;
+
+
+                // vytahuji informaci, zda byl zvolen komfort
+                $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
+
+
+                // nastavim spravne stat
+                $state = $dataToReva['contact']['state'];
+                if ($state == 1) {
+                    $state = 'SK';
+                } else {
+                    $state = 'CZ';
+                }
+
+                // preference Cena x Kvalita
+                $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
+                if ($pref === 0) {
+                    $pref = 'kvalita';
+                } else {
+                    $pref = 'cena';
+                }
+
+                // koule Pevne x Odnimatelne
+                $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
+                if ($koule == 1) {
+                    $koule = 'odnimatelne';
+                } else {
+                    $koule = 'pevne';
+                }
+
+                // elektrika 7pin x 13pin
+                $el = Arrays::get($dataToReva, ['carInfo', 'el']);
+                if ($el == 0 || '') {
+                    $el = '7pin';
+                } else {
+                    $el = '13pin';
+                }
+                $e = Arrays::get($dataToReva, ['carInfo', 'el']);
+                if ($e == 0 || '') {
+                    $e = 'E7';
+                } else {
+                    $e = 'E13';
+                }
+
+
+                $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&comfort=' . ($comfort + 0) . '&stat=CZ|SK';
+                $data = json_decode(file_get_contents($url));
+
+                $out = $data->data;
+                $tazne = $out->{$pref}->{$koule}->tazne;
+                if (!isset($tazne)) {
+                    $tazne = 0;
+                }
+                $ele = $out->{$pref}->{$koule}->elektro->{$e};
+                $el0 = $out->{$pref}->{$koule};
+                if (!$el0) {
+                    $el0 = 0;
+                }
+                $montaz = $el0->{'montaz_cena_' . str_replace('pin', '', $el) . '_dph'};
             }
-            $ismotory = (count($motory) > 0);
-            $vehicleId = Arrays::get($dataToReva, ['carInfo', 'vehicleId']);
-            foreach ($motory as $item) if ($vehicleId == $item->vozidlo_id) $outmotor = $item->fullname;
-
-
-            // vytahuji informaci, zda byl zvolen komfort
-            $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
-
-
-            // nastavim spravne stat
-            $state = $dataToReva['contact']['state'];
-            if ($state == 1)
-                { $state = 'SK';}
-            else {$state = 'CZ';}
-
-            // preference Cena x Kvalita
-            $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
-            if ($pref === 0) { $pref = 'kvalita'; } else { $pref = 'cena'; }
-
-            // koule Pevne x Odnimatelne
-            $koule = Arrays::get($dataToReva, ['carInfo', 'koule']);
-            if ($koule == 1)
-                { $koule = 'odnimatelne';}
-            else { $koule = 'pevne'; }
-
-            // elektrika 7pin x 13pin
-            $el = Arrays::get($dataToReva, ['carInfo', 'el']);
-            if ($el == 0 || '') { $el = '7pin'; } else { $el = '13pin'; }
-            $e = Arrays::get($dataToReva, ['carInfo', 'el']);
-            if ($e == 0 || '') { $e = 'E7'; } else { $e = 'E13'; }
-
-
-            $url='https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.($comfort+0).'&stat=CZ|SK';
-            $data=json_decode(file_get_contents($url));
-
-            $out=$data->data;
-            $tazne=$out->{$pref}->{$koule}->tazne;
-            if (!isset($tazne)) {$tazne = 0;}
-            $ele=$out->{$pref}->{$koule}->elektro->{$e};
-            $el0=$out->{$pref}->{$koule};
-            if (!$el0){ $el0 = 0;}
-            $montaz = $el0->{'montaz_cena_'.str_replace('pin','',$el).'_dph'};
-
         }
 
 
