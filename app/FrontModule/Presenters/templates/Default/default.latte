@@ -31,23 +31,29 @@
                             {*rucne se nastavi nazev banneru, pokud je akce*}
                             {if $bi == '01'}
                                 <a n:href="Default:akce1000montaz" style="cursor: pointer" target="_blank">
-                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
-                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="sleva 1000 korun">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="sleva 1000 na tazne">
                                 </a>
                             {/if}
-                            {if $bi == '03'}
-                                <a href="https://www.facebook.com/TowPointCZ" style="cursor: pointer" target="_blank">
+                            {if $bi == '02'}
+                                <a n:href="Default:akceZima" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                                 </a>
                             {/if}
                             {if $bi == '04'}
-                                <a n:href="Default:elektro" style="cursor: pointer" target="_blank">
+                                <a href="https://www.facebook.com/TowPointCZ" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                                 </a>
                             {/if}
                             {if $bi == '05'}
+                                <a n:href="Default:elektro" style="cursor: pointer" target="_blank">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
+                            {if $bi == '06'}
                                 <a n:href="Default:voziky" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
@@ -66,6 +72,12 @@
 
         <a href="#" title="předchozí"><i class="fa fa-arrow-circle-left prev"></i></a>
         <a href="#" title="další"><i class="fa fa-arrow-circle-right next"></i></a>
+
+       {* <ol class="flickity-page-dots">
+            {foreach $b as $bid => $bi}
+                <li class="dot" aria-label="Page dot {$bi}"></li>
+            {/foreach}
+        </ol>*}
     </div>
 {/if}
 
