@@ -4,9 +4,11 @@
     <link href="{$basePath}/assets/css/blog/blog.css" rel="stylesheet">
 {/block}
 
-{block recenzeTitle} Proč si vybrat nás? {/block}
+{block recenzeTitle} Proč si vybrat nás? <i class="fa fa-sort-down"></i> {/block}
 
-{block recenze} Máme skladem více než 5 500 kusů tažných zařízení. {/block}
+{block recenze} <div class="info" style="max-width: 80%; margin: 0 auto">
+    <img src="{$basePath}/assets/img/proc.png" alt="proc si vybrat nas" style="max-width: 100%; height: auto">
+    </div> {/block}
 
 {block tazak} {$basePath}/assets/image/maskot/tazakDilna.png{/block}
 
@@ -42,6 +44,6 @@
 
 
 {block script}
-
+    <script src="{$basePath}/assets/js/blog.js"></script>
 {/block}
 
