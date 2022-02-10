@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.nav {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+    margin-top: .5rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #040404;
+}
+.contact h2 {
+    font-size: 1.1rem;
+}
+.contact svg {
+    font-size: 1.1rem;
+    margin-top: .2rem;
+}
+.contact svg.fa-envelope {
+    font-size: 1.5rem;
+}
+
+.nav > div {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+}
+
+.contact {
+    margin-right: 1rem;
+}
+
+.navmail {
+    position: absolute;
+    z-index: 150;
+}

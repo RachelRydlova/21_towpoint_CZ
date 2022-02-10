@@ -434,6 +434,12 @@ $(function () {
     });
 
 
+    // navbar
+    $('#navmail').on('hover', function () {
+        $('.navmail').toggleClass('shown');
+    })
+
+
     // FUNKCE
 
     // vytahuju hodnoty vsech radio buttonu na strance

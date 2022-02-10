@@ -118,7 +118,7 @@ header
 	max-width: 86.84%; /* 1650px */
 	margin-left: auto;
 	margin-right: auto;
-	padding: 30px 0;
+	padding-bottom: 30px;
 }
 
 header > a.logo
@@ -126,7 +126,7 @@ header > a.logo
 	float: left;
 	background-image: url("../img/logo-w.svg");
 	width: 310px;
-	height: 71px;
+	height: 60px;
 	background-size: auto 70%;
 	background-repeat: no-repeat;
 	background-position: left bottom;
@@ -143,8 +143,18 @@ header nav
 {
 	float: right;
 	font-size: 15px;
-	padding-top: 30px;
+	padding-top: 20px;
 	font-weight: bold;
+}
+
+header .upperMenu {
+	display: flex;
+}
+
+.upperMenu a,
+.upperMenu svg {
+	color: var(--color-darkGray);
+	font-size: 1em;
 }
 
 #mmenu

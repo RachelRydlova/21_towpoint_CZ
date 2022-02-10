@@ -1,17 +1,19 @@
+.shown {
+    display: block !important;
+}
+
 .lang-menu p {
     display: none;
 }
 
 .lang-menu {
-    display: inline-flex;
-    position: absolute;
-    top: 1em;
-    right: 7em;
+    margin-top: .2rem;
 }
+
 .lang-menu .selected-lang {
     cursor: pointer;
-    width: 32px;
-    height: 32px
+    width: 30px;
+    height: 24px;
 }
 
 .lang-menu i {
@@ -20,23 +22,22 @@
 }
 
 #langArrow {
-    color: #707070;
-    margin-left: .3em;
-    padding-top: .3em;
+    font-size: .6em;
 }
 
 .lang-menu .selected-lang:before {
     content: '';
     display: inline-block;
-    width: 32px;
-    height: 25px;
+    width: 27px;
+    height: 21px;
     background-image: url("../image/ikony/cz.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    border: .1px solid var(--color-gray);
+    border: .1px solid var(--color-lightGray);
 }
 
-.lang-menu ul {
+.lang-menu ul,
+.navmail {
     background-color: var(--color-lightGray);
     border: 1px solid #f8f8f8;
     box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
@@ -47,10 +48,14 @@
     padding: 0;
     display: none;
     position: absolute;
-    top: 26px;
-    right: 1px;
+    top: 33px;
+    right: 130px;
 }
 
+.navmail {
+    padding: .5rem;
+    width: inherit;
+}
 
 .lang-menu ul li {
     text-align: center;
@@ -71,11 +76,12 @@
 .lang-menu ul li a:before {
     content: '';
     display: inline-block;
-    width: 32px;
-    height: 25px;
+    width: 30px;
+    height: 24px;
     vertical-align: middle;
     background-size: cover;
     background-repeat: no-repeat;
+    border: .1px solid var(--color-lightGray);
 }
 
 .cz:before {
