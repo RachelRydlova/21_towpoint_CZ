@@ -20,8 +20,7 @@ class Bootstrap
 
         $configurator->enableTracy($appDir . '/log');
         // Enable Nette Debugger for error visualisation & logging
-        $configurator->setDebugMode('93.89.111.34'); // Rachel VPN
-        $configurator->setDebugMode('79.170.255.230'); // enable for your remote IP
+        $configurator->setDebugMode('93.89.111.34'); // Vapol IP
 
 		$configurator->setTimeZone('Europe/Prague');
 		$configurator->setTempDirectory($appDir . '/temp');
