@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use Nette\Bootstrap\Configurator;
+use Tracy\Debugger;
 
 
 class Bootstrap
@@ -21,6 +22,7 @@ class Bootstrap
         $configurator->enableTracy($appDir . '/log');
         // Enable Nette Debugger for error visualisation & logging
         $configurator->setDebugMode('93.89.111.34'); // Vapol IP
+        Debugger::detectDebugMode('93.89.111.34');
 
 		$configurator->setTimeZone('Europe/Prague');
 		$configurator->setTempDirectory($appDir . '/temp');
