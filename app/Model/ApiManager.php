@@ -272,6 +272,7 @@ class ApiManager
             $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
             $data = json_decode(file_get_contents($url));
             $znacky = $data->data;
+            Debugger::dump($data->data);
 
             if ($dataToReva['carInfo']) {
 
@@ -379,8 +380,8 @@ class ApiManager
             'notes'=>$dataToReva['contact']['note'],
             'name'=>$dataToReva['contact']['name'],
             'surname'=>$dataToReva['contact']['surname'],
-            'email'=>$dataToReva['contact']['email'],
-            'tel'=>$dataToReva['contact']['tel'],
+            'email'=>$dataToReva['contact']['email'] ?? '',
+            'tel'=>$dataToReva['contact']['tel'] ?? '',
             'psc'=>$dataToReva['contact']['psc'],
             'mesto'=>$dataToReva['contact']['mesto'],
             'stat'=>$state ?? 'CZ',
