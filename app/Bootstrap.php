@@ -19,10 +19,9 @@ class Bootstrap
 
 		$appDir = dirname(__DIR__);
 
+//         Enable Nette Debugger for error visualisation & logging
+        $configurator->setDebugMode(array('93.89.111.34')); // Vapol IP
         $configurator->enableTracy($appDir . '/log');
-        // Enable Nette Debugger for error visualisation & logging
-        $configurator->setDebugMode('hpntda@93.89.111.34'); // Vapol IP
-
 
 		$configurator->setTimeZone('Europe/Prague');
 		$configurator->setTempDirectory($appDir . '/temp');
