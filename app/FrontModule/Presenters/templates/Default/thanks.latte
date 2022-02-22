@@ -52,3 +52,26 @@
         </div>
     </div>
 </section>
+
+
+{block script}
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3514363-11"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3514363-11');
+    </script>
+    <script type="text/javascript" src="https://c.seznam.cz/js/rc.js"></script>
+    <script>
+        var conversionConf = {
+            id: 100066934,
+            value: null
+        };
+        if (window.rc && window.rc.conversionHit) {
+            window.rc.conversionHit(conversionConf);
+        }
+    </script>
+{/block}
