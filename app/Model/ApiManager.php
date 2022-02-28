@@ -261,7 +261,7 @@ class ApiManager
      */
     public function sendDataToApi($dataToReva)
     {
-        if ($dataToReva == null || $dataToReva == 0) {
+        if ($dataToReva == 0 || !$dataToReva || empty($dataToReva)) {
             die();
         } else {
 
@@ -361,51 +361,51 @@ class ApiManager
                 }
                 $montaz = $el0->{'montaz_cena_' . str_replace('pin', '', $el) . '_dph'};
             }
+
+
+            $url = 'https://reva.vapol.cz/api/api/request-tow-point/?token=' . self::get_secret([]);
+    //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+
+            $pole = array(
+                'session_id' => $this->session->getId(),
+                'final_request' => 1,
+                'znacka' => $outznacka ?? 'nezadano',
+                'manufacturer_id' => $manufacturerId ?? 0,
+                'model' => $outmodel ?? 0,
+                'model_id' => $modelId ?? 0,
+                'motor' => $outmotor ?? 0,
+                'vehicle_id' => $vehicleId ?? 0,
+                'notes' => $dataToReva['contact']['note'],
+                'name' => $dataToReva['contact']['name'],
+                'surname' => $dataToReva['contact']['surname'],
+                'email' => $dataToReva['contact']['email'] ?? '',
+                'tel' => $dataToReva['contact']['tel'] ?? '',
+                'psc' => $dataToReva['contact']['psc'],
+                'mesto' => $dataToReva['contact']['mesto'],
+                'stat' => $state ?? 'CZ',
+                'kvalita' => $pref ?? 0,
+                'typ_tazne' => $koule ?? '',
+                'tazne' => $tazne->id_nomenklatura ?? 0,
+                'tazne_cena' => $tazne->price_moc_dph ?? 0,
+                'typ_elektrika' => $e ?? 0,
+                'elektrika' => $ele->id_nomenklatura ?? 0,    // kod produktu - nomenklatura
+                'elektrika_cena' => $ele->price_moc_dph ?? 0,
+                'montaz_cena' => $montaz ?? 0,
+                'comfort' => $comfort ?? 0,
+                'request_type' => $dataToReva['contact']['type'] ?? 1
+            );
+
+            $client = new Client();
+            $response = $client->request('POST', $url, [
+                    'form_params' => $pole
+                ]
+            );
+            Debugger::log($url, 'urlOdeslanehoApi');
+            Debugger::log($pole, 'dataOdeslaneNaApi');
+            $data = (json_decode($response->getBody()->getContents()));
+            Debugger::log(print_r($data, true), 'finalRequest');
+    //        die();
         }
-
-
-        $url='https://reva.vapol.cz/api/api/request-tow-point/?token='.self::get_secret([]);
-//        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
-
-        $pole=array(
-            'session_id'=> $this->session->getId(),
-            'final_request'=> 1,
-            'znacka'=>$outznacka ?? 'nezadano',
-            'manufacturer_id'=>$manufacturerId ?? 0,
-            'model'=>$outmodel ?? 0,
-            'model_id'=>$modelId ?? 0,
-            'motor'=>$outmotor ?? 0,
-            'vehicle_id'=>$vehicleId ?? 0,
-            'notes'=>$dataToReva['contact']['note'],
-            'name'=>$dataToReva['contact']['name'],
-            'surname'=>$dataToReva['contact']['surname'],
-            'email'=>$dataToReva['contact']['email'] ?? '',
-            'tel'=>$dataToReva['contact']['tel'] ?? '',
-            'psc'=>$dataToReva['contact']['psc'],
-            'mesto'=>$dataToReva['contact']['mesto'],
-            'stat'=>$state ?? 'CZ',
-            'kvalita'=>$pref ?? 0,
-            'typ_tazne'=>$koule ?? '',
-            'tazne'=> $tazne->id_nomenklatura ?? 0,
-            'tazne_cena'=> $tazne->price_moc_dph ?? 0,
-            'typ_elektrika'=>$e ?? 0,
-            'elektrika'=> $ele->id_nomenklatura ?? 0,	// kod produktu - nomenklatura
-            'elektrika_cena'=> $ele->price_moc_dph ?? 0,
-            'montaz_cena'=> $montaz ?? 0,
-            'comfort'=>$comfort ?? 0,
-            'request_type' => $dataToReva['contact']['type'] ?? 1
-        );
-
-        $client = new Client();
-        $response = $client->request('POST', $url, [
-                'form_params' => $pole
-            ]
-        );
-        Debugger::log($url, 'urlOdeslanehoApi');
-        Debugger::log($pole, 'dataOdeslaneNaApi');
-        $data = (json_decode($response->getBody()->getContents()));
-        Debugger::log(print_r($data,true),'finalRequest');
-//        die();
     }
 
 
