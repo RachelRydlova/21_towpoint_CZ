@@ -183,9 +183,18 @@
 
 
 {block script}
-    <script type="text/javascript" src="https://c.seznam.cz/js/rc.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-3514363-11"></script>
     <script n:syntax="off">
-        var retargetingConf = {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments)}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-3514363-11');
+    </script>
+    <script async type="text/javascript" src="https://c.seznam.cz/js/rc.js"></script>
+    <script n:syntax="off">
+        let retargetingConf = {
             rtgId: 109254
         };
         if (window.rc && window.rc.retargetingHit) {
