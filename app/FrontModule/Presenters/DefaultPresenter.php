@@ -86,10 +86,12 @@ class DefaultPresenter extends BasePresenter
 
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
                 'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
-            $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
 
-            $p->apiManager->sendDataToApi($dataToReva);
-            Debugger::log(print_r($dataToReva,true),'dataToApiManager');
+            if (!empty($carInfo)) {
+                $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
+                $p->apiManager->sendDataToApi($dataToReva);
+                Debugger::log(print_r($dataToReva,true),'dataToApiManager');
+            }
 
             $p->redrawControl('ordForm');
             $p->redirect('Default:thanks');

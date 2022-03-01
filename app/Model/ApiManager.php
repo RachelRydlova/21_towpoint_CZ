@@ -100,9 +100,9 @@ class ApiManager
             }
             //return json_encode($response->getBody())->data;
             $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
-            if (!isset($data->data)) {
-                throw new Exception('Neexistuje obrázek pro dané auto');
-            }
+//            if (!isset($data->data)) {
+//                throw new Exception('Neexistuje obrázek pro dané auto');
+//            }
         } catch (GuzzleException $e) {
             Debugger::log($e, $log);
             return null;
