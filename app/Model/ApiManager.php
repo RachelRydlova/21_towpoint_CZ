@@ -264,8 +264,6 @@ class ApiManager
         if ($dataToReva == 0 || !$dataToReva || empty($dataToReva)) {
             die();
         } else {
-
-
             Debugger::log($dataToReva, 'dataPoslaneDoApiManageru');
             // vytahnu info o znacce
             $secret = self::countApiToken(array('onlyFavorities' => '0'));
@@ -273,8 +271,7 @@ class ApiManager
             $data = json_decode(file_get_contents($url));
             $znacky = $data->data;
 
-            if ($dataToReva['carInfo']) {
-
+            if ($znacky) {
                 $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
                 if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId == $item->tcznacka) $outznacka = $item->name;
                 if (!isset($outznacka)) {
