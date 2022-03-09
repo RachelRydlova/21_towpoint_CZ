@@ -29,12 +29,7 @@
                         {if ($format[$bi]|lower) == 'jpg'}
 
                             {*rucne se nastavi nazev banneru, pokud je akce*}
-                            {if $bi == '01'}
-                                <a n:href="Default:akce1000montaz" style="cursor: pointer" target="_blank">
-                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="sleva 1000 korun">
-                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="sleva 1000 na tazne">
-                                </a>
-                            {/if}
+
                             {if $bi == '02'}
                                 <a n:href="Default:akceZima" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
