@@ -87,7 +87,7 @@ input, textarea
 }
 
 
-/* social icons */
+/* SOCIAL ICONS BAR */
 
 aside {
 	position: fixed;
@@ -110,7 +110,7 @@ aside div {
 	row-gap: 1em;
 }
 
-/**/
+/* end social icons Bar*/
 
 
 header
@@ -442,6 +442,10 @@ footer img.tazak {
 {
 	.vyrobci {
 		max-height: 7.1875rem;
+	}
+
+	aside {
+		display: none;
 	}
 }
 

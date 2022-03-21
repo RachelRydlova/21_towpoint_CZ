@@ -71,6 +71,8 @@ class DefaultPresenter extends BasePresenter
         $comp = new OrderForm($this->apiManager, $this->session);
         $p = $this;
         $comp->onSuccess[] = function ($contact) use ($p) {
+
+            $type = $contact->type;
             $manufacturer = $p->session->getSection('carSection')->manufacturer;
             $model = $p->session->getSection('carSection')->model;
             $vehicle = $p->session->getSection('carSection')->vehicle;
@@ -78,9 +80,16 @@ class DefaultPresenter extends BasePresenter
             $preference = $p->session->getSection('calculator')->preferencies;
 
 
-
-            // defaultne nastavim preference
-            if (!$preference) {
+            // kontrola typu pozadavku
+            if ($type == 1) {
+                // pokud nejsou vyplneny preference, nesmi se odeslat
+                if (!$preference) {
+                    $this->flashMessage('Vyplňtě preference Vašeho výběru.');
+                    $this->redirect('Default:');
+                }
+            }
+            else {
+                // pokud nejde o beznou poptavku osobniho auta, tak doplnim preference defaultne, aby se pozadavek odeslal
                 $preference = ['0', '0', '0', '0'];
             }
 
@@ -90,7 +99,6 @@ class DefaultPresenter extends BasePresenter
             if (!empty($carInfo)) {
                 $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];
                 $p->apiManager->sendDataToApi($dataToReva);
-                Debugger::log(print_r($dataToReva,true),'dataToApiManager');
             }
 
             $p->redrawControl('ordForm');
@@ -160,7 +168,7 @@ class DefaultPresenter extends BasePresenter
         $modId = $this->session->getSection('carSection')->model;
         $vehicleId = $this->session->getSection('carSection')->vehicle;
 
-        Debugger::barDump($this->request->getParameters(), 'params');
+        Debugger::log($this->request->getParameters(), 'params');
 
         if (!$this->isAjax()) {
             $this['carSelector']->handleSetModel($modId);

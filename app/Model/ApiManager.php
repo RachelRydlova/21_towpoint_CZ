@@ -6,7 +6,7 @@ namespace App\Model;
 use Cassandra\Tinyint;
 use Doctrine\Common\Util\Debug;
 use GuzzleHttp\Client;
-use http\Env\Request;
+use Nette\Http\Request;
 use Nette\Http\Response;
 use Exception;
 use GuzzleHttp\Exception\GuzzleException;
@@ -261,21 +261,22 @@ class ApiManager
      */
     public function sendDataToApi($dataToReva)
     {
+
         if ($dataToReva == 0 || !$dataToReva || empty($dataToReva)) {
             die();
         } else {
-            Debugger::log($dataToReva, 'dataPoslaneDoApiManageru');
+            $type = $dataToReva['contact']['type'];
             // vytahnu info o znacce
             $secret = self::countApiToken(array('onlyFavorities' => '0'));
             $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
             $data = json_decode(file_get_contents($url));
             $znacky = $data->data;
 
-            if ($znacky) {
+            if ($type == 1) {
                 $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
                 if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId == $item->tcznacka) $outznacka = $item->name;
                 if (!isset($outznacka)) {
-                    $outznacka = "";
+                    $outznacka = null;
                 }
 
                 // vytahnu info o modelu
@@ -389,7 +390,7 @@ class ApiManager
                 'elektrika_cena' => $ele->price_moc_dph ?? 0,
                 'montaz_cena' => $montaz ?? 0,
                 'comfort' => $comfort ?? 0,
-                'request_type' => $dataToReva['contact']['type'] ?? 1
+                'request_type' => $type ?? 1
             );
 
             $client = new Client();

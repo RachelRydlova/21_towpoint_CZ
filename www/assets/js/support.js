@@ -40,10 +40,22 @@ $(function () {
     //zobrazeni prvku carSelectoru
     $(document).on('focus','#imark',function(){
         $('#mark').show();
-        $('#model, #motor').hide();
+        if ($(window).width() < 750) {
+            $('#imodel, #imotor, #komfort').hide();
+            $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);;
+        }
     });
+    // pri malem rozliseni skryt ostatni inputy
+    // $(document).on('click', '#imark', function (){
+    //     if ($(window).width() < 750) {
+    //         $('#imodel, #imotor, #komfort').hide();
+    //         $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);;
+    //     }
+    //     console.log($(window).width());
+    // });
     $(document).on('blur', '#imark', function (){
         $('#mark').slideUp(300);
+        // $('#imodel, #imotor, #komfort').show();
     });
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
@@ -167,14 +179,14 @@ $(function () {
         console.log(modId, search);
 
         clearTimeout($mb_to);
-        $mb_to = setTimeout(function (){
+        $mb_to = setTimeout(function() {
 
             $.nette.ajax({
                 url: '?do=carSelector-setModel',
-                data: {'carSelector-modId': modId, 'carSelector-search': search}
-            }).then(function () {
+                data: { 'carSelector-modId': modId, 'carSelector-search': search }
+            }).then(function() {
                 $('#imotor').removeClass('loading');
-                if ($('#motor').is(":hidden")){
+                if ($('#motor').is(":hidden")) {
                     $('#motor').show();
                 }
                 $('#imotor').val(search).focus();
@@ -182,7 +194,7 @@ $(function () {
         }, 300)
     });
     // Výběr motoru
-    $(document).on('click', '#motor a.motorLink', function (e) {
+    $(document).on('click', '#motor a.motorLink', function(e) {
         e.preventDefault();
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
@@ -193,8 +205,8 @@ $(function () {
 
         $.nette.ajax({
             url: '?do=carSelector-saveData',
-            data: {'carSelector-vehicleId': value}
-        }).then(function (){
+            data: { 'carSelector-vehicleId': value }
+        }).then(function() {
             $('#imotor').val(title);
             $('html, body').animate({ scrollTop: $("#imotor").offset().top }, 250);
             $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
@@ -211,7 +223,7 @@ $(function () {
 
 
     // Komfortni vybava
-    $(document).on('click', '#frm-carSelector-carSelector-komfort', function (){
+    $(document).on('click', '#frm-carSelector-carSelector-komfort', function() {
         $('#form2').removeClass('shown');
         $('#sel').addClass('loading');
 
@@ -222,8 +234,8 @@ $(function () {
         $('#form2').addClass('loading');
         $.nette.ajax({
             url: '?do=carSelector-setComfort',
-            data: {'carSelector-comfort': value}
-        }).then(function (){
+            data: { 'carSelector-comfort': value }
+        }).then(function() {
             $('#cenaPevne7').show();
             $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
             $('#form2, #sel').addClass('shown').removeClass('loading');
@@ -231,7 +243,7 @@ $(function () {
     });
 
     // KONFIGURATOR S KALKULACKOU
-    $(document).on('click', '.radios div', function () {
+    $(document).on('click', '.radios div', function() {
         // prvni schovam vsechny ceny
         $('#snippet-calculator-summaryBox > div').hide();
 
@@ -293,7 +305,7 @@ $(function () {
     })
 
     // zasuvka prepina redukci
-    $(document).on('click', '.el', function (){
+    $(document).on('click', '.el', function() {
         if ($('#el-1').is(':checked')) {
             $('#redukce-1').prop('checked', true);
         } else {
@@ -303,29 +315,28 @@ $(function () {
 
 
     // odeslani vyplnenych dat po zadani mailu / prefinal request
-    $(document).on('blur', '#frm-orderForm-orderForm-email', function (){
+    $(document).on('blur', '#frm-orderForm-orderForm-email', function() {
         // zjistim co vse vyplnil v kontaktu
         let email = document.querySelector('#frm-orderForm-orderForm-email').value;
         console.log(email);
         // handlerem poslu data k dalsimu zpracovani
         $.nette.ajax({
             url: '?do=orderForm-sendMail',
-            data: {'orderForm-email': email}
+            data: { 'orderForm-email': email }
         });
     })
 
 
 
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
-    $('#form2 .cta').click(function(e){
+    $('#form2 .cta').click(function(e) {
 
         e.preventDefault();
 
         // zjistim jestli je vyplneny email
         let mailId = $('#frm-orderForm-orderForm-email');
         let mail = mailId.val();
-        if (!mail || mail.length === 0 )
-        {
+        if (!mail || mail.length === 0) {
             mailId.parent().addClass('error');
             $('.inputs p.complete').show();
         } else {
@@ -337,7 +348,7 @@ $(function () {
         // zjistim jestli je vyplneny telefon
         let telId = $('#frm-orderForm-orderForm-tel');
         let tel = telId.val();
-        if (!tel || tel.length === 0){
+        if (!tel || tel.length === 0) {
             telId.parent().addClass('error');
             $('.inputs p.complete').show();
         } else {
@@ -347,10 +358,10 @@ $(function () {
 
         // potvrzeno GDPR?
         let gdpr = 0;
-        if ($('#frm-orderForm-orderForm-gdpr').is(':checked')){
+        if ($('#frm-orderForm-orderForm-gdpr').is(':checked')) {
             gdpr = 1;
         }
-        if (gdpr === 0){
+        if (gdpr === 0) {
             $('.poptavka span > p').show().addClass('error');
             $('.inputs p.complete').show();
         } else {
@@ -361,7 +372,7 @@ $(function () {
         let vehicleId = $('#imotor').val();
 
         // pro odeslani pozadavku musi byt vyplnen email, telefon a zvolen motor
-        if (mail && tel){
+        if (mail && tel) {
             $('.inputs p.complete').hide();
             if (gdpr === 1) {
                 if (vehicleId) {
@@ -376,7 +387,7 @@ $(function () {
         param = JSON.stringify(value);
         $.nette.ajax({
             url: '?do=calculator-setPref',
-            data: {'calculator-preference': param}
+            data: { 'calculator-preference': param }
         });
 
     });
@@ -384,7 +395,7 @@ $(function () {
 
 
     // kontrola jestli jsou vyplneny povinne udaje v kontaktnim formulari
-    $('#frm-contactForm .cta').click(function(e){
+    $('#frm-contactForm .cta').click(function(e) {
         e.preventDefault();
 
         // zjistim jestli je vyplneny email
@@ -412,10 +423,10 @@ $(function () {
 
         // potvrzeno GDPR?
         let gdpr = 0;
-        if ($('#frm-contactForm-gdpr').is(':checked')){
+        if ($('#frm-contactForm-gdpr').is(':checked')) {
             gdpr = 1;
         }
-        if (gdpr === 0){
+        if (gdpr === 0) {
             $('.poptavka span > p').show().addClass('error');
             $('.inputs p.complete').show();
         } else {
@@ -424,7 +435,7 @@ $(function () {
 
         }
 
-        if (mail && tel){
+        if (mail && tel) {
             $('.inputs p.complete').hide();
             if (gdpr === 1) {
                 $('#frm-contactForm').addClass('loading').submit();
@@ -435,7 +446,7 @@ $(function () {
 
 
     // navbar
-    $('#navmail').on('hover', function () {
+    $('#navmail').on('hover', function() {
         $('.navmail').toggleClass('shown');
     })
 
@@ -443,9 +454,9 @@ $(function () {
     // FUNKCE
 
     // vytahuju hodnoty vsech radio buttonu na strance
-    function get_selected_radios_array(){
-        var ch_list=Array();
-        $("input:radio[type=radio]:checked").each(function(){ch_list.push($(this).val());});
+    function get_selected_radios_array() {
+        var ch_list = Array();
+        $("input:radio[type=radio]:checked").each(function() { ch_list.push($(this).val()); });
         return ch_list;
     }
 

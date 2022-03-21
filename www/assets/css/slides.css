@@ -143,52 +143,15 @@
 	{
 		height: 220px;
 	}
-	
-/*	
-	
-	
-	#topSlide .item .claim h2
-	{
-		font-size: 80px;
-	}
-	
-	#topSlide .item .claim p
-	{
-		font-size: 25px;
-	}
-	
-	#topSlide .item .claim p:last-of-type
-	{
-		font-size: 14px;
-	}*/
 }
 
-
-
-
-
-@media screen and (max-width: 900px)
-{/*
-	#topSlide .item .claim
+@media screen and (max-width: 1000px)
+{
+	.next,
+	.prev
 	{
-		padding-right: 40px;
+		display: none !important;
 	}
-	
-	
-	#topSlide .item .claim h2
-	{
-		font-size: 50px;
-	}
-	
-	#topSlide .item .claim p
-	{
-		font-size: 20px;
-	}
-	
-	#topSlide .item .claim p:last-of-type
-	{
-		font-size: 12px;
-	}*/
 }
 
 
@@ -202,31 +165,6 @@
 	{
 		height: 180px;
 	}
-/*	
-	#topSlide .item .img
-	{
-		background-position: 35% 100%;
-		background-size: auto 120%;
-		width: 120px;
-	}
-	
-	#topSlide .item .claim
-	{
-		padding-top: 0px;
-	}
-	
-	#topSlide .item .logo
-	{
-		background-image: url("banner-stred-lo.svg");
-		width: 125px;
-		left: 0%;
-	}
-	
-	#topSlide .item .claim
-	{
-		width: calc(100% - 80px);
-	}*/
-	
 }
 
 
@@ -234,17 +172,6 @@
 
 @media screen and (max-width: 410px)
 {
-/*
-	#topSlide .item .claim h2
-	{
-		font-size: 36px;
-	}
-	
-	#topSlide .item .claim p
-	{
-		font-size: 14px;
-	}
-*/
 
 	#topSlide .item img:first-of-type
 	{

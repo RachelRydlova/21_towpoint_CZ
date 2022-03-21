@@ -114,6 +114,8 @@ class OrderForm extends Control
      */
     public function saveValue($key,$value): void
     {
+        // nastavim delku session
+        $this->session->getSection('contact')->setExpiration('3 days');
         $this->session->getSection('contact')->$key = $value;
     }
 
