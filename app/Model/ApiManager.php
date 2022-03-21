@@ -390,7 +390,7 @@ class ApiManager
                 'elektrika_cena' => $ele->price_moc_dph ?? 0,
                 'montaz_cena' => $montaz ?? 0,
                 'comfort' => $comfort ?? 0,
-                'request_type' => $type ?? 1
+                'requestType' => $type ?? 1
             );
 
             $client = new Client();
