@@ -79,14 +79,13 @@ class DefaultPresenter extends BasePresenter
             $comfort = $p->session->getSection('carSection')->comfort;
             $preference = $p->session->getSection('calculator')->preferencies;
 
+            Debugger::log($preference, 'preference');
 
             // kontrola typu pozadavku
-            if ($type == 1) {
+            if ($type == 1 && !$preference) {
                 // pokud nejsou vyplneny preference, nesmi se odeslat
-                if (!$preference) {
-                    $this->flashMessage('Vyplňtě preference Vašeho výběru.');
-                    $this->redirect('Default:');
-                }
+                $this->flashMessage('Vyplňtě preference Vašeho výběru.');
+                $this->redirect('Default:');
             }
             else {
                 // pokud nejde o beznou poptavku osobniho auta, tak doplnim preference defaultne, aby se pozadavek odeslal

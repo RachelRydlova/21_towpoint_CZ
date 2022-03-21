@@ -40,22 +40,10 @@ $(function () {
     //zobrazeni prvku carSelectoru
     $(document).on('focus','#imark',function(){
         $('#mark').show();
-        if ($(window).width() < 750) {
-            $('#imodel, #imotor, #komfort').hide();
-            $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);;
-        }
     });
-    // pri malem rozliseni skryt ostatni inputy
-    // $(document).on('click', '#imark', function (){
-    //     if ($(window).width() < 750) {
-    //         $('#imodel, #imotor, #komfort').hide();
-    //         $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);;
-    //     }
-    //     console.log($(window).width());
-    // });
+
     $(document).on('blur', '#imark', function (){
         $('#mark').slideUp(300);
-        // $('#imodel, #imotor, #komfort').show();
     });
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
