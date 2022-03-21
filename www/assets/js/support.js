@@ -40,10 +40,12 @@ $(function () {
     //zobrazeni prvku carSelectoru
     $(document).on('focus','#imark',function(){
         $('#mark').show();
+        $('#model, #motor, #imodel, #imotor').hide();
     });
 
     $(document).on('blur', '#imark', function (){
         $('#mark').slideUp(300);
+        $('#imodel, #imotor').show();
     });
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
@@ -77,7 +79,7 @@ $(function () {
             data: {'carSelector-manId': value}
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
             $('#imark').val(title);
-            $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
+            $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);
             $('#mark').hide();
             $('#model').show();
             $('#sel').removeClass('loading');
@@ -112,7 +114,7 @@ $(function () {
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
         // $('#imodel').val(title);
-        $('html, body').animate({ scrollTop: $(".subn.step1").offset().top }, 250);
+        $('html, body').animate({ scrollTop: $("#imodel").offset().top }, 250);
 
         $.nette.ajax({
             url: '?do=carSelector-setModel',

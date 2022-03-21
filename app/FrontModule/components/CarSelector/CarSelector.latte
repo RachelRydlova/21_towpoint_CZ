@@ -15,13 +15,23 @@
         {input manufacturer}
     </div>
 
+    {snippet manuf}
+        <div id="mark">
+            <div class="logos">
+                <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
+                    <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
+                </a>
+            </div>
+            <div class="all">
+                <a href="javascript:;" title="{$carInfo->name}" n:foreach="$ostatni as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
+                    {$carInfo->name}
+                </a>
+            </div>
+        </div>
+    {/snippet}
+
     <div n:snippet="model">
         {input model}
-    </div>
-
-
-    <div n:snippet="vehicle">
-        {input vehicle}
     </div>
 
 
@@ -42,6 +52,11 @@
 
         </div>
     {/snippet}
+
+    <div n:snippet="vehicle">
+        {input vehicle}
+    </div>
+
 
     {snippet motoryList}
         <div id="motor">
@@ -87,21 +102,6 @@
 
 {/snippetArea}
 
-{snippet manuf}
-    <div id="mark">
-        <div class="logos">
-            <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
-                <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
-            </a>
-
-        </div>
-        <div class="all">
-            <a href="javascript:;" title="{$carInfo->name}" n:foreach="$ostatni as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
-                {$carInfo->name}
-            </a>
-        </div>
-    </div>
-{/snippet}
 
 {snippet manId}
     <span n:ifset="$manId" id="manIdValue" class="hidden">{$manId}</span>
