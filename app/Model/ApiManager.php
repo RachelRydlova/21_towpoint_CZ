@@ -203,9 +203,11 @@ class ApiManager
     public function getModelApiRow($manId, $modId)
     {
         $data = $this->getCarManufacturerModels($manId);
-        foreach ($data as $row) {
-            if ((int) $row->tcmodel === (int) $modId) {
-                return $row;
+        if ($data){
+            foreach ($data as $row) {
+                if ((int) $row->tcmodel === (int) $modId) {
+                    return $row;
+                }
             }
         }
         return null;
@@ -262,6 +264,7 @@ class ApiManager
     public function sendDataToApi($dataToReva)
     {
 
+        Debugger::log($dataToReva, 'dataPredOdeslanimNaApi');
         if ($dataToReva == 0 || !$dataToReva || empty($dataToReva)) {
             die();
         } else {
@@ -315,10 +318,10 @@ class ApiManager
 
                 // preference Cena x Kvalita
                 $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
-                if ($pref === 0) {
-                    $pref = 'kvalita';
-                } else {
+                if ($pref == 0) {
                     $pref = 'cena';
+                } else {
+                    $pref = 'kvalita';
                 }
 
                 // koule Pevne x Odnimatelne
@@ -360,12 +363,14 @@ class ApiManager
                 $montaz = $el0->{'montaz_cena_' . str_replace('pin', '', $el) . '_dph'};
             }
 
+            $ip = Arrays::get($dataToReva, ['carInfo', 'ip']);
 
             $url = 'https://reva.vapol.cz/api/api/request-tow-point/?token=' . self::get_secret([]);
     //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
             $pole = array(
                 'session_id' => $this->session->getId(),
+                'ip' => $ip,
                 'final_request' => 1,
                 'znacka' => $outznacka ?? 'nezadano',
                 'manufacturer_id' => $manufacturerId ?? 0,

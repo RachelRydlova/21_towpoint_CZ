@@ -72,6 +72,7 @@ class DefaultPresenter extends BasePresenter
         $p = $this;
         $comp->onSuccess[] = function ($contact) use ($p) {
 
+            $ip = $p->getHttpRequest()->getRemoteAddress();
             $type = $contact->type;
             $manufacturer = $p->session->getSection('carSection')->manufacturer;
             $model = $p->session->getSection('carSection')->model;
@@ -87,13 +88,14 @@ class DefaultPresenter extends BasePresenter
                 $this->flashMessage('Vyplňtě preference Vašeho výběru.');
                 $this->redirect('Default:');
             }
-            else {
+            elseif ($type != 1) {
                 // pokud nejde o beznou poptavku osobniho auta, tak doplnim preference defaultne, aby se pozadavek odeslal
                 $preference = ['0', '0', '0', '0'];
             }
+            Debugger::log($preference, 'preferencePoKontrole');
 
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
-                'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2]];
+                'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2], 'ip' => $ip];
 
             if (!empty($carInfo)) {
                 $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];

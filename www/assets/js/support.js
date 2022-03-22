@@ -50,6 +50,10 @@ $(function () {
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
         $('#motor').slideUp(300);
+        $('#imotor').hide();
+    });
+    $(document).on('blur', '#imodel', function (){
+        $('#imotor').show();
     });
     $(document).on('focus','#imotor',function(){
         $('#motor').slideDown(300);
