@@ -361,16 +361,16 @@ class ApiManager
                     $el0 = 0;
                 }
                 $montaz = $el0->{'montaz_cena_' . str_replace('pin', '', $el) . '_dph'};
+                $ip = Arrays::get($dataToReva, ['carInfo', 'ip']);
             }
 
-            $ip = Arrays::get($dataToReva, ['carInfo', 'ip']);
 
             $url = 'https://reva.vapol.cz/api/api/request-tow-point/?token=' . self::get_secret([]);
     //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
             $pole = array(
                 'session_id' => $this->session->getId(),
-                'ip' => $ip,
+                'ip' => $ip ?? null,
                 'final_request' => 1,
                 'znacka' => $outznacka ?? 'nezadano',
                 'manufacturer_id' => $manufacturerId ?? 0,
