@@ -483,14 +483,16 @@ $(function () {
     });
 
     // mapa v sekci o nas
-    $('#point_1').on('click, mouseover, mouseout', function () {
-        var info = $('#point_1_detail');
-        if (info.hasClass('d-none')){
-            info.removeClass('d-none');
-        } else {
-            info.addClass('d-none')
-        }
-    });
+    // $('.point').on('click, mouseover, mouseout', function () {
+    //     var id = this.id + "_detail";
+    //     var pointId = $('#()') ;
+    //     console.log(pointId);
+    //     if (pointId.hasClass('d-none')){
+    //         pointId.removeClass('d-none');
+    //     } else {
+    //         pointId.addClass('d-none')
+    //     }
+    // });
 
     //otevreni modalu s detailem strediska
     var modal = $('#modal');

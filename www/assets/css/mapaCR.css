@@ -17,7 +17,7 @@ main {
     cursor: pointer;
 }
 
-#modal {
+.modal {
     display: none;
     position: fixed;
     width: 100%;
@@ -31,7 +31,7 @@ main {
     pointer-events: none;
 }
 
-#modal.selected {
+.modal.selected {
     display: block;
     outline: none;
     top: 0;
@@ -40,11 +40,11 @@ main {
     transition: all 1.2s ease;
 }
 
-#modal.selected img {
+.modal.selected img {
     max-width: 40%;
 }
 
-#modal ul {
+.modal ul {
     width: auto;
     margin-bottom: 0;
     display: flex;
@@ -52,7 +52,7 @@ main {
     align-items: center;
 }
 
-#modal ul li,
+.modal ul li,
 .detail ul li {
     display: block;
     background-image: url(../img/dot-col.svg);
@@ -91,11 +91,11 @@ main {
     position: absolute;
 }
 
-#modal h1 {
+.modal h1 {
     font-size: 55px;
 }
 
-#modal h2 {
+.modal h2 {
     font-size: 45px;
 }
 
@@ -103,10 +103,10 @@ main {
     .gray {
         line-height: 2.5rem;
     }
-    #modal h1 {
+    .modal h1 {
         font-size: 45px;
     }
-    #modal h2 {
+    .modal h2 {
         font-size: 30px;
     }
 }
