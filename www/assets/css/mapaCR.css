@@ -9,6 +9,10 @@
 
 }
 
+main {
+    position: relative;
+}
+
 .point {
     cursor: pointer;
 }
@@ -48,7 +52,8 @@
     align-items: center;
 }
 
-#modal ul li {
+#modal ul li,
+.detail ul li {
     display: block;
     background-image: url(../img/dot-col.svg);
     background-repeat: no-repeat;
@@ -66,12 +71,24 @@
     margin-top: 8px;
 }
 
+.detail .gray {
+    padding: 1rem 7rem;
+}
+
 .lightGray {
     background-color: var(--color-lightGray);
     color: var(--color-darkGray);
     padding: 1rem;
     max-height: 20.6rem;
     overflow: auto;
+}
+.detail .lightGray {
+    padding: 1rem 5rem;
+}
+
+.detail {
+    float: right;
+    position: absolute;
 }
 
 #modal h1 {
