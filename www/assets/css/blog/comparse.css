@@ -1,6 +1,6 @@
 /* section special blocks */
 
-    #basic .titlenote {
+    .titlenote {
         float: none;
         max-width: 90%;
     }
@@ -33,7 +33,9 @@
     .wrapper > div,
     .wrapper article {
         margin: 0 auto;
-        float: left;
+    }
+    #basic{
+        margin-bottom: 1rem;
     }
 
     .wrapper article {
@@ -78,6 +80,8 @@
     }
     .line img {
         padding: 0;
+        width: 100%;
+        height: auto;
     }
     .line:nth-of-type(2n) {float: right; background-color: var(--color-lightGray); border:  8px solid var(--color-lightGray);}
     .line:nth-of-type(2n) .description { background-color: var(--color-lightGray); color: var(--color-gray)}

@@ -147,8 +147,8 @@
 
 @media screen and (max-width: 1000px)
 {
-	.next,
-	.prev
+	#topSlide .next,
+	#topSlide .prev
 	{
 		display: none !important;
 	}

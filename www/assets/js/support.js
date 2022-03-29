@@ -31,6 +31,14 @@ $(function () {
         if (arg.currentSlideObject.hasClass('video')) $(arg.currentSlideObject).find('video').get(0).play();
     }
 
+    // zobrazeni carSelectoru pri mobilnim zobrazeni
+    $(document).on('click', '#frm-carSelector-carSelector input', function () {
+        let width = $(document).width();
+        if (width <= 480){
+            console.log(width);
+            $('#imark, #imodel, #imotor').prop("readonly", true);
+        }
+    })
 
 
     //
@@ -93,12 +101,42 @@ $(function () {
         console.log(value, title, '-> VYBER znacky');
     });
     // vyhledávání značky
-    $(document).on('keyup', '#imark', function () {
-        const value = $(this).val();
-        console.log(value);
+    $(document).on('keyup', '#imark', function (e) {
+        let value = $(this).val();
+        clearTimeout($mb_to);
+
+        // Enter
+        if (e.keyCode == 13 && value){
+            let s = value.toUpperCase();
+            let id = false;
+            let last = false;
+            let i = 0;
+            $('.znackaLink').each(function() {
+                let op = $(this).attr('data-key');
+                console.log(op);
+                if (op !== "") {
+                    i++;
+                    if (s === op) {
+                        id = s;
+                        return true;
+                    }
+                    last = op;
+                }
+            });
+            if (id || i === 1) {
+                if (!id) {
+                    id = last;
+                }
+                $('#imark').val(id);
+                $('#imodel').val('');
+                $('#imotor').val('');
+                $('#mark').val(id).change();
+                return true;
+            }
+        }
+
         $('#imark').addClass('loading');
 
-        clearTimeout($mb_to);
         $mb_to = setTimeout(function (){
 
             $.nette.ajax({
@@ -442,7 +480,39 @@ $(function () {
     // navbar
     $('#navmail').on('hover', function() {
         $('.navmail').toggleClass('shown');
-    })
+    });
+
+    // mapa v sekci o nas
+    $('#point_1').on('click, mouseover, mouseout', function () {
+        var info = $('#point_1_detail');
+        if (info.hasClass('d-none')){
+            info.removeClass('d-none');
+        } else {
+            info.addClass('d-none')
+        }
+    });
+
+    //otevreni modalu s detailem strediska
+    var modal = $('#modal');
+    $('#more').on('click', function (){
+        if (modal.hasClass('selected')){
+            modal.removeClass('selected');
+        } else {
+            modal.addClass('selected');
+        }
+    });
+
+    // zavreni modalu na ESC
+    $(document).on('keyup', function(e) {
+        if (e.key == "Escape") {
+            $('#modal').removeClass('selected');
+        }
+    });
+    // zavreni modalu krizkem
+    $('.close').on('click', function() {
+        $('#modal').removeClass('selected');
+    });
+
 
 
     // FUNKCE

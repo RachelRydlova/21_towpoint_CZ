@@ -98,3 +98,9 @@
             font-size: 14px;
         }
     }
+    @media screen and (max-width: 520px)
+    {
+        .recenze {
+            height: 7em;
+        }
+    }

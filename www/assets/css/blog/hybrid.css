@@ -5,6 +5,7 @@
         overflow: hidden;
         position: relative;
         margin-bottom: 0;
+        min-height: 33rem;
     }
     #hybrid .backimg {
         opacity: .05;
@@ -43,5 +44,11 @@
     {
         #hybrid .backimg {
             display: none;
+        }
+    }
+    @media screen and (max-width: 520px)
+    {
+        .recenze {
+            height: 8em;
         }
     }

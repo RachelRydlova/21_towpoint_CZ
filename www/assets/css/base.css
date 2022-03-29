@@ -15,12 +15,12 @@
 	url("fonts/os-r.woff") format("woff");
 }
 
-@font-face
-{
-	font-family: osb;
-	src: url('fonts/os-b.otf'),
-	url("fonts/os-b.woff") format("woff");
-}
+/*@font-face*/
+/*{*/
+/*	font-family: osb;*/
+/*	src: url('fonts/os-b.otf'),*/
+/*	url("fonts/os-b.woff") format("woff");*/
+/*}*/
 
 @font-face
 {
@@ -726,6 +726,10 @@ footer img.tazak {
 
 @media screen and (max-width: 480px)
 {
+	.carousel-cell {
+		width: 75%;
+	}
+
 	#mmenu
 	{
 		margin-top: 12px;
@@ -733,7 +737,7 @@ footer img.tazak {
 
 	header
 	{
-		padding-top: 20px;
+		/*padding-top: 20px;*/
 		padding-bottom: 20px;
 	}
 
