@@ -22,12 +22,12 @@
 /*	url("fonts/os-b.woff") format("woff");*/
 /*}*/
 
-@font-face
-{
-	font-family: ossb;
-	src: url('fonts/os-sb.otf'),
-	url("fonts/os-sb.woff") format("woff");
-}
+/*@font-face*/
+/*{*/
+/*	font-family: ossb;*/
+/*	src: url('fonts/os-sb.otf'),*/
+/*	url("fonts/os-sb.woff") format("woff");*/
+/*}*/
 
 
 html {

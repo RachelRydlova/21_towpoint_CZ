@@ -175,8 +175,9 @@ class Calculator extends Control
     public function handleSetPref(string $preference): void
     {
 
-        Debugger::log(print_r($preference,true),'debug-pref');
+        bdump($preference, 'preference');
         $arrPref = json_decode($preference);
+        Debugger::log(print_r($arrPref,true),'debug-pref');
 
         // ulozeni preferenci do session
         $this->saveValue('preferencies', $arrPref);
