@@ -109,28 +109,50 @@ $(function () {
         if (e.keyCode == 13 && value){
             let s = value.toUpperCase();
             let id = false;
+            let title = false;
             let last = false;
+            let lastTitle = false;
             let i = 0;
             $('.znackaLink').each(function() {
                 let op = $(this).attr('data-key');
-                console.log(op);
-                if (op !== "") {
+                let optitle = $(this).attr('title');
+                if (optitle !== "") {
                     i++;
-                    if (s === op) {
-                        id = s;
+                    if (s === optitle) {
+                        title = optitle;
+                        id = op;
                         return true;
                     }
                     last = op;
+                    lastTitle = title;
                 }
             });
+            console.log(id);
+            console.log(i);
+            console.log(title);
             if (id || i === 1) {
                 if (!id) {
                     id = last;
                 }
-                $('#imark').val(id);
+                if (!title) {
+                    title = lastTitle;
+                }
+                console.log(title);
+                //$('#imark').val(id);
                 $('#imodel').val('');
                 $('#imotor').val('');
-                $('#mark').val(id).change();
+                //$('#mark').val(id).change();
+                $.nette.ajax({
+                    url: '?do=carSelector-setManufacturer',
+                    data: {'carSelector-manId': id}
+                }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
+                    $('#imark').val(title);
+                    $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);
+                    $('#mark').hide();
+                    $('#model').show();
+                    $('#sel').removeClass('loading');
+                    $('#form2').removeClass('shown');
+                });
                 return true;
             }
         }
