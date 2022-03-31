@@ -96,16 +96,16 @@ class CarSelector extends Control
 
             // prekresluju snippet pro list modelů
             $models = $this->apiManager->getCarManufacturerModels($manId);
-            $search = strtoupper($search);
-                // pokud je neco v search, tak plnim pole autami obsahujici co je v search
-                if ($search) {
-                    foreach ($models as $key => $mod){
-                        $modelName = strtoupper($mod->fullname);
-                        if (!Nette\Utils\Strings::contains($modelName,$search)){
-                            unset($models[$key]);
-                        }
+            // pokud je neco v search, tak plnim pole autami obsahujici co je v search
+            if ($search) {
+                $search = strtoupper($search);
+                foreach ($models as $key => $mod){
+                    $modelName = strtoupper($mod->fullname);
+                    if (!Nette\Utils\Strings::contains($modelName,$search)){
+                        unset($models[$key]);
                     }
                 }
+            }
 
             // nastavuji promenne do template a prekresluji znacky
             $this->template->modely = $models;
