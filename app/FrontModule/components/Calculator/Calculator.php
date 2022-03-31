@@ -43,7 +43,6 @@ class Calculator extends Control
      */
     public function setPrice($vehicleId, $comfort)
     {
-
         $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
 
         // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js

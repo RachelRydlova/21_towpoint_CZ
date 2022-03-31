@@ -217,6 +217,7 @@ class CarSelector extends Control
 
     /**
      * @param $comfort
+     * @throws \Throwable
      */
     public function handleSetComfort($comfort): void
     {
@@ -270,9 +271,22 @@ class CarSelector extends Control
         $form->addCheckbox('komfort');
         $form->addSubmit('success', 'confirm');
 
-        $form->onSuccess[] = [$this, 'handleSaveData'];
-
+        $form->onSuccess[] = [$this, 'onCarSelectorSuccess'];
         return $form;
+    }
+
+    /**
+     * @param Form $form
+     * @param $data
+     * @throws \Throwable
+     */
+    public function onCarSelectorSuccess(Form $form, $data): void
+    {
+        $vehicleId = $data->vehicle;
+        $comfort = $data->comfort;
+
+        Debugger::dump($data, 'onCarSelectorSuccess');
+        $this->handleSaveData($vehicleId, $comfort);
     }
 
     public function render(): void
