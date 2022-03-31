@@ -49,7 +49,7 @@
             </ul>
 
         {* MAPA *}
-        <svg width="1292" height="752" viewBox="0 0 1292 752">
+     {*   <svg width="1292" height="752" viewBox="0 0 1292 752">
                 <defs>
                     <style>
                         .cls-1 {
@@ -82,7 +82,7 @@
                 <g id="mapa" transform="translate(-420 -3034)">
                     <rect id="mapa_česko" data-name="mapa česko" class="cls-1" width="1292" height="752" transform="translate(420 3034)"/>
 
-                    {*   point v mape => montazni mista *}
+                    *}{*   point v mape => montazni mista *}{*
                     <g id="zasova" class="point" transform="translate(1535 3492)">
                         <g id="Path_59-2" data-name="Path 59" class="cls-4">
                             <path class="cls-6" d="M 19.5 38.25 C 16.96843910217285 38.25 14.51299953460693 37.75436019897461 12.20188999176025 36.77684020996094 C 9.969240188598633 35.83251190185547 7.96396017074585 34.48046112060547 6.24174976348877 32.75825119018555 C 4.519539833068848 31.03603935241699 3.167490005493164 29.03075981140137 2.223160028457642 26.79810905456543 C 1.24564003944397 24.48699951171875 0.75 22.03156089782715 0.75 19.5 C 0.75 16.96843910217285 1.24564003944397 14.51299953460693 2.223160028457642 12.20188999176025 C 3.167490005493164 9.969240188598633 4.519539833068848 7.96396017074585 6.24174976348877 6.24174976348877 C 7.96396017074585 4.519539833068848 9.969240188598633 3.167490005493164 12.20188999176025 2.223160028457642 C 14.51299953460693 1.24564003944397 16.96843910217285 0.75 19.5 0.75 C 22.03156089782715 0.75 24.48699951171875 1.24564003944397 26.79810905456543 2.223160028457642 C 29.03075981140137 3.167490005493164 31.03603935241699 4.519539833068848 32.75825119018555 6.24174976348877 C 34.48046112060547 7.96396017074585 35.83251190185547 9.969240188598633 36.77684020996094 12.20188999176025 C 37.75436019897461 14.51299953460693 38.25 16.96843910217285 38.25 19.5 C 38.25 22.03156089782715 37.75436019897461 24.48699951171875 36.77684020996094 26.79810905456543 C 35.83251190185547 29.03075981140137 34.48046112060547 31.03603935241699 32.75825119018555 32.75825119018555 C 31.03603935241699 34.48046112060547 29.03075981140137 35.83251190185547 26.79810905456543 36.77684020996094 C 24.48699951171875 37.75436019897461 22.03156089782715 38.25 19.5 38.25 Z"/>
@@ -361,36 +361,31 @@
                         </g>
                     </g>
             </svg>
-
-    </section>
-
-    {* towpoint zasova detail*}
-    <div id="zasova_detail" class="detail d-none" style="right: 8.5%; top: 56.5%">
-        <div class="title gray">
-            <h3>Towpoint Zašová</h3>
-        </div>
-        <div class="list lightGray">
-            <ul>
-                <li>Půjčovna nahradního vozidla</li>
-                <li>Sezónní prohlídka</li>
-                <li>Plnění klimatizace</li>
+*}
+        <div class="myText">
+            <h2 class="orange title">
+                Towpoint MESTO
+            </h2>
+            <img src="" alt="">
+            <ul class="light" style="font-size: 1.3rem">
+                <li class="parameter">Půjčovna nahradního vozidla</li>
+                <li class="parameter">Sezónní prohlídka</li>
+                <li class="parameter">Plnění klimatizace</li>
+                <li class="parameter">Výměna oleje</li>
+                <li class="parameter">Geometrie</li>
+                <li class="parameter">Pneuservis</li>
+                <li class="parameter">Prodej pneumatik</li>
             </ul>
+
+            <span class="light">Move your cursor over the plots on the map in order to show information in this div.</span>
             <a href="#zasova_modal">více</a>
         </div>
-        {* towpoint zasova MODAL*}
-        <div id="zasova_modal" class="modal"></div>
-        <img src="" alt="">
-        <ul>
-            <li>Půjčovna nahradního vozidla</li>
-            <li>Sezónní prohlídka</li>
-            <li>Plnění klimatizace</li>
-            <li>Výměna oleje</li>
-            <li>Geometrie</li>
-            <li>Pneuservis</li>
-            <li>Prodej pneumatik</li>
-        </ul>
-    </div>
-
+        <div class="mapcontainer">
+            <div class="map">
+                <span>Alternative content for the map</span>
+            </div>
+        </div>
+    </section>
 
 
 
@@ -484,3 +479,48 @@
 </main>
 
 
+
+
+
+{/block}
+
+{block script}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="{$basePath}/assets/js/raphael.js"></script>
+    <script src="{$basePath}/assets/js/jquery.mapael.js"></script>
+    <script src="{$basePath}/assets/js/mapCZ.js"></script>
+    <script>
+
+        $(function () {
+            $(".mapcontainer").mapael({
+                map: {
+                    name: "czech_republic",
+                    defaultPlot: {
+                        size: 30,
+                        eventHandlers: {
+                            mouseover: function (e, id, mapElem, textElem, elemOptions) {
+                                if (typeof elemOptions.myText != 'undefined') {
+                                    $('.myText span').html(elemOptions.myText).fadeIn('slow');
+                                }
+                            }
+                        }
+                    }
+                },
+                plots: {
+                    'zasova': {
+                        latitude: 49.46847729806029,
+                        longitude: 18.041296169809975,
+                        tooltip: {'content': "Zasova"},
+                        myText: "kratky popis montazniho mista",
+                    },
+                    'praha': {
+                        latitude: 50.066860913274766,
+                        longitude: 14.491336883315164,
+                        tooltip: {'content': "Praha"},
+                        myText: "Curabitur imperdiet velit eu urna aliquet, vitae aliquam nisi molestie.  ",
+                    }
+                }
+            });
+        });
+    </script>
+{/block}

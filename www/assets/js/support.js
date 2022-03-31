@@ -482,38 +482,27 @@ $(function () {
         $('.navmail').toggleClass('shown');
     });
 
-    // mapa v sekci o nas
-    // $('.point').on('click, mouseover, mouseout', function () {
-    //     var id = this.id + "_detail";
-    //     var pointId = $('#()') ;
-    //     console.log(pointId);
-    //     if (pointId.hasClass('d-none')){
-    //         pointId.removeClass('d-none');
+
+    // //otevreni modalu s detailem strediska
+    // var modal = $('#modal');
+    // $('#more').on('click', function (){
+    //     if (modal.hasClass('selected')){
+    //         modal.removeClass('selected');
     //     } else {
-    //         pointId.addClass('d-none')
+    //         modal.addClass('selected');
     //     }
     // });
-
-    //otevreni modalu s detailem strediska
-    var modal = $('#modal');
-    $('#more').on('click', function (){
-        if (modal.hasClass('selected')){
-            modal.removeClass('selected');
-        } else {
-            modal.addClass('selected');
-        }
-    });
-
-    // zavreni modalu na ESC
-    $(document).on('keyup', function(e) {
-        if (e.key == "Escape") {
-            $('#modal').removeClass('selected');
-        }
-    });
-    // zavreni modalu krizkem
-    $('.close').on('click', function() {
-        $('#modal').removeClass('selected');
-    });
+    //
+    // // zavreni modalu na ESC
+    // $(document).on('keyup', function(e) {
+    //     if (e.key == "Escape") {
+    //         $('#modal').removeClass('selected');
+    //     }
+    // });
+    // // zavreni modalu krizkem
+    // $('.close').on('click', function() {
+    //     $('#modal').removeClass('selected');
+    // });
 
 
 
