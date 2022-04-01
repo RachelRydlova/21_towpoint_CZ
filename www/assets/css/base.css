@@ -8,12 +8,12 @@
 	--color-lightGray: #EBEBEB;
 }
 
-@font-face
-{
-	font-family: osr;
-	src: url('fonts/os-r.otf'),
-	url("fonts/os-r.woff") format("woff");
-}
+/*@font-face*/
+/*{*/
+/*	font-family: osr;*/
+/*	src: url('fonts/os-r.otf'),*/
+/*	url("fonts/os-r.woff") format("woff");*/
+/*}*/
 
 /*@font-face*/
 /*{*/

@@ -129,7 +129,10 @@ header nav a:first-of-type span
 	padding: 20px;
 	font-size: 18px;
 	border: 1px solid gray;
+<<<<<<< HEAD
 	-webkit-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
+=======
+>>>>>>> development
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	color: #525252;
 
@@ -332,10 +335,13 @@ header nav a:first-of-type span
 	margin-right: 0px;
 }
 
+<<<<<<< HEAD
 #mark .all a:hover
 {
 	text-decoration: underline;
 }
+=======
+>>>>>>> development
 
 #mark p,
 #model p,
@@ -719,10 +725,14 @@ header nav a:first-of-type span
 	position: relative;
 	border: 1px solid #525252;
 	
+<<<<<<< HEAD
 	-webkit-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	
 	-webkit-border-radius: 50px;
+=======
+	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
+>>>>>>> development
 	border-radius: 50px;
 	
 	cursor: pointer;
@@ -738,7 +748,10 @@ header nav a:first-of-type span
 	left: 7px;
 	top: 7px;
 	
+<<<<<<< HEAD
 	-webkit-border-radius: 50%;
+=======
+>>>>>>> development
 	border-radius: 50%;
 	
 	transition: 150ms all;
@@ -833,10 +846,15 @@ header nav a:first-of-type span
 	position: relative;
 	border: 1px solid #525252;
 
+<<<<<<< HEAD
 	-webkit-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 
 	-webkit-border-radius: 50px;
+=======
+	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
+
+>>>>>>> development
 	border-radius: 50px;
 
 	cursor: pointer;
@@ -853,7 +871,10 @@ header nav a:first-of-type span
 	left: 9px;
 	top: 9px;
 
+<<<<<<< HEAD
 	-webkit-border-radius: 50%;
+=======
+>>>>>>> development
 	border-radius: 50%;
 }
 
@@ -865,11 +886,17 @@ header nav a:first-of-type span
 	cursor: pointer;
 }
 
+.redukce > div {
+	cursor: auto;
+}
 
 .redukce div div
 {
 	cursor: auto;
+<<<<<<< HEAD
 	-webkit-border-radius: 0px;
+=======
+>>>>>>> development
 	border-radius: 0px;
 }
 .redukce div label{
@@ -889,7 +916,10 @@ header nav a:first-of-type span
 	background-repeat: no-repeat;
 	background-size: 25px;
 
+<<<<<<< HEAD
 	-webkit-border-radius: 0%;
+=======
+>>>>>>> development
 	border-radius: 0%;
 }
 
@@ -898,7 +928,6 @@ header nav a:first-of-type span
 	color: white;
 	background: none;
 	border: 0px;
-	-webkit-box-shadow: none;
 	text-transform: uppercase;
 	font-family: osb, Arial, Helvetica, sans-serif;
 	letter-spacing: 1px;
@@ -946,9 +975,19 @@ header nav a:first-of-type span
 	height: 66px;
 }
 
+<<<<<<< HEAD
 #form input::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
 
 #form textarea::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
+=======
+/*#form input::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
+/*#form input:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
+
+/*#form textarea::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
+/*#form textarea::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
+/*#form textarea:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
+/*#form textarea:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
+>>>>>>> development
 
 
 #form .clr
@@ -1061,7 +1100,13 @@ header nav a:first-of-type span
 	height: 50px;
 	position: relative;
 	border: 1px solid #525252;
+<<<<<<< HEAD
 	-webkit-border-radius: 50px;
+=======
+	/*-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);*/
+	-webkit-border-radius: 50px;
+	/*-moz-border-radius: 50px;*/
+>>>>>>> development
 	margin-bottom: 15px;
 }
 
@@ -1076,6 +1121,10 @@ header nav a:first-of-type span
 	left: 7px;
 	top: 7px;
 	-webkit-border-radius: 50%;
+<<<<<<< HEAD
+=======
+	/*-moz-border-radius: 50%;*/
+>>>>>>> development
 	border-radius: 50%;
 	transition: 150ms all;
 }
@@ -1151,8 +1200,15 @@ p.error {
 	text-align: center;
 	font-family: osb, Arial, Helvetica, sans-serif;
 	
+<<<<<<< HEAD
 	-webkit-transform: translateY(-50%);
 	-o-transform: translateY(-50%);
+=======
+	/*-moz-transform: translateY(-50%);*/
+	-webkit-transform: translateY(-50%);
+	/*-o-transform: translateY(-50%);*/
+	/*-ms-transform: translateY(-50%);*/
+>>>>>>> development
 	transform: translateY(-50%);
 }
 
@@ -1742,9 +1798,13 @@ p.error {
 		padding-left: 25px;
 		padding-right: 25px;
 
+<<<<<<< HEAD
+=======
+		/*-moz-transform: none;*/
+>>>>>>> development
 		-webkit-transform: none;
 		-o-transform: none;
-		-ms-transform: none;
+		/*-ms-transform: none;*/
 		transform: none;
 	}
 	
