@@ -10,43 +10,6 @@
 }
 
 
-
-
-.myText {
-    position: absolute;
-    right: 0;
-    top: 45%;
-    background-color: #343434;
-    height: 45vh;
-    max-width: 27%;
-    padding: 10px;
-    color: #fff;
-    overflow: auto;
-    margin: 10px;
-    z-index: 100;
-}
-
-.orange {
-    background-color: var(--color-orange);
-    padding: 2rem;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.light {
-    width: 100% !important;
-    padding-left: 10%;
-    padding-top: 5%;
-}
-
-.myText a {
-    margin-top: 1rem;
-    margin-left: 0 !important;
-    display: block;
-    text-decoration: none;
-    text-align: center;
-}
-
 /* Specific mapael css class are below
  * 'mapael' class is added by plugin
 */
@@ -57,32 +20,34 @@
 
 .mapael .mapTooltip {
     position: absolute;
-    background-color: #fff;
-    opacity: 0.70;
-    filter: alpha(opacity=70);
+    opacity: 0.95;
+    filter: alpha(opacity=95);
     border-radius: 10px;
     padding: 10px;
     z-index: 1000;
-    max-width: 200px;
     display: none;
-    color: #343434;
+    background-color: #343434;
+    color: #fff;
 }
 
+.mapael .mapTooltip h2,
+.modal .orange {
+    color: #fff;
+    background-color: var(--color-orange);
+    padding: 2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
 
-
-
-
-
-
-
+.mapael .mapTooltip ul {
+    width: 100% !important;
+    padding-left: 10%;
+    padding-top: 5%;
+}
 
 
 main {
     position: relative;
-}
-
-.point {
-    cursor: pointer;
 }
 
 .modal {
@@ -93,12 +58,11 @@ main {
     text-align: center;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0,0,0,0.92);
     z-index: 999;
     opacity: 0;
     pointer-events: none;
 }
-
 .modal.selected {
     display: block;
     outline: none;
@@ -107,17 +71,23 @@ main {
     pointer-events: auto;
     transition: all 1.2s ease;
 }
-
-.modal.selected img {
-    max-width: 40%;
+.modal .content {
+    display: flex;
+    justify-content: space-around;
+}
+.modal .content img {
+    max-width: 40% !important;
+    padding-top: 1rem !important;
 }
 
+
 .modal ul {
-    width: auto;
-    margin-bottom: 0;
+    color: var(--color-lightGray);
+    max-width: 40%;
+    padding-top: 1rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .modal ul li,
@@ -131,36 +101,13 @@ main {
     padding-bottom: 0.7em;
 }
 
-.gray {
-    background-color: var(--color-darkGray);
-    color: var(--color-white);
-    padding: 1rem;
-    line-height: 3rem;
-    margin-top: 8px;
+.content span {
+    margin-top: 5%;
 }
 
-.detail .gray {
-    padding: 1rem 7rem;
-}
-
-.lightGray {
-    background-color: var(--color-lightGray);
-    color: var(--color-darkGray);
-    padding: 1rem;
-    max-height: 20.6rem;
-    overflow: auto;
-}
-.detail .lightGray {
-    padding: 1rem 5rem;
-}
-
-.detail {
-    float: right;
-    position: absolute;
-}
-
-.modal h1 {
-    font-size: 55px;
+.modal p {
+    float: none !important;
+    padding: 1rem 0;
 }
 
 .modal h2 {
@@ -168,12 +115,6 @@ main {
 }
 
 @media screen and (max-width: 1230px){
-    .gray {
-        line-height: 2.5rem;
-    }
-    .modal h1 {
-        font-size: 45px;
-    }
     .modal h2 {
         font-size: 30px;
     }

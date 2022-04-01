@@ -1,7 +1,7 @@
 header nav a:first-of-type span
 {
 	background-color: #525252;
-	
+
 	-webkit-transform: translateY(-5px);
 	-o-transform: translateY(-5px);
 	-ms-transform: translateY(-5px);
@@ -129,10 +129,7 @@ header nav a:first-of-type span
 	padding: 20px;
 	font-size: 18px;
 	border: 1px solid gray;
-<<<<<<< HEAD
 	-webkit-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
-=======
->>>>>>> development
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	color: #525252;
 
@@ -143,7 +140,7 @@ header nav a:first-of-type span
 
 	border-radius: 20px;
 	-webkit-appearance: none;
-   appearance: none;
+	appearance: none;
 }
 
 
@@ -313,7 +310,7 @@ header nav a:first-of-type span
 	top: -10px;
 	box-shadow: 0px 15px 10px rgba(0,0,0,0.3);
 	transition: top 80ms, box-shadow 80ms, transform 80ms;
-/*	transform: scale(1.1);*/
+	/*	transform: scale(1.1);*/
 }
 
 #mark .all
@@ -335,13 +332,10 @@ header nav a:first-of-type span
 	margin-right: 0px;
 }
 
-<<<<<<< HEAD
 #mark .all a:hover
 {
 	text-decoration: underline;
 }
-=======
->>>>>>> development
 
 #mark p,
 #model p,
@@ -600,7 +594,7 @@ header nav a:first-of-type span
 		opacity: 0.8;
 		transform: scale(1);
 	}
-	
+
 	100%
 	{
 		opacity: 0;
@@ -641,7 +635,7 @@ header nav a:first-of-type span
 
 #slides img
 {
-/*	border: 1px solid black;*/
+	/*	border: 1px solid black;*/
 	width: 200px;
 	height: 200px;
 	display: block;
@@ -724,17 +718,14 @@ header nav a:first-of-type span
 	height: 50px;
 	position: relative;
 	border: 1px solid #525252;
-	
-<<<<<<< HEAD
+
 	-webkit-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
-	
+
 	-webkit-border-radius: 50px;
-=======
 	box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);
->>>>>>> development
 	border-radius: 50px;
-	
+
 	cursor: pointer;
 }
 
@@ -747,13 +738,10 @@ header nav a:first-of-type span
 	content: " ";
 	left: 7px;
 	top: 7px;
-	
-<<<<<<< HEAD
+
 	-webkit-border-radius: 50%;
-=======
->>>>>>> development
 	border-radius: 50%;
-	
+
 	transition: 150ms all;
 }
 
@@ -846,15 +834,12 @@ header nav a:first-of-type span
 	position: relative;
 	border: 1px solid #525252;
 
-<<<<<<< HEAD
 	-webkit-box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 
 	-webkit-border-radius: 50px;
-=======
 	box-shadow: inset 5px 5px 10px rgba(0,0,0,0.3);
 
->>>>>>> development
 	border-radius: 50px;
 
 	cursor: pointer;
@@ -871,10 +856,7 @@ header nav a:first-of-type span
 	left: 9px;
 	top: 9px;
 
-<<<<<<< HEAD
 	-webkit-border-radius: 50%;
-=======
->>>>>>> development
 	border-radius: 50%;
 }
 
@@ -893,10 +875,7 @@ header nav a:first-of-type span
 .redukce div div
 {
 	cursor: auto;
-<<<<<<< HEAD
 	-webkit-border-radius: 0px;
-=======
->>>>>>> development
 	border-radius: 0px;
 }
 .redukce div label{
@@ -916,10 +895,7 @@ header nav a:first-of-type span
 	background-repeat: no-repeat;
 	background-size: 25px;
 
-<<<<<<< HEAD
 	-webkit-border-radius: 0%;
-=======
->>>>>>> development
 	border-radius: 0%;
 }
 
@@ -975,19 +951,9 @@ header nav a:first-of-type span
 	height: 66px;
 }
 
-<<<<<<< HEAD
 #form input::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
 
 #form textarea::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }
-=======
-/*#form input::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
-/*#form input:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
-
-/*#form textarea::-webkit-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
-/*#form textarea::-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
-/*#form textarea:-ms-input-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
-/*#form textarea:-moz-placeholder {  color: inherit; opacity: 0.5; font-family: osr, Arial, Helvetica, sans-serif;  }*/
->>>>>>> development
 
 
 #form .clr
@@ -1100,13 +1066,7 @@ header nav a:first-of-type span
 	height: 50px;
 	position: relative;
 	border: 1px solid #525252;
-<<<<<<< HEAD
 	-webkit-border-radius: 50px;
-=======
-	/*-moz-box-shadow: inset 5px 5px 5px rgba(0,0,0,0.3);*/
-	-webkit-border-radius: 50px;
-	/*-moz-border-radius: 50px;*/
->>>>>>> development
 	margin-bottom: 15px;
 }
 
@@ -1121,10 +1081,7 @@ header nav a:first-of-type span
 	left: 7px;
 	top: 7px;
 	-webkit-border-radius: 50%;
-<<<<<<< HEAD
-=======
-	/*-moz-border-radius: 50%;*/
->>>>>>> development
+	-moz-border-radius: 50%;
 	border-radius: 50%;
 	transition: 150ms all;
 }
@@ -1199,16 +1156,8 @@ p.error {
 	pointer-events: none;
 	text-align: center;
 	font-family: osb, Arial, Helvetica, sans-serif;
-	
-<<<<<<< HEAD
+
 	-webkit-transform: translateY(-50%);
-	-o-transform: translateY(-50%);
-=======
-	/*-moz-transform: translateY(-50%);*/
-	-webkit-transform: translateY(-50%);
-	/*-o-transform: translateY(-50%);*/
-	/*-ms-transform: translateY(-50%);*/
->>>>>>> development
 	transform: translateY(-50%);
 }
 
@@ -1233,12 +1182,12 @@ p.error {
 	{
 		color: black;
 	}
-	
+
 	50%
 	{
 		color: #ff9900;
 	}
-	
+
 	100%
 	{
 		color: black;
@@ -1280,7 +1229,7 @@ p.error {
 		left: calc((100% - 640px) /3*2 - 180px);
 		top: 50%;
 	}
-	
+
 	#map .img
 	{
 		width: 640px;
@@ -1301,7 +1250,7 @@ p.error {
 		font-size: 30px;
 		left: calc((100% - 640px) /3*2 - 100px);
 	}
-	
+
 	#map h2 strong
 	{
 		font-size: 70px;
@@ -1315,13 +1264,13 @@ p.error {
 	{
 		background-position: 120% center, -40% center, top;
 	}
-	
+
 	#map .img
 	{
 		width: 600px;
 		margin-left: calc((100% - 600px) /2);
 	}
-	
+
 	#map h2
 	{
 		position: static;
@@ -1329,7 +1278,7 @@ p.error {
 		text-align: center;
 		margin-bottom: 30px;
 	}
-	
+
 	#map > div
 	{
 		float: left;
@@ -1368,14 +1317,14 @@ p.error {
 		margin-left: auto;
 		order: 1;
 	}
-	
+
 	#komfort div
 	{
 		margin-left: auto;
 		order: 2;
 		width: auto;
 	}
-	
+
 	#komfort a
 	{
 		float: none;
@@ -1414,7 +1363,7 @@ p.error {
 		height: 100px;
 		margin-right: 20px;
 	}
-	
+
 	#mark .logos a img
 	{
 		width: 50px;
@@ -1432,17 +1381,17 @@ p.error {
 	{
 		width: calc((100% - 30px) /2);
 	}
-	
+
 	.yesno:nth-of-type(3)
 	{
 		margin-right: 30px;
 	}
-	
+
 	.yesno:nth-of-type(4)
 	{
 		clear: none;
 	}
-	
+
 	.yesno:nth-of-type(2n)
 	{
 		margin-right: 0px;
@@ -1452,10 +1401,10 @@ p.error {
 	{
 		clear: left;
 	}
-	
+
 	.yesno:nth-of-type(5)
 	{
-		width: 100%;	
+		width: 100%;
 	}
 	#nabidka img.tazNabidka
 	{
@@ -1470,7 +1419,7 @@ p.error {
 	{
 		background-size: auto 600px, auto 350px;
 	}
-	
+
 	#sel select,
 	#imark,
 	#imodel,
@@ -1480,13 +1429,13 @@ p.error {
 		padding: 15px;
 		padding-right: 45px;
 	}
-	
+
 	.yesno div
 	{
 		width: 64px;
 		height: 39px;
 	}
-	
+
 	.yesno div::before
 	{
 		width: 27px;
@@ -1494,24 +1443,24 @@ p.error {
 		left: 5px;
 		top: 5px;
 	}
-	
+
 	.yesno.sel div::before
 	{
 		left: 30px;
 	}
-	
+
 	.yesno a,
 	#form .radios > div a
 	{
 		margin-top: 7px;
 	}
-	
+
 	#form .radios > div div
 	{
 		width: 39px;
 		height: 39px;
 	}
-	
+
 	#form .radios > div.sel div::before
 	{
 		width: 27px;
@@ -1519,28 +1468,28 @@ p.error {
 		left: 5px;
 		top: 5px;
 	}
-	
+
 	#form .inputs > div p
 	{
 		margin-left: 15px;
 	}
-	
+
 	.yesno a
 	{
 		width: calc(100% - 85px);
 	}
-	
+
 	#sel > div.load1
 	{
 		background-position: 50% 120px;
 	}
-	
+
 	#sel > div.load2
 	{
 		background-position: 83.2% 120px;
 	}
-	
-	
+
+
 	#form .inputs input,
 	#form .inputs select,
 	#form .inputs select,
@@ -1549,36 +1498,36 @@ p.error {
 		font-size: 16px;
 		padding: 15px;
 	}
-	
+
 	#form .inputs textarea
 	{
 		height: 128px;
 	}
-	
+
 	#form .inputs select
 	{
 		height: 54px;
 	}
-	
+
 	#mark,
 	#model,
 	#motor
 	{
 		padding-top: 20px;
 	}
-	
+
 	#model a,
 	#motor a
 	{
 		font-size: 14px;
 	}
-	
+
 	#model > div,
 	#motor > div
 	{
 		padding-left: 15px;
 	}
-	
+
 	#komfort p
 	{
 		font-size: 14px;
@@ -1625,23 +1574,23 @@ p.error {
 		background-position: top;
 		background-size: auto;
 	}
-	
+
 	.subn h2
 	{
 		font-size: 18px;
 	}
-	
+
 	.subn.step h2
 	{
 		padding-left: 40px;
 	}
-	
+
 	.subn.step h2::before
 	{
 		width: 25px;
 		height: 25px;
 	}
-	
+
 	#form .inputs p.complete
 	{
 		max-width: 600px;
@@ -1675,7 +1624,7 @@ p.error {
 		margin-left: auto;
 		margin-right: auto;
 	}
-	
+
 	#komfort p::before
 	{
 		content: "";
@@ -1686,19 +1635,19 @@ p.error {
 		float: left;
 		margin-right: 5px;
 	}
-	
+
 	#komfort div
 	{
 		margin-right: auto;
 	}
-	
+
 	#komfort input
 	{
 		float: right;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	
+
 	#komfort div a span
 	{
 		margin-right: 60px;
@@ -1765,24 +1714,24 @@ p.error {
 		width: calc((100% - 30px) / 2);
 		font-size: 14px;
 	}
-	
+
 	#sel select:nth-of-type(2)
 	{
 		margin-right: 0px;
 	}
-	
+
 	#sel select:last-of-type
 	{
 		width: 100%;
 		margin-right: 0px;
 		margin-top: 5px;
 	}
-	
+
 	#sel h2
 	{
 		font-size: 18px;
 	}
-	
+
 	#sel
 	{
 		height: auto;
@@ -1790,7 +1739,7 @@ p.error {
 		padding-top: 30px;
 		background-image: none;
 	}
-	
+
 	#sel > select:not(.subn)
 	{
 		float: left;
@@ -1798,16 +1747,11 @@ p.error {
 		padding-left: 25px;
 		padding-right: 25px;
 
-<<<<<<< HEAD
-=======
-		/*-moz-transform: none;*/
->>>>>>> development
 		-webkit-transform: none;
 		-o-transform: none;
-		/*-ms-transform: none;*/
 		transform: none;
 	}
-	
+
 	#form > div:not(.subn),
 	.subn,
 	.poptavka p
@@ -1816,7 +1760,7 @@ p.error {
 		padding-right: 25px;
 	}
 
-	
+
 	.yesno,
 	#form .radios,
 	.poptavka p,
@@ -1824,20 +1768,20 @@ p.error {
 	{
 		font-size: 14px;
 	}
-	
+
 	.yesno a,
 	#form .radios > div a
 	{
 		margin-top: 9px;
 	}
-	
-	
-	
+
+
+
 	#form > div:not(.subn)
 	{
 		padding-top: 20px;
 	}
-	
+
 	#sel > div.load1,
 	#sel > div.load2
 	{
@@ -1845,24 +1789,24 @@ p.error {
 		background-position: 50% 185px;
 		background-size: 30px;
 	}
-	
+
 	#sel > div.load2
 	{
 		background-position: 50% 185px;
 	}
-	
+
 	#form .inputs input,
 	#form .inputs select,
 	#form .inputs textarea
 	{
 		font-size: 14px;
 	}
-	
+
 	#form .inputs textarea
 	{
 		height: 122px;
 	}
-	
+
 	#form .inputs select
 	{
 		height: 51px;
@@ -1952,7 +1896,7 @@ p.error {
 		margin-bottom: 15px;
 		border-bottom: 1px solid #525252;
 	}
-	
+
 	.radios
 	{
 		max-width: 360px;
@@ -1960,31 +1904,31 @@ p.error {
 		border-bottom: 0px;
 		padding-bottom: 0px;
 	}
-	
+
 	.radios:last-of-type
 	{
 		padding-bottom: 20px;
 	}
-	
+
 	.poptavka .yesno
 	{
 		width: 100%;
 		padding: 0px 25px;
 	}
-	
+
 	#form2 > div:nth-of-type(2)
 	{
 		display: flex;
 		flex-direction: column;
 		padding: 0px;
 	}
-	
+
 	#nabidka
 	{
 		order: 1;
 		padding-bottom: 15px;
 	}
-	
+
 	#form2 > div:nth-of-type(2) > div:not(#nabidka)
 	{
 		order: 2;
@@ -2002,7 +1946,7 @@ p.error {
 		width: 7px;
 		height: 7px;
 	}
-	
+
 	#map h2
 	{
 		padding: 0px 25px;
@@ -2030,14 +1974,14 @@ p.error {
 		margin-bottom: 10px;
 		margin-top: 0;
 	}
-	
+
 
 	#form .radios > div a
 	{
 		float: right;
 		width: calc(100% - 60px);
 	}
-	
+
 	#form .radios > div
 	{
 		width: 100%;
@@ -2074,7 +2018,7 @@ p.error {
 		width: 48px;
 		height: 30px;
 	}
-	
+
 	.yesno div::before
 	{
 		width: 20px;
@@ -2082,23 +2026,23 @@ p.error {
 		left: 4px;
 		top: 4px;
 	}
-	
+
 	.yesno.sel div::before
 	{
 		left: 22px;
 	}
-	
+
 	.yesno a
 	{
 		margin-top: 4px;
 	}
-	
+
 	#form .radios > div div
 	{
 		width: 39px;
 		height: 39px;
 	}
-	
+
 	#form .radios > div.sel div::before
 	{
 		width: 27px;
@@ -2106,54 +2050,54 @@ p.error {
 		left: 5px;
 		top: 5px;
 	}
-	
+
 	.yesno a
 	{
 		margin-left: 15px;
 		width: calc(100% - 65px);
 	}
-	
-	
-	
+
+
+
 	#form .inputs div
 	{
 		width: 100%;
 		padding-bottom: 10px;
 	}
-	
-	
+
+
 	#map > div
 	{
 		padding-bottom: 0px;
 	}
-	
-	
+
+
 	#form .inputs > div:nth-last-of-type(3)
 	{
 		padding-bottom: 10px;
 	}
-	
+
 	#form .inputs > div:last-of-type
 	{
 		padding-top: 10px;
 	}
-	
+
 	#form .inputs
 	{
 		padding-bottom: 135px;
 	}
-	
+
 	#nabidka h2
 	{
 		font-size: 24px;
 	}
-	
+
 	#nabidka h2.no
 	{
 		font-size: 18px;
 	}
-	
-	
+
+
 	#form2 > div:not(.subn).poptavka
 	{
 		padding-bottom: 0px;
@@ -2172,7 +2116,7 @@ p.error {
 	{
 		font-size: 12px;
 	}
-	
+
 	#komfort a
 	{
 		font-size: 14px;
@@ -2187,12 +2131,12 @@ p.error {
 		width: 130px;
 		font-size: 12px;
 	}
-	
+
 	.radios
 	{
 		max-width: 260px;
 	}
-	
+
 	.radios > div div,
 	.radios input,
 	#komfort a::before
@@ -2214,44 +2158,44 @@ p.error {
 	{
 		margin-left: 12px;
 	}
-	
+
 	.radios > div a,
 	.redukce > div div:last-of-type
 	{
 		margin-left: 10px;
 	}
-	
+
 	.redukce > div.sel div:first-of-type::before,
 	#komfort a.sel::before
 	{
 		background-size: 20px;
 	}
-	
+
 	.redukce > div div:last-of-type
 	{
 		line-height: 40px;
 	}
-	
+
 	#nabidka
 	{
 		margin-top: 20px;
 	}
-	
+
 	#form2 > div:not(.subn)
 	{
 		padding-top: 0px;
 	}
-	
+
 	#form2 > div:not(.subn).poptavka
 	{
 		padding-top: 30px;
 	}
-	
+
 	.poptavka p strong
 	{
 		white-space: normal;
 	}
-	
+
 	.radios h3
 	{
 		font-size: 14px;

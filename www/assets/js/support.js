@@ -48,21 +48,21 @@ $(function () {
     //zobrazeni prvku carSelectoru
     $(document).on('focus','#imark',function(){
         $('#mark').show();
-        $('#model, #motor, #imodel, #imotor').hide();
+        // $('#model, #motor, #imodel, #imotor').hide();
     });
 
     $(document).on('blur', '#imark', function (){
         $('#mark').slideUp(300);
-        $('#imodel, #imotor').show();
+        // $('#imodel, #imotor').show();
     });
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
         $('#motor').slideUp(300);
-        $('#imotor').hide();
+        // $('#imotor').hide();
     });
-    $(document).on('blur', '#imodel', function (){
-        $('#imotor').show();
-    });
+    // $(document).on('blur', '#imodel', function (){
+    //     $('#imotor').show();
+    // });
     $(document).on('focus','#imotor',function(){
         $('#motor').slideDown(300);
         $('#form2').addClass('loading').removeClass('shown');
@@ -86,7 +86,17 @@ $(function () {
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
 
-        setManufacturer();
+        $.nette.ajax({
+            url: '?do=carSelector-setManufacturer',
+            data: {'carSelector-manId': value}
+        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
+            $('#imark').val(title);
+            $('html, body').animate({scrollTop: $("#imark").offset().top}, 250);
+            $('#mark').hide();
+            $('#model').show();
+            $('#sel').removeClass('loading');
+            $('#form2').removeClass('shown');
+        });
 
         console.log(value, title, '-> VYBER znacky');
     });
@@ -132,7 +142,17 @@ $(function () {
                 $('#imodel').val('');
                 $('#imotor').val('');
                 //$('#mark').val(id).change();
-                setManufacturer();
+                $.nette.ajax({
+                    url: '?do=carSelector-setManufacturer',
+                    data: {'carSelector-manId': value}
+                }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
+                    $('#imark').val(title);
+                    $('html, body').animate({scrollTop: $("#imark").offset().top}, 250);
+                    $('#mark').hide();
+                    $('#model').show();
+                    $('#sel').removeClass('loading');
+                    $('#form2').removeClass('shown');
+                });
                 return true;
             }
         }
@@ -494,25 +514,22 @@ $(function () {
 
 
     // //otevreni modalu s detailem strediska
-    // var modal = $('#modal');
-    // $('#more').on('click', function (){
-    //     if (modal.hasClass('selected')){
-    //         modal.removeClass('selected');
-    //     } else {
-    //         modal.addClass('selected');
-    //     }
-    // });
-    //
-    // // zavreni modalu na ESC
-    // $(document).on('keyup', function(e) {
-    //     if (e.key == "Escape") {
-    //         $('#modal').removeClass('selected');
-    //     }
-    // });
-    // // zavreni modalu krizkem
-    // $('.close').on('click', function() {
-    //     $('#modal').removeClass('selected');
-    // });
+    var modal = $('.modal');
+    modal.on('click', function (){
+        modal.addClass('selected');
+    });
+
+    // zavreni modalu na ESC
+    $(document).on('keyup', function(e) {
+        if (e.key == "Escape") {
+            $('.modal').removeClass('selected');
+        }
+    });
+    // zavreni modalu krizkem
+    $('.close').on('click', function(e) {
+        e.preventDefault();
+        $('.modal').removeClass('selected');
+    });
 
 
 
