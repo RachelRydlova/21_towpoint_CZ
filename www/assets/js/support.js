@@ -360,6 +360,14 @@ $(function () {
         });
     })
 
+    // zablokovani odeslani formulare enterem
+    $('#form2').on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
 
 
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
