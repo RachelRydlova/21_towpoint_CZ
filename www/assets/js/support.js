@@ -167,7 +167,7 @@ $(function () {
         $('#sel').addClass('loading');
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
-        // $('#imodel').val(title);
+        $('#imotor').focus();
         $('html, body').animate({ scrollTop: $("#imotor").offset().top }, 250);
 
         $.nette.ajax({
