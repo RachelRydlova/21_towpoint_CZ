@@ -380,6 +380,14 @@ $(function () {
         });
     })
 
+    // zablokovani odeslani formulare enterem
+    $('#form2').on('keyup keypress', function(e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
 
 
     // kontrola jestli jsou vyplneny povinne udaje, nastylovani
@@ -535,6 +543,21 @@ $(function () {
         var ch_list = Array();
         $("input:radio[type=radio]:checked").each(function() { ch_list.push($(this).val()); });
         return ch_list;
+    }
+
+    // zvoleni znacky v carSelectoru
+    function setManufacturer() {
+        $.nette.ajax({
+            url: '?do=carSelector-setManufacturer',
+            data: {'carSelector-manId': value}
+        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
+            $('#imark').val(title);
+            $('html, body').animate({scrollTop: $("#imark").offset().top}, 250);
+            $('#mark').hide();
+            $('#model').show();
+            $('#sel').removeClass('loading');
+            $('#form2').removeClass('shown');
+        });
     }
 
 })
