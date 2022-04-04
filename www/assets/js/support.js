@@ -31,11 +31,10 @@ $(function () {
         if (arg.currentSlideObject.hasClass('video')) $(arg.currentSlideObject).find('video').get(0).play();
     }
 
+    let width = $(document).width();
     // zobrazeni carSelectoru pri mobilnim zobrazeni
     $(document).on('click', '#frm-carSelector-carSelector input', function () {
-        let width = $(document).width();
         if (width <= 480){
-            console.log(width);
             $('#imark, #imodel, #imotor').prop("readonly", true);
         }
     })
@@ -48,21 +47,32 @@ $(function () {
     //zobrazeni prvku carSelectoru
     $(document).on('focus','#imark',function(){
         $('#mark').show();
-        // $('#model, #motor, #imodel, #imotor').hide();
+        if (width <= 480){
+            $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);
+            $('#model, #motor, #imodel, #imotor').slideUp(300);
+        }
     });
-
-    $(document).on('blur', '#imark', function (){
+    $(window).click(function (){
         $('#mark').slideUp(300);
-        // $('#imodel, #imotor').show();
-    });
+    })
+    $('#imark').click(function (e) {
+        e.stopPropagation();
+    })
+
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
         $('#motor').slideUp(300);
-        // $('#imotor').hide();
+        $('#mark').show();
+        if (width <= 480){
+            $('html, body').animate({ scrollTop: $("#imodel").offset().top }, 250);
+            $('#imotor').hide();
+        }
     });
-    // $(document).on('blur', '#imodel', function (){
-    //     $('#imotor').show();
-    // });
+    $(document).on('blur', '#imodel', function (){
+        if (width <= 480) {
+            $('#imotor').show();
+        }
+    });
     $(document).on('focus','#imotor',function(){
         $('#motor').slideDown(300);
         $('#form2').addClass('loading').removeClass('shown');
@@ -91,7 +101,7 @@ $(function () {
             data: {'carSelector-manId': value}
         }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
             $('#imark').val(title);
-            $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);
+            $('html, body').animate({ scrollTop: $("#imodel").offset().top }, 250);
             $('#mark').hide();
             $('#model').show();
             $('#sel').removeClass('loading');
@@ -147,7 +157,7 @@ $(function () {
                     data: {'carSelector-manId': id}
                 }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
                     $('#imark').val(title);
-                    $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);
+                    $('html, body').animate({ scrollTop: $("#imodel").offset().top }, 250);
                     $('#mark').hide();
                     $('#model').show();
                     $('#sel').removeClass('loading');
@@ -178,7 +188,7 @@ $(function () {
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
         // $('#imodel').val(title);
-        $('html, body').animate({ scrollTop: $("#imodel").offset().top }, 250);
+        $('html, body').animate({ scrollTop: $("#imotor").offset().top }, 250);
 
         $.nette.ajax({
             url: '?do=carSelector-setModel',
@@ -262,7 +272,7 @@ $(function () {
             data: { 'carSelector-vehicleId': value }
         }).then(function() {
             $('#imotor').val(title);
-            $('html, body').animate({ scrollTop: $("#imotor").offset().top }, 250);
+            $('html, body').animate({ scrollTop: $("#form2").offset().top }, 250);
             $('#pref-0, #koule-0, #el-0, #redukce-0').prop('checked', true);
 
             $('#frm-calculator-calculator :input').prop('disabled', false);
