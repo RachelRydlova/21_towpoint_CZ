@@ -28,6 +28,7 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route('/o-nas', 'Front:Default:about');
         $router[] = new Nette\Application\Routers\Route('/dekujeme', 'Front:Default:thanks');
         $router[] = new Nette\Application\Routers\Route('/dekujemeZaZpravu', 'Front:Default:thanksContact');
+        $router[] = new Nette\Application\Routers\Route('/navody', 'Front:Default:navody');
 
         $router[] = new Nette\Application\Routers\Route('/blog', 'Front:Blog:default');
         $router[] = new Nette\Application\Routers\Route('/clanek-typy-tazneho', 'Front:Blog:typyTazneho');
