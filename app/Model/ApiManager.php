@@ -3,6 +3,7 @@
 
 namespace App\Model;
 
+use App\Model\applCache;
 use Cassandra\Tinyint;
 use Doctrine\Common\Util\Debug;
 use GuzzleHttp\Client;
@@ -15,7 +16,6 @@ use Nette\Caching\Cache;
 use Nette\Http\Session;
 use Nette\Utils\Arrays;
 use Tracy\Debugger;
-use App\Model\applCache;
 
 /**
  * Class ApiManager
@@ -347,7 +347,7 @@ class ApiManager
                 }
 
 
-                $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&comfort=' . ($comfort + 0) . '&stat=CZ|SK';
+                $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&comfort=' . ($comfort + 0) . '&stat=CZ';
                 $data = json_decode(file_get_contents($url));
 
                 $out = $data->data;
@@ -366,7 +366,7 @@ class ApiManager
 
 
             $url = 'https://reva.vapol.cz/api/api/request-tow-point/?token=' . self::get_secret([]);
-    //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
+            //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
             $pole = array(
                 'session_id' => $this->session->getId(),
@@ -407,7 +407,7 @@ class ApiManager
             Debugger::log($pole, 'dataOdeslaneNaApi');
             $data = (json_decode($response->getBody()->getContents()));
             Debugger::log(print_r($data, true), 'finalRequest');
-    //        die();
+            //        die();
         }
     }
 
