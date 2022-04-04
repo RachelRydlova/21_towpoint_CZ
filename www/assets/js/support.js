@@ -33,11 +33,11 @@ $(function () {
 
     let width = $(document).width();
     // zobrazeni carSelectoru pri mobilnim zobrazeni
-    $(document).on('click', '#frm-carSelector-carSelector input', function () {
-        if (width <= 480){
-            $('#imark, #imodel, #imotor').prop("readonly", true);
-        }
-    })
+    // $(document).on('click', '#frm-carSelector-carSelector input', function () {
+    //     if (width <= 480){
+    //         $('#imark, #imodel, #imotor').prop("readonly", true);
+    //     }
+    // })
 
 
     //
@@ -46,23 +46,19 @@ $(function () {
 
     //zobrazeni prvku carSelectoru
     $(document).on('focus','#imark',function(){
-        $('#mark').show();
+        $('#mark').slideDown(300);
         if (width <= 480){
             $('html, body').animate({ scrollTop: $("#imark").offset().top }, 250);
-            $('#model, #motor, #imodel, #imotor').slideUp(300);
+            $('#model, #motor, #imodel, #imotor').hide();
         }
     });
-    $(window).click(function (){
-        $('#mark').slideUp(300);
-    })
-    $('#imark').click(function (e) {
-        e.stopPropagation();
-    })
+    $(document).on('click','#imark',function(){
+        $('#model, #motor').hide();
+    });
 
     $(document).on('focus','#imodel',function(){
         $('#model').slideDown(300);
-        $('#motor').slideUp(300);
-        $('#mark').show();
+        $('#motor, #mark').slideUp(300);
         if (width <= 480){
             $('html, body').animate({ scrollTop: $("#imodel").offset().top }, 250);
             $('#imotor').hide();
@@ -176,7 +172,6 @@ $(function () {
             });
         }, 300)
     });
-
     // Výběr modelu
     $(document).on('click', '#model a.modelLink', function (e) {
         e.preventDefault();
