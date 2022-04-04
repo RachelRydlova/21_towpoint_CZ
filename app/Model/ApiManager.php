@@ -347,7 +347,7 @@ class ApiManager
                 }
 
 
-                $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&comfort=' . ($comfort + 0) . '&stat=CZ|SK';
+                $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&comfort=' . ($comfort + 0) . '&stat=CZ';
                 $data = json_decode(file_get_contents($url));
 
                 $out = $data->data;
