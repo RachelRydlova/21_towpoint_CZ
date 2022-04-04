@@ -86,7 +86,7 @@ $(function () {
         let value = $(this).attr('data-key');
         let title = $(this).attr('title');
 
-        setManufacturer();
+        setManufacturer(value, title);
 
         console.log(value, title, '-> VYBER znacky');
     });
@@ -132,8 +132,8 @@ $(function () {
                 $('#imodel').val('');
                 $('#imotor').val('');
                 //$('#mark').val(id).change();
-                setManufacturer();
-                return true;
+                return setManufacturer(id, title);
+                //return true;
             }
         }
 
@@ -526,7 +526,7 @@ $(function () {
     }
 
     // zvoleni znacky v carSelectoru
-    function setManufacturer() {
+    function setManufacturer(value, title) {
         $.nette.ajax({
             url: '?do=carSelector-setManufacturer',
             data: {'carSelector-manId': value}
