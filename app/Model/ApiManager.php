@@ -356,6 +356,7 @@ class ApiManager
                 'form_params' => $pole
             ]
         );
+        Debugger::log($pole, 'dataOdeslaneNaApi');
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'finalRequest');
 //        die();
