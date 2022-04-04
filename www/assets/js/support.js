@@ -95,23 +95,12 @@ $(function () {
 
         setManufacturer(value, title);
 
-        $.nette.ajax({
-            url: '?do=carSelector-setManufacturer',
-            data: {'carSelector-manId': value}
-        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
-            $('#imark').val(title);
-            $('html, body').animate({ scrollTop: $("#imodel").offset().top }, 250);
-            $('#mark').hide();
-            $('#model').show();
-            $('#sel').removeClass('loading');
-            $('#form2').removeClass('shown');
-        });
-
-
         console.log(value, title, '-> VYBER znacky');
     });
+
     // vyhledávání značky
     $(document).on('keyup', '#imark', function (e) {
+        e.preventDefault();
         let value = $(this).val();
         clearTimeout($mb_to);
 
@@ -558,6 +547,7 @@ $(function () {
             $('#model').show();
             $('#sel').removeClass('loading');
             $('#form2').removeClass('shown');
+            $('#imodel').focus();
         });
     }
 

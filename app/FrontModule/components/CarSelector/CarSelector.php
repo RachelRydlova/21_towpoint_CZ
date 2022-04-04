@@ -254,17 +254,20 @@ class CarSelector extends Control
             ->setHtmlAttribute('id', 'imark')
             ->setHtmlAttribute('autocomplete', 'off')
             ->setHtmlAttribute('name', 'search')
+            ->setHtmlAttribute('onClick', 'this.setSelectionRange(0, this.value.length)')
             ->setHtmlAttribute('placeholder', 'Značka vozu');
 
         $form->addText('model', 'model')
             ->setHtmlAttribute('id', 'imodel')
             ->setHtmlAttribute('autocomplete', 'off')
+            ->setHtmlAttribute('onClick', 'this.setSelectionRange(0, this.value.length)')
             ->setHtmlAttribute('placeholder', 'Model vozu')
             ->setDisabled();
 
         $form->addText('vehicle', 'vehicle')
             ->setHtmlAttribute('id', 'imotor')
             ->setHtmlAttribute('autocomplete', 'off')
+            ->setHtmlAttribute('onClick', 'this.setSelectionRange(0, this.value.length)')
             ->setHtmlAttribute('placeholder', 'Motorizace')
             ->setDisabled();
 
