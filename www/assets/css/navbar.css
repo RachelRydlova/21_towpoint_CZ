@@ -43,3 +43,18 @@
     position: absolute;
     z-index: 150;
 }
+
+@media screen and (max-width: 500px)
+{
+    .navbar a {
+        font-weight: 400;
+        font-size: 1rem;
+    }
+    .nav {
+        margin-top: 0;
+        margin-bottom: .5rem;
+    }
+    #gdpr {
+        width: 30%;
+    }
+}

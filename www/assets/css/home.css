@@ -438,25 +438,15 @@ header nav a:first-of-type span
 #komfort
 {
 	padding-top: 22px;
-	float: left;
-	width: 100%;
+	display: flex;
+	justify-content: center;
+	column-gap: 3rem;
 }
 
-#komfort div
-{
-	float: right;
-	width: calc((100% - 60px) / 3);
-	margin-left: 30px;
-}
 
 #komfort input
 {
 	font-weight: bold;
-	float: left;
-}
-
-#komfort input
-{
 	float: left;
 	background-color: white;
 	display: block;
@@ -1304,49 +1294,6 @@ p.error {
 
 @media screen and (max-width: 1280px)
 {
-	#komfort
-	{
-		display: flex;
-		flex-direction: column;
-	}
-
-	#komfort p
-	{
-		width: auto;
-		margin-left: auto;
-		order: 1;
-	}
-
-	#komfort div
-	{
-		margin-left: auto;
-		order: 2;
-		width: auto;
-	}
-
-	#komfort a
-	{
-		float: none;
-		white-space: nowrap;
-	}
-
-	#komfort a:hover
-	{
-		text-decoration: none;
-	}
-
-	#komfort input
-	{
-		float: right;
-	}
-
-	#komfort a span
-	{
-		display: block;
-		float: none;
-		margin-left: 0px;
-		margin-right: 70px;
-	}
 	#nabidka img.tazNabidka
 	{
 		right: 12%;
@@ -1612,46 +1559,6 @@ p.error {
 
 @media screen and (max-width: 790px)
 {
-	#komfort p
-	{
-		text-align: center;
-		background-image: none;
-		padding-left: 0px;
-		padding: 0px;
-		padding-bottom: 20px;
-		max-width: 370px;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	#komfort p::before
-	{
-		content: "";
-		width: 26px;
-		height: 26px;
-		background-image: url("../img/info.svg");
-		background-size: 26px;
-		float: left;
-		margin-right: 5px;
-	}
-
-	#komfort div
-	{
-		margin-right: auto;
-	}
-
-	#komfort input
-	{
-		float: right;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	#komfort div a span
-	{
-		margin-right: 60px;
-	}
-
 	.poptavka
 	{
 		padding: 2% 15%;
@@ -1695,6 +1602,10 @@ p.error {
 		width: 100%;
 		margin-right: 0px;
 		margin-top: 20px;
+	}
+	#komfort {
+		flex-direction: column;
+		align-items: center;
 	}
 }
 
@@ -2109,20 +2020,6 @@ p.error {
 }
 
 
-@media screen and (max-width: 430px)
-{
-	#komfort p
-	{
-		font-size: 12px;
-	}
-
-	#komfort a
-	{
-		font-size: 14px;
-	}
-}
-
-
 @media screen and (max-width: 410px)
 {
 	.radios > div
@@ -2198,18 +2095,6 @@ p.error {
 	.radios h3
 	{
 		font-size: 14px;
-	}
-
-	#komfort input
-	{
-		float: none;
-		margin-left: auto;
-		margin-right: auto;
-	}
-
-	#komfort div a span
-	{
-		margin-right: 0px;
 	}
 }
 
