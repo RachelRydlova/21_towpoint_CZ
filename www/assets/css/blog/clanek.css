@@ -6,7 +6,8 @@
 
     /* FONTS */
 
-    p {
+    p,
+    .light li {
         font-size: 1em;
     }
     h3 {
@@ -213,6 +214,7 @@
         .description h3 {
             padding-bottom: .2em;
         }
+
     }
 
 

@@ -97,10 +97,10 @@
         padding: 5%;
     }
 
-    .light li {
-        font-weight: 300;
-        font-size: 1.5em;
-    }
+    /*.light li {*/
+    /*    font-weight: 300;*/
+    /*    font-size: 1.5em;*/
+    /*}*/
 
 
 
@@ -124,7 +124,15 @@
     */
 
 
-
+    @media screen and (max-width: 1000px)
+    {
+        .porovnani p.lighter:first-of-type {
+            font-size: 1.6rem;
+        }
+        section.porovnani img.orangeImg {
+            border: .8rem solid var(--color-orange);
+        }
+    }
 
 
 
@@ -163,7 +171,10 @@
             font-size: 1em;
         }
         .porovnani p.lighter:first-of-type {
-            font-size: 2em;
+            font-size: 1.5em;
+        }
+        section.porovnani {
+            margin-bottom: 0 !important;
         }
     }
 

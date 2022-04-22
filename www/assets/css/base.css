@@ -510,6 +510,9 @@ footer img.tazak {
 		padding-left: 1rem;
 		padding-right: 1rem;
 	}
+	.recenze p{
+		max-width: 100%;
+	}
 }
 
 @media screen and (max-width: 977px) {

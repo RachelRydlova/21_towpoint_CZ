@@ -28,12 +28,12 @@
         padding-bottom: 1em;
     }
 
-    .attention p {
-        padding-bottom: 0.5em;
-        font-size: 1.5em;
-        font-weight: 300;
-        line-height: 1em;
-    }
+    /*.attention p {*/
+    /*    padding-bottom: 0.5em;*/
+    /*    font-size: 1.5em;*/
+    /*    font-weight: 300;*/
+    /*    line-height: 1em;*/
+    /*}*/
 
 
 
@@ -52,6 +52,17 @@
     @media screen and (max-width: 1000px)
     {
         .attention img {
-            max-width: 80%;
+            max-width: 90%;
+        }
+        .attention div {
+            width: 90%;
+        }
+        section.overeno {
+            margin-bottom: 1rem;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .attention img {
+            max-width: 100%;
         }
     }

@@ -1048,11 +1048,12 @@ header nav a:first-of-type span
 
 #gdpr
 {
-	/*-webkit-appearance: checkbox;*/
+	-webkit-appearance: checkbox;
 	float: none;
 	margin-left: auto;
 	margin-right: auto;
-	width: 80px;
+	min-width: 80px;
+	max-width: 81px;
 	height: 50px;
 	position: relative;
 	border: 1px solid #525252;
@@ -2016,10 +2017,6 @@ p.error {
 	.poptavka
 	{
 		padding: 2% 8%;
-	}
-
-	#gdpr {
-		width: 90px;
 	}
 }
 

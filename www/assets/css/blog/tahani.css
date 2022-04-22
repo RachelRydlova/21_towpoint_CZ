@@ -15,7 +15,7 @@
 
 .infografika img {
     border: 1.3em solid var(--color-orange);
-    max-width: 45%;
+    max-width: 49%;
 }
 
 
@@ -87,13 +87,12 @@ main {
 }
 @media screen and (max-width: 600px)
 {
-    .infografika {
-        row-gap: .5em;
-        flex-direction: column;
-        margin-bottom: 1em;
-    }
+/*    .infografika {*/
+/*        row-gap: .5em;*/
+/*        flex-direction: column;*/
+/*        margin-bottom: 1em;*/
+/*    }*/
     .infografika img {
-        border: 0.8em solid var(--color-orange);
-        max-width: 100%;
+        border: 0.5em solid var(--color-orange);
     }
 }

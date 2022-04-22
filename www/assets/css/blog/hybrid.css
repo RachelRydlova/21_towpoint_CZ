@@ -5,7 +5,6 @@
         overflow: hidden;
         position: relative;
         margin-bottom: 0;
-        min-height: 33rem;
     }
     #hybrid .backimg {
         opacity: .05;
@@ -17,12 +16,23 @@
     }
     #hybrid #doc > div {
         background-image: none;
-        padding-top: 3em;
-        padding-bottom: 5em;
+        padding-top: 3rem;
+        padding-bottom: 1rem;
         max-width: 80%;
     }
 
-
+    #doc {
+        padding-bottom: 0 !important;
+    }
+    #doc > div {
+        padding: 2rem 0;
+        max-height: none;
+        background-image: url(../../image/obrazky/hybridy/tazneelektro.png);
+        background-repeat: no-repeat;
+        background-position: 50% 60%;
+        background-size: 60%;
+        max-width: 80%;
+    }
 
 
 
@@ -45,10 +55,25 @@
         #hybrid .backimg {
             display: none;
         }
+        #hybrid #doc > div {
+            max-width: 90%;
+            padding-top: 0.5rem;
+        }
+        #doc > div {
+            background-image: none;
+        }
     }
+    @media screen and (max-width: 600px)
+    {
+        #doc > div {
+            max-width: 90%;
+        }
+    }
+
     @media screen and (max-width: 520px)
     {
         .recenze {
             height: 8em;
         }
     }
+
