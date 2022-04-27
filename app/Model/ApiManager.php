@@ -110,8 +110,10 @@ class ApiManager
             Debugger::log($e, $log);
             return null;
         }
-        $this->cache->save($cacheKey, $data->data, [Cache::EXPIRATION => $expiration]);
-        return $data->data;
+        if ($data->data) {
+            $this->cache->save($cacheKey, $data->data, [Cache::EXPIRATION => $expiration]);
+            return $data->data;
+        }
     }
 
     /**
@@ -223,14 +225,16 @@ class ApiManager
     public function getVehicleApiRow($modId, $vehicleId)
     {
         $data = $this->getCarModelVehicles($modId);
-        foreach ($data as $grouped) {
-            foreach ($grouped as $row) {
-                if ((int) $row->vozidlo_id === (int) $vehicleId) {
-                    return $row;
+        if ($data) {
+            foreach ($data as $grouped) {
+                foreach ($grouped as $row) {
+                    if ((int) $row->vozidlo_id === (int) $vehicleId) {
+                        return $row;
+                    }
                 }
             }
+            return null;
         }
-        return null;
     }
 
 

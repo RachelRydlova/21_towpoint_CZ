@@ -172,7 +172,9 @@ class CarSelector extends Control
             $this->template->motory = $motors;
 
             $modInfo = $this->apiManager->getModelApiRow($manId, $modId);
-            $this['carSelector']['model']->setDefaultValue($modInfo->fullname);
+            if ($modInfo) {
+                $this['carSelector']['model']->setDefaultValue($modInfo->fullname);
+            }
             $this->redrawControl('carSelectorWrapper');
             $this->redrawControl('model');
             // prekresluju snippet pro list motorů
@@ -201,7 +203,9 @@ class CarSelector extends Control
         $this->handleSetModel($modId);
 
         $vehInfo = $this->apiManager->getVehicleApiRow($modId,$vehicleId);
-        $this['carSelector']['vehicle']->setDefaultValue($vehInfo->fullname);
+        if ($vehInfo) {
+            $this['carSelector']['vehicle']->setDefaultValue($vehInfo->fullname);
+        }
         // ulozeni motoru a komfortu do session
         $this->saveValue('vehicle', $vehicleId);
         // nacteni dat ze session
