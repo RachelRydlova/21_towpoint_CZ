@@ -110,7 +110,7 @@ class ApiManager
             Debugger::log($e, $log);
             return null;
         }
-        if ($data->data) {
+        if ($data) {
             $this->cache->save($cacheKey, $data->data, [Cache::EXPIRATION => $expiration]);
             return $data->data;
         }
