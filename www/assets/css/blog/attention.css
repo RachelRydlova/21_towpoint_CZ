@@ -18,22 +18,19 @@
 
 
     .attention img {
-        margin: 3em auto;
         border: .4em solid var(--color-orange);
         max-width: 60%;
+        margin-top: 1rem;
     }
 
     .attention h3 {
-        font-size: 2em;
+        /*font-size: 2em;*/
         padding-bottom: 1em;
     }
 
-    /*.attention p {*/
-    /*    padding-bottom: 0.5em;*/
-    /*    font-size: 1.5em;*/
-    /*    font-weight: 300;*/
-    /*    line-height: 1em;*/
-    /*}*/
+    main {
+        margin-bottom: 0;
+    }
 
 
 
@@ -64,5 +61,8 @@
     @media screen and (max-width: 500px) {
         .attention img {
             max-width: 100%;
+        }
+        .recenze {
+            height: 8em;
         }
     }

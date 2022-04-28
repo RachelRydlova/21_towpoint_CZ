@@ -15,20 +15,20 @@
         margin-top: 0;
     }
 
-    .wrapper .titlenote h2 {
-        padding-bottom: .8em;
-        font-weight: 400;
-    }
-    .wrapper .titlenote h3 {
-        font-weight: 600;
-    }
-    .dodavatele .titlenote p {
-        font-weight: 300;
-    }
+    /*.wrapper .titlenote h2 {*/
+    /*    padding-bottom: .8em;*/
+    /*    font-weight: 400;*/
+    /*}*/
+    /*.wrapper .titlenote h3 {*/
+    /*    font-weight: 600;*/
+    /*}*/
+    /*.dodavatele .titlenote p {*/
+    /*    font-weight: 300;*/
+    /*}*/
 
-    .wrapper .titlenote strong {
-        font-weight: 600;
-    }
+    /*.wrapper .titlenote strong {*/
+    /*    font-weight: 600;*/
+    /*}*/
 
     .wrapper > div,
     .wrapper article {
