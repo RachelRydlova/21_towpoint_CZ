@@ -504,25 +504,22 @@ $(function () {
 
 
     // //otevreni modalu s detailem strediska
-    // var modal = $('#modal');
-    // $('#more').on('click', function (){
-    //     if (modal.hasClass('selected')){
-    //         modal.removeClass('selected');
-    //     } else {
-    //         modal.addClass('selected');
-    //     }
-    // });
-    //
-    // // zavreni modalu na ESC
-    // $(document).on('keyup', function(e) {
-    //     if (e.key == "Escape") {
-    //         $('#modal').removeClass('selected');
-    //     }
-    // });
-    // // zavreni modalu krizkem
-    // $('.close').on('click', function() {
-    //     $('#modal').removeClass('selected');
-    // });
+    var modal = $('.modal');
+    $('[data-id="zasova"]').on('click', function (){
+        if (modal.hasClass('selected')){
+            modal.removeClass('selected');
+        } else {
+            modal.addClass('selected');
+        }
+    });
+
+    // zavreni modalu na ESC
+    $(document).on('keyup', function(e) {
+        if (e.key == "Escape") {
+            $('.modal').removeClass('selected');
+        }
+    });
+
 
 
 

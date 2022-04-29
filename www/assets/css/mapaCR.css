@@ -9,6 +9,9 @@
 
 }
 
+#doc ul {
+    font-size: 1.2rem !important;
+}
 
 /* Specific mapael css class are below
  * 'mapael' class is added by plugin
@@ -16,6 +19,7 @@
 
 .mapael .map {
     position: relative;
+    left: 15%;
 }
 
 .mapael .mapTooltip {
@@ -63,11 +67,11 @@ main {
     opacity: 0;
     pointer-events: none;
 }
-.modal.selected {
+.selected {
     display: block;
     outline: none;
     top: 0;
-    opacity: 1;
+    opacity: .98;
     pointer-events: auto;
     transition: all 1.2s ease;
 }
@@ -114,8 +118,42 @@ main {
     font-size: 45px;
 }
 
-@media screen and (max-width: 1230px){
+.twpAddress {
+    color: var(--color-white);
+}
+
+@media screen and (max-width: 1280px)
+{
     .modal h2 {
         font-size: 30px;
+    }
+    #doc h2 {
+        font-size: 1rem;
+    }
+    #doc ul {
+        font-size: .8rem !important;
+        line-height: 1.2rem;
+        margin-bottom: 0;
+    }
+
+    #doc ul li {
+        background-size: 20px;
+        padding-left: 2rem;
+    }
+    .mapael .mapTooltip {
+        padding: 5px;
+    }
+    .mapael .mapTooltip ul {
+        padding-left: 5%;
+        padding-top: 0;
+    }
+    .mapael .mapTooltip h2 {
+        padding: .8rem;
+    }
+}
+@media screen and (max-width: 900px)
+{
+    .mapael .map {
+        left: 5%;
     }
 }

@@ -1043,7 +1043,7 @@ header nav a:first-of-type span
 .poptavka
 {
 	display: inline-block;
-	padding: 2% 27%;
+	padding: 1% 27%;
 }
 
 #gdpr
@@ -1063,6 +1063,7 @@ header nav a:first-of-type span
 
 #gdpr input
 {
+	-webkit-appearance: none;
 	cursor: pointer;
 	position: absolute;
 	background-color: #525252;
