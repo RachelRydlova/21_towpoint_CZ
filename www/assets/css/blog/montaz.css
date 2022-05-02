@@ -12,7 +12,3 @@ section.overeno {
 section.porovnani {
     margin-bottom: 6em;
 }
-header nav a:nth-of-type(4) span {
-    background-color: #f90;
-    -webkit-transform: translateY(0);
-}
