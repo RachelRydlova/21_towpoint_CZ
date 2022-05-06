@@ -4,6 +4,7 @@
 namespace App\Model;
 
 use App\Model\applCache;
+use App\Model\Context\ApiVendor;
 use Cassandra\Tinyint;
 use Doctrine\Common\Util\Debug;
 use GuzzleHttp\Client;
@@ -442,5 +443,63 @@ class ApiManager
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'prefinalRequest');
         die();
+    }
+
+
+    /**
+     * Data o montaznich mistech
+     * @param string $stat
+     * @return ApiVendor[]|null
+     * @throws GuzzleException
+     * @throws \Throwable
+     */
+    public function getVendorsData($stat = 'CZ'): ?array
+    {
+        $cacheKey = __METHOD__ . '_'.$stat;
+        if ($load = $this->cache->load($cacheKey)) {
+            return $load;
+        }
+
+        $url = 'https://reva.vapol.cz/api/api/get-vendors/?stat='.$stat.'&token='.self::get_secret([]);
+        $client = new Client();
+        $response = $client->request('GET', $url);
+
+        // Overeni response
+        if (!$response || $response->getStatusCode() !== 200) {
+            Debugger::log('Cannot get response from: '.__METHOD__, 'api.vendors.error');
+            return null;
+        }
+
+        try {
+            $rawData = (json_decode($response->getBody()->getContents(), false, 512, JSON_THROW_ON_ERROR));
+        } catch (\JsonException $e) {
+            Debugger::log($e);
+            return null;
+        }
+
+        bdump($rawData, 'raw');
+        // Overeni dat
+        if (!isset($rawData->response->data) || !$apiVendorData = $rawData->response->data) {
+            Debugger::log('Cannot load any data: '.__METHOD__, 'api.vendors.error');
+            return null;
+        }
+
+        // Sestaveni dat pro Presenter
+        // Prochazim montazni mista
+        $result = [];
+        foreach ($apiVendorData as $apiVendorDataRow) {
+            $localVendorContext = new ApiVendor();
+
+            // Doplnim kontextovy objekt pro kazdeho dodavatele o data z API
+            foreach ($apiVendorDataRow as $key => $value) {
+                $localVendorContext->$key = $value;
+            }
+
+            $result[] = $localVendorContext;
+        }
+
+        // Cache
+        $this->cache->save($cacheKey, $result, [Cache::EXPIRATION => '+ 6 hours']);
+        return $result;
     }
 }
