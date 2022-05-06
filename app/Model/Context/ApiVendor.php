@@ -12,6 +12,7 @@ namespace App\Model\Context;
 class ApiVendor
 {
 
+    public $id;
     public $nazev;
     public $adresa;
     public $cord_ltd;

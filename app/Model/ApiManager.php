@@ -495,7 +495,7 @@ class ApiManager
                 $localVendorContext->$key = $value;
             }
 
-            $result[] = $localVendorContext;
+            $result[$localVendorContext->id] = $localVendorContext;
         }
 
         // Cache

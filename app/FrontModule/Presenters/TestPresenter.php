@@ -49,4 +49,21 @@ class TestPresenter extends BasePresenter
     }
 
 
+    /**
+     * @param $id
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Throwable
+     */
+    public function handleLoadVendorDetail($id)
+    {
+        $vendors = $this->apiManager->getVendorsData();
+        if ($vendors && array_key_exists($id, $vendors)) {
+            $this->template->vendorInfo = $vendors[$id];
+            $this->redrawControl('snippet');
+        } else {
+            // chyba
+        }
+    }
+
+
 }
