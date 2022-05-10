@@ -291,7 +291,9 @@ class ApiManager
                 $secret = self::countApiToken(array('tcznacka' => $manufacturerId));
                 $url = 'https://www.vapol.cz/remote-cars/models-by-manufacturer?tcznacka=' . $manufacturerId . '&secret=' . $secret;
                 $data = json_decode(file_get_contents($url));
-                $modely = $data->data;
+                if ($data) {
+                    $modely = $data->data;
+                }
                 $modelId = Arrays::get($dataToReva, ['carInfo', 'modelId']);
                 if (is_array($modely)) foreach ($modely as $item) if ($modelId == $item->tcmodel) $outmodel = $item->fullname;
 
@@ -355,16 +357,21 @@ class ApiManager
                 $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&comfort=' . ($comfort + 0) . '&stat=CZ';
                 $data = json_decode(file_get_contents($url));
 
-                $out = $data->data;
-                $tazne = $out->{$pref}->{$koule}->tazne;
-                if (!isset($tazne)) {
+                if ($data) {
+                    $out = $data->data;
+                }
+                if ($out->{$pref}->{$koule}->tazne) {
+                    $tazne = $out->{$pref}->{$koule}->tazne;
+                } else {
                     $tazne = 0;
                 }
                 $ele = $out->{$pref}->{$koule}->elektro->{$e};
-                $el0 = $out->{$pref}->{$koule};
-                if (!$el0) {
+                if ($out->{$pref}->{$koule}){
+                    $el0 = $out->{$pref}->{$koule};
+                } else {
                     $el0 = 0;
                 }
+
                 $montaz = $el0->{'montaz_cena_' . str_replace('pin', '', $el) . '_dph'};
                 $ip = Arrays::get($dataToReva, ['carInfo', 'ip']);
             }
