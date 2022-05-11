@@ -120,4 +120,7 @@
         .moreInfo > div {
             row-gap: 0;
         }
+        #zaruka > div {
+            background-image: none;
+        }
     }
