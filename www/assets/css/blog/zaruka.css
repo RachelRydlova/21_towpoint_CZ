@@ -1,0 +1,123 @@
+
+    #zaruka {
+        background-color: #F8F8F8;
+        float: left;
+        width: 100%;
+        line-height: 1.5em;
+        font-size: 20px;
+        color: var(--color-darkGray);
+        padding-bottom: 40px;
+    }
+
+    #zaruka > div {
+        background-image: url('../../img/soud.png');
+        background-repeat: no-repeat;
+        background-position: 45% 0;
+        background-size: 43%;
+        max-width: 80%;
+        margin: 1rem auto;
+        padding-top: 2rem;
+    }
+
+    #zaruka ul {
+        font-size: 1.6rem;
+        line-height: 1.4em;
+        margin-bottom: 1em;
+    }
+
+    #zaruka ul li {
+        display: block;
+        background-image: url("../../img/dot-col.svg");
+        background-repeat: no-repeat;
+        background-size: 30px;
+        background-position: left 0.25em;
+        padding-left: 60px;
+        padding-bottom: 0.7em;
+    }
+
+    #zaruka img {
+        border: .4em solid var(--color-orange);
+        max-width: 25%;
+        margin-right: 10%;
+    }
+
+    .moreInfo {
+        display: flex;
+        justify-content: space-between;
+    }
+    .moreInfo > div {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1.5rem;
+    }
+
+
+    h4 {
+        font-weight: 500;
+        padding-bottom: 1rem;
+        font-size: 2rem;
+    }
+
+    .color-orange {
+        color: var(--color-orange);
+    }
+
+
+
+
+
+
+
+
+
+
+
+    @media screen and (max-width: 1230px) {
+        #zaruka ul {
+            font-size: 1.2rem;
+        }
+        #zaruka h4 {
+            font-size: 1.4rem;
+        }
+
+        #zaruka ul li {
+            background-size: 20px;
+            padding-left: 40px;
+        }
+        #zaruka img {
+            margin-right: 0;
+            max-width: 45%;
+        }
+    }
+    @media screen and (max-width: 960px)
+    {
+        #zaruka ul
+        {
+            font-size: 1rem;
+        }
+        #zaruka h4 {
+            font-size: 1.2rem;
+        }
+
+    }
+    @media screen and (max-width: 480px) {
+        #zaruka ul {
+            font-size: .8rem;
+        }
+
+        #zaruka ul li {
+            background-size: 15px;
+            padding-left: 30px;
+        }
+        #zaruka img {
+            max-width: 80%;
+            margin-top: 1rem;
+        }
+        .moreInfo {
+            flex-direction: column;
+            align-items: center;
+        }
+        .moreInfo > div {
+            row-gap: 0;
+        }
+    }
