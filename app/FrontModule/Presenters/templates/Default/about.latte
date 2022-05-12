@@ -27,8 +27,6 @@
 
 
 <main>
-
-
     <section id="doc">
         <div>
             <ul>
@@ -49,35 +47,33 @@
         <div class="group">
 
         {*   MODAL S INFEM O MONTAZNIM MISTU *}
-        {* @todo doplnit data z api revy + parametr, zachytavat v support.js *}
-        <div class="modal" data-id="">
-            <span class="close">X</span>
-            <h2 class="orange twpTitle">
-                TowPoint Zasova
-            </h2>
-            <p class="twpAddress">
-                Zašová 270 (Vapol), 75651 Zašová
-            </p>
-            <div class="content">
-                <img src="{$basePath}/assets/image/galerie/6.jpg" alt="montazni stredisko v Zasove">
-                <ul class="light" style="font-size: 1.3rem">
-                    <li class="twpParameter">Půjčovna nahradního vozidla</li>
-                    <li class="twpParameter">Sezónní prohlídka</li>
-                    <li class="twpParameter">Plnění klimatizace</li>
-                    <li class="twpParameter">Výměna oleje</li>
-                    <li class="twpParameter">Geometrie</li>
-                    <li class="twpParameter">Pneuservis</li>
-                    <li class="twpParameter">Prodej pneumatik</li>
-                    <span class="twpText">Doplnujici popis montazniho mista.</span>
-                </ul>
-            </div>
+        {* @todo predchystan modal na kazde montazni misto -> prozatim se stopnulo a bude se delat v budoucnu .. mapCZ.js *}
+{*        {foreach $mapData as $partner}*}
 
-        </div>
+{*                <div class="modal" id="modal{$partner->id}">*}
+{*                    <span class="close">X</span>*}
+{*                    <h2 class="orange twpTitle">*}
+{*                        {$partner->nazev}*}
+{*                    </h2>*}
+{*                    <p class="twpAddress">*}
+{*                        {$partner->adresa}*}
+{*                    </p>*}
+{*                    <div class="content">*}
+{*                        <img src="{$basePath}/assets/image/galerie/6.jpg" alt="montazni stredisko v Zasove">*}
+{*                        <ul class="light" style="font-size: 1.3rem">*}
+{*                            {foreach $partner->params as $param}*}
+{*                                <li class="twpParameter">{$param->name|noescape}</li>*}
+{*                            <span class="twpText">Doplnujici popis montazniho mista.</span>*}
+{*                            {/foreach}*}
+{*                        </ul>*}
+{*                    </div>*}
+
+{*                </div>*}
+{*        {/foreach}*}
 
 {*         mapa Ceske republiky*}
         <div class="mapcontainer">
             <div class="map">
-                <span>Alternative content for the map</span>
             </div>
         </div>
     </section>
@@ -149,9 +145,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
     <script src="{$basePath}/assets/js/raphael.js"></script>
     <script src="{$basePath}/assets/js/jquery.mapael.js"></script>
-    <script src="{$basePath}/assets/js/mapCZ.js"></script>
-    <script>
 
+    <script>
+        $(function() {
+            $.nette.init();
+        });
+        let data = {$mapData};
         $(function () {
             $(".mapcontainer").mapael({
                 map: {
@@ -169,152 +168,27 @@
                 },
                 /* @todo data tahat z api Revy */
                 plots: {
-                    'zasova': {
-                        latitude: 49.46847729806029,
-                        longitude: 18.041296169809975,
-                        tooltip: {'content': "<h2> Towpoint Zasova</h2> <ul><li>Půjčovna nahradního vozidla</li><li>Prodej pneumatik</li><li>Plnění klimatizace</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Zasova",
-                        twpAdress: "Towpoint Zasova",
-                    },
-                    'hluk': {
-                        latitude: 49.086088717409986,
-                        longitude: 17.371356198483493,
-                        tooltip: {'content': "<h2> Towpoint Hluk</h2> <ul><li>Výměna oleje</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Hluk",
-                        twpAdress: "Tupesy 206 (Autek PB), 68707 Tupesy",
-                    },
-                    'holesov': {
-                        latitude: 49.325360505945575,
-                        longitude: 17.543480134224936,
-                        tooltip: {'content': "<h2> Towpoint Holešov</h2> <ul><li>Půjčovna nahradního vozidla</li><li>Sezónní prohlídka</li><li>Plnění klimatizace</li><li>Výměna oleje</li><li>Geometrie</li><li>Pneuservis</li><li>Prodej pneumatik</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Holešov",
-                        twpAdress: "Palackého 40 (As Šťastný), 76901 Holešov",
-                    },
-                    'kunstat': {
-                        latitude: 49.5047190912329,
-                        longitude: 16.511118911986593,
-                        tooltip: {'content': "<h2> Towpoint Kunštát</h2> <ul><li>Plnění klimatizace</li><li>Výměna oleje</li><li>Geometrie</li><li>Pneuservis</li><li>Prodej pneumatik</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Kunštát",
-                        twpAdress: "Sychotín 3 (Radek Pavliš), 67972 Kunštát",
-                    },
-                    'lovosice': {
-                        latitude: 49.5047190912329,
-                        longitude: 16.511118911986593,
-                        tooltip: {'content': "<h2> Towpoint Lovosice</h2> <ul><li>Sezónní prohlídka</li><li>Plnění klimatizace</li><li>Výměna oleje</li><li>Geometrie</li><li>Pneuservis</li><li>Prodej pneumatik</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Lovosice",
-                        twpAdress: "Lhotka nad Labem 19 (M. Bis), 41002 Lovosice",
-                    },
-                    'znojmo': {
-                        latitude: 49.5047190912329,
-                        longitude: 16.511118911986593,
-                        tooltip: {'content': "<h2> Towpoint Znojmo</h2>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Znojmo",
-                        twpAdress: "Přímětická 78 (Miroslav Navrkal), 66902 Znojmo",
-                    },
-                    'velkePavlovice': {
-                        latitude: 48.89491462471473,
-                        longitude: 16.820704611497977,
-                        tooltip: {'content': "<h2> Towpoint Velké Pavlovice</h2> <ul><li>Výměna oleje</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Velké Pavlovice",
-                        twpAdress: "Nádražní 21 (Miroslav Hájek), 69106 Velké Pavlovice",
-                    },
-                    'ceskeBudejovice': {
-                        latitude: 48.98796073563017,
-                        longitude: 14.525838957664414,
-                        tooltip: {'content': "<h2> Towpoint České Budějovice</h2> <ul><li>Plnění klimatizace</li><li>Výměna oleje</li><li>Geometrie</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint České Budějovicee",
-                        twpAdress: "Vráto 40 (Radka Suchá), 37001 Vráto",
-                    },
-                    'praha': {
-                        latitude: 50.06702358803077,
-                        longitude: 14.491364440835222,
-                        tooltip: {'content': "<h2> Towpoint Praha</h2>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Praha",
-                        twpAdress: "U Trati 40, 10000 Praha 10 - Strašnice",
-                    },
-                    'liberec': {
-                        latitude: 50.76013948762606,
-                        longitude: 15.059540327358409,
-                        tooltip: {'content': "<h2> Towpoint Liberec</h2><ul><li>Pneuservis</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Liberec",
-                        twpAdress: "Nad Teplárnou 630 (TAZA-TECHNIK - p. Votočková, 46001 Liberec 4",
-                    },
-                    'bynov': {
-                        latitude: 48.81603355421611,
-                        longitude: 14.798890190940691,
-                        tooltip: {'content': "<h2> Towpoint Byňov</h2>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Byňov",
-                        twpAdress: "Byňov 125 (Josef Steinhauser), 374 01 Byňov",
-                    },
-                    'plana': {
-                        latitude: 49.36536374097425,
-                        longitude: 14.701700654312125,
-                        tooltip: {'content': "<h2> Towpoint Planá nad Lužnicí</h2><ul><li>Výměna oleje</li><li>Pneuservis</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Planá nad Lužnicí",
-                        twpAdress: "Průmyslová 938 - naproti Madetě (Jan Kubů), 39111 Planá nad Lužnicí",
-                    },
-                    'novaPaka': {
-                        latitude: 50.49365698558603,
-                        longitude: 15.5211969138587,
-                        tooltip: {'content': "<h2> Towpoint Nová Paka</h2>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Nová Paka",
-                        twpAdress: "Krátká 332 (Autotrio Pavel Bouchner), 50901 Nová Paka",
-                    },
-                    'holice': {
-                        latitude: 50.10954313105427,
-                        longitude: 15.936878756178471,
-                        tooltip: {'content': "<h2> Towpoint Holice</h2><ul><li>Plnění klimatizace</li><li>Výměna oleje</li><li>Geometrie</li><li>Pneuservis</li><li>Prodej pneumatik</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Holice",
-                        twpAdress: "Chvojenec 154 (Petr Svědiroh), 53401 Holice",
-                    },
-                    'havlickuvBrod': {
-                        latitude: 49.60067676306748,
-                        longitude: 15.578353169659938,
-                        tooltip: {'content': "<h2> Towpoint Havlíčkův Brod</h2><ul><li>Kódování</li><li>Plnění klimatizace</li><li>Výměna oleje</li><li>Geometrie</li><li>Pneuservis</li><li>Prodej pneumatik</li></ul>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Havlíčkův Brod",
-                        twpAdress: "Jihlavská 3601 (Autoslužba Žilka s.r.o.), 58001 Havlíčkův Brod",
-                    },
-                    'holysov': {
-                        latitude: 49.593463624172756,
-                        longitude: 13.10149025431751,
-                        tooltip: {'content': "<h2> Towpoint Holýšov</h2>"},
-                        twpParameter: "",
-                        twpText:"",
-                        twpTitle: "Towpoint Holýšov",
-                        twpAdress: "Slepá 89 (Milan Volena), 34562 Holýšov",
-                    },
+                    {foreach $mapData as $partner}
+                        {$partner->id}: {
+                            id: {$partner->id},
+                            latitude: {if $partner->cord_ltd}{$partner->cord_ltd}{else}""{/if},
+                            longitude: {if $partner->cord_lng}{$partner->cord_lng}{else}""{/if},
+                            tooltip:
+                                {'content':
+                                    "<h2>{$partner->nazev|noescape}</h2>{if $partner->params}<ul>{foreach $partner->params as $param}<li>{$param->name|noescape}</li>{/foreach}</ul>{/if}"
+                                },
+                            twpParameter: "",
+                            twpText:"",
+                            twpTitle: {if $partner->nazev}{$partner->nazev}{else}""{/if},
+                            twpAdress: {if $partner->adresa}{$partner->adresa}{else}""{/if},
+                        },
+                    {/foreach}
                 }
             });
         });
+
+
     </script>
+    <script src="{$basePath}/assets/js/mapCZ.js"></script>
+
 {/block}

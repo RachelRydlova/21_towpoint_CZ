@@ -32,7 +32,11 @@ class TestPresenter extends BasePresenter
     public $cache;
 
 
-
+    /**
+     * @throws \Throwable
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Nette\Application\AbortException
+     */
     public function actionTestVendors()
     {
         $data = $this->apiManager->getVendorsData();
@@ -41,7 +45,7 @@ class TestPresenter extends BasePresenter
         if ($data) {
             // Mam pole objektu ApiVendor[]
             foreach ($data as $vendorContext) {
-                //$nazev = $vendorContext->nazev;
+                $nazev = $vendorContext->nazev;
             }
         }
 
@@ -60,6 +64,7 @@ class TestPresenter extends BasePresenter
         if ($vendors && array_key_exists($id, $vendors)) {
             $this->template->vendorInfo = $vendors[$id];
             $this->redrawControl('snippet');
+            Debugger::barDump($vendors);
         } else {
             // chyba
         }

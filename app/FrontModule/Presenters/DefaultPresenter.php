@@ -196,4 +196,20 @@ class DefaultPresenter extends BasePresenter
         $this->template->b = $this->bannerModel->getBannerData();
     }
 
+    public function renderAbout()
+    {
+        $data = $this->apiManager->getVendorsData();
+        bdump($data, 'vendorsData');
+
+        if ($data) {
+            // Mam pole objektu ApiVendor[]
+            foreach ($data as $vendorContext) {
+                $nazev = $vendorContext->nazev;
+                bdump($nazev, 'nazev');
+            }
+        }
+        $this->template->mapData = $data;
+//        $this->terminate();
+    }
+
 }
