@@ -39,7 +39,7 @@ class BasePresenter extends Presenter
         $expire = new \DateTime('+ 6 months');
         $response = $this->getHttpResponse();
         $response->setCookie(self::AGREEMENT_COOKIE_NAME, 'cookiesAccepted', $expire->getTimestamp());
-//        $this->sendPayload();
+        $this->sendPayload();
     }
 
     /**
@@ -52,7 +52,6 @@ class BasePresenter extends Presenter
 
     public function beforeRender(): void
     {
-        parent::beforeRender();
         // Zakladni labely
         $this->template->baseTitle = 'TowPoint';
         // Cookie agreement

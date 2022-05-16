@@ -7,7 +7,6 @@ $(function () {
         $.nette.ajax({
             url: '?do-setCookieAgreement'
         });
-        console.log('klik na accepted');
     });
 
     // SLIDER BANNER
