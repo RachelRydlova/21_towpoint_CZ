@@ -9,10 +9,14 @@
         padding-bottom: 40px;
     }
 
+    p {
+        font-size: 1.3rem;
+    }
+
     #zaruka > div {
         background-image: url('../../img/soud.png');
         background-repeat: no-repeat;
-        background-position: 45% 0;
+        background-position: 45% 30%;
         background-size: 43%;
         max-width: 80%;
         margin: 1rem auto;
@@ -20,7 +24,7 @@
     }
 
     #zaruka ul {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         line-height: 1.4em;
         margin-bottom: 1em;
     }
@@ -73,8 +77,8 @@
 
 
     @media screen and (max-width: 1230px) {
-        #zaruka ul {
-            font-size: 1.2rem;
+        #zaruka ul, p {
+            font-size: 1.1rem;
         }
         #zaruka h4 {
             font-size: 1.4rem;
@@ -91,9 +95,9 @@
     }
     @media screen and (max-width: 960px)
     {
-        #zaruka ul
+        #zaruka ul, p
         {
-            font-size: 1rem;
+            font-size: .8rem;
         }
         #zaruka h4 {
             font-size: 1.2rem;
@@ -103,10 +107,6 @@
         }
     }
     @media screen and (max-width: 480px) {
-        #zaruka ul {
-            font-size: .8rem;
-        }
-
         #zaruka ul li {
             background-size: 15px;
             padding-left: 30px;
