@@ -17,6 +17,7 @@ use App\Model\ApiManager;
 class BasePresenter extends Presenter
 {
 
+    public const AGREEMENT_COOKIE_NAME = 'TOWPOINT_AGREEMENT_COOKIE';
 
     public static $mainMenu = [
         ':Front:Default:' => 'Chci nabídku',
@@ -30,11 +31,32 @@ class BasePresenter extends Presenter
     ];
 
 
+    /**
+     * Nastavi souhlas s pouzivanim cookies
+     */
+    public function handleSetCookieAgreement(): void
+    {
+        $expire = new \DateTime('+ 6 months');
+        $response = $this->getHttpResponse();
+        $response->setCookie(self::AGREEMENT_COOKIE_NAME, 'cookiesAccepted', $expire->getTimestamp());
+//        $this->sendPayload();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgreementCookie()
+    {
+        return $this->getHttpRequest()->getCookie(self::AGREEMENT_COOKIE_NAME);
+    }
+
     public function beforeRender(): void
     {
-
+        parent::beforeRender();
         // Zakladni labely
         $this->template->baseTitle = 'TowPoint';
+        // Cookie agreement
+        $this->template->cookieAgreement = $this->getAgreementCookie();
 
     }
 

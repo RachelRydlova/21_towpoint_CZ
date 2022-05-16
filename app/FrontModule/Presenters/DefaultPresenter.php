@@ -205,7 +205,6 @@ class DefaultPresenter extends BasePresenter
             // Mam pole objektu ApiVendor[]
             foreach ($data as $vendorContext) {
                 $nazev = $vendorContext->nazev;
-                bdump($nazev, 'nazev');
             }
         }
         $this->template->mapData = $data;

@@ -1,30 +1,3 @@
-
-
-// //otevreni modalu s detailem strediska
-
-// $(document).on('click', 'svg circle', function (){
-//     var mod = $('.modal');
-//     id = $(this).data("id");
-//     console.log(id);
-//     var modal = $('#modal'+id+'');
-//     console.log(modal);
-//
-//     if (modal.hasClass('selected')){
-//         modal.removeClass('selected');
-//     } else {
-//         modal.addClass('selected');
-//     }
-// })
-//
-// // zavreni modalu na ESC
-// $(document).on('keyup', function(e) {
-//     if (e.key == "Escape") {
-//         $('.modal').removeClass('.selected');
-//     }
-// });
-
-
-
 /*!
  *
  * Jquery Mapael - Dynamic maps jQuery plugin (based on raphael.js)

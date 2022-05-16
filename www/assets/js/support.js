@@ -2,8 +2,17 @@ var uint;
 
 $(function () {
 
+    $(document).on('click', '#acceptCookies', function (e){
+        $('#cookie').hide(300);
+        $.nette.ajax({
+            url: '?do-setCookieAgreement'
+        });
+        console.log('klik na accepted');
+    });
+
     // SLIDER BANNER
     $(window).load(function(){
+
 
         // window.addEventListener('wheel', { passive: false });
 
