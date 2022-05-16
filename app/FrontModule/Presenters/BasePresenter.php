@@ -38,7 +38,7 @@ class BasePresenter extends Presenter
     {
         $expire = new \DateTime('+ 6 months');
         $response = $this->getHttpResponse();
-        $response->setCookie(self::AGREEMENT_COOKIE_NAME, 'cookiesAccepted', $expire->getTimestamp());
+        $response->setCookie(self::AGREEMENT_COOKIE_NAME, "cookiesAccepted", $expire->getTimestamp());
         $this->sendPayload();
     }
 
