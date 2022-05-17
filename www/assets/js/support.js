@@ -8,6 +8,9 @@ $(function () {
             url: '?do=SetCookieAgreement'
         });
     });
+    $(document).on('click', '#cookie span', function (){
+        $('#cookie').hide(300);
+    });
 
     // SLIDER BANNER
     $(window).load(function(){
