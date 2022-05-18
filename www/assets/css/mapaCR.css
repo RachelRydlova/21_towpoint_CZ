@@ -19,7 +19,10 @@
 
 .mapael .map {
     position: relative;
-    left: 15%;
+}
+
+.mapael .map svg {
+    left: 15% !important;
 }
 
 .mapael .mapTooltip {
@@ -153,7 +156,8 @@ main {
 }
 @media screen and (max-width: 900px)
 {
-    .mapael .map {
-        left: 5%;
+    .mapael .map svg {
+        left: 0 !important;
+        padding-top: 3%;
     }
 }
