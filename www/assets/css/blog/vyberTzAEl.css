@@ -1,0 +1,157 @@
+
+
+    main {
+        background: url("../../image/blog/background.jpg");
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 1.5rem 0;
+    }
+
+    article {
+        background-color: var(--color-white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 70%;
+        padding: 0 4rem;
+        margin-top: 3rem;
+    }
+
+    article:last-of-type {
+        display: block;
+        padding: 2em 4em;
+    }
+
+    .line {
+        display: flex;
+        justify-content: center;
+        gap: 5em;
+        padding-top: 3rem;
+    }
+    .half {
+        background-color: var(--color-white);
+        max-width: 33%;
+    }
+    .half > div {
+        padding: 2em 3em 0;
+    }
+
+    ul {
+        padding-left: 1.5em;
+    }
+
+    .line img {
+        width: 100%;
+        height: auto;
+    }
+
+    article img {
+        width: auto;
+        max-height: 300px;
+    }
+
+    .text-red {
+        color: red;
+    }
+    .text-white {
+        color: var(--color-white);
+    }
+
+    .desc img {
+        right: 11%;
+        max-height: 18rem;
+    }
+
+    .text h2,
+    .half h2 {
+        font-size: 1.6em;
+        color: var(--color-orange);
+        padding-bottom: .6em;
+    }
+
+    main > h2 {
+        align-self: flex-start;
+        margin: 3% 0 0 15%;
+        color: var(--color-white);
+    }
+
+    .container {
+        max-width: 70%;
+        margin: 2em 0;
+    }
+
+    .container h3 {
+        margin-top: .5em;
+        font-size: 1.5em;
+    }
+
+
+
+
+
+
+
+    @media screen and (max-width: 1280px)
+    {
+        article {
+            width: 90%;
+        }
+        main > h2 {
+            margin: 3% 0 0 5%;
+        }
+
+        .line {
+            gap: 3em;
+            padding-top: 2em;
+        }
+        .half {
+            max-width: 43%;
+        }
+
+        .container {
+            max-width: 90%;
+        }
+        .container h3 {
+            font-size: 1.3em;
+        }
+    }
+
+    @media screen and (max-width: 900px)
+    {
+        article {
+            flex-direction: column;
+        }
+
+        .line {
+            gap: 1em;
+            padding-top: 1em;
+            align-items: center;
+            flex-direction: column;
+        }
+        .half {
+            max-width: 90%;
+        }
+    }
+
+
+    @media screen and (max-width: 500px)
+    {
+        .desc > div {
+            max-width: 90% !important;
+        }
+        article {
+            width: 95%;
+            padding: .5em 2em;
+            margin-top: 1.5em;
+        }
+        article:last-of-type {
+            padding: 1em 2em;
+        }
+        article img {
+            width: 100%;
+        }
+
+    }
