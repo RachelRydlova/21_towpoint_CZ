@@ -153,5 +153,11 @@
         article img {
             width: 100%;
         }
+        article .text {
+            padding-top: 2em;
+        }
+        .el h2 {
+            width: 80%;
+        }
 
     }
