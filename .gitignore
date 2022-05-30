@@ -5,3 +5,4 @@ config/local.neon
 /www/assets/ftp/cz
 .htaccess
 
+/www/assets/ftp/
