@@ -27,7 +27,7 @@ $(function () {
                 navNextSelector: $('#topSlide .next'),
                 navPrevSelector: $('#topSlide .prev'),
                 autoSlide: true,
-                autoSlideTimer: 5000,
+                autoSlideTimer: 9000,
                 onSlideChange: schange
             });
 
