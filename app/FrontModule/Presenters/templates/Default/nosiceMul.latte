@@ -3,6 +3,8 @@
 {block head}
     <link href="{$basePath}/assets/css/nosice.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/contactForm.css" rel="stylesheet">
+    <script type="text/javascript" src="{$basePath}/assets/js/easyzoom.js"></script>
+
 {/block}
 
 
@@ -121,7 +123,14 @@
                 </div>
             </article>
             <article>
-                <img src="{$basePath}/assets/image/nosice/hag120.png" alt="">
+{*                <a href="">*}
+                    <img src="{$basePath}/assets/image/nosice/hag120.png" alt="">
+{*                </a>*}
+{*                <div class="itemGallery" style="display: none">*}
+{*                    <img src="{$basePath}/assets/image/nosice/hag120.png" alt="">*}
+{*                    <img src="{$basePath}/assets/image/nosice/hag120.png" alt="">*}
+{*                    <img src="{$basePath}/assets/image/nosice/hag120.png" alt="">*}
+{*                </div>*}
                 <div class="box">
                     <h3 class="orange">Příčníky na hagusy
                         120 cm, MULTIPA</h3>
@@ -139,3 +148,11 @@
     </main>
 
 
+{/block}
+{block script}
+    <script n:syntax="off">
+        $(function () {
+            new SimpleLightbox('article a', {});
+        });
+    </script>
+{/block}
