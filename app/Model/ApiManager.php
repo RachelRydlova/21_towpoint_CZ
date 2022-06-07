@@ -86,7 +86,7 @@ class ApiManager
     private function solveVapolResponse($url, $cacheKey, $log = null, $method = 'GET', $expiration = '5 days')
     {
         if ($load = $this->cache->load($cacheKey)) {
-            return $load;
+            return $load->data;
         }
 
         $log = $log ?? $cacheKey;
@@ -115,7 +115,7 @@ class ApiManager
             return null;
         } else {
             $this->cache->save($cacheKey, $data, [Cache::EXPIRATION => '30 days']);
-            return $data->$data;
+            return $data->data;
         }
     }
 
