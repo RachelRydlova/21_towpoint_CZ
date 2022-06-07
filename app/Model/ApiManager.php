@@ -115,7 +115,7 @@ class ApiManager
             return null;
         } else {
             $this->cache->save($cacheKey, $data, [Cache::EXPIRATION => '30 days']);
-            return $data;
+            return $data->$data;
         }
     }
 
