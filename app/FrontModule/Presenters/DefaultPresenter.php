@@ -85,7 +85,7 @@ class DefaultPresenter extends BasePresenter
             // kontrola typu pozadavku
             if ($type == 1 && !$preference) {
                 // pokud nejsou vyplneny preference, nesmi se odeslat
-                $this->flashMessage('Vyplňtě preference Vašeho výběru.');
+                $this->flashMessage('Vyplňte preference Vašeho výběru.');
                 $this->redirect('Default:');
             }
             elseif ($type != 1) {

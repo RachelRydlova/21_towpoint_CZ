@@ -434,6 +434,14 @@ $(function () {
         }
         let vehicleId = $('#imotor').val();
 
+        // vytahnu info o zvolenych preferencich
+        value = get_selected_radios_array();
+        param = JSON.stringify(value);
+        $.nette.ajax({
+            url: '?do=calculator-setPref',
+            data: { 'calculator-preference': param }
+        });
+
         // pro odeslani pozadavku musi byt vyplnen email, telefon a zvolen motor
         if (mail && tel) {
             $('.inputs p.complete').hide();
@@ -445,13 +453,6 @@ $(function () {
             }
         }
 
-        // vytahnu info o zvolenych preferencich
-        value = get_selected_radios_array();
-        param = JSON.stringify(value);
-        $.nette.ajax({
-            url: '?do=calculator-setPref',
-            data: { 'calculator-preference': param }
-        });
 
     });
 
