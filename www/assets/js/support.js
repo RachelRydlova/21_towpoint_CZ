@@ -518,6 +518,7 @@ $(function () {
 
 
 
+
     // FUNKCE
 
     // vytahuju hodnoty vsech radio buttonu na strance

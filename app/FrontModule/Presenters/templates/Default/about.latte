@@ -44,32 +44,7 @@
                 <li>Namontovat tažné si můžete nechat v tom nejbližším nebo kterémkoliv jiném. Třeba cestou na dovolenou.</li>
             </ul>
         </div>
-        <div class="group">
 
-        {*   MODAL S INFEM O MONTAZNIM MISTU *}
-        {* @todo predchystan modal na kazde montazni misto -> prozatim se stopnulo a bude se delat v budoucnu .. mapCZ.js *}
-{*        {foreach $mapData as $partner}*}
-
-{*                <div class="modal" id="modal{$partner->id}">*}
-{*                    <span class="close">X</span>*}
-{*                    <h2 class="orange twpTitle">*}
-{*                        {$partner->nazev}*}
-{*                    </h2>*}
-{*                    <p class="twpAddress">*}
-{*                        {$partner->adresa}*}
-{*                    </p>*}
-{*                    <div class="content">*}
-{*                        <img src="{$basePath}/assets/image/galerie/6.jpg" alt="montazni stredisko v Zasove">*}
-{*                        <ul class="light" style="font-size: 1.3rem">*}
-{*                            {foreach $partner->params as $param}*}
-{*                                <li class="twpParameter">{$param->name|noescape}</li>*}
-{*                            <span class="twpText">Doplnujici popis montazniho mista.</span>*}
-{*                            {/foreach}*}
-{*                        </ul>*}
-{*                    </div>*}
-
-{*                </div>*}
-{*        {/foreach}*}
 
 {*         mapa Ceske republiky*}
         <div class="mapcontainer">
@@ -110,7 +85,7 @@
 
     </section>
     <section class="info" style="flex-direction: column; align-items: center">
-        <p>Provozovatelem je společnost VAPOL CZ s.r.o., se sídlem Zašová 270, 756 51 Zašová, IČO: 267 83 789.
+        <p style="text-align: center;padding: 0.2em 1.5em;">Provozovatelem je společnost VAPOL CZ s.r.o., se sídlem Zašová 270, 756 51 Zašová, IČO: 267 83 789.
             Společnost je zapsána v obchodním rejstříku vedeném u okresního soudu v Ostravě, oddíl C, vložka 25306.
         </p>
         <a href="{$basePath}/assets/pdf/ochranaOU.pdf" target="_blank">Odkaz na ochranu osobních údajů</a>
@@ -144,8 +119,46 @@
             <img class="carousel-cell" src="{$basePath}/assets/image/galerie/12.jpg?" alt="nosice na kouli auta">
         </div>
     </div>
+
+
+
 </main>
 
+{*   MODAL S INFEM O MONTAZNIM MISTU *}
+{* @todo predchystan modal na kazde montazni misto -> prozatim se stopnulo a bude se delat v budoucnu .. mapCZ.js *}
+{*        {foreach $mapData as $partner}*}
+
+{*                <div class="modal" id="modal{$partner->id}">*}
+<div class="modal d-none" id="modalZasova">
+    <div class="modal-content">
+
+        <a href="#" class="close">X</a>
+        <h2 class="orange twpTitle">
+            TowPoint Zašová
+        </h2>
+        <p class="twpAddress">
+            Zašová 270, 756 51 Zašová
+        </p>
+        <div class="content">
+            <img src="{$basePath}/assets/image/galerie/towZasova.jpg" alt="montazni stredisko v Zasove">
+            <ul class="light" style="font-size: 1.3rem">
+                {*                            {foreach $partner->params as $param}*}
+    {*                                <li class="twpParameter">{$param->name|noescape}</li>*}
+                        <li class="twpParameter">Půjčovna nahradního vozidla</li>
+                        <li class="twpParameter">Sezónní prohlídka</li>
+                        <li class="twpParameter">Plnění klimatizace</li>
+                        <li class="twpParameter">Výměna oleje</li>
+                        <li class="twpParameter">Geometrie</li>
+                        <li class="twpParameter">Pneuservis</li>
+                        <li class="twpParameter">Prodej pneumatik</li>
+                    <span class="twpText">Montážní místo v Zašové je naším hlavním servisem a také centrálou firmy. Zde naleznete i naše kanceláře a showroom s nosiči kol.</span>
+    {*                            {/foreach}*}
+            </ul>
+        </div>
+    </div>
+
+</div>
+{*        {/foreach}*}
 
 {/block}
 
@@ -197,6 +210,15 @@
             });
         });
 
+        $(document).on("click", "[data-id]", function(){
+                var dataid = $(this).attr("data-id");
+                if (dataid == 2) {
+                    $('#modalZasova').removeClass('d-none');
+                }
+        });
+        $('.modal-content a').on('click', function () {
+            $('#modalZasova').addClass('d-none');
+        })
 
     </script>
     <script src="{$basePath}/assets/js/mapCZ.js"></script>

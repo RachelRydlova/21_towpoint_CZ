@@ -2,11 +2,14 @@
     display: none;
 }
 .close {
-    cursor: pointer;
-    position: absolute;
-    top: 1%;
-    right: 1%;
-
+    display: inline-block;
+    width: 90%;
+    text-align: right;
+    padding: 1em 2em;
+}
+#doc div > a .close {
+    margin-bottom: 0;
+    cursor: pointer !important;
 }
 
 #doc ul {
@@ -57,18 +60,20 @@ main {
     position: relative;
 }
 
+.d-none {
+    display: none !important;
+}
+
 .modal {
-    display: none;
     position: fixed;
-    width: 100%;
-    height: 100%;
-    text-align: center;
     top: 0;
     left: 0;
-    background-color: rgba(0,0,0,0.92);
-    z-index: 999;
-    opacity: 0;
-    pointer-events: none;
+    z-index: 1050;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
 }
 .selected {
     display: block;
@@ -78,6 +83,18 @@ main {
     pointer-events: auto;
     transition: all 1.2s ease;
 }
+.modal-content {
+    background-color: rgba(0,0,0,0.92);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-clip: padding-box;
+    text-align: center;
+    height: 100%;
+}
+
 .modal .content {
     display: flex;
     justify-content: space-around;
@@ -159,5 +176,31 @@ main {
     .mapael .map svg {
         left: 0 !important;
         padding-top: 3%;
+    }
+
+    .modal .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 100%;
+    }
+    .modal .content img {
+         max-width: 90% !important;
+    }
+    .modal ul {
+        max-width: 90%;
+    }
+    .modal ul li {
+        text-align: left;
+    }
+    .modal-content {
+        height: auto;
+    }
+}
+
+@media screen and (max-width: 420px)
+{
+    .modal {
+        width: 100%;
     }
 }
