@@ -3,9 +3,19 @@
 }
 .close {
     display: inline-block;
-    width: 90%;
     text-align: right;
-    padding: 1em 2em;
+    padding: 1em 1em;
+}
+.close span {
+    border: 1px solid var(--color-darkGray);
+    padding: 0.2em 0.5em;
+    border-radius: 31%;
+    background-color: var(--color-gray);
+    color: var(--color-white);
+}
+.close a:hover {
+    background-color: var(--color-darkGray);
+    text-decoration: none !important;
 }
 #doc div > a .close {
     margin-bottom: 0;
@@ -63,18 +73,6 @@ main {
 .d-none {
     display: none !important;
 }
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    width: 100%;
-    height: 100%;
-    overflow-x: hidden;
-    overflow-y: auto;
-    outline: 0;
-}
 .selected {
     display: block;
     outline: none;
@@ -83,9 +81,20 @@ main {
     pointer-events: auto;
     transition: all 1.2s ease;
 }
+
+.modal {
+    position: fixed;
+    top: 6%;
+    left: 15%;
+    z-index: 1050;
+    width: 70%;
+    height: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+    background-color: rgba(0,0,0,0.82);
+}
 .modal-content {
-    background-color: rgba(0,0,0,0.92);
-    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -93,13 +102,25 @@ main {
     background-clip: padding-box;
     text-align: center;
     height: 100%;
+    padding-bottom: 3em;
 }
 
-.modal .content {
+.overlay {
+    position: fixed; /* Positioning and size */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(128,128,128,0.5); /* color */
+    display: none; /* making it hidden by default */
+}
+
+.overlay .content {
     display: flex;
     justify-content: space-around;
 }
-.modal .content img {
+
+.overlay .content img {
     max-width: 40% !important;
     padding-top: 1rem !important;
 }

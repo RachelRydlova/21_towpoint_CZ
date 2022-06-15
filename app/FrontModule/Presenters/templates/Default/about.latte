@@ -129,31 +129,35 @@
 {*        {foreach $mapData as $partner}*}
 
 {*                <div class="modal" id="modal{$partner->id}">*}
-<div class="modal d-none" id="modalZasova">
-    <div class="modal-content">
+<div class="overlay" id="modalZasova">
+    <div class="modal">
 
-        <a href="#" class="close">X</a>
-        <h2 class="orange twpTitle">
-            TowPoint Zašová
-        </h2>
-        <p class="twpAddress">
-            Zašová 270, 756 51 Zašová
-        </p>
-        <div class="content">
-            <img src="{$basePath}/assets/image/galerie/towZasova.jpg" alt="montazni stredisko v Zasove">
-            <ul class="light" style="font-size: 1.3rem">
-                {*                            {foreach $partner->params as $param}*}
-    {*                                <li class="twpParameter">{$param->name|noescape}</li>*}
-                        <li class="twpParameter">Půjčovna nahradního vozidla</li>
-                        <li class="twpParameter">Sezónní prohlídka</li>
-                        <li class="twpParameter">Plnění klimatizace</li>
-                        <li class="twpParameter">Výměna oleje</li>
-                        <li class="twpParameter">Geometrie</li>
-                        <li class="twpParameter">Pneuservis</li>
-                        <li class="twpParameter">Prodej pneumatik</li>
-                    <span class="twpText">Montážní místo v Zašové je naším hlavním servisem a také centrálou firmy. Zde naleznete i naše kanceláře a showroom s nosiči kol.</span>
-    {*                            {/foreach}*}
-            </ul>
+        <div class="modal-content">
+
+            <a href="#" class="close">
+                <span>X</span></a>
+            <h2 class="orange twpTitle">
+                TowPoint Zašová
+            </h2>
+            <p class="twpAddress">
+                Zašová 270, 756 51 Zašová
+            </p>
+            <div class="content">
+                <img src="{$basePath}/assets/image/galerie/towZasova.jpg" alt="montazni stredisko v Zasove">
+                <ul class="light" style="font-size: 1.3rem">
+                    {*                            {foreach $partner->params as $param}*}
+        {*                                <li class="twpParameter">{$param->name|noescape}</li>*}
+                            <li class="twpParameter">Půjčovna nahradního vozidla</li>
+                            <li class="twpParameter">Sezónní prohlídka</li>
+                            <li class="twpParameter">Plnění klimatizace</li>
+                            <li class="twpParameter">Výměna oleje</li>
+                            <li class="twpParameter">Geometrie</li>
+                            <li class="twpParameter">Pneuservis</li>
+                            <li class="twpParameter">Prodej pneumatik</li>
+                        <span class="twpText">Montážní místo v Zašové je naším hlavním servisem a také centrálou firmy. Zde naleznete i naše kanceláře a showroom s nosiči kol.</span>
+        {*                            {/foreach}*}
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -181,10 +185,10 @@
                     defaultPlot: {
                         size: 30,
                         eventHandlers: {
-                            mouseover: function (e, id, mapElem, textElem, elemOptions) {
-                                if (typeof elemOptions.twpTitle != 'undefined') {
-                                    $('.twpTitle').html(elemOptions.twpTitle).fadeIn('slow');
-                                }
+                            hover: function (id, mapElem, textElem, elemOptions) {
+                                // if (typeof elemOptions.twpTitle != 'undefined') {
+                                //     $('.twpTitle').html(elemOptions.twpTitle).fadeIn('slow');
+                                // }
                             }
                         }
                     }
@@ -210,15 +214,24 @@
             });
         });
 
-        $(document).on("click", "[data-id]", function(){
-                var dataid = $(this).attr("data-id");
-                if (dataid == 2) {
-                    $('#modalZasova').removeClass('d-none');
-                }
+        $(document).on("click", "[data-id]", function(e){
+            e.stopPropagation();
+            var dataid = $(this).attr("data-id");
+            if (dataid == 2) {
+                $('#modalZasova').show();
+            }
         });
-        $('.modal-content a').on('click', function () {
-            $('#modalZasova').addClass('d-none');
+
+        $('.overlay .close').on('click', function () {
+            $('.overlay').hide();
         })
+
+        $('.overlay').on('click', function(e) {
+            if (e.target !== this) {
+                return;
+            }
+            $('.overlay').hide();
+        });
 
     </script>
     <script src="{$basePath}/assets/js/mapCZ.js"></script>

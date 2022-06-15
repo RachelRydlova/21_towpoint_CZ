@@ -31,7 +31,13 @@
         </header>
         <div class="grid">
             <article>
-                <img src="{$basePath}/assets/image/nosice/MULT4new.png" alt="">
+                <a href="#mult4new"></a><img src="{$basePath}/assets/image/nosice/MULT4new.png" alt="">
+                <div id="mult4new" class="itemGallery">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                    <img src="" alt="">
+                </div>
                 <div class="box">
                     <h3 class="orange">Nosič kol na tažné zařízení
                         4 kola NEW, MULTIPA </h3>
@@ -151,7 +157,7 @@
 {block script}
     <script n:syntax="off">
         $(function () {
-            new SimpleLightbox('article a', {});
+            new SimpleLightbox('.itemGallery a', {});
         });
     </script>
 {/block}
