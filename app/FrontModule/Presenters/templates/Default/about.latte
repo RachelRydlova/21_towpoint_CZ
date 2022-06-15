@@ -214,8 +214,7 @@
             });
         });
 
-        $(document).on("click", "[data-id]", function(e){
-            e.stopPropagation();
+        $(document).on("click", "[data-id]", function(){
             var dataid = $(this).attr("data-id");
             if (dataid == 2) {
                 $('#modalZasova').show();

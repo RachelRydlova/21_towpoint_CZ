@@ -13,9 +13,12 @@
     background-color: var(--color-gray);
     color: var(--color-white);
 }
-.close a:hover {
+.modal-content a:hover {
     background-color: var(--color-darkGray);
     text-decoration: none !important;
+}
+.modal-content span:hover {
+    background-color: var(--color-orange);
 }
 #doc div > a .close {
     margin-bottom: 0;
