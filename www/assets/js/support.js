@@ -514,6 +514,11 @@ $(function () {
         $('.navmail').toggleClass('shown');
     });
 
+    // nosice galerie
+    $(function () {
+        new SimpleLightbox('.simpleGallery a', {htmlClass: 'd-block'});
+    });
+
 
 
 
