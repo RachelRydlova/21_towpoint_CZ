@@ -58,27 +58,6 @@
     <link href="{$basePath}/assets/css/fa.css" rel="stylesheet">
     <script type="text/javascript" src="{$basePath}/assets/js/fa.js"></script>
 
-    <!-- Main JS File -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
-    <script src="{$basePath}/assets/js/jquery.iosslider.min.js"></script>
-    <script src="{$basePath}/assets/js/mmenu.js"></script>
-    <script src="{$basePath}/assets/js/simple-lightbox.js"></script>
-    <script src="{$basePath}/assets/js/support.js"></script>
-
-
-    <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
-
-    <!-- Flickity gallery JS -->
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
-    <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
-
-
-    <!-- Nette form -->
-    <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-    <script src="{$basePath}/assets/js/nette.ajax.js"></script>
-
-
 
     <title>{ifset title}{include title|stripHtml} | {/ifset} {$baseTitle}</title>
 
@@ -264,7 +243,32 @@
     </script>
 
 
-    {block script}{/block}
+    {block script}
+
+
+    <!-- Main JS File -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
+    <script src="{$basePath}/assets/js/jquery.iosslider.min.js"></script>
+    <script src="{$basePath}/assets/js/mmenu.js"></script>
+    <script src="{$basePath}/assets/js/simple-lightbox.js"></script>
+    <script src="{$basePath}/assets/js/support.js"></script>
+
+
+    <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
+
+    <!-- Flickity gallery JS -->
+    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.js"></script>
+    <script src="https://unpkg.com/flickity-fullscreen@1/fullscreen.js"></script>
+
+
+    <!-- Nette form -->
+    <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
+    <script src="{$basePath}/assets/js/nette.ajax.js"></script>
+
+
+
+{/block}
 
 
 </body>
