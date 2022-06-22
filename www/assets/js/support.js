@@ -1,6 +1,12 @@
 var uint;
 
 $(function () {
+    // nosice galerie
+    $(document).ready(function(){
+        // $(function () {
+        new SimpleLightbox('.simpleGallery a', {htmlClass: 'd-block'});
+    });
+
 
     $(document).on('click', '#acceptCookies', function (e){
         $('#cookie').hide(300);
@@ -513,12 +519,6 @@ $(function () {
     $('#navmail').on('hover', function() {
         $('.navmail').toggleClass('shown');
     });
-
-    // nosice galerie
-    $(function () {
-        new SimpleLightbox('.simpleGallery a', {htmlClass: 'd-block'});
-    });
-
 
 
 
