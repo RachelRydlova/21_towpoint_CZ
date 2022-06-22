@@ -2,8 +2,7 @@ var uint;
 
 $(function () {
     // nosice galerie
-    $(document).loaded(function(){
-        // $(function () {
+    $(document).ready(function(){
         new SimpleLightbox('.simpleGallery a', {htmlClass: 'd-block'});
     });
 
