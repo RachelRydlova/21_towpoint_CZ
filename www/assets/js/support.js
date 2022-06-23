@@ -1,8 +1,6 @@
 var uint;
 
 $(function () {
-    // nosice galerie
-    new SimpleLightbox('.simpleGallery a', {htmlClass: 'd-block'});
 
 
     $(document).on('click', '#acceptCookies', function (e){
@@ -513,6 +511,8 @@ $(function () {
         $('.navmail').toggleClass('shown');
     });
 
+    // nosice galerie
+        new SimpleLightbox('.simpleGallery a', {htmlClass: 'd-block'});
 
 
 
