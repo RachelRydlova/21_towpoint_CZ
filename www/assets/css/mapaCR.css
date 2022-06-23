@@ -24,9 +24,6 @@
     cursor: pointer !important;
 }
 
-#doc ul {
-    font-size: 1.2rem !important;
-}
 
 /* Specific mapael css class are below
  * 'mapael' class is added by plugin
@@ -36,35 +33,51 @@
     position: relative;
 }
 
-.mapael .map svg {
-    left: 15% !important;
-}
 
 .mapael .mapTooltip {
     position: absolute;
     opacity: 0.95;
     filter: alpha(opacity=95);
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
     z-index: 1000;
     display: none;
     background-color: #343434;
     color: #fff;
 }
 
+#doc .mapael h2 {
+    font-size: 1.2em;
+}
+
 .mapael .mapTooltip h2,
 .modal .orange {
     color: #fff;
     background-color: var(--color-orange);
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
     text-transform: uppercase;
 }
 
-.mapael .mapTooltip ul {
+.mapael .map svg {
+    left: 0 !important;
+    padding-top: 0;
+    overflow: unset !important;
+}
+
+#doc .mapTooltip ul li {
+    display: flex;
+    background-position: unset !important;
+    background-size: 23px;
+}
+
+#doc .mapael .mapTooltip ul {
+    font-size: 1rem !important;
+    line-height: 1em !important;
     width: 100% !important;
-    padding-left: 10%;
-    padding-top: 5%;
+    padding-left: 7%;
+    padding-top: 3%;
+    margin-bottom: 0 !important;
 }
 
 
@@ -183,23 +196,10 @@ main {
         background-size: 20px;
         padding-left: 2rem;
     }
-    .mapael .mapTooltip {
-        padding: 5px;
-    }
-    .mapael .mapTooltip ul {
-        padding-left: 5%;
-        padding-top: 0;
-    }
-    .mapael .mapTooltip h2 {
-        padding: .8rem;
-    }
 }
 @media screen and (max-width: 900px)
 {
-    .mapael .map svg {
-        left: 0 !important;
-        padding-top: 3%;
-    }
+
 
     .modal .content {
         display: flex;
@@ -218,6 +218,15 @@ main {
     }
     .modal-content {
         height: auto;
+    }
+    #doc .mapael h2 {
+        font-size: .8em;
+    }
+    #doc .mapTooltip ul li {
+        font-size: .6rem !important;
+    }
+    #doc .mapTooltip ul li {
+        background-size: 16px;
     }
 }
 

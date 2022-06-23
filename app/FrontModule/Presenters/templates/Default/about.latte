@@ -223,6 +223,7 @@
 
         $('.overlay .close').on('click', function () {
             $('.overlay').hide();
+            $('html, body').animate({ scrollTop: $(".map svg").offset().top }, 250);
         })
 
         $('.overlay').on('click', function(e) {
