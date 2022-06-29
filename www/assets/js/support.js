@@ -181,12 +181,16 @@ $(function () {
         $.nette.ajax({
             url: '?do=carSelector-setModel',
             data: {'carSelector-modId': value}
-        }).then(function () { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
+        }).then(function (payload) { // toto je tzv promis, ktery se vykona az jakmile dobehne ta ajax Akce
             $('#model').slideUp(300);
             $('#motor').slideDown(300);
             $('#imodel').val(title);
             $('#sel').removeClass('loading');
             $('#form2').removeClass('shown');
+            if (payload && payload.vehicleId !== undefined) {
+                $('#form2').addClass('shown');
+                $('#motor a.motorLink').click();
+            }
         });
         console.log(value, title, '-> VYBER modelu');
     });

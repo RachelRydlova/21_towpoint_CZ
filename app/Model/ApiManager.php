@@ -176,7 +176,7 @@ class ApiManager
         $log = 'remote.vehiclesByModel';
         $cacheKey = $log.'.'.$modId;
         $token = self::countApiToken([$modId]);
-        $uri = '/remote-cars/vehicles-by-model/?tcmodel='.$modId.'&secret='.$token;
+        $uri = '/remote-cars/vehicles-by-model/?tcmodel='.$modId.'&checkUni=1';
         return $this->solveVapolResponse($uri, $cacheKey, $log);
     }
 
@@ -246,19 +246,23 @@ class ApiManager
      * @param $vehicleId
      * @param $comfort
      * @param $stat
+     * @param $isUni
      * @return mixed|null
      * @throws Throwable
      */
-    public function getTowpointPrices($vehicleId, $comfort, $stat = 'CZ')
+    public function getTowpointPrices($vehicleId, $comfort, $isUni, $stat = 'CZ',)
     {
         $log = 'remote.towpointPrices';
         // do cache si posilam i komfort, prepise to hodnotu komfort a cenu montaze, zpet se poslou vsechny ceny
         $cacheKey = $log.'.'.$vehicleId.'.'.$comfort.'.'.$stat;
         $token = self::countApiToken([$vehicleId, $stat]);
+
         // v pripade, ze je komfort prazdny
         if ( empty($comfort) ) $comfort = 0;
-        $uri = '/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.$comfort.'&stat='.$stat.'&secret='.$token;
+//        $uri = '/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&comfort='.$comfort.'&stat='.$stat.'&secret='.$token;
+        $uri = '/remote-cars/get-vehicle-tow-point-prices/?carId='.$vehicleId.'&isUni='.$isUni;
         return $this->solveVapolResponse($uri, $cacheKey, $log);
+
 
     }
 
@@ -270,7 +274,6 @@ class ApiManager
      */
     public function sendDataToApi($dataToReva)
     {
-
         Debugger::log($dataToReva, 'dataPredOdeslanimNaApi');
         if ($dataToReva == 0 || !$dataToReva || empty($dataToReva)) {
             die();
@@ -279,12 +282,11 @@ class ApiManager
             // vytahnu info o znacce
             $secret = self::countApiToken(array('onlyFavorities' => '0'));
             $url = 'https://www.vapol.cz/remote-cars/manufacturers?onlyFavorities=0&secret=' . $secret;
-            $data = json_decode(file_get_contents($url));
-            $znacky = $data->data;
+            (array)$data = json_decode(file_get_contents($url))->data;
 
             if ($type == 1) {
                 $manufacturerId = Arrays::get($dataToReva, ['carInfo', 'manufacturerId']);
-                if (is_array($znacky)) foreach ($znacky as $item) if ($manufacturerId == $item->tcznacka) $outznacka = $item->name;
+                if (is_array($data)) foreach ($data as $item) if ($manufacturerId == $item->tcznacka) $outznacka = $item->name;
                 if (!isset($outznacka)) {
                     $outznacka = null;
                 }
@@ -302,7 +304,8 @@ class ApiManager
                 // vytahnu info o motoru
                 $motory = array();
                 $secret = self::countApiToken(array('tcmodel' => $modelId));
-                $url = 'https://www.vapol.cz/remote-cars/vehicles-by-model/?tcmodel=' . $modelId . '&secret=' . $secret;
+                $isUni = Arrays::get($dataToReva, ['carInfo', 'isUni']);
+                $url = 'https://www.vapol.cz/remote-cars/vehicles-by-model/?tcmodel=' . $modelId . '&checkUni=' .$isUni. '&secret=' . $secret;
                 $data = json_decode(file_get_contents($url));
                 $motory0 = (array)$data->data;
                 if (is_array($motory0)) foreach ($motory0 as $typ => $item) {
@@ -312,6 +315,7 @@ class ApiManager
                 $vehicleId = Arrays::get($dataToReva, ['carInfo', 'vehicleId']);
                 foreach ($motory as $item) if ($vehicleId == $item->vozidlo_id) $outmotor = $item->fullname;
 
+                $isUni = Arrays::get($dataToReva, ['carInfo', 'isUni']);
 
                 // vytahuji informaci, zda byl zvolen komfort
                 $comfort = Arrays::get($dataToReva, ['carInfo', 'comfort']);
@@ -356,7 +360,7 @@ class ApiManager
                 }
 
 
-                $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&comfort=' . ($comfort + 0) . '&stat=CZ';
+                $url = 'https://www.vapol.cz/remote-cars/get-vehicle-tow-point-prices/?carId=' . $vehicleId . '&isUni=' . $isUni . '&comfort=' . ($comfort + 0) . '&stat=CZ';
                 $data = json_decode(file_get_contents($url));
 
                 if ($data) {
@@ -448,7 +452,6 @@ class ApiManager
             ]
         );
 
-        bdump([$url, $data], 'url a data - prefinalRequest');
         $data = (json_decode($response->getBody()->getContents()));
         Debugger::log(print_r($data,true),'prefinalRequest');
         die();

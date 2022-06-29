@@ -39,11 +39,12 @@ class Calculator extends Control
      * zjisteni ID zvoleneho motoru a ziskani cen
      * @param $vehicleId
      * @param $comfort
+     * @param $isUni
      * @return mixed|null
      */
-    public function setPrice($vehicleId, $comfort)
+    public function setPrice($vehicleId, $comfort, $isUni)
     {
-        $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort);
+        $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort, $isUni);
 
         // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
         $data = [];
@@ -117,8 +118,6 @@ class Calculator extends Control
             $data['kvalitaPevne7'] = '0';
             $data['kvalitaPevne13'] = '0';
         }
-
-        bdump($data, 'dostupneVariantyMontaze');
 
 
         $this->template->data = $data;

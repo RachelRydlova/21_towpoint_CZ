@@ -47,8 +47,9 @@ class DefaultPresenter extends BasePresenter
         $p = $this;
         $comp->onSuccess[] = function ($carInfo) use ($p) {
             if ($carInfo['comfort'] == null) $carInfo['comfort'] = 0;
-            $p['calculator']->setPrice($carInfo['vehicleId'], $carInfo['comfort']);
+            $p['calculator']->setPrice($carInfo['vehicleId'], $carInfo['comfort'], $carInfo['isUni']);
             Debugger::log(print_r($carInfo,true),'selectedCar');
+            $p->getPayload()->vehicleId = $carInfo['vehicleId'];
         };
         return $comp;
     }
@@ -78,8 +79,9 @@ class DefaultPresenter extends BasePresenter
             $model = $p->session->getSection('carSection')->model;
             $vehicle = $p->session->getSection('carSection')->vehicle;
             $comfort = $p->session->getSection('carSection')->comfort;
+            $isUni = $p->session->getSection('carSection')->isUni;
+            $isUni = $isUni == null ? 0 : 1;
             $preference = $p->session->getSection('calculator')->preferencies;
-
             Debugger::log($preference, 'preference');
 
             // kontrola typu pozadavku
@@ -95,7 +97,7 @@ class DefaultPresenter extends BasePresenter
             Debugger::log($preference, 'preferencePoKontrole');
 
             $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle,
-                'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2], 'ip' => $ip];
+                'comfort'=> $comfort, 'pref'=> $preference[0], 'koule'=> $preference[1], 'el'=> $preference[2], 'ip' => $ip, 'isUni' => $isUni];
 
             if (!empty($carInfo)) {
                 $dataToReva = ['contact' => $contact, 'carInfo' => $carInfo];

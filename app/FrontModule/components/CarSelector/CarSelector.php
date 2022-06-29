@@ -155,7 +155,7 @@ class CarSelector extends Control
 
             // prekresluju snippet pro list motoru
             $motors = $this->apiManager->getCarModelVehicles($modId);
-            $search = strtoupper($search);
+            $search = $search ? strtoupper($search) : $search;
             // pokud je neco v search, tak plnim pole autami obsahujici co je v search
             if ($search) {
                 $motors = (array) $motors;
@@ -168,24 +168,40 @@ class CarSelector extends Control
                     }
                 }
             }
-            // nastavuji promenne do template a prekresluji motory
-            $this->template->motory = $motors;
 
             $modInfo = $this->apiManager->getModelApiRow($manId, $modId);
+
             if ($modInfo) {
                 $this['carSelector']['model']->setDefaultValue($modInfo->fullname);
             }
-            $this->redrawControl('carSelectorWrapper');
-            $this->redrawControl('model');
-            // prekresluju snippet pro list motorů
-            $this->redrawControl('motoryList');
-            $this->redrawControl('vehicle');
-
-            $this['carSelector']['vehicle']->setDisabled(false);
-
             // ulozeni zvoleneho modelu do session
             $this->saveValue('model', $modId);
-            $this->saveValue('vehicle', null);
+            $comfort = $this->loadValue('comfort') ? $this->loadValue('comfort') : 0;
+
+
+            $motors = (array) $motors;
+            foreach ($motors as $key => $category) {
+                if (count($motors) == 1 && count($category) == 1) {
+                    $motor = reset($category);
+                    $isUni = 1;
+                    $this->saveValue('isUni', $isUni);
+                    $this['carSelector']['vehicle']->setDefaultValue($motor->fullname);
+                    $this->saveValue('vehicle', $motor->vozidlo_id);
+                    $this->handleSaveData($motor->vozidlo_id, $this->loadValue('comfort'),  $isUni);
+                    break;
+                }
+
+                $this['carSelector']['vehicle']->setDisabled(false);
+
+            }
+
+            // nastavuji promenne do template a prekresluji motory
+            $this->template->motory = $motors;
+
+            // prekresluju snippet pro list motorů
+            $this->redrawControl('carSelectorWrapper');
+            $this->redrawControl('motoryList');
+            $this->redrawControl('vehicle');
         }
     }
 
@@ -194,27 +210,27 @@ class CarSelector extends Control
      * data se vytahuji ze session, protoze samotny formular se neodesila
      * @param $vehicleId
      * @param $comfort
+     * @param $isUni
      * @throws \Throwable
      */
-    public function handleSaveData($vehicleId, $comfort): void
+    public function handleSaveData($vehicleId, $comfort, $isUni = '0'): void
     {
         // Nastavim spravne model
-        $modId = $this->loadValue('model');
-        $this->handleSetModel($modId);
-
+        $modId =(int) $this->loadValue('model');
+        if ($isUni == 0) {
+            $this->handleSetModel($modId);
+        }
+        $this->saveValue('vehicle', $vehicleId);
         $vehInfo = $this->apiManager->getVehicleApiRow($modId,$vehicleId);
         if ($vehInfo) {
             $this['carSelector']['vehicle']->setDefaultValue($vehInfo->fullname);
         }
-        // ulozeni motoru a komfortu do session
-        $this->saveValue('vehicle', $vehicleId);
+
         // nacteni dat ze session
-        $vehicle = $this->loadValue('vehicle');
-        $model = $this->loadValue('model');
         $manufacturer = $this->loadValue('manufacturer');
 
+        $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $modId, 'vehicleId'=> $vehicleId, 'comfort'=> $comfort, 'isUni' => $isUni];
 
-        $carInfo = ['manufacturerId' => $manufacturer, 'modelId' => $model, 'vehicleId'=> $vehicle, 'comfort'=> $comfort];
         $this->onSuccess($carInfo);
     }
 
@@ -292,7 +308,6 @@ class CarSelector extends Control
         $vehicleId = $data->vehicle;
         $comfort = $data->comfort;
 
-        Debugger::dump($data, 'onCarSelectorSuccess');
         $this->handleSaveData($vehicleId, $comfort);
     }
 
