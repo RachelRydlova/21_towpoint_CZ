@@ -387,7 +387,7 @@ class ApiManager
             //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
             $pole = array(
-                'session_id' => $this->session->getId(),
+                'session_id' => $this->session->getId() ?? null,
                 'ip' => $ip ?? null,
                 'final_request' => 1,
                 'znacka' => $outznacka ?? 'nezadano',
@@ -440,7 +440,7 @@ class ApiManager
 //        $url='http://reva.local/api/api/request-tow-point/?token='.self::get_secret([]);
 
         $data=array(
-            'session_id'=> $this->session->getId(),
+            'session_id'=> $this->session->getId() ?? null,
             'final_request'=> 0,
             'email'=>$email,
             'znacka'=> 'prefinal',
