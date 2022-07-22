@@ -441,20 +441,19 @@ $(function () {
         $.nette.ajax({
             url: '?do=calculator-setPref',
             data: { 'calculator-preference': param }
-        });
-
-        // pro odeslani pozadavku musi byt vyplnen email, telefon a zvolen motor
-        if (mail && tel) {
-            $('.inputs p.complete').hide();
-            if (gdpr === 1) {
-                if (vehicleId) {
-                    $('#form2 .cta input').prop('disabled', true);
-                    $('#frm-orderForm-orderForm').addClass('loading').submit();
-                    $('.final_loader').stop(true).delay(1000).fadeIn(200);
+        }).then(function () {
+            // pro odeslani pozadavku musi byt vyplnen email, telefon a zvolen motor
+            if (mail && tel) {
+                $('.inputs p.complete').hide();
+                if (gdpr === 1) {
+                    if (vehicleId) {
+                        $('#form2 .cta input').prop('disabled', true);
+                        $('#frm-orderForm-orderForm').addClass('loading').submit();
+                        $('.final_loader').stop(true).delay(1000).fadeIn(200);
+                    }
                 }
             }
-        }
-
+        });
     });
 
 
