@@ -34,8 +34,8 @@
           rel="stylesheet">
 
     <!-- Gallery flickity -->
-    <link rel="stylesheet" href="{$basePath}/assets/unpkg/flickity.css" type="text/css">
-    <link rel="stylesheet" href="{$basePath}/assets/unpkg/fullscreen.css" type="text/css">
+    <link rel="stylesheet" href="{$basePath}/assets/unpkg/flickity.css?v={filemtime('assets/unpkg/flickity.js')}" type="text/css">
+    <link rel="stylesheet" href="{$basePath}/assets/unpkg/fullscreen.css?v={filemtime('assets/unpkg/fullscreen.js')}" type="text/css">
 
     <!-- Main CSS File -->
     <link href="{$basePath}/assets/css/base.css" rel="stylesheet">
@@ -58,7 +58,7 @@
 
     <!-- font awesome icons -->
     <link href="{$basePath}/assets/css/fa.css" rel="stylesheet">
-    <script type="text/javascript" src="{$basePath}/assets/js/fa.js"></script>
+    <script type="text/javascript" src="{$basePath}/assets/js/fa.js?v={filemtime('assets/js/fa.js')}"></script>
 
 
     <title>{ifset title}{include title|stripHtml} | {/ifset} {$baseTitle}</title>
@@ -246,22 +246,22 @@
 
     <!-- Main JS File -->
 
-    <script src="{$basePath}/assets/js/jquery.iosslider.min.js"></script>
-    <script src="{$basePath}/assets/js/mmenu.js"></script>
-    <script src="{$basePath}/assets/js/simple-lightbox.js"></script>
+    <script src="{$basePath}/assets/js/jquery.iosslider.min.js?v={filemtime('assets/js/jquery.iosslider.min.js')}"></script>
+    <script src="{$basePath}/assets/js/mmenu.js?v={filemtime('assets/js/mmenu.js')}""></script>
+    <script src="{$basePath}/assets/js/simple-lightbox.js?v={filemtime('assets/js/simple-lightbox.js')}"></script>
     <script src="{$basePath}/assets/js/support.js?v={filemtime('assets/js/support.js')}"></script>
 
 
     {*<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>*}
 
     <!-- Flickity gallery JS -->
-    <script src="{$basePath}/assets/unpkg/flickity.pkgd.js"></script>
-    <script src="{$basePath}/assets/unpkg/fullscreen.js"></script>
+    <script src="{$basePath}/assets/unpkg/flickity.pkgd.js?v={filemtime('assets/unpkg/flickity.pkgd.js')}"></script>
+    <script src="{$basePath}/assets/unpkg/fullscreen.js?v={filemtime('assets/unpkg/fullscreen.js')}"></script>
 
 
     <!-- Nette form -->
     <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-    <script src="{$basePath}/assets/js/nette.ajax.js"></script>
+    <script src="{$basePath}/assets/js/nette.ajax.js?v={filemtime('assets/js/nette.ajax.js')}"></script>
 
     {block script}
     {/block}
