@@ -126,43 +126,34 @@
 
 {*   MODAL S INFEM O MONTAZNIM MISTU *}
 {* @todo predchystan modal na kazde montazni misto -> prozatim se stopnulo a bude se delat v budoucnu .. mapCZ.js *}
-{*        {foreach $mapData as $partner}*}
-
-{*                <div class="modal" id="modal{$partner->id}">*}
-<div class="overlay" id="modalZasova">
-    <div class="modal">
-
-        <div class="modal-content">
-
-            <a href="#" class="close">
-                <span>X</span></a>
-            <h2 class="orange twpTitle">
-                TowPoint Zašová
-            </h2>
-            <p class="twpAddress">
-                Zašová 270, 756 51 Zašová
-            </p>
-            <div class="content">
-                <img src="{$basePath}/assets/image/galerie/towZasova.jpg" alt="montazni stredisko v Zasove">
-                <ul class="light" style="font-size: 1.3rem">
-                    {*                            {foreach $partner->params as $param}*}
-        {*                                <li class="twpParameter">{$param->name|noescape}</li>*}
-                            <li class="twpParameter">Půjčovna nahradního vozidla</li>
-                            <li class="twpParameter">Sezónní prohlídka</li>
-                            <li class="twpParameter">Plnění klimatizace</li>
-                            <li class="twpParameter">Výměna oleje</li>
-                            <li class="twpParameter">Geometrie</li>
-                            <li class="twpParameter">Pneuservis</li>
-                            <li class="twpParameter">Prodej pneumatik</li>
-                        <span class="twpText">Montážní místo v Zašové je naším hlavním servisem a také centrálou firmy. Zde naleznete i naše kanceláře a showroom s nosiči kol.</span>
-        {*                            {/foreach}*}
-                </ul>
+    {foreach $mapData as $partner}
+        <div class="overlay" id="modal{$partner->id}">
+            <div class="modal">
+                <div class="modal-content">
+                    <a href="#" class="close">
+                        <span>X</span></a>
+                    <h2 class="orange twpTitle">
+                        {$partner->nazev}
+                    </h2>
+                    <p class="twpAddress">
+                        {$partner->adresa}
+                    </p>
+                    <div class="content">
+                        <img src="{$basePath}/assets/image/galerie/towZasova.jpg" alt="montazni stredisko v Zasove">
+{*                        {foreach $partner->images as img}*}
+{*                            <img src="{$img}" alt="montazni stredisko {$partner->nazev}">*}
+{*                        {/foreach}*}
+                        <ul class="light" style="font-size: 1.3rem">
+                            {foreach $partner->params as $param}
+                                <li class="twpParameter">{$param->name|noescape}</li>
+{*                                <span class="twpText">{$partner->popis}</span>*}
+                            {/foreach}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-</div>
-{*        {/foreach}*}
+    {/foreach}
 
 {/block}
 
@@ -184,13 +175,6 @@
                     name: "czech_republic",
                     defaultPlot: {
                         size: 30,
-                        // eventHandlers: {
-                            // mouseover: function (id, mapElem, textElem, elemOptions) {
-                                // if (typeof elemOptions.twpTitle != 'undefined') {
-                                //     $('.twpTitle').html(elemOptions.twpTitle).fadeIn('slow');
-                                // }
-                            // }
-                        // }
                     }
                 },
                 /* @todo data tahat z api Revy */
@@ -215,10 +199,8 @@
         });
 
         $(document).on("click", "[data-id]", function(){
-            var dataid = $(this).attr("data-id");
-            if (dataid == 2) {
-                $('#modalZasova').show();
-            }
+            let dataid = $(this).attr("data-id");
+            $('#modal'+dataid).show();
         });
 
         $('.overlay .close').on('click', function () {

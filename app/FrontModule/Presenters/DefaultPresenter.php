@@ -201,7 +201,6 @@ class DefaultPresenter extends BasePresenter
     public function renderAbout()
     {
         $data = $this->apiManager->getVendorsData();
-        bdump($data, 'vendorsData');
 
         if ($data) {
             // Mam pole objektu ApiVendor[]
@@ -209,6 +208,7 @@ class DefaultPresenter extends BasePresenter
                 $nazev = $vendorContext->nazev;
             }
         }
+        bdump($data, 'dataMapy');
         $this->template->mapData = $data;
 //        $this->terminate();
     }
