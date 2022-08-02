@@ -125,35 +125,35 @@
 </main>
 
 {*   MODAL S INFEM O MONTAZNIM MISTU *}
-{* @todo predchystan modal na kazde montazni misto -> prozatim se stopnulo a bude se delat v budoucnu .. mapCZ.js *}
-    {foreach $mapData as $partner}
-        <div class="overlay" id="modal{$partner->id}">
-            <div class="modal">
-                <div class="modal-content">
-                    <a href="#" class="close">
-                        <span>X</span></a>
-                    <h2 class="orange twpTitle">
-                        {$partner->nazev}
-                    </h2>
-                    <p class="twpAddress">
-                        {$partner->adresa}
-                    </p>
-                    <div class="content">
-                        <img src="{$basePath}/assets/image/galerie/towZasova.jpg" alt="montazni stredisko v Zasove">
+{* @todo predchystan modal na kazde montazni misto -> jeste dodelat, ceka se na fotky montaznich mist, pole v reve .. mapCZ.js *}
+{*    {foreach $mapData as $partner}*}
+{*        <div class="overlay" id="modal{$partner->id}">*}
+{*            <div class="modal">*}
+{*                <div class="modal-content">*}
+{*                    <a href="#" class="close">*}
+{*                        <span>X</span></a>*}
+{*                    <h2 class="orange twpTitle">*}
+{*                        {$partner->nazev}*}
+{*                    </h2>*}
+{*                    <p class="twpAddress">*}
+{*                        {$partner->adresa}*}
+{*                    </p>*}
+{*                    <div class="content">*}
+{*                        <img src="{$basePath}/assets/image/galerie/towZasova.jpg" alt="montazni stredisko v Zasove">*}
 {*                        {foreach $partner->images as img}*}
 {*                            <img src="{$img}" alt="montazni stredisko {$partner->nazev}">*}
 {*                        {/foreach}*}
-                        <ul class="light" style="font-size: 1.3rem">
-                            {foreach $partner->params as $param}
-                                <li class="twpParameter">{$param->name|noescape}</li>
+{*                        <ul class="light" style="font-size: 1.3rem">*}
+{*                            {foreach $partner->params as $param}*}
+{*                                <li class="twpParameter">{$param->name|noescape}</li>*}
 {*                                <span class="twpText">{$partner->popis}</span>*}
-                            {/foreach}
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    {/foreach}
+{*                            {/foreach}*}
+{*                        </ul>*}
+{*                    </div>*}
+{*                </div>*}
+{*            </div>*}
+{*        </div>*}
+{*    {/foreach}*}
 
 {/block}
 
