@@ -156,6 +156,28 @@
 
 
 
+@media screen and (max-width: 800px)
+{
+
+	#topSlide .item img:first-of-type
+	{
+		display: none;
+	}
+
+	#topSlide .item img:last-of-type
+	{
+		display: block;
+	}
+
+
+	#topSlide .next,
+	#topSlide .prev
+	{
+		height: 60px;
+		width: 40px;
+		background-size: auto 30px;
+	}
+}
 
 
 @media screen and (max-width: 750px)
@@ -170,25 +192,3 @@
 
 
 
-@media screen and (max-width: 410px)
-{
-
-	#topSlide .item img:first-of-type
-	{
-		display: none;
-	}
-
-	#topSlide .item img:last-of-type
-	{
-		display: block;
-	}
-	
-	
-	#topSlide .next,
-	#topSlide .prev
-	{
-		height: 60px;
-		width: 40px;
-		background-size: auto 30px;
-	}
-}
