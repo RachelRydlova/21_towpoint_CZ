@@ -98,9 +98,9 @@ main {
 
 .modal {
     position: fixed;
-    top: 6%;
-    left: 15%;
-    z-index: 1050;
+    /*top: 6%;*/
+    /*left: 15%;*/
+    z-index: 2000;
     width: 70%;
     height: auto;
     overflow-x: hidden;
@@ -120,11 +120,14 @@ main {
 }
 
 .overlay {
+    z-index: 1999;
     position: fixed; /* Positioning and size */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(128,128,128,0.5); /* color */
     display: none; /* making it hidden by default */
 }
@@ -203,7 +206,10 @@ main {
 }
 @media screen and (max-width: 900px)
 {
-
+    .modal {
+        left: 8%;
+        width: 85%;
+    }
 
     .modal .content {
         display: flex;
@@ -232,11 +238,15 @@ main {
     #doc .mapTooltip ul li {
         background-size: 16px;
     }
+    .mapael .mapTooltip {
+        display: none !important;
+    }
 }
 
 @media screen and (max-width: 420px)
 {
     .modal {
-        width: 100%;
+        width: 95%;
+        left: unset;
     }
 }
