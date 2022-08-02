@@ -1048,8 +1048,11 @@ header nav a:first-of-type span
 
 #gdpr
 {
-	-webkit-appearance: checkbox;
-	float: none;
+	-webkit-appearance: checkbox !important;
+	-moz-appearance: checkbox !important;
+	-ms-appearance: checkbox !important;
+	-o-appearance: checkbox !important;
+	/*float: none;*/
 	margin-left: auto;
 	margin-right: auto;
 	min-width: 80px;
