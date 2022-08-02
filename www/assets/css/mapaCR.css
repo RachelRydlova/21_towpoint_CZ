@@ -61,7 +61,7 @@
 
 .mapael .map svg {
     left: 0 !important;
-    padding-top: 0;
+    padding-top: 1em;
     overflow: unset !important;
 }
 
