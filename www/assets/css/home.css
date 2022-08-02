@@ -1190,12 +1190,8 @@ p.error {
 		#gdpr {
 			display: none !important;
 		}
-		#gdpr input {
-			-webkit-appearance: checkbox !important;
-			-moz-appearance: checkbox !important;
-			-ms-appearance: checkbox !important;
-			-o-appearance: checkbox !important;
-			appearance: auto !important;
+		#gdprIos {
+			display: block;
 		}
 	}
 
