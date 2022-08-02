@@ -197,6 +197,11 @@ main {
         padding-left: 2rem;
     }
 }
+@media screen and (max-width: 960px) {
+    .mapcontainer {
+        float: left;
+    }
+}
 @media screen and (max-width: 900px)
 {
 
