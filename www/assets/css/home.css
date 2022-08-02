@@ -1191,7 +1191,7 @@ p.error {
 			display: none !important;
 		}
 		#gdprIos {
-			display: block;
+			display: block !important;
 		}
 	}
 
