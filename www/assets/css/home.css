@@ -1048,11 +1048,6 @@ header nav a:first-of-type span
 
 #gdpr
 {
-	-webkit-appearance: checkbox !important;
-	-moz-appearance: checkbox !important;
-	-ms-appearance: checkbox !important;
-	-o-appearance: checkbox !important;
-	/*float: none;*/
 	margin-left: auto;
 	margin-right: auto;
 	min-width: 80px;
@@ -1066,7 +1061,6 @@ header nav a:first-of-type span
 
 #gdpr input
 {
-	-webkit-appearance: none;
 	cursor: pointer;
 	position: absolute;
 	background-color: #525252;
@@ -1102,7 +1096,7 @@ header nav a:first-of-type span
 }
 
 
-#gdpr::after,
+/*#gdpr::after,*/
 #gdpr input:checked
 {
 	display: block;
