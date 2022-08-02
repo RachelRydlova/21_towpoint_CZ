@@ -274,6 +274,14 @@ header nav a:first-of-type span
 	display: none;
 }
 
+#mark .logos {
+	display: flex;
+	justify-content: center;
+	column-gap: .7em;
+	flex-direction: row;
+	flex-wrap: wrap
+}
+
 #mark .logos a
 {
 
@@ -287,7 +295,6 @@ header nav a:first-of-type span
 	position: relative;
 	overflow: hidden;
 	box-shadow: 0px 5px 5px rgba(0,0,0,0.3);
-	margin-right: 30px;
 	margin-bottom: 30px;
 	transition: top 300ms, box-shadow 300ms, transform 300ms;
 }
@@ -1312,7 +1319,6 @@ p.error {
 	{
 		width: 100px;
 		height: 100px;
-		margin-right: 20px;
 	}
 
 	#mark .logos a img
