@@ -1066,16 +1066,12 @@ header nav a:first-of-type span
 	background-color: #525252;
 	width: 34px;
 	height: 34px;
-	/*content: " ";*/
+	content: "";
 	left: 7px;
 	top: 7px;
 	-webkit-border-radius: 50%;
 	border-radius: 50%;
 	transition: 150ms all;
-
-	display: block;
-	clear: both;
-	content: "";
 }
 
 #gdpr > input:checked
@@ -1100,13 +1096,13 @@ header nav a:first-of-type span
 }
 
 
-/*#gdpr::after,*/
-/*#gdpr input:checked*/
-/*{*/
-/*	display: block;*/
-/*	clear: both;*/
-/*	content: "";*/
-/*}*/
+#gdpr::after,
+#gdpr input:checked
+{
+	display: block;
+	clear: both;
+	content: "";
+}
 
 
 #gdpr p
