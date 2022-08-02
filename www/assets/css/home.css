@@ -1184,6 +1184,18 @@ p.error {
 
 
 
+/* only safari browser */
+@media not all and (min-resolution:.001dpcm) {
+	@supports (-webkit-appearance:none) {
+		#gdpr {
+			display: none !important;
+		}
+	}
+
+}
+
+
+
 /* MEDIA QUERIES */
 
 
