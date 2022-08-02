@@ -49,55 +49,69 @@ class Calculator extends Control
         // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
         $data = [];
 
+        if ($prices) {
 
-        /*   CENA    */
-        if ($prices->cena->pevne->tazne !== false) {
+            /*   CENA    */
+            if ($prices->cena->pevne->tazne !== false) {
 
-            // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
-            if ($prices->cena->pevne->elektro->E7 !== false){
-                $data['cenaPevne7'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E7->price_moc_dph + $prices->cena->pevne->montaz_cena_7_dph;
-            } else { $data['cenaPevne7'] = '0'; }
+                // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
+                if ($prices->cena->pevne->elektro->E7 !== false) {
+                    $data['cenaPevne7'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E7->price_moc_dph + $prices->cena->pevne->montaz_cena_7_dph;
+                } else {
+                    $data['cenaPevne7'] = '0';
+                }
 
-            if ($prices->cena->pevne->elektro->E13 !== false) {
-                // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
-                $data['cenaPevne13'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
-            } else { $data['cenaPevne13'] = '0'; }
-        } else {
-            $data['cenaPevne7'] = '0';
-            $data['cenaPevne13'] = '0';
-        }
+                if ($prices->cena->pevne->elektro->E13 !== false) {
+                    // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
+                    $data['cenaPevne13'] = $prices->cena->pevne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
+                } else {
+                    $data['cenaPevne13'] = '0';
+                }
+            } else {
+                $data['cenaPevne7'] = '0';
+                $data['cenaPevne13'] = '0';
+            }
 
-        if ($prices->kvalita->odnimatelne->tazne !== false) {
+            if ($prices->kvalita->odnimatelne->tazne !== false) {
 
-            // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
-            if ($prices->kvalita->pevne->elektro->E7 !== false) {
-                $data['kvalitaOdnimatelne7'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E7->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_7_dph;
-            } else { $data['kvalitaOdnimatelne7'] = '0'; }
+                // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
+                if ($prices->kvalita->pevne->elektro->E7 !== false) {
+                    $data['kvalitaOdnimatelne7'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E7->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_7_dph;
+                } else {
+                    $data['kvalitaOdnimatelne7'] = '0';
+                }
 
-            // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
-            if ($prices->kvalita->pevne->elektro->E13 !== false) {
-                $data['kvalitaOdnimatelne13'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E13->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_13_dph;
-            } else { $data['kvalitaOdnimatelne13'] = '0'; }
-        } else {
-            $data['kvalitaOdnimatelne7'] = '0';
-            $data['kvalitaOdnimatelne13'] = '0';
-        }
+                // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
+                if ($prices->kvalita->pevne->elektro->E13 !== false) {
+                    $data['kvalitaOdnimatelne13'] = $prices->kvalita->odnimatelne->tazne->price_moc_dph + $prices->kvalita->odnimatelne->elektro->E13->price_moc_dph + $prices->kvalita->odnimatelne->montaz_cena_13_dph;
+                } else {
+                    $data['kvalitaOdnimatelne13'] = '0';
+                }
+            } else {
+                $data['kvalitaOdnimatelne7'] = '0';
+                $data['kvalitaOdnimatelne13'] = '0';
+            }
 
 
-        if ($prices->cena->odnimatelne->tazne !== false) {
+            if ($prices->cena->odnimatelne->tazne !== false) {
 
-            // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
-            if ($prices->cena->pevne->elektro->E7 !== false){
-                $data['cenaOdnimatelne7'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->odnimatelne->elektro->E7->price_moc_dph + $prices->cena->odnimatelne->montaz_cena_7_dph;
-            } else { $data['cenaOdnimatelne7'] = '0'; }
+                // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
+                if ($prices->cena->pevne->elektro->E7 !== false) {
+                    $data['cenaOdnimatelne7'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->odnimatelne->elektro->E7->price_moc_dph + $prices->cena->odnimatelne->montaz_cena_7_dph;
+                } else {
+                    $data['cenaOdnimatelne7'] = '0';
+                }
 
-            // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
-            if ($prices->cena->pevne->elektro->E13 !== false){
-                $data['cenaOdnimatelne13'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
-            } else { $data['cenaOdnimatelne13'] = '0'; }
-        } else {
-            $data['cenaOdnimatelne7'] = '0';
-            $data['cenaOdnimatelne13'] = '0';
+                // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
+                if ($prices->cena->pevne->elektro->E13 !== false) {
+                    $data['cenaOdnimatelne13'] = $prices->cena->odnimatelne->tazne->price_moc_dph + $prices->cena->pevne->elektro->E13->price_moc_dph + $prices->cena->pevne->montaz_cena_13_dph;
+                } else {
+                    $data['cenaOdnimatelne13'] = '0';
+                }
+            } else {
+                $data['cenaOdnimatelne7'] = '0';
+                $data['cenaOdnimatelne13'] = '0';
+            }
         }
 
 
