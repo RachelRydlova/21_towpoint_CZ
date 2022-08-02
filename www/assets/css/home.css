@@ -1095,8 +1095,12 @@ header nav a:first-of-type span
 	white-space: nowrap;
 }
 
+#gdpr::after {
+	position: absolute;
+	width: 80px;
+}
 
-/*#gdpr::after,*/
+#gdpr::after,
 #gdpr input:checked
 {
 	display: block;
