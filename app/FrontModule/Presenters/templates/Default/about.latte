@@ -128,7 +128,6 @@
 </main>
 
 {*   MODAL S INFEM O MONTAZNIM MISTU *}
-{* @todo predchystan modal na kazde montazni misto -> jeste dodelat, ceka se na fotky montaznich mist, pole v reve .. mapCZ.js *}
     {foreach $mapData as $partner}
         <div class="overlay" id="modal{$partner->id}">
             <div class="modal">
@@ -179,7 +178,6 @@
                         size: 30,
                     }
                 },
-                /* @todo data tahat z api Revy */
                 plots: {
                     {foreach $mapData as $partner}
                         {$partner->id}: {
@@ -190,8 +188,6 @@
                                 {'content':
                                     "<h2>{$partner->nazev|noescape}</h2>{if $partner->params}<ul>{foreach $partner->params as $param}<li>{$param->name|noescape}</li>{/foreach}</ul>{/if}"
                                 },
-                            twpParameter: "",
-                            twpText:"",
                             twpTitle: {if $partner->nazev}{$partner->nazev}{else}""{/if},
                             twpAdress: {if $partner->adresa}{$partner->adresa}{else}""{/if},
                         },

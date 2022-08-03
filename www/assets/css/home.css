@@ -1106,7 +1106,7 @@ header nav a:first-of-type span
 	#gdpr {
 		display: block;
 		clear: both;
-		content: "";
+		content: " ";
 	}
 }
 #gdpr::after,
