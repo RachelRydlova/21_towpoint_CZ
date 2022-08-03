@@ -86,8 +86,10 @@ class ApiManager
     private function solveVapolResponse($url, $cacheKey, $log = null, $method = 'GET', $expiration = '5 days')
     {
         if ($load = $this->cache->load($cacheKey)) {
-            if (isset($load->data))
-            return $load->data;
+            if (isset($load->data)){
+                return $load->data;
+            }
+            return $load;
         }
 
         $log = $log ?? $cacheKey;
@@ -316,6 +318,7 @@ class ApiManager
                 $vehicleId = Arrays::get($dataToReva, ['carInfo', 'vehicleId']);
                 foreach ($motory as $item) if ($vehicleId == $item->vozidlo_id) $outmotor = $item->fullname;
 
+                // zda se jedna o uni motor
                 $isUni = Arrays::get($dataToReva, ['carInfo', 'isUni']);
 
                 // vytahuji informaci, zda byl zvolen komfort
