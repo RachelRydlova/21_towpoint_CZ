@@ -86,6 +86,7 @@ class ApiManager
     private function solveVapolResponse($url, $cacheKey, $log = null, $method = 'GET', $expiration = '5 days')
     {
         if ($load = $this->cache->load($cacheKey)) {
+            if (array_key_exists($load->data))
             return $load->data;
         }
 

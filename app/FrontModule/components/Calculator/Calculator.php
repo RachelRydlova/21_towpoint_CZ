@@ -118,7 +118,7 @@ class Calculator extends Control
 
 
         /*   KVALITA  */
-        if ($prices->kvalita->pevne->tazne !== false){
+        if ($prices->kvalita->pevne && $prices->kvalita->pevne->tazne !== false){
             // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
             if ($prices->kvalita->pevne->elektro->E7 !== false){
                 $data['kvalitaPevne7'] = $prices->kvalita->pevne->tazne->price_moc_dph + $prices->kvalita->pevne->elektro->E7->price_moc_dph + $prices->kvalita->pevne->montaz_cena_7_dph;
