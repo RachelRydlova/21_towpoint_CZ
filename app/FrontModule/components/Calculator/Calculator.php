@@ -57,29 +57,29 @@ class Calculator extends Control
 
             /*   CENA    */
             // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
-            $data['cenaPevne7'] = $cenaPevne->tazne->price_moc_dph + $cenaPevne->elektro->E7->price_moc_dph + $cenaPevne->montaz_cena_7_dph || 0;
+            $data['cenaPevne7'] = $cenaPevne->tazne->price_moc_dph + $cenaPevne->elektro->E7->price_moc_dph + $cenaPevne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
-            $data['cenaPevne13'] = $cenaPevne->tazne->price_moc_dph + $cenaPevne->elektro->E13->price_moc_dph + $cenaPevne->montaz_cena_13_dph || 0;
+            $data['cenaPevne13'] = $cenaPevne->tazne->price_moc_dph + $cenaPevne->elektro->E13->price_moc_dph + $cenaPevne->montaz_cena_13_dph;
 
             // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
-            $data['kvalitaOdnimatelne7'] = $kvalitaOdminatelne->tazne->price_moc_dph + $kvalitaOdminatelne->elektro->E7->price_moc_dph + $kvalitaOdminatelne->montaz_cena_7_dph || 0;
+            $data['kvalitaOdnimatelne7'] = $kvalitaOdminatelne->tazne->price_moc_dph + $kvalitaOdminatelne->elektro->E7->price_moc_dph + $kvalitaOdminatelne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
-            $data['kvalitaOdnimatelne13'] = $kvalitaOdminatelne->tazne->price_moc_dph + $kvalitaOdminatelne->elektro->E13->price_moc_dph + $kvalitaOdminatelne->montaz_cena_13_dph || 0;
+            $data['kvalitaOdnimatelne13'] = $kvalitaOdminatelne->tazne->price_moc_dph + $kvalitaOdminatelne->elektro->E13->price_moc_dph + $kvalitaOdminatelne->montaz_cena_13_dph;
 
             // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
-            $data['cenaOdnimatelne7'] = $cenaOdnimatelne->tazne->price_moc_dph + $cenaOdnimatelne->elektro->E7->price_moc_dph + $cenaOdnimatelne->montaz_cena_7_dph || 0;
+            $data['cenaOdnimatelne7'] = $cenaOdnimatelne->tazne->price_moc_dph + $cenaOdnimatelne->elektro->E7->price_moc_dph + $cenaOdnimatelne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
-            $data['cenaOdnimatelne13'] = $cenaOdnimatelne->tazne->price_moc_dph + $cenaOdnimatelne->elektro->E13->price_moc_dph + $cenaOdnimatelne->montaz_cena_13_dph || 0;
+            $data['cenaOdnimatelne13'] = $cenaOdnimatelne->tazne->price_moc_dph + $cenaOdnimatelne->elektro->E13->price_moc_dph + $cenaOdnimatelne->montaz_cena_13_dph;
 
             /*   KVALITA  */
             // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
-            $data['kvalitaPevne7'] = $kvalitaPevne->tazne->price_moc_dph + $kvalitaPevne->elektro->E7->price_moc_dph + $kvalitaPevne->montaz_cena_7_dph || 0;
+            $data['kvalitaPevne7'] = $kvalitaPevne->tazne->price_moc_dph + $kvalitaPevne->elektro->E7->price_moc_dph + $kvalitaPevne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > kvalita + pevne + 13pin + montaz
-            $data['kvalitaPevne13'] = $kvalitaPevne->tazne->price_moc_dph + $kvalitaPevne->elektro->E13->price_moc_dph + $kvalitaPevne->montaz_cena_13_dph || 0;
+            $data['kvalitaPevne13'] = $kvalitaPevne->tazne->price_moc_dph + $kvalitaPevne->elektro->E13->price_moc_dph + $kvalitaPevne->montaz_cena_13_dph;
         };
 
 
