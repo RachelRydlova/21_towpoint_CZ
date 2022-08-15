@@ -51,35 +51,49 @@ class Calculator extends Control
 
         if ($prices && is_object($prices) && isset($prices->cena)) {
             $cenaPevne = $prices->cena->pevne;
-            $kvalitaOdminatelne = $prices->kvalita->odnimatelne;
+            $cenaPevneTazne = $cenaPevne->tazne ? $cenaPevne->tazne->price_moc_dph : 0;
+            $cenaPevneE7 = $cenaPevne->elektro->E7 ? $cenaPevne->elektro->E7->price_moc_dph : 0;
+            $cenaPevneE13 = $cenaPevne->elektro->E13 ? $cenaPevne->elektro->E13->price_moc_dph : 0;
             $cenaOdnimatelne = $prices->cena->odnimatelne;
+            $cenaOdnimatelneTazne = $cenaOdnimatelne->tazne ? $cenaOdnimatelne->tazne->price_moc_dph : 0;
+            $cenaOdnimatelneE7 = $cenaOdnimatelne->elektro->E7 ? $cenaOdnimatelne->elektro->E7->price_moc_dph : 0;
+            $cenaOdnimatelneE13 = $cenaOdnimatelne->elektro->E13 ? $cenaOdnimatelne->elektro->E13->price_moc_dph : 0;
+
             $kvalitaPevne = $prices->kvalita->pevne;
+            $kvalitaPevneTazne = $kvalitaPevne->tazne ? $kvalitaPevne->tazne->price_moc_dph : 0;
+            $kvalitaPevneE7 =  $kvalitaPevne->elektro->E7 ? $kvalitaPevne->elektro->E7->price_moc_dph : 0;
+            $kvalitaPevneE13 = $kvalitaPevne->elektro->E13 ? $kvalitaPevne->elektro->E13->price_moc_dph : 0;
+            $kvalitaOdminatelne = $prices->kvalita->odnimatelne;
+            $kvalitaOdminatelneTazne = $kvalitaOdminatelne->tazne ? $kvalitaOdminatelne->tazne->price_moc_dph : 0;
+            $kvalitaOdminatelneE7 = $kvalitaOdminatelne->elektro->E7 ? $kvalitaOdminatelne->elektro->E7->price_moc_dph : 0;
+            $kvalitaOdminatelneE13 = $kvalitaOdminatelne->elektro->E13 ? $kvalitaOdminatelne->elektro->E13->price_moc_dph : 0;
+
 
             /*   CENA    */
             // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
-            $data['cenaPevne7'] = $cenaPevne->tazne->price_moc_dph + $cenaPevne->elektro->E7->price_moc_dph + $cenaPevne->montaz_cena_7_dph;
+            $data['cenaPevne7'] = $cenaPevneTazne + $cenaPevneE7 + $cenaPevne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
-            $data['cenaPevne13'] = $cenaPevne->tazne->price_moc_dph + $cenaPevne->elektro->E13->price_moc_dph + $cenaPevne->montaz_cena_13_dph;
+            $data['cenaPevne13'] = $cenaPevneTazne + $cenaPevneE13 + $cenaPevne->montaz_cena_13_dph;
 
             // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
-            $data['kvalitaOdnimatelne7'] = $kvalitaOdminatelne->tazne->price_moc_dph + $kvalitaOdminatelne->elektro->E7->price_moc_dph + $kvalitaOdminatelne->montaz_cena_7_dph;
+            $data['kvalitaOdnimatelne7'] = $kvalitaOdminatelneTazne + $kvalitaOdminatelneE7 + $kvalitaOdminatelne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
-            $data['kvalitaOdnimatelne13'] = $kvalitaOdminatelne->tazne->price_moc_dph + $kvalitaOdminatelne->elektro->E13->price_moc_dph + $kvalitaOdminatelne->montaz_cena_13_dph;
+            $data['kvalitaOdnimatelne13'] = $kvalitaOdminatelneTazne + $kvalitaOdminatelneE13 + $kvalitaOdminatelne->montaz_cena_13_dph;
 
             // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
-            $data['cenaOdnimatelne7'] = $cenaOdnimatelne->tazne->price_moc_dph + $cenaOdnimatelne->elektro->E7->price_moc_dph + $cenaOdnimatelne->montaz_cena_7_dph;
+            $data['cenaOdnimatelne7'] = $cenaOdnimatelneTazne + $cenaOdnimatelneE7 + $cenaOdnimatelne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
-            $data['cenaOdnimatelne13'] = $cenaOdnimatelne->tazne->price_moc_dph + $cenaOdnimatelne->elektro->E13->price_moc_dph + $cenaOdnimatelne->montaz_cena_13_dph;
+            $data['cenaOdnimatelne13'] = $cenaOdnimatelneTazne + $cenaOdnimatelneE13 + $cenaOdnimatelne->montaz_cena_13_dph;
 
             /*   KVALITA  */
             // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
-            $data['kvalitaPevne7'] = $kvalitaPevne->tazne->price_moc_dph + $kvalitaPevne->elektro->E7->price_moc_dph + $kvalitaPevne->montaz_cena_7_dph;
+            $data['kvalitaPevne7'] = $kvalitaPevneTazne + $kvalitaPevneE7 + $kvalitaPevne->montaz_cena_7_dph;
 
             // v druhe moznosti pocitam preference > kvalita + pevne + 13pin + montaz
-            $data['kvalitaPevne13'] = $kvalitaPevne->tazne->price_moc_dph + $kvalitaPevne->elektro->E13->price_moc_dph + $kvalitaPevne->montaz_cena_13_dph;
+            $data['kvalitaPevne13'] = $kvalitaPevneTazne + $kvalitaPevneE13 + $kvalitaPevne->montaz_cena_13_dph;
         };
 
 

@@ -106,6 +106,7 @@ class ApiManager
             $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
             if (!isset($data->data)) {
                 Debugger::log('Neexistuje obrázek pro dané auto');
+                return null;
             }
         } catch (GuzzleException $e) {
             Debugger::log($e, $log);
@@ -133,6 +134,7 @@ class ApiManager
         $cacheKey = 'remote.getModelImage.'.$modelId;
         $token = self::countApiToken([$modelId]);
         $uri = '/remote-cars/get-model-image/?modelid='.$modelId.'&secret='.$token;
+        Debugger::log($this->solveVapolResponse($uri, $cacheKey), 'getModelImage');
         return $this->solveVapolResponse($uri, $cacheKey);
     }
 
