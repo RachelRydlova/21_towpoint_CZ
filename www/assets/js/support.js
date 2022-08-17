@@ -399,15 +399,17 @@ $(function () {
 
         // zjistim jestli je vyplneny email
         let mailId = $('#frm-orderForm-orderForm-email');
+        let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         let mail = mailId.val();
-        if (!mail || mail.length === 0) {
+
+        if (!mail.match(validRegex)) {
             mailId.parent().addClass('error');
             $('.inputs p.complete').show();
+            mailId.focus();
         } else {
             mailId.parent().removeClass('error');
             $('.inputs p.complete').hide();
         }
-        console.log(mail);
 
         // zjistim jestli je vyplneny telefon
         let telId = $('#frm-orderForm-orderForm-tel');
@@ -415,6 +417,7 @@ $(function () {
         if (!tel || tel.length === 0) {
             telId.parent().addClass('error');
             $('.inputs p.complete').show();
+            telId.focus();
         } else {
             telId.parent().removeClass('error');
             $('.inputs p.complete').hide();
@@ -465,9 +468,12 @@ $(function () {
         // zjistim jestli je vyplneny email
         let mailId = $('#frm-contactForm-email');
         let mail = mailId.val();
-        if (!mail || mail.length === 0) {
+        let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+        if (!mail.match(validRegex)) {
             mailId.parent().addClass('error');
             $('.inputs p.complete').show();
+            mailId.focus();
         } else {
             mailId.parent().removeClass('error');
             $('.inputs p.complete').hide();
@@ -480,6 +486,7 @@ $(function () {
         if (!tel || tel.length === 0) {
             telId.parent().addClass('error');
             $('.inputs p.complete').show();
+            telId.focus();
         } else {
             telId.parent().removeClass('error');
             $('.inputs p.complete').hide();
