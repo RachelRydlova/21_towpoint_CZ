@@ -131,9 +131,10 @@
     {foreach $mapData as $partner}
         <div class="overlay" id="modal{$partner->id}">
             <div class="modal">
+                <a href="#" class="close">
+                    <span><i class="fa fa-times"></i></span>
+                </a>
                 <div class="modal-content">
-                    <a href="#" class="close">
-                        <span>X</span></a>
                     <h2 class="orange twpTitle">
                         {$partner->nazev}
                     </h2>

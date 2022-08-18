@@ -2,17 +2,24 @@
     display: none;
 }
 .close {
-    display: inline-block;
-    text-align: right;
-    padding: 1em 1em;
+    position: absolute;
+    right: -1%;
+    top: -1%;
 }
 .close span {
-    border: 1px solid var(--color-darkGray);
+    border: 2px solid var(--color-lightGray);
     padding: 0.2em 0.5em;
-    border-radius: 31%;
+    border-radius: 50%;
+    color: var(--color-lightGray);
     background-color: var(--color-gray);
-    color: var(--color-white);
 }
+.close .fa {
+    font-size: 3em !important;
+}
+.modal a.close span:hover {
+    background-color: var(--color-darkGray);
+}
+
 .modal-content a:hover {
     text-decoration: none !important;
 }
@@ -98,13 +105,11 @@ main {
 
 .modal {
     position: fixed;
-    /*top: 6%;*/
-    /*left: 15%;*/
-    z-index: 2000;
+    z-index: 1000;
     width: 70%;
     height: auto;
-    overflow-x: hidden;
-    overflow-y: auto;
+    /*overflow-x: hidden;*/
+    /*overflow-y: auto;*/
     outline: 0;
     background-color: rgba(0,0,0,0.82);
 }
@@ -161,6 +166,7 @@ main {
     background-position: left 0.25em;
     padding-left: 60px;
     padding-bottom: 0.7em;
+    text-align: left;
 }
 
 .content span {
@@ -199,6 +205,11 @@ main {
         padding-left: 2rem;
     }
 }
+@media screen and (max-width: 1100px) {
+    .modal {
+        width: 80%;
+    }
+}
 @media screen and (max-width: 960px) {
     .mapcontainer {
         float: left;
@@ -213,15 +224,19 @@ main {
 
     .modal .content {
         display: flex;
-        flex-direction: column;
         align-items: center;
         max-width: 100%;
     }
+    .content span {
+        font-size: .8em !important;
+    }
     .modal .content img {
-         max-width: 90% !important;
+         max-width: 50% !important;
     }
     .modal ul {
         max-width: 90%;
+        font-size: 1em !important;
+        padding-left: 1em;
     }
     .modal ul li {
         text-align: left;
@@ -240,6 +255,19 @@ main {
     }
     .mapael .mapTooltip {
         display: none !important;
+    }
+}
+
+@media screen and (max-width: 700px)
+{
+    .modal .content {
+        flex-direction: column;
+    }
+    .modal .content img {
+        max-width: 70% !important;
+    }
+    .modal h2 {
+        font-size: 1.5em !important;
     }
 }
 
