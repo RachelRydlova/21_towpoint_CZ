@@ -399,7 +399,7 @@ $(function () {
 
         // zjistim jestli je vyplneny email
         let mailId = $('#frm-orderForm-orderForm-email');
-        let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        let validRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let mail = mailId.val();
 
         if (!mail.match(validRegex)) {
@@ -467,8 +467,9 @@ $(function () {
 
         // zjistim jestli je vyplneny email
         let mailId = $('#frm-contactForm-email');
-        let mail = mailId.val();
-        let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+        let mail = mailId.val().toLowerCase();
+        console.log(mail);
+        let validRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
         if (!mail.match(validRegex)) {
             mailId.parent().addClass('error');
