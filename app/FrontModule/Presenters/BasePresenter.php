@@ -43,11 +43,32 @@ class BasePresenter extends Presenter
     }
 
     /**
+     * zobrazeni popup, zopakovani po 24 hodinach
+     * @return void
+     * @throws \Nette\Application\AbortException
+     */
+    public function handlePopUpSeen(): void
+    {
+        $expire = new \DateTime('+ 24 hours');
+        $response = $this->getHttpResponse();
+        $response->setCookie('popupseen', 'popupAlreadySeen', $expire->getTimestamp());
+        $this->sendPayload();
+    }
+
+    /**
      * @return mixed
      */
     public function getAgreementCookie()
     {
         return $this->getHttpRequest()->getCookie(self::AGREEMENT_COOKIE_NAME);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPopupCookie()
+    {
+        return $this->getHttpRequest()->getCookie('popupseen');
     }
 
     public function beforeRender(): void
@@ -56,6 +77,8 @@ class BasePresenter extends Presenter
         $this->template->baseTitle = 'TowPoint';
         // Cookie agreement
         $this->template->cookieAgreement = $this->getAgreementCookie();
+        // zda uz byl zobrazen popup
+        $this->template->popupSeen = $this->getPopupCookie();
 
     }
 

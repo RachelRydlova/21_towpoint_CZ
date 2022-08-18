@@ -2,6 +2,17 @@ var uint;
 
 $(function () {
 
+    // pop-up banner
+    setTimeout(function () {
+        $('#popup').css('display', 'flex');
+    }, 8000);
+
+    $('.overlay .close').on('click', function () {
+        $('.overlay').hide();
+        $.nette.ajax({
+            url: '?do=popUpSeen'
+        });
+    });
 
     $(document).on('click', '#acceptCookies', function (e){
         $('#cookie').hide(300);
