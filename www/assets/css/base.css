@@ -116,8 +116,8 @@ aside div {
 /* pop-up pro akce a novinky */
 .close {
 	position: absolute;
-	right: -1%;
-	top: -1%;
+	right: -2%;
+	top: -2%;
 }
 .close span {
 	border: 2px solid var(--color-lightGray);
@@ -135,13 +135,13 @@ aside div {
 .modal {
 	position: fixed;
 	z-index: 1000;
-	width: 60%;
+	/*width: 60%;*/
 	border: 2px solid;
 	color: var(--color-white);
 	background-color: rgba(128,128,128,0.4);
 }
 .modal-content {
-	width: 95%;
+	/*width: 95%;*/
 	position: absolute;
 	bottom: 4%;
 	padding-left: 4em;
@@ -778,6 +778,13 @@ footer img.tazak {
 	}
 	.vyrobci img {
 		max-width: 4rem;
+	}
+
+	.modal {
+		width: 80%;
+	}
+	.modal img {
+		width: 100%;
 	}
 }
 
