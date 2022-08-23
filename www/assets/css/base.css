@@ -114,25 +114,25 @@ aside div {
 
 
 /* pop-up pro akce a novinky */
-.close {
+.pop-end {
 	position: absolute;
 	right: -2%;
 	top: -2%;
 }
-.close span {
+.pop-end span {
 	border: 2px solid var(--color-lightGray);
 	padding: 0.2em 0.5em;
 	border-radius: 50%;
 	color: var(--color-lightGray);
 	background-color: var(--color-gray);
 }
-.close .fa {
+.pop-end .fa {
 	font-size: 3em !important;
 }
-.modal a.close span:hover {
+.popModal a.pop-end span:hover {
 	background-color: var(--color-darkGray);
 }
-.modal {
+.popModal {
 	position: fixed;
 	z-index: 1000;
 	/*width: 60%;*/
@@ -140,15 +140,8 @@ aside div {
 	color: var(--color-white);
 	background-color: rgba(128,128,128,0.4);
 }
-.modal-content {
-	/*width: 95%;*/
-	position: absolute;
-	bottom: 4%;
-	padding-left: 4em;
-	background-color: #ff0000b0;
-}
 
-.overlay {
+.popOverlay {
 	/*display: flex;*/
 	z-index: 999;
 	position: fixed; /* Positioning and size */
@@ -162,7 +155,7 @@ aside div {
 	display: none; /* making it hidden by default */
 }
 
-.overlay .content {
+.popOverlay .content {
 	display: flex;
 	justify-content: space-around;
 	text-align: left;

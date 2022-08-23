@@ -7,8 +7,8 @@ $(function () {
         $('#popup').css('display', 'flex');
     }, 8000);
 
-    $('.overlay .close').on('click', function () {
-        $('.overlay').hide();
+    $('.popOverlay .pop-end').on('click', function () {
+        $('.popOverlay').hide();
         $.nette.ajax({
             url: '?do=popUpSeen'
         });

@@ -152,19 +152,12 @@
 
 
 <!-- ======= POP-UP ======= -->
-<div n:if="!$popupSeen" class="overlay" id="popup">
-    <div class="modal">
-        <a href="#" class="close">
+<div n:if="!$popupSeen" class="popOverlay" id="popup">
+    <div class="popModal">
+        <a href="#" class="pop-end">
             <span><i class="fa fa-times"></i></span>
         </a>
         <img src="{$basePath}/assets/image/stehovani_cz.jpg" alt="pop up akce a novinky" style="max-width: 510px">
-{*        <div class="modal-content">*}
-{*            <div class="content">*}
-{*               <p>Vážení zákazníci, <br> <strong>od čtvrtka 25.8. začíná stěhování skladu do nových prostor, které potrvá minimálně do pondělí 29.8.</strong> V tuto dobu*}
-{*                   <strong>nebude probíhat expedice.</strong> Prosíme Vás o trpělivost. Postupně naběhneme do plného provozu.*}
-{*                   <br> Děkujeme za pochopení. </p>*}
-{*            </div>*}
-{*        </div>*}
     </div>
 </div>
 
