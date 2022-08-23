@@ -5,8 +5,8 @@
     <link href="{$basePath}/assets/css/onas.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/mapaCR.css" rel="stylesheet">
 
-{*    <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>*}
-{*    <script type="text/javascript">Loader.load()</script>*}
+    <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+    <script type="text/javascript">Loader.load()</script>
 {/block}
 
 
@@ -61,7 +61,7 @@
         </div>
     </section>
 
-{*    <div id="m" style="height:600px; width: 100%"></div>*}
+    <div id="m" style="height:600px; width: 100%; margin-bottom: 3%"></div>
 
     <section class="info">
         <div>
@@ -168,37 +168,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
     <script src="{$basePath}/assets/js/raphael.js"></script>
     <script src="{$basePath}/assets/js/jquery.mapael.js"></script>
+    <script src="{$basePath}/assets/js/mapySupport.js"></script>
 
-{*    <script type="text/javascript">*}
-{*        var center = SMap.Coords.fromWGS84(14.41790, 50.12655);*}
-{*        var m = new SMap(JAK.gel("m"), center, 13);*}
-{*        m.addControl(new SMap.Control.Sync());*}
-{*        m.addDefaultLayer(SMap.DEF_BASE).enable();*}
-{*        m.addDefaultControls();*}
-
-{*        var c = new SMap.Card();*}
-{*        c.setSize(400, 400); /* Šířka, výška */*}
-
-{*        c.getHeader().innerHTML = "Towpoint Zašová";*}
-{*        c.getFooter().innerHTML = "Zašová 270, 756 51, Zašová";*}
-
-{*        c.getBody().style.margin = "10% 0";*}
-{*        c.getBody().style.backgroundColor = "#343434";*}
-{*        c.getBody().style.color = "#fff";*}
-{*        for (var i=0;i<10;i++) { /* Hodně textu, aby přetekl */*}
-{*            c.getBody().innerHTML += "Toto je dlouhý text.";*}
-{*        }*}
-
-{*        var layer = new SMap.Layer.Marker(); /* Vrstva pro značku */*}
-{*        m.addLayer(layer).enable();*}
-
-{*        var options = {};*}
-{*        // var marker = new SMap.Marker(center, "myMarker", options);*}
-
-{*        var marker = new SMap.Marker(m.getCenter()); /* Značka s vizitkou uprostřed mapy */*}
-{*        marker.decorate(SMap.Marker.Feature.Card, c);*}
-{*        layer.addMarker(marker);*}
-{*    </script>*}
+    <script type="text/javascript">
+        // var center = SMap.Coords.fromWGS84(14.41790, 50.12655);
+        // var m = new SMap(JAK.gel("m"), center, 13);
+        // m.addControl(new SMap.Control.Sync());
+        // m.addDefaultLayer(SMap.DEF_BASE).enable();
+        // m.addDefaultControls();
+        //
+        // var c = new SMap.Card();
+        // c.setSize(400, 400); /* Šířka, výška */
+        //
+        // c.getHeader().innerHTML = "Towpoint Zašová";
+        // c.getFooter().innerHTML = "Zašová 270, 756 51, Zašová";
+        //
+        // c.getBody().style.margin = "5%";
+        // c.getBody().style.backgroundColor = "#343434";
+        // c.getBody().style.color = "#fff";
+        // for (var i=0;i<10;i++) { /* Hodně textu, aby přetekl */
+        //     c.getBody().innerHTML += "Toto je dlouhý text.";
+        // }
+        //
+        // var layer = new SMap.Layer.Marker(); /* Vrstva pro značku */
+        // m.addLayer(layer).enable();
+        //
+        // var options = {};
+        // // var marker = new SMap.Marker(center, "myMarker", options);
+        //
+        // var marker = new SMap.Marker(m.getCenter()); /* Značka s vizitkou uprostřed mapy */
+        // marker.decorate(SMap.Marker.Feature.Card, c);
+        // layer.addMarker(marker);
+    </script>
 
 
     <script>
