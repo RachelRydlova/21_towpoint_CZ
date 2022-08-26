@@ -73,7 +73,7 @@
 
         {* parametry kazdeho montazniho strediska *}
         {foreach $mapData as $partner}
-            <div id="partner{$partner->id}" class="partnerInfo">
+            <div id="partner{$partner->id}" class="partnerInfo" style="display: none">
                 <ul>
                     <li n:foreach="$partner->params as $param">
                         {$param->name|noescape}
