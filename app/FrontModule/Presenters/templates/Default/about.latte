@@ -223,7 +223,7 @@
             });
         });
 
-        $('[data-id]').on("click", function(){
+        $(document).on("click","[data-id]", function(){
             let dataid = $(this).attr("data-id");
             $('#modal'+dataid).css('display', 'flex');
         });
