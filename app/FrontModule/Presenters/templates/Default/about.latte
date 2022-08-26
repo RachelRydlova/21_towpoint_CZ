@@ -241,11 +241,11 @@
         });
 
         // partner info pod mapou
-        $('#partnerForm-partner option').on('click', function () {
+        $('#partnerForm-partner').on('click', function () {
             let id = $(this).val();
             console.log('#partner'+id);
-            $('.partnerInfo').hide().css('display', 'none');
-            $('#partner'+id).show().css('display', 'block');
+            $('.partnerInfo').hide();
+            $('#partner'+id).show();
         })
 
     </script>
