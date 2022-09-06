@@ -46,6 +46,7 @@ class Calculator extends Control
     {
         $prices = $this->apiManager->getTowpointPrices($vehicleId, $comfort, $isUni);
 
+        bdump($prices, 'cenyZApi');
         // pole data obsahuje 8 moznych variant cen, ktere se posilaji do sablony a zpracovavaji v js
         $data = [];
 
@@ -69,33 +70,66 @@ class Calculator extends Control
             $kvalitaOdminatelneE13 = $kvalitaOdminatelne->elektro->E13 ? $kvalitaOdminatelne->elektro->E13->price_moc_dph : 0;
 
 
-            /*   CENA    */
+            /*   CENA   -> pokud alespon jedna hodnota chybi, neposilame cenu, ale zobrazujeme, ze kalkulace neni k dispozi */
             // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
+            if (empty($cenaPevneTazne) || empty($cenaPevneE7) || empty($cenaPevne->montaz_cena_7_dph)){
+                $data['cenaPevne7'] = 0;
+            }
             $data['cenaPevne7'] = $cenaPevneTazne + $cenaPevneE7 + $cenaPevne->montaz_cena_7_dph;
 
+
             // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
-            $data['cenaPevne13'] = $cenaPevneTazne + $cenaPevneE13 + $cenaPevne->montaz_cena_13_dph;
+            if (empty($cenaPevneTazne) || empty($cenaPevneE13) || empty($cenaPevne->montaz_cena_13_dph)){
+                $data['cenaPevne13'] = 0;
+            } else {
+                $data['cenaPevne13'] = $cenaPevneTazne + $cenaPevneE13 + $cenaPevne->montaz_cena_13_dph;
+            }
 
-            // v druhe moznosti pocitam preference > kvalita + odnimatelne + 7pin + montaz
-            $data['kvalitaOdnimatelne7'] = $kvalitaOdminatelneTazne + $kvalitaOdminatelneE7 + $kvalitaOdminatelne->montaz_cena_7_dph;
+            // pocitam preference > kvalita + odnimatelne + 7pin + montaz
+            if (empty($kvalitaOdminatelneTazne) || empty($kvalitaOdminatelneE7) || empty($kvalitaOdminatelne->montaz_cena_7_dph)){
+                $data['kvalitaOdnimatelne7'] = 0;
+            } else {
+                $data['kvalitaOdnimatelne7'] = $kvalitaOdminatelneTazne + $kvalitaOdminatelneE7 + $kvalitaOdminatelne->montaz_cena_7_dph;
+            }
 
-            // v druhe moznosti pocitam preference > kvalita + odnimatelne + 13pin + montaz
-            $data['kvalitaOdnimatelne13'] = $kvalitaOdminatelneTazne + $kvalitaOdminatelneE13 + $kvalitaOdminatelne->montaz_cena_13_dph;
+            // pocitam preference > kvalita + odnimatelne + 13pin + montaz
+            if (empty($kvalitaOdminatelneTazne) || empty($kvalitaOdminatelneE13) || empty($kvalitaOdminatelne->montaz_cena_13_dph)){
+                $data['kvalitaOdnimatelne13'] = 0;
+            } else {
+                $data['kvalitaOdnimatelne13'] = $kvalitaOdminatelneTazne + $kvalitaOdminatelneE13 + $kvalitaOdminatelne->montaz_cena_13_dph;
+            }
 
-            // v druhe moznosti pocitam preference > cena + odnimatelne + 7pin + montaz
-            $data['cenaOdnimatelne7'] = $cenaOdnimatelneTazne + $cenaOdnimatelneE7 + $cenaOdnimatelne->montaz_cena_7_dph;
+            // pocitam preference > cena + odnimatelne + 7pin + montaz
+            if (empty($cenaOdnimatelneTazne) || empty($cenaOdnimatelneE7) || empty($cenaOdnimatelne->montaz_cena_7_dph)){
+                $data['cenaOdnimatelne7'] = 0;
+            } else {
+                $data['cenaOdnimatelne7'] = $cenaOdnimatelneTazne + $cenaOdnimatelneE7 + $cenaOdnimatelne->montaz_cena_7_dph;
+            }
 
-            // v druhe moznosti pocitam preference > cena + odnimatelne + 13pin + montaz
-            $data['cenaOdnimatelne13'] = $cenaOdnimatelneTazne + $cenaOdnimatelneE13 + $cenaOdnimatelne->montaz_cena_13_dph;
+            // pocitam preference > cena + odnimatelne + 13pin + montaz
+            if (empty($cenaOdnimatelneTazne) || empty($cenaOdnimatelneE13) || empty($cenaOdnimatelne->montaz_cena_13_dph)){
+                $data['cenaOdnimatelne13'] = 0;
+            } else {
+                $data['cenaOdnimatelne13'] = $cenaOdnimatelneTazne + $cenaOdnimatelneE13 + $cenaOdnimatelne->montaz_cena_13_dph;
+            }
 
             /*   KVALITA  */
-            // v druhe moznosti pocitam preference > kvalita + pevne + 7pin + montaz
-            $data['kvalitaPevne7'] = $kvalitaPevneTazne + $kvalitaPevneE7 + $kvalitaPevne->montaz_cena_7_dph;
+            // pocitam preference > kvalita + pevne + 7pin + montaz
+            if (empty($kvalitaPevneTazne) || empty($kvalitaPevneE7) || empty($kvalitaPevne->montaz_cena_7_dph)){
+                $data['kvalitaPevne7'] = 0;
+            } else {
+                $data['kvalitaPevne7'] = $kvalitaPevneTazne + $kvalitaPevneE7 + $kvalitaPevne->montaz_cena_7_dph;
+            }
 
-            // v druhe moznosti pocitam preference > kvalita + pevne + 13pin + montaz
-            $data['kvalitaPevne13'] = $kvalitaPevneTazne + $kvalitaPevneE13 + $kvalitaPevne->montaz_cena_13_dph;
+            // pocitam preference > kvalita + pevne + 13pin + montaz
+            if (empty($kvalitaPevneTazne) || empty($kvalitaPevneE13) || empty($kvalitaPevne->montaz_cena_13_dph)){
+                $data['kvalitaPevne13'] = 0;
+            } else {
+                $data['kvalitaPevne13'] = $kvalitaPevneTazne + $kvalitaPevneE13 + $kvalitaPevne->montaz_cena_13_dph;
+            }
         };
 
+        bdump($data, 'dostupneCeny');
 
         $this->template->data = $data;
         $this->redrawControl('summaryBox');
