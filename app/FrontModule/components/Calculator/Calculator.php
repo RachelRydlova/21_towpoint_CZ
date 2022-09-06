@@ -74,8 +74,9 @@ class Calculator extends Control
             // v prvni moznosti pocitam preference > cena + pevne + 7pin + montaz
             if (empty($cenaPevneTazne) || empty($cenaPevneE7) || empty($cenaPevne->montaz_cena_7_dph)){
                 $data['cenaPevne7'] = 0;
+            } else {
+                $data['cenaPevne7'] = $cenaPevneTazne + $cenaPevneE7 + $cenaPevne->montaz_cena_7_dph;
             }
-            $data['cenaPevne7'] = $cenaPevneTazne + $cenaPevneE7 + $cenaPevne->montaz_cena_7_dph;
 
 
             // v druhe moznosti pocitam preference > cena + pevne + 13pin + montaz
