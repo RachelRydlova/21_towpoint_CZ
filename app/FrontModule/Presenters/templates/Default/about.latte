@@ -271,7 +271,9 @@
 
         $(document).on('click', ".map[data-id]", function () {
             if (isZoomed()){
-                window.devicePixelRatio = 100;
+                // window.devicePixelRatio = 100;
+                // window.body.style.zoom = "100%";
+                $('body').css({ width: '100%' });
             };
         })
 
