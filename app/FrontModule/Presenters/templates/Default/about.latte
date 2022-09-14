@@ -60,6 +60,7 @@
 
     {* seznam montaznich mist pro mobil *}
     <section id="partner">
+        {if $mapData}
         <p> Zvolte si montážní místo:</p>
 
         {* selector montazniho mista *}
@@ -85,6 +86,7 @@
                 </ul>
             </div>
         {/foreach}
+        {/if}
     </section>
 
     <section class="info">
@@ -157,34 +159,36 @@
 </main>
 
 {*   MODAL S INFEM O MONTAZNIM MISTU *}
-    {foreach $mapData as $partner}
-        <div class="overlay" id="modal{$partner->id}">
-            <div class="modal">
-                <a href="#" class="close">
-                    <span><i class="fa fa-times"></i></span>
-                </a>
-                <div class="modal-content">
-                    <h2 class="orange twpTitle">
-                        {$partner->nazev}
-                    </h2>
-                    <p class="twpAddress">
-                        {$partner->adresa}
-                    </p>
-                    <div class="content">
-                        {foreach $partner->images as $img}
-                            <img src="{$img}" alt="montazni stredisko">
-                        {/foreach}
-                        <ul class="light" style="font-size: 1.3rem">
-                            {foreach $partner->params as $param}
-                                <li class="twpParameter">{$param->name|noescape}</li>
+    {if $mapData}
+        {foreach $mapData as $partner}
+            <div class="overlay" id="modal{$partner->id}">
+                <div class="modal">
+                    <a href="#" class="close">
+                        <span><i class="fa fa-times"></i></span>
+                    </a>
+                    <div class="modal-content">
+                        <h2 class="orange twpTitle">
+                            {$partner->nazev}
+                        </h2>
+                        <p class="twpAddress">
+                            {$partner->adresa}
+                        </p>
+                        <div class="content">
+                            {foreach $partner->images as $img}
+                                <img src="{$img}" alt="montazni stredisko">
                             {/foreach}
-                            <span class="twpText">{$partner->info}</span>
-                        </ul>
+                            <ul class="light" style="font-size: 1.3rem">
+                                {foreach $partner->params as $param}
+                                    <li class="twpParameter">{$param->name|noescape}</li>
+                                {/foreach}
+                                <span class="twpText">{$partner->info}</span>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {/foreach}
+        {/foreach}
+    {/if}
 
 {/block}
 
@@ -210,19 +214,21 @@
                     }
                 },
                 plots: {
-                    {foreach $mapData as $partner}
-                        {$partner->id}: {
-                            id: {$partner->id},
-                            latitude: {if $partner->cord_ltd}{$partner->cord_ltd}{else}""{/if},
-                            longitude: {if $partner->cord_lng}{$partner->cord_lng}{else}""{/if},
-                            tooltip:
-                                {'content':
-                                    "<h2>{$partner->nazev|noescape}</h2>{if $partner->params}<ul>{foreach $partner->params as $param}<li>{$param->name|noescape}</li>{/foreach}</ul>{/if}"
-                                },
-                            twpTitle: {if $partner->nazev}{$partner->nazev}{else}""{/if},
-                            twpAdress: {if $partner->adresa}{$partner->adresa}{else}""{/if},
-                        },
-                    {/foreach}
+                    {if $mapData}
+                        {foreach $mapData as $partner}
+                            {$partner->id}: {
+                                id: {$partner->id},
+                                latitude: {if $partner->cord_ltd}{$partner->cord_ltd}{else}""{/if},
+                                longitude: {if $partner->cord_lng}{$partner->cord_lng}{else}""{/if},
+                                tooltip:
+                                    {'content':
+                                        "<h2>{$partner->nazev|noescape}</h2>{if $partner->params}<ul>{foreach $partner->params as $param}<li>{$param->name|noescape}</li>{/foreach}</ul>{/if}"
+                                    },
+                                twpTitle: {if $partner->nazev}{$partner->nazev}{else}""{/if},
+                                twpAdress: {if $partner->adresa}{$partner->adresa}{else}""{/if},
+                            },
+                        {/foreach}
+                    {/if}
                 }
             });
         });
