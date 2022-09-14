@@ -255,16 +255,26 @@
 
         let width = $(document).width();
         console.log(width, 'sirkaPredKliknutim');
-        // $(document).on('click', '#frm-carSelector-carSelector input', function () {
-        //     if (width <= 480){
-        //         $('#imark, #imodel, #imotor').prop("readonly", true);
-        //     }
-        // })
 
         // automaticke odzoomovani pri zobrazeni modalu
+
+        function isZoomed() {
+
+            let browserZoomLevel = Math.round(window.devicePixelRatio * 100);
+            let value = false;
+            if (browserZoomLevel != 100) {
+                value = true;
+            }
+            console.log(value);
+            return value;
+        }
+
         $(document).on('click', ".map[data-id]", function () {
-            document.body.style.zoom = "100%";
+            if (isZoomed()){
+                window.devicePixelRatio = 100;
+            };
         })
+
 
     </script>
     <script src="{$basePath}/assets/js/mapCZ.js"></script>
