@@ -89,7 +89,7 @@ input, textarea
 
 /* SOCIAL ICONS BAR */
 
-aside {
+aside.social {
 	position: fixed;
 	z-index: 100;
 	border-bottom-right-radius: 1em;
@@ -103,7 +103,7 @@ aside {
 	background-size: contain;
 }
 
-aside div {
+aside.social div {
 	padding-top: 1em;
 	display: flex;
 	flex-direction: column;
@@ -499,7 +499,7 @@ footer img.tazak {
 		max-height: 7.1875rem;
 	}
 
-	aside {
+	aside.social {
 		display: none;
 	}
 }

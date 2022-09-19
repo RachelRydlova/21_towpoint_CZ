@@ -50,9 +50,17 @@
 
         <br>
 
-
         {*  mapa Ceske republiky*}
-        <div class="mapcontainer" style="max-width: 1500px !important">
+        <div class="mapcontainer" style="max-width: 1500px !important; position: relative">
+            <aside id="mapInfo">
+                <div class="mapArrow">
+                    <img src="{$basePath}/assets/image/vyberSipka.png" alt="kliknutim zvolte montazni misto">
+                </div>
+                <div class="mapInfoText">
+                    <p class="mapFirstLine"> Mapa montážních míst </p>
+                    <p class="mapSecondLine"> Kliknutím zobrazíte více informací. </p>
+                </div>
+            </aside>
             <div class="map">
             </div>
         </div>
@@ -67,7 +75,7 @@
         <form action="partnerForm">
             <select name="partner" id="partnerForm-partner">
                 {foreach $mapData as $partner}
-                    <option value="{$partner->id}">{$partner->nazev}</option>
+                    <option id="{$partner->id}" value="{$partner->id}">{$partner->nazev}</option>
                 {/foreach}
             </select>
         </form>
@@ -251,31 +259,9 @@
             console.log('#partner'+id);
             $('.partnerInfo').hide();
             $('#partner'+id).show();
+            $("[data-id]").css('stroke-width', '0');
+            $("[data-id='" + id + "']").css('stroke-width', '5');
         });
-
-        let width = $(document).width();
-        console.log(width, 'sirkaPredKliknutim');
-
-        // automaticke odzoomovani pri zobrazeni modalu
-
-        function isZoomed() {
-
-            let browserZoomLevel = Math.round(window.devicePixelRatio * 100);
-            let value = false;
-            if (browserZoomLevel != 100) {
-                value = true;
-            }
-            console.log(value);
-            return value;
-        }
-
-        $(document).on('click', ".map[data-id]", function () {
-            if (isZoomed()){
-                // window.devicePixelRatio = 100;
-                // window.body.style.zoom = "100%";
-                $('body').css({ width: '100%' });
-            };
-        })
 
 
     </script>
