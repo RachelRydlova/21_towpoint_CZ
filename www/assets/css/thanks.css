@@ -1,89 +1,96 @@
-#images
-{
-    background-color: #ff9900;
-    float: left;
-    width: 100%;
-}
 
-#images > div
-{
-    max-width: 1650px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 40px 0px;
-}
-
-#images > div > div
-{
-    display: flex;
-    justify-content: space-between;
-}
-
-#images > div > div figure
-{
-    width: 23.5%;
-}
-
-#images > div > div figure img
-{
-    width: 100%;
-    display: block;
+#doc {
+    background-image: url(../img/ikony.png);
+    background-position: 90%;
+    background-size: auto 85%;
 }
 
 footer img.tazak {
     max-height: 21rem;
 }
 
-@media screen and (max-width: 1750px)
+#doc ul li {
+    padding-left: 1.8em;
+    color: black;
+    padding-bottom: 0.3em;
+}
+
+#title h1 {
+    text-align: center;
+}
+
+.text-orange {
+    color: var(--color-orange);
+}
+
+#doc .doplnkoveInfo p {
+    line-height: 1.2em;
+}
+
+#doc .doplnkoveInfo a {
+    white-space: nowrap;
+    color: inherit;
+    text-decoration: underline;
+}
+
+#links {
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    background-color: var(--color-lightGray);
+    margin-bottom: 2em;
+    padding: 2%;
+}
+
+#links .linksList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#links .linksList a {
+    font-size: 1.3em;
+    color: var(--color-darkGray);
+    line-height: 1.3em;
+    font-weight: 400;
+}
+
+footer .recenze {
+    display: none;
+}
+.doplnkoveInfo {
+    width: 60%;
+}
+
+
+@media screen and (max-width: 1200px)
 {
-    #images > div
-    {
-        max-width: none;
+    #doc {
+        background-size: auto 60%;
+    }
+}
+@media screen and (max-width: 900px)
+{
+    #doc {
+        background-image: none;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #links .linksList a {
+        font-size: 80%;
+    }
+    #links h1 {
+        font-size: 100%;
+    }
+    .doplnkoveInfo {
         width: 100%;
-        padding-left: 50px;
-        padding-right: 50px;
+    }
+    #doc h1 {
+        font-size: 1.2em;
     }
 }
-
-
-@media screen and (max-width: 960px)
-{
-   #images > div > div
-    {
-        flex-wrap: wrap;
-    }
-
-    #images > div > div figure
-    {
-        width: 48%;
-    }
-
-    #images > div > div figure:first-of-type
-    {
-        margin-bottom: 40px;
-    }
-}
-
-
-@media screen and (max-width: 720px)
-{
-    #images > div
-    {
-        padding-left: 25px;
-        padding-right: 25px;
-    }
-}
-
-@media screen and (max-width: 480px)
-{
-    #images > div > div figure
-    {
-        width: 100%;
-        margin-bottom: 40px;
-    }
-
-    #images > div > div figure:last-of-type
-    {
-        margin-bottom: 0px;
+@media screen and (max-width: 400px) {
+    #doc h1 {
+        font-size: 1em;
     }
 }

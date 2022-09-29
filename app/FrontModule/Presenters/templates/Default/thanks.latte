@@ -2,8 +2,9 @@
 
 
 {block head}
-    <link href="{$basePath}/assets/css/thanks.css" rel="stylesheet">
     <link href="{$basePath}/assets/css/home.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/voziky.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/thanks.css" rel="stylesheet">
 {/block}
 
 
@@ -11,22 +12,45 @@
 
 {block content}
 
+<section id="title">
+    <h1>
+        VÁŠ POŽADAVEK JSME PŘIJALI!
+    </h1>
+</section>
 
-<section id="main">
-    <div class="thanks">
-        <h1>Děkujeme za odeslání nezávazného požadavku!</h1>
-        <h2>Naši specialisté Vás budou co nejdříve kontaktovat.</h2>
+<section id="doc" style="background-color: var(--color-white)">
+    <div>
+        <div class="titlenote text-orange" style="font-size: 1.5em">
+            <h1>Co bude následovat?</h1>
+        </div>
+        <ul>
+            <li>Co nejdříve Vás kontaktují naši specialisté.</li>
+            <li>Společně projdeme veškeré detaily.</li>
+            <li>Nabídku upravíme dle Vašich požadavků.</li>
+            <li>Sjednáme konkrétní termín.</li>
+            <li>Pak již jen přistavíte vozidlo k nejbližšímu montážnímu středisku.</li>
+
+        </ul>
+
+        <div class="doplnkoveInfo">
+            <h2 class="text-orange" style="font-weight: 500"><i>Montáží to u nás nekončí!</i></h2>
+            <p> <i>Potřebujete <a n:href="Default:nosice"><b>nosiče kol</b></a> nebo jiné příslušenství? Obraťte se na nás. Jsme schopni zařídit i další přidružený sortiment
+                včetně náhradních dílů pro vozíky, upínací techniky apod.</i>
+            </p>
+        </div>
+
+
     </div>
 </section>
 
 
-<section id="images">
+<section id="links">
     <div>
-        <div>
-            <figure><img src="{$basePath}/assets/img/il4.jpg?" alt="TowPoint Zašová"></figure>
-            <figure><img src="{$basePath}/assets/img/il1.jpg?" alt="TowPoint Holešov"></figure>
-            <figure><img src="{$basePath}/assets/img/il3.jpg?" alt=""></figure>
-            <figure><img src="{$basePath}/assets/img/il2.jpg" alt=""></figure>
+        <div class="linksList">
+            <h1 class="text-orange" ">Mezitím si můžete přečíst:</h1>
+            <i><a n:href="Blog:">Co vše musím vyřídit před a po montáži?</i></a>
+            <i><a n:href="Blog:">Ohrozí montáž tažného zařízení záruku mého vozu?</i></a>
+            <i><a n:href="Blog:tahani">Co můžu táhnout za svým vozem?</i></a>
         </div>
     </div>
 </section>
