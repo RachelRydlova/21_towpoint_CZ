@@ -29,6 +29,7 @@
     }
     article.gray p:first-of-type {
         font-weight: 600;
+        width: 70%;
     }
     article.gray p:first-of-type span {
         font-weight: 700;
