@@ -1,5 +1,11 @@
 {block title}O TowPoint{/block}
 {block metaDescription}O nás jako firmě - Towpoint{/block}
+{block keywords}
+    {foreach $mapData as $partner}
+        montáž tažného zařízení {$partner->nazev}, tažné zařízení {$partner->nazev}, montážní místo {$partner->nazev}, montáže tažného {$partner->nazev}
+    {/foreach}
+
+{/block}
 
 
 {block head}
