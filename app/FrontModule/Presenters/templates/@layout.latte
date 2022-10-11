@@ -20,7 +20,7 @@
     <meta name="author" content="VAPOL | www.vapol.cz | it@vapol.cz">
     <meta name="publisher" content="Rachel Rydlova | VAPOL ">
     <meta name="generator" content="SPR-Machine-1.0">
-    <meta name="keywords" content="{ifset keywords}{include keywords|stripHtml}{else}tazna zarizeni, tažná zařízení, montaz tazneho zarizeni, montáž tažného, montáž tažného zařízení{/ifset}">
+    <meta name="keywords" content="{ifset keywords}{include keywords|stripHtml}{else}tazna zarizeni, tažná zařízení, montaz tazneho zarizeni, montáž tažného zařízení, montáže tažného zařízení cena, montáž tažného, montáž tažné koule{/ifset}">
     <meta name="description" content="{ifset metaDescription}{include metaDescription|stripHtml} {else} Montáž tažných zařízení od profesionálů z oboru - Towpoint - vše co Vás zajímá o tažných koulích{/ifset}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
@@ -63,7 +63,7 @@
     <script type="text/javascript" src="{$basePath}/assets/js/fa.js?v={filemtime('assets/js/fa.js')}"></script>
 
 
-    <title>{ifset title}{include title|stripHtml} | {/ifset} {$baseTitle}</title>
+    <title>{ifset title}{include title|stripHtml} | {else} {$baseTitle}{/ifset}</title>
 
 </head>
 
@@ -124,7 +124,7 @@
         </div>
     </div>
     <a n:href="Default:" title="přejít na titulní stránku" class="logo"></a>
-    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption">
+    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption" title="test">
         <a class="nav-link {if $presenter->isLinkCurrent($link)}active{/if}" n:href="$link"><span>{$caption}</span></a>
     </nav>
     <a href="#" id="mmenu"><span>Menu</span></a>

@@ -74,7 +74,7 @@ class BasePresenter extends Presenter
     public function beforeRender(): void
     {
         // Zakladni labely
-        $this->template->baseTitle = 'TowPoint';
+        $this->template->baseTitle = 'Jednička v montáži tažných zařízeních | TowPoint';
         // Cookie agreement
         $this->template->cookieAgreement = $this->getAgreementCookie();
         // zda uz byl zobrazen popup
