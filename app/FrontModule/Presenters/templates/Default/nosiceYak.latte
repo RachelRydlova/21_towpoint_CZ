@@ -33,7 +33,7 @@
         </header>
         <div class="grid">
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 1}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just2/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just2/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just2/3.jpg" alt="">
@@ -52,7 +52,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 2}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just3/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just3/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just3/3.jpg" alt="">
@@ -70,7 +70,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 3}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just23/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just23/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/just23/3.jpg" alt="">
@@ -85,7 +85,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 4}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/fold2/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/fold2/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/fold2/3.jpg" alt="">
@@ -102,7 +102,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 5}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/fold3/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/fold3/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/fold3/3.jpg" alt="">
@@ -119,7 +119,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 6}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/spare/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/spare/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/spare/3.jpg" alt="">
@@ -136,7 +136,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 7}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/pickup/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/pickup/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/pickup/3.jpg" alt="">
@@ -159,3 +159,17 @@
     </main>
 
 
+
+{block scripts}
+    <script>
+        $(window).load(function () {
+            $('div.carousel.gallery').flickity({
+                wrapAround: true,
+                freeScroll: true,
+                fullscreen: true,
+                lazyLoad: 3
+            });
+        });
+    </script>
+
+{/block}

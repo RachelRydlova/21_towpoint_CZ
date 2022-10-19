@@ -31,7 +31,7 @@
         </header>
         <div class="grid">
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/buff/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/buff/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/buff/3.jpg" alt="">
@@ -50,7 +50,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/eazzy3/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/eazzy3/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/eazzy3/3.jpg" alt="">
@@ -68,7 +68,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/eazzy4/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/eazzy4/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/eazzy4/3.jpg" alt="">
@@ -77,8 +77,7 @@
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/eazzy4/6.jpg" alt="">
                 </div>
                 <div class="box">
-                    <h3 class="orange">Nosič kol na tažné zařízení
-                        EAZZY 4 BUZZRACK    </h3>
+                    <h3 class="orange">Nosič kol na tažné zařízení EAZZY 4 BUZZRACK    </h3>
                     <p>kód: BUREAZZY4</p>
                 </div>
                 <div class="price">
@@ -86,7 +85,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/hornet/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/hornet/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/hornet/3.jpg" alt="">
@@ -104,7 +103,7 @@
                 </div>
             </article>
             <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false}'>
+                <div class="carousel gallery">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/scorpion/1.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/scorpion/2.jpg" alt="">
                     <img class="carousel-cell" src="{$basePath}/assets/image/nosice/scorpion/3.jpg" alt="">
@@ -126,4 +125,16 @@
 
     </main>
 
+{block scripts}
+    <script>
+        $(window).load(function () {
+            $('div.carousel.gallery').flickity({
+                wrapAround: true,
+                freeScroll: true,
+                fullscreen: true,
+                lazyLoad: 3
+            });
+        });
+    </script>
 
+{/block}
