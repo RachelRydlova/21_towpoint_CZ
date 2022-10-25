@@ -24,7 +24,6 @@
     <meta name="description" content="{ifset metaDescription}{include metaDescription|stripHtml} {else} Montáž tažných zařízení od profesionálů z oboru - Towpoint - vše co Vás zajímá o tažných koulích{/ifset}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
-    <meta name="robots" content="noindex">
 
 
     <!-- Favicons -->
@@ -124,7 +123,7 @@
         </div>
     </div>
     <a n:href="Default:" title="přejít na titulní stránku" class="logo"></a>
-    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption" title="test">
+    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption" title="">
         <a class="nav-link {if $presenter->isLinkCurrent($link)}active{/if}" n:href="$link"><span>{$caption}</span></a>
     </nav>
     <a href="#" id="mmenu"><span>Menu</span></a>
@@ -211,12 +210,12 @@
 
 
     <section class="vyrobci">
-        <img src="{$basePath}/assets/image/loga/steinhof.png" alt="Steinhof">
-        <img src="{$basePath}/assets/image/loga/westfalia.png" alt="Westfalia">
-        <img src="{$basePath}/assets/image/loga/ah.png" alt="Auto-hak">
-        <img src="{$basePath}/assets/image/loga/multipa.png" alt="Multipa">
-        <img src="{$basePath}/assets/image/loga/ej.png" alt="Erich Jaeger">
-        <img src="{$basePath}/assets/image/loga/ecs.png" alt="ECS">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-steinhof.png" alt="Steinhof">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-westfalia.png" alt="Westfalia">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-autohak.png" alt="Auto-hak">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-multipa.png" alt="Multipa">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-erichjaeger.png" alt="Erich Jaeger">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-ecs.png" alt="ECS">
     </section>
 
 </footer>
@@ -269,16 +268,28 @@
 
     {*<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>*}
 
-    <!-- Flickity gallery JS -->
-    <script src="{$basePath}/assets/unpkg/flickity.pkgd.js?v={filemtime('assets/unpkg/flickity.pkgd.js')}"></script>
-    <script src="{$basePath}/assets/unpkg/fullscreen.js?v={filemtime('assets/unpkg/fullscreen.js')}"></script>
-
-
     <!-- Nette form -->
     <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
     <script src="{$basePath}/assets/js/nette.ajax.js?v={filemtime('assets/js/nette.ajax.js')}"></script>
 
+
+    <!-- Flickity gallery JS -->
+    <script src="{$basePath}/assets/unpkg/flickity.pkgd.js?v={filemtime('assets/unpkg/flickity.pkgd.js')}"></script>
+    <script src="{$basePath}/assets/unpkg/fullscreen.js?v={filemtime('assets/unpkg/fullscreen.js')}"></script>
+
     {block script}
+
+    <script>
+        $(window).load(function () {
+            $('div.carousel.gallery').flickity({
+                wrapAround: true,
+                freeScroll: true,
+                fullscreen: true,
+                lazyLoad: 3
+            });
+        });
+    </script>
+
     {/block}
 
 

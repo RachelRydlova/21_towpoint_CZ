@@ -532,7 +532,7 @@ header nav a:first-of-type span
 {
 	float: left;
 	width: 100%;
-	background-image: url("../img/t02.png"), url("../img/t01.png"), url("../img/bg_hpcarousel.gif");
+	background-image: url("../img/towpoint-detail-kloub-vozik.jpg"), url("../img/towpoint-detail-tazne.jpg"), url("../img/bg_hpcarousel.gif");
 	background-repeat: no-repeat, no-repeat, repeat-x;
 	background-position: 110% center, -10% center, top;
 	background-size: auto 100%, auto 100%, auto;
