@@ -914,7 +914,8 @@ header nav a:first-of-type span
 }
 
 .koule h3::after,
-.el h3::after {
+.el h3::after,
+.pref h3::after {
 	content: "?";
 	color: var(--color-orange);
 	margin-left: 10px;

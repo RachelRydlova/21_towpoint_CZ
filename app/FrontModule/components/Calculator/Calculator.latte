@@ -3,7 +3,9 @@
 {form calculator}
 
     <div class="radios pref">
-        <h3>{label pref}</h3>
+        <a class="question" href="{plink Blog:typyTazneho#vybratTazne}" title="Jak vybrat typ tažného zařízení??" target="_blank">
+            <h3>{label pref}</h3>
+        </a>
         {foreach $form['pref']->items as $key => $value}
             <div onclick="this.querySelector('input').click()">
                 <div>

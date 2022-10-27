@@ -90,6 +90,9 @@
 .sk:before {
     background-image: url("../image/ikony/sk.jpg");
 }
+.hu:before {
+     background-image: url("../image/ikony/hu.jpg");
+ }
 
 .lang-menu:hover ul {
     display: block;
