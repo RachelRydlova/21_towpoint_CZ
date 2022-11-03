@@ -1,5 +1,9 @@
 <?php
-declare(strict_types=1);
+
+
+// absolute filesystem path to this web root
+define('WWW_DIR', __DIR__);
+
 
 require __DIR__ . '/../vendor/autoload.php';
 
