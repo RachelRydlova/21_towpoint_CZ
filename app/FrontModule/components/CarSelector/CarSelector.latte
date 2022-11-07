@@ -29,7 +29,7 @@
         <div id="mark">
             <div class="logos">
                 <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
-                    <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
+                    <img src="{$carInfo->imageurl}?v={$today|date:'jnY'}" alt="{$carInfo->name}">
                 </a>
             </div>
             <div class="all">
@@ -49,7 +49,7 @@
                             {$modelInfo->fullname}
                         </a>
                         <figure>
-                            <img n:ifset="$modelInfo->modelimageurl" n:if="$modelInfo->modelimageurl" src="{$modelInfo->modelimageurl}" alt="">
+                            <img n:ifset="$modelInfo->modelimageurl" n:if="$modelInfo->modelimageurl" src="{$modelInfo->modelimageurl}?v={$today|date:'jnY'}" alt="">
                         </figure>
                     </div>
                 {/if}

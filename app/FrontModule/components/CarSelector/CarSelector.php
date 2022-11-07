@@ -325,6 +325,8 @@ class CarSelector extends Control
             $this->template->ostatni = $ostatni;
         }
 
+        $this->template->today = new \DateTime();
+
         $this->template->render();
     }
 
