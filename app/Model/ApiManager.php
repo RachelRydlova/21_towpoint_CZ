@@ -560,10 +560,12 @@ class ApiManager
                 if (isset($nosic['prilohy'])) {
                     $i = 1;
                     foreach ($nosic['prilohy'] as $priloha) {
-                        $path = $dir . '/' . $i . '.jpg';
-                        $this->grab_image($priloha, $path);
-                        $i++;
-                        $priloha = $i;
+                        if ($i <= 10) {
+                            $path = $dir . '/' . $i . '.jpg';
+                            $this->grab_image($priloha, $path);
+                            $i++;
+                            $priloha = $i;
+                        }
                     }
                 }
             }
@@ -572,7 +574,7 @@ class ApiManager
         if ($nosice) {
             $this->cache->save($cacheKey, $nosice, [Cache::EXPIRATION => '1 day']);
         }
-        Debugger::barDump($nosice);
+        Debugger::log($nosice, 'vyfiltrovaneNosice');
         return $nosice;
     }
 

@@ -31,6 +31,8 @@
         </header>
 
         <div class="grid" n:if="$data">
+            {var $today = new Datetime()}
+
             {foreach $data as $nosic}
                 {php $i = 0}
                 <article>
@@ -38,7 +40,9 @@
                         {if isset($nosic[prilohy])}
                             {foreach $nosic[prilohy] as $priloha}
                                 {php $i++}
-                                <img class="carousel-cell" src=="{$basePath}/data/{$nosic[id]}/{$i}.jpg" data-flickity-lazyload="{$basePath}/data/{$nosic[id]}/{$i}.jpg" alt="{$nosic[nazev]}">
+                                {cache expire => '2 days'}
+                                    <img class="carousel-cell" src="{$basePath}/data/{$nosic[id]}/{$i}.jpg?v={$today|date:'jnY'}" alt="{$nosic[nazev]}">
+                                {/cache}
                             {/foreach}
                         {/if}
                     </div>
