@@ -40,10 +40,10 @@
                     <div class="carousel gallery">
                         {if isset($nosic[prilohy])}
                             {foreach $nosic[prilohy] as $priloha}
-                                {php $i++}
                                 {cache $priloha, expire => '2 days'}
                                     <img class="carousel-cell" src="{$basePath}/data/{$nosic[id]}/{$i}.jpg?v={$today|date:'jnY'}" alt="{$nosic[nazev]}">
                                 {/cache}
+                                {php $i++}
                             {/foreach}
                         {/if}
                     </div>
