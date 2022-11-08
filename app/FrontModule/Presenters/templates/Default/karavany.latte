@@ -115,17 +115,19 @@
     <!-- Flickity gallery slider -->
 <footer>
     <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500, "pageDots": false }'>
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-detail-koule.jpg?" alt="Tazne zarizeni na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-nosic-kol.jpg?" alt="Kararavan s kolem">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-nosic-kol-na-tazne.jpg?" alt="Nosic kol na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan.jpg?" alt="Karavan v prirode">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-realizace-tazneho.jpg?" alt="Zada karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-cestovani-karavanem.jpg?" alt="Karavan v plne vybave">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-detail-realizace.jpg?" alt="Detail zadni casti karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-montaze.jpg?" alt="Detail tazneho na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-tazneho.jpg?" alt="Nase montaz tazneho na karavan">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-detail-montaze-koule.jpg?" alt="Tazne zarizeni na obytnaku">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-nosice-kol-zavesny.jpeg?" alt="Tazna koule na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-detail-koule.jpeg?" alt="Obytne auto s taznym zarizenim">
+        {cache expire => '60 days'}
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-detail-koule.jpg?" alt="Tazne zarizeni na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-nosic-kol.jpg?" alt="Kararavan s kolem">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-nosic-kol-na-tazne.jpg?" alt="Nosic kol na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan.jpg?" alt="Karavan v prirode">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-realizace-tazneho.jpg?" alt="Zada karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-cestovani-karavanem.jpg?" alt="Karavan v plne vybave">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-detail-realizace.jpg?" alt="Detail zadni casti karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-montaze.jpg?" alt="Detail tazneho na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-tazneho.jpg?" alt="Nase montaz tazneho na karavan">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-detail-montaze-koule.jpg?" alt="Tazne zarizeni na obytnaku">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-nosice-kol-zavesny.jpeg?" alt="Tazna koule na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-detail-koule.jpeg?" alt="Obytne auto s taznym zarizenim">
+        {/cache}
     </div>
 </footer>

@@ -26,6 +26,7 @@
         <div class="slides iosSlider">
             <div class="slider">
                 {foreach $b as $bid => $bi}
+                    {cache $bi, expire => '1 day'}
                     <div class="item{$bid == 0 ? ' current' : ''}{($format[$bi]|lower) == 'mp4' ? ' video' : ''}">
                         {if ($format[$bi]|lower) == 'jpg'}
 
@@ -84,6 +85,7 @@
                             <video playsinline muted> <source src="{$basePath}/assets/ftp/cz/{$bi}.mp4" type="video/mp4"></video>
                         {/if}
                     </div>
+                    {/cache}
                 {/foreach}
             </div>
         </div>
