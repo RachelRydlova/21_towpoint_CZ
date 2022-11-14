@@ -34,21 +34,8 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
 
-    <!-- Gallery flickity -->
-    <link rel="stylesheet" href="{$basePath}/assets/unpkg/flickity.css?v={filemtime('assets/unpkg/flickity.css')}" type="text/css">
-    <link rel="stylesheet" href="{$basePath}/assets/unpkg/fullscreen.css?v={filemtime('assets/unpkg/fullscreen.css')}" type="text/css">
-
     <!-- Main CSS File -->
-    <link href="{$basePath}/assets/css/base.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/slides.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/map.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/langMenu.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/navbar.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/cookie.css" rel="stylesheet">
-
-    <!-- Simple Lightbox -->
-    <link rel="stylesheet" href="{$basePath}/assets/css/simple-lightbox.css">
-
+    <link href="{$basePath}src/main.css?v={filemtime('src/main.css')}" rel="stylesheet">
 
 
     <!-- Templates CSS Files -->
@@ -57,10 +44,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 
-    <!-- font awesome icons -->
-    <link href="{$basePath}/assets/css/fa.css" rel="stylesheet">
-    <script type="text/javascript" src="{$basePath}/assets/js/fa.js?v={filemtime('assets/js/fa.js')}"></script>
 
+    <!-- Main JS File -->
+    <script src="{$basePath}/src/main.js?v={filemtime('src/main.js')}"></script>
 
     <title>{ifset title}{include title|stripHtml} | {else} {$baseTitle}{/ifset}</title>
 
@@ -261,19 +247,19 @@
         gtag('config', 'G-WWLNHLX643');
     </script>
 
-    <!-- Main JS File -->
 
-    <script src="{$basePath}/assets/js/jquery.iosslider.min.js?v={filemtime('assets/js/jquery.iosslider.min.js')}"></script>
-    <script src="{$basePath}/assets/js/mmenu.js?v={filemtime('assets/js/mmenu.js')}""></script>
-    <script src="{$basePath}/assets/js/simple-lightbox.js?v={filemtime('assets/js/simple-lightbox.js')}"></script>
-    <script src="{$basePath}/assets/js/support.js?v={filemtime('assets/js/support.js')}"></script>
+
+{*    <script src="{$basePath}/assets/js/jquery.iosslider.min.js?v={filemtime('assets/js/jquery.iosslider.min.js')}"></script>*}
+{*    <script src="{$basePath}/assets/js/mmenu.js?v={filemtime('assets/js/mmenu.js')}""></script>*}
+{*    <script src="{$basePath}/assets/js/simple-lightbox.js?v={filemtime('assets/js/simple-lightbox.js')}"></script>*}
+{*    <script src="{$basePath}/assets/js/support.js?v={filemtime('assets/js/support.js')}"></script>*}
 
 
     {*<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>*}
 
     <!-- Nette form -->
-    <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-    <script src="{$basePath}/assets/js/nette.ajax.js?v={filemtime('assets/js/nette.ajax.js')}"></script>
+{*    <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>*}
+{*    <script src="{$basePath}/assets/js/nette.ajax.js?v={filemtime('assets/js/nette.ajax.js')}"></script>*}
 
 
     <!-- Flickity gallery JS -->

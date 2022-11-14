@@ -572,7 +572,7 @@ class ApiManager
         }
 
         if ($nosice) {
-            $this->cache->save($cacheKey, $nosice, [Cache::EXPIRATION => '1 day']);
+            $this->cache->save($cacheKey, $nosice, [Cache::EXPIRATION => '3 days']);
         }
         Debugger::log($nosice, 'vyfiltrovaneNosice');
         return $nosice;

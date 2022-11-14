@@ -13,9 +13,6 @@
     color: var(--color-lightGray);
     background-color: var(--color-gray);
 }
-.close .fa {
-    font-size: 3em !important;
-}
 .modal a.close span:hover {
     background-color: var(--color-darkGray);
 }
