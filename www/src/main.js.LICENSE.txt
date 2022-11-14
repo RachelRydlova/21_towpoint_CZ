@@ -1,0 +1,17 @@
+/*!
+	By André Rinas, www.andrerinas.de
+	Documentation, www.simplelightbox.de
+	Available for use under the MIT License
+	Version 2.10.3
+*/
+
+/**
+ * AJAX Nette Framework plugin for jQuery
+ *
+ * @copyright Copyright (c) 2009, 2010 Jan Marek
+ * @copyright Copyright (c) 2009, 2010 David Grudl
+ * @copyright Copyright (c) 2012-2014 Vojtěch Dobeš
+ * @license MIT
+ *
+ * @version 2.0.0
+ */
