@@ -336,6 +336,19 @@ class ApiManager
                     $state = 'CZ';
                 }
 
+                // nastavim predvolbu na telefonu
+                $predvolba = $dataToReva['contact']['predvolba'];
+                $tel = $dataToReva['contact']['tel'];
+                if ($predvolba == 2 ) {
+                    $predvolba = '0036';
+                } elseif ($predvolba == 1) {
+                    $predvolba = '00421';
+                } else {
+                    $predvolba = '+420';
+                }
+                $dataToReva['contact']['tel'] = $predvolba . $tel;
+
+
                 // preference Cena x Kvalita
                 $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
                 if ($pref == 0) {

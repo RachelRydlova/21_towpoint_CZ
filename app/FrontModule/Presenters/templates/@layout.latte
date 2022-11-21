@@ -35,7 +35,7 @@
           rel="stylesheet">
 
     <!-- Main CSS File -->
-    <link href="{$basePath}src/main.css?v={filemtime('src/main.css')}" rel="stylesheet">
+    <link href="{$basePath}src/main.css" rel="stylesheet">
 
 
     <!-- Templates CSS Files -->
@@ -46,7 +46,7 @@
 
 
     <!-- Main JS File -->
-    <script src="{$basePath}/src/main.js?v={filemtime('src/main.js')}"></script>
+    <script src="{$basePath}/src/main.js"></script>
 
     <title>{ifset title}{include title|stripHtml} | {else} {$baseTitle}{/ifset}</title>
 

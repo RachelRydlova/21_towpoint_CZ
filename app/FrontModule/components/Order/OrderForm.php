@@ -46,6 +46,7 @@ class OrderForm extends Control
         $form->getElementPrototype()->setAttribute('class', 'inputs');
 
         $staty = ['Česká republika', 'Slovensko'];
+        $predvolby = ['+420', '00421', '0036'];
 
         $form->addText('name', "Jméno")
             ->setHtmlAttribute('placeholder', 'Jméno');
@@ -53,6 +54,7 @@ class OrderForm extends Control
             ->setHtmlAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
             ->setHtmlAttribute('placeholder', 'E-mail');
+        $form->addSelect('predvolba', 'Předvolba', $predvolby);
         $form->addText('tel', "Telefon")
             ->setHtmlAttribute('placeholder', 'Telefon');
         $form->addText('psc', "PSČ")
