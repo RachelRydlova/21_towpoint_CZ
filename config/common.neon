@@ -32,6 +32,21 @@ services:
 	- App\FrontModule\Forms\ContactFormFactory
 
 
+extensions:
+	translation: Contributte\Translation\DI\TranslationExtension
+
+translation:
+	locales:
+		whitelist: [en, cs, sk]
+		default: en
+		fallback: [en]
+	dirs:
+		- %appDir%/lang
+	returnOriginalMessage: true
+	localeResolvers:
+		- Contributte\Translation\LocalesResolvers\Session
+
+
 forms:
     messages:
         EQUAL: 'Zadejte %s.'

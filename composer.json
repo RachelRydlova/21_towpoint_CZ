@@ -21,7 +21,8 @@
 		"tracy/tracy": "^2.8",
 		"contributte/console": "^0.9.1",
 		"guzzlehttp/guzzle": "7.4",
-      	"ext-json": "*"
+      	"ext-json": "*",
+		"contributte/translation": "^2.0"
     },
 	"autoload": {
 		"psr-4": {

@@ -16,12 +16,19 @@ final class RouterFactory
     {
         $router = new RouteList;
 
-        $router->addRoute('/', 'Front:Default:default');
+        /*$langsToDomains = [
+            RouterConfig::LOCAL_DOMAIN => "cz",
+            RouterConfig::LOCAL_DOMAIN_SK => "sk",
+        ];*/
+
+        $localMask = '//twp[.<lang=cz>].local';
+
+        $router->addRoute($localMask, 'Front:Default:default');
 
         // Vlastni routy
-        $router[] = new Nette\Application\Routers\Route('/karavany', 'Front:Default:karavany');
-        $router[] = new Nette\Application\Routers\Route('/jak-to-funguje', 'Front:Default:how');
-        $router[] = new Nette\Application\Routers\Route('/co-nabizime', 'Front:Default:what');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/karavany', 'Front:Default:karavany');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/jak-to-funguje', 'Front:Default:how');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/co-nabizime', 'Front:Default:what');
         $router[] = new Nette\Application\Routers\Route('/elektro', 'Front:Default:elektro');
         $router[] = new Nette\Application\Routers\Route('/nosice-kol', 'Front:Default:nosice');
         $router[] = new Nette\Application\Routers\Route('/nosice-kol-multipa', 'Front:Default:nosiceMul');

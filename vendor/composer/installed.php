@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '0a90102f73b6aa3b2dba25738dc57620ebb36c70',
+    'reference' => 'cd99169c60d908021b86127a7b59177a1b85f279',
     'name' => 'nette/web-project',
   ),
   'versions' => 
@@ -28,6 +28,15 @@
       array (
       ),
       'reference' => '534fdb5e85b4ae01f8f848fc4b752deb8458ed7c',
+    ),
+    'contributte/translation' => 
+    array (
+      'pretty_version' => 'v2.0.1',
+      'version' => '2.0.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'bc8461e2bbaa0961af78c3018e2dc39abbf239fb',
     ),
     'guzzlehttp/guzzle' => 
     array (
@@ -216,7 +225,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '0a90102f73b6aa3b2dba25738dc57620ebb36c70',
+      'reference' => 'cd99169c60d908021b86127a7b59177a1b85f279',
     ),
     'psr/container' => 
     array (
@@ -291,6 +300,15 @@
       ),
       'reference' => '120b605dfeb996808c31b6477290a714d356e822',
     ),
+    'symfony/config' => 
+    array (
+      'pretty_version' => 'v6.1.3',
+      'version' => '6.1.3.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'a0645dc585d378b73c01115dd7ab9348f7d40c85',
+    ),
     'symfony/console' => 
     array (
       'pretty_version' => 'v5.4.0',
@@ -308,6 +326,15 @@
       array (
       ),
       'reference' => '6f981ee24cf69ee7ce9736146d1c57c2780598a8',
+    ),
+    'symfony/filesystem' => 
+    array (
+      'pretty_version' => 'v6.1.5',
+      'version' => '6.1.5.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '4d216a2beef096edf040a070117c39ca2abce307',
     ),
     'symfony/polyfill-ctype' => 
     array (
@@ -380,6 +407,31 @@
       array (
       ),
       'reference' => 'ba727797426af0f587f4800566300bdc0cda0777',
+    ),
+    'symfony/translation' => 
+    array (
+      'pretty_version' => 'v6.1.6',
+      'version' => '6.1.6.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'e6cd330e5a072518f88d65148f3f165541807494',
+    ),
+    'symfony/translation-contracts' => 
+    array (
+      'pretty_version' => 'v3.1.1',
+      'version' => '3.1.1.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '606be0f48e05116baef052f7f3abdb345c8e02cc',
+    ),
+    'symfony/translation-implementation' => 
+    array (
+      'provided' => 
+      array (
+        0 => '2.3|3.0',
+      ),
     ),
     'tracy/tracy' => 
     array (

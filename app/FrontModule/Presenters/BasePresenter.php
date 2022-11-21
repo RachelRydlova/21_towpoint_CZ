@@ -5,9 +5,11 @@ declare(strict_types=1);
 namespace App\Frontmodule\Presenters;
 
 
+use Contributte\Translation\LocalesResolvers\Session;
 use Nette\Application\UI\Presenter;
 use App\Model\BannerModel;
 use App\Model\ApiManager;
+use Nette\Localization\Translator;
 
 
 /**
@@ -29,6 +31,30 @@ class BasePresenter extends Presenter
         ':Front:Default:about' => 'O nás',
         ':Front:Blog:default' => 'Blog'
     ];
+
+
+    /** @var string */
+    public string $locale;
+
+    /** @var string @persistent */
+    public string $lang;
+
+
+    /** @var Translator @inject */
+    public $translator;
+
+    /** @var Session @inject */
+    public $translatorSessionResolver;
+
+
+
+    public function startup()
+    {
+        parent::startup();
+        $this->lang = $this->locale = $this->getParameter('lang');
+        bdump($this->lang, 'lang');
+        $this->translatorSessionResolver->setLocale($this->locale);
+    }
 
 
     /**
