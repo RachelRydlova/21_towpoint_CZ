@@ -16,12 +16,13 @@ final class RouterFactory
     {
         $router = new RouteList;
 
-        /*$langsToDomains = [
+        $langsToDomains = [
             RouterConfig::LOCAL_DOMAIN => "cz",
             RouterConfig::LOCAL_DOMAIN_SK => "sk",
-        ];*/
+            RouterConfig::LOCAL_DOMAIN_HU => "hu",
+        ];
 
-        $localMask = '//twp[.<lang=cz>].local';
+        $localMask = '//towpoint.<lang>.local';
 
         $router->addRoute($localMask, 'Front:Default:default');
 
@@ -29,34 +30,34 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route($localMask.'/karavany', 'Front:Default:karavany');
         $router[] = new Nette\Application\Routers\Route($localMask.'/jak-to-funguje', 'Front:Default:how');
         $router[] = new Nette\Application\Routers\Route($localMask.'/co-nabizime', 'Front:Default:what');
-        $router[] = new Nette\Application\Routers\Route('/elektro', 'Front:Default:elektro');
-        $router[] = new Nette\Application\Routers\Route('/nosice-kol', 'Front:Default:nosice');
-        $router[] = new Nette\Application\Routers\Route('/nosice-kol-multipa', 'Front:Default:nosiceMul');
-        $router[] = new Nette\Application\Routers\Route('/nosice-kol-westfalia', 'Front:Default:nosiceWest');
-        $router[] = new Nette\Application\Routers\Route('/nosice-kol-buzzrack', 'Front:Default:nosiceBuzz');
-        $router[] = new Nette\Application\Routers\Route('/nosice-kol-yakima', 'Front:Default:nosiceYak');
-        $router[] = new Nette\Application\Routers\Route('/servis-voziku', 'Front:Default:voziky');
-        $router[] = new Nette\Application\Routers\Route('/o-nas', 'Front:Default:about');
-        $router[] = new Nette\Application\Routers\Route('/pro-partnery', 'Front:Default:about');
-        $router[] = new Nette\Application\Routers\Route('/dekujeme', 'Front:Default:thanks');
-        $router[] = new Nette\Application\Routers\Route('/dekujemeZaZpravu', 'Front:Default:thanksContact');
-        $router[] = new Nette\Application\Routers\Route('/navody', 'Front:Default:navody');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/elektro', 'Front:Default:elektro');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/nosice-kol', 'Front:Default:nosice');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/nosice-kol-multipa', 'Front:Default:nosiceMul');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/nosice-kol-westfalia', 'Front:Default:nosiceWest');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/nosice-kol-buzzrack', 'Front:Default:nosiceBuzz');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/nosice-kol-yakima', 'Front:Default:nosiceYak');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/servis-voziku', 'Front:Default:voziky');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/o-nas', 'Front:Default:about');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/pro-partnery', 'Front:Default:about');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/dekujeme', 'Front:Default:thanks');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/dekujemeZaZpravu', 'Front:Default:thanksContact');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/navody', 'Front:Default:navody');
 
-        $router[] = new Nette\Application\Routers\Route('/blog', 'Front:Blog:default');
-        $router[] = new Nette\Application\Routers\Route('/clanek-typy-tazneho', 'Front:Blog:typyTazneho');
-        $router[] = new Nette\Application\Routers\Route('/clanek-elektroinstalace', 'Front:Blog:elektroinstalace');
-        $router[] = new Nette\Application\Routers\Route('/clanek-tahani', 'Front:Blog:tahani');
-        $router[] = new Nette\Application\Routers\Route('/clanek-montaz', 'Front:Blog:montaz');
-        $router[] = new Nette\Application\Routers\Route('/clanek-pece-o-tazne', 'Front:Blog:peceOTazne');
-        $router[] = new Nette\Application\Routers\Route('/clanek-tazne-hybrid', 'Front:Blog:tazneHybrid');
-        $router[] = new Nette\Application\Routers\Route('/proc-my', 'Front:Blog:procNas');
-        $router[] = new Nette\Application\Routers\Route('/zaruka-po-montazi', 'Front:Blog:zaruka');
-        $router[] = new Nette\Application\Routers\Route('/vyber-tz-elektroinstalace', 'Front:Blog:vyberTzAEl');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/blog', 'Front:Blog:default');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-typy-tazneho', 'Front:Blog:typyTazneho');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-elektroinstalace', 'Front:Blog:elektroinstalace');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-tahani', 'Front:Blog:tahani');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-montaz', 'Front:Blog:montaz');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-pece-o-tazne', 'Front:Blog:peceOTazne');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-tazne-hybrid', 'Front:Blog:tazneHybrid');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/proc-my', 'Front:Blog:procNas');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/zaruka-po-montazi', 'Front:Blog:zaruka');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/vyber-tz-elektroinstalace', 'Front:Blog:vyberTzAEl');
 
-        $router[] = new Nette\Application\Routers\Route('/akce-souteze', 'Front:Default:akce');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/akce-souteze', 'Front:Default:akce');
 //        $router[] = new Nette\Application\Routers\Route('/tisicovkaProTebe', 'Front:Default:akce1000montaz');
 //        $router[] = new Nette\Application\Routers\Route('/vybavSeNaZimu', 'Front:Default:akceZima');
-        $router[] = new Nette\Application\Routers\Route('/slevaNaNosice', 'Front:Default:akceNosice');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/slevaNaNosice', 'Front:Default:akceNosice');
 
         $router->addRoute('<module>/<presenter>/<action>/[<id>/]', 'Front:Default:default');
 

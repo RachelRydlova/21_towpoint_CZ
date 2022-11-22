@@ -1,3 +1,13 @@
-test:
-    test: Jednička v prodeji nosičů kol
-    infoEmail: 'info@top-nosice.cz'
+
+layout:
+    wantOffer: Chci nabídku
+    whatOffer: Co nabízíme
+    howItWorks: Jak to funguje
+    aboutUs: O nás
+    blog: Blog
+
+flash:
+    fillPreferencies: 'Vyplňte preference Vašeho výběru.'
+
+base:
+    whyUs: 'Proč si vybrat nás?'
