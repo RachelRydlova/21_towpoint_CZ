@@ -52,8 +52,12 @@ class BasePresenter extends Presenter
     {
         parent::startup();
         $this->lang = $this->locale = $this->getParameter('lang');
-        bdump($this->lang, 'lang');
+        if ($this->locale === 'cz') {
+            $this->locale = 'cs';
+        }
         $this->translatorSessionResolver->setLocale($this->locale);
+
+        bdump($this->translator->translate('messages.test.test'), 'test');
     }
 
 

@@ -38,8 +38,8 @@ extensions:
 translation:
 	locales:
 		whitelist: [en, cs, sk]
-		default: en
-		fallback: [en]
+		default: cs
+		fallback: [cs]
 	dirs:
 		- %appDir%/lang
 	returnOriginalMessage: true
