@@ -85,4 +85,10 @@ class BasePresenter extends Presenter
 
     }
 
+    public function render()
+    {
+        $prefixedTranslator = $this->translator->createPrefixedTranslator('messages');
+        $this->template->wantOffer = $prefixedTranslator->translate('layout.wantOffer');
+    }
+
 }

@@ -87,7 +87,7 @@ class DefaultPresenter extends BasePresenter
             // kontrola typu pozadavku
             if ($type == 1 && !$preference) {
                 // pokud nejsou vyplneny preference, nesmi se odeslat
-                $this->flashMessage('Vyplňte preference Vašeho výběru.');
+                $this->flashMessage($this->translator->translate('messages.flash.fillPreferencies'));
                 $this->redirect('Default:');
             }
             elseif ($type != 1) {
@@ -213,4 +213,8 @@ class DefaultPresenter extends BasePresenter
 //        $this->terminate();
     }
 
+    public function render()
+    {
+        $this->template->setTranslator($this->translator);
+    }
 }
