@@ -15,6 +15,7 @@ use Nette\Application\UI\Form;
 use App\Model\BannerModel;
 use App\Model\ApiManager;
 use Tracy\Debugger;
+use Contributte\Translation\Translator;
 
 
 
@@ -29,6 +30,9 @@ class DefaultPresenter extends BasePresenter
     /** @var applCache @inject */
     public $cache;
     private ContactFormFactory $contactFormFactory;
+
+    /** @var Translator @inject */
+    public $translator;
 
 
     public function __construct(ContactFormFactory $contactFormFactory)
