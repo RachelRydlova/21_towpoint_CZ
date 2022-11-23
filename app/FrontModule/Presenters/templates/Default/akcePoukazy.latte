@@ -22,6 +22,9 @@
         .headerText {
             margin: 1em 0 2em 0;
         }
+        .carousel.is-fullscreen .carousel-cell {
+            object-fit: scale-down;
+        }
     </style>
 {/block}
 
@@ -59,7 +62,9 @@
 
         <div class="grid">
                 <article>
-                    <img src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-500.jpg" alt="towpoint darkovy poukaz na 500 kc">
+                    <div class="carousel gallery">
+                        <img class="carousel-cell" src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-500.jpg" alt="towpoint darkovy poukaz na 500 kc">
+                    </div>
                     <div class="box">
                         <h3 class="orange"> Dárkový poukaz k Vánocům </h3>
                     </div>
@@ -69,7 +74,9 @@
                     </div>
                 </article>
             <article>
-                <img src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-1000.jpg" alt="towpoint darkovy poukaz na 1000 kc">
+                <div class="carousel gallery">
+                    <img class="carousel-cell" src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-1000.jpg" alt="towpoint darkovy poukaz na 1000 kc">
+                </div>
                 <div class="box">
                     <h3 class="orange"> Dárkový poukaz k Vánocům </h3>
                 </div>
@@ -78,7 +85,9 @@
                 </div>
             </article>
             <article>
-                <img src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-3000.jpg" alt="towpoint darkovy poukaz na 3000 kc">
+                <div class="carousel gallery">
+                    <img class="carousel-cell" src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-3000.jpg" alt="towpoint darkovy poukaz na 3000 kc">
+                </div>
                 <div class="box">
                     <h3 class="orange"> Dárkový poukaz k Vánocům </h3>
                 </div>
@@ -87,7 +96,9 @@
                 </div>
             </article>
             <article>
-                <img src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-5000.jpg" alt="towpoint darkovy poukaz na 5 000 kc">
+                <div class="carousel gallery">
+                    <img class="carousel-cell" src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-5000.jpg" alt="towpoint darkovy poukaz na 5 000 kc">
+                </div>
                 <div class="box">
                     <h3 class="orange"> Dárkový poukaz k Vánocům </h3>
                 </div>
@@ -96,7 +107,9 @@
                 </div>
             </article>
             <article>
-                <img src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-komplet.jpg" alt="towpoint darkovy poukaz v hodnote montaze">
+                <div class="carousel gallery">
+                    <img class="carousel-cell" src="{$basePath}/assets/image/akce/poukazy/Darkovy-poukaz-Towpoint-komplet.jpg" alt="towpoint darkovy poukaz v hodnote montaze">
+                </div>
                 <div class="box">
                     <h3 class="orange"> Dárkový poukaz k Vánocům </h3>
                 </div>
@@ -109,3 +122,19 @@
 
 
     </main>
+
+
+{block script}
+    <script>
+        $(window).load(function () {
+            $('div.carousel.gallery').flickity({
+                wrapAround: false,
+                freeScroll: false,
+                fullscreen: true,
+                lazyLoad: 1,
+                pageDots: false,
+                prevNextButtons: false,
+            });
+        });
+    </script>
+{/block}
