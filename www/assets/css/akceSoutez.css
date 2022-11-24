@@ -4,6 +4,9 @@
         color: var(--color-darkGray);
         font-size: 1.2em;
     }
+    body p {
+        font-size: 1.3em;
+    }
     main h1 {
         font-size: 3em;
         padding-bottom: .5em;
@@ -16,7 +19,6 @@
         padding-left: 2em;
     }
     .textBigger p {
-        font-size: 1.3em;
         line-height: 2em;
     }
     .font-orange {
@@ -52,6 +54,9 @@
     }
     #vyhry {
         display: flex;
+    }
+    .wrapper {
+        max-width: 84%;
     }
 
 
