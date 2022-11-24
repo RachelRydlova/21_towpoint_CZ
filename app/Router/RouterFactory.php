@@ -48,9 +48,9 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route('/kodovani-elektroinstalace', 'Front:Blog:kodovani');
 
         $router[] = new Nette\Application\Routers\Route('/akce-souteze', 'Front:Default:akce');
-//        $router[] = new Nette\Application\Routers\Route('/tisicovkaProTebe', 'Front:Default:akce1000montaz');
-        $router[] = new Nette\Application\Routers\Route('/darkovePoukazy', 'Front:Default:akcePoukazy');
-        $router[] = new Nette\Application\Routers\Route('/slevaNaNosice', 'Front:Default:akceNosice');
+        $router[] = new Nette\Application\Routers\Route('/darkove-poukazy', 'Front:Default:akcePoukazy');
+        $router[] = new Nette\Application\Routers\Route('/sleva-na-nosice', 'Front:Default:akceNosice');
+        $router[] = new Nette\Application\Routers\Route('/vanocni-soutez', 'Front:Default:akceSoutez');
 
         $router->addRoute('<module>/<presenter>/<action>/[<id>/]', 'Front:Default:default');
 

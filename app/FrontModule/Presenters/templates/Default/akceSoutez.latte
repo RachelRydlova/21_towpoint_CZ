@@ -1,0 +1,100 @@
+{block title}Vánoční SOUTĚŽ S TOWPOINT{/block}
+{block metaDescription}{/block}
+
+{block head}
+    <link href="{$basePath}/assets/css/nosice.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/contactForm.css" rel="stylesheet">
+    <link href="{$basePath}/assets/css/akceSoutez.css" rel="stylesheet">
+{/block}
+
+
+{block recenzeTitle} Proč si vybrat nás? {/block}
+
+{block recenze} Zdá se Vám cena vysoká? Na výběr je více možností.  {/block}
+
+{block tazak} {$basePath}/assets/image/maskot/tazakMegafon.png{/block}
+
+
+{block content}
+    <section id="title">
+        <h1>
+            <a n:href="Default:akce"><i class="fa fa-chevron-circle-left"></i></a>
+            VELKÁ VÁNOČNÍ SOUTĚŽ S TOWPOINT
+        </h1>
+    </section>
+
+    <img id="darkypozadi" class="bg-image" src="{$basePath}/assets/image/akce/vanocniSoutez/towpoint-vanocni-darky.png" alt="zavesene vanocni darky">
+    <main class="pt-3 wrapper">
+        <div class="headerText">
+            <h1 class="font-orange">Velká vánoční soutěž </h1>
+
+            <p><strong>Máš auto a hodilo by se ti tažné?</strong> </p>
+            <p> Vyplň poptávkový formulář a zapoj se do hry <strong> <br>
+                    o montáž tažného zařízení ZDARMA </strong>a další hodnotné ceny!</p>
+        </div>
+
+
+     <div id="vyhry">
+         <img style="width: 45%" src="{$basePath}/assets/image/akce/vanocniSoutez/towpoint-web-v-mobilu.jpg" alt="vyhrajte montaz tazneho">
+         <div class="textBigger" style="align-self: center; padding-left: 2em">
+             <h2 class="font-orange">
+                 Co můžeš vyhrát?
+             </h2>
+                 <p><strong>1. místo:</strong> <span style="font-weight: 400">Montáž tažného zařízení ZDARMA</span></p>
+                 <p class="font-thin"><strong>2. místo:</strong> <span style="text-decoration: underline">Nosič kol Multipa</span> dle výběru</p>
+                 <p class="font-thin"><strong>3. místo:</strong> Sleva 3000 Kč na montáž tažného zařízení</p>
+                 <p class="font-thin"><strong>4. a 5. místo:</strong> Příčníky Multipa dle výběru</p>
+             </ul>
+         </div>
+     </div>
+
+    </main>
+
+    <aside class="grayTextBox">
+        <p><strong>Trvání soutěže:</strong> Od 23. 11. 2022 do 20. 12. 2022 (sběr formulářů do 18. 12. 2020).
+            <br> <strong>Kdo může hrát?</strong> Každý, kdo má k dispozici vozidlo uzpůsobené k montáži tažného zařízení,
+            a to nejpozději do 18. prosince 2022.
+                </p>
+    </aside>
+    <div class="pt-3 wrapper">
+        <h1 class="font-orange">Jak hrát?</h1>
+        <ul style="font-weight: 600;list-style: auto; padding: 1em 0 1em 1em">
+            <li>Vyplň poptávkový formulář na montáž tažného zařízení
+                zde na webu</li>
+            <li>Do poznámky vlož heslo „SOUTĚŽÍM“</li>
+            <li>Vyplněný formulář odešli</li>
+        </ul>
+        <p>20. prosince ze všech soutěžních
+            formulářů vylosujeme 5 výherců, které po skončení soutěže kontaktujeme na čísle uvedeném ve formuláři a zveřejníme
+            také zde na této stránce.</p>
+        <br>
+        <div class="d-flex">
+            <div>
+                <p>Za tým TowPoint</p>
+                <p>přejeme hodně štěstí!</p>
+
+                <a class="orange-button" href=""> Vyplnit formulář a soutěžit</a>
+                <br>
+                <a href="{$basePath}/assets/pdf/towpoint-pravidla-souteze.pdf" style="color: var(--color-darkGray); text-decoration: underline">Úplná pravidla soutěže</a>
+                <img id="obrazekvyhry" src="{$basePath}/assets/image/akce/vanocniSoutez/towpoint-vanocni-soutez.jpg" alt="jake darky muzete vyhrat na towpointu">
+                <h1 class="font-orange" style="padding-top: 3em; margin-bottom: 3em">Seznam výherců:</h1>
+            </div>
+            <img class="bg-image" style="width: 45%; right: 0;" src="{$basePath}/assets/image/akce/vanocniSoutez/towpoint-vanocni-soutez.jpg" alt="jake darky muzete vyhrat na towpointu">
+        </div>
+    </div>
+
+
+{block script}
+    <script>
+        $(window).load(function () {
+            $('div.carousel.gallery').flickity({
+                wrapAround: false,
+                freeScroll: false,
+                fullscreen: true,
+                lazyLoad: 1,
+                pageDots: false,
+                prevNextButtons: false,
+            });
+        });
+    </script>
+{/block}
