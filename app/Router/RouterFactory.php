@@ -46,6 +46,7 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route('/zaruka-po-montazi', 'Front:Blog:zaruka');
         $router[] = new Nette\Application\Routers\Route('/vyber-tz-elektroinstalace', 'Front:Blog:vyberTzAEl');
         $router[] = new Nette\Application\Routers\Route('/kodovani-elektroinstalace', 'Front:Blog:kodovani');
+        $router[] = new Nette\Application\Routers\Route('/vyplneni-formulare', 'Front:Blog:jakNaFormular');
 
         $router[] = new Nette\Application\Routers\Route('/akce-souteze', 'Front:Default:akce');
         $router[] = new Nette\Application\Routers\Route('/darkove-poukazy', 'Front:Default:akcePoukazy');
