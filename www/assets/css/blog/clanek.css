@@ -96,13 +96,6 @@
         font-weight: 600;
     }
 
-    /*.description p {*/
-    /*    letter-spacing: 1px;*/
-    /*    font-size: 1em;*/
-    /*    font-weight: normal;*/
-    /*}*/
-
-
 
 
 
@@ -156,9 +149,6 @@
     {
         .desc h2 {
             padding-bottom: .4em;
-            line-height: 1em;
-        }
-        .desc p {
             line-height: 1em;
         }
         .desc img {

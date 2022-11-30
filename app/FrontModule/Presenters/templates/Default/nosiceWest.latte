@@ -1,4 +1,8 @@
-{block title}Nosiče kol | TowPoint{/block}
+{block title}Nosiče kol Westfalia| TowPoint{/block}
+{block metaDescription}Prémiové nosiče kol WESTFALIA na tažné zařízení německé kvality. Jde o prvotřídní nosiče kol, které si zakládají na kvalitě.{/block}
+{block keywords}nosič kol westfalia, německý nosič kol, německý nosič na kola, nosiče kol na tažné zařízení westfalia{/block}
+
+
 
 {block head}
     <link href="{$basePath}/assets/css/nosice.css" rel="stylesheet">
@@ -23,71 +27,38 @@
 
     <main class="pt-3 wrapper">
         <header>
-            <img src="{$basePath}/assets/image/loga/westfalia.png" alt="nosice westfalia">
+            <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-westfalia.png" alt="nosice westfalia" style="max-width: 30%">
             <p><span style="font-weight: 500">Prémiové nosiče německé kvality. Výhodou je možnost složení samotného nosič do kompaktního rozměru pro jednoduchou přepravu či uskladnění. Všechny nosiče této značky jsou vhodné i pro elektrokola.</span><br>
             Kontaktujte nás na čísle <a href="tel:+420702111702"><strong style="white-space: nowrap;">702 111 702</strong></a> nebo na adrese <a href="mailto:towpoint@vapol.cz"><strong>info@towpoint.cz</strong></a>.</p>
         </header>
-        <div class="grid">
-            <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 1}'>
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc60/1.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc60/2.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc60/3.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc60/4.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc60/5.jpg" alt="">
-                </div>
-                <div class="box">
-                    <h3 class="orange">Nosič kol na tažné zařízení
-                        BC60 pro 2 kola, Westfalia</h3>
-                    <p>kód: W350036600001</p>
-                </div>
-                <div class="price">
-                    <h2 class="new">13 499 Kč</h2>
-                    <s>14 510 Kč</s>
-                </div>
-            </article>
-            <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 2}'>
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80/1.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80/2.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80/3.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80/4.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80/5.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80/6.jpg" alt="">
-                </div>
-                <div class="box">
-                    <h3 class="orange">Nosič kol na tažné zařízení
-                        BC80 pro 2 kola, Westfalia</h3>
-                    <p>kód: W350053600001</p>
-                </div>
-                <div class="price">
-                    <h2 class="new">15 999 Kč</h2>
-                    <s>16 850 Kč</s>
-                </div>
-            </article>
-            <article>
-                <div class="carousel" data-flickity='{"fullscreen": true, "draggable": false, "lazyload": 3}'>
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80led/1.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80led/2.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80led/3.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80led/4.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80led/5.jpg" alt="">
-                    <img class="carousel-cell" src="{$basePath}/assets/image/nosice/bc80led/6.jpg" alt="">
-                </div>
-                <div class="box">
-                    <h3 class="orange">Nosič kol na tažné zařízení BC80 2
-                        pro 2 kola s LED světly, Westfalia</h3>
-                    <p>kód: W350050600001</p>
-                </div>
-                <div class="price">
-                    <h2 class="new">17 999 Kč</h2>
-                    <s>19 140 Kč</s>
-                </div>
-            </article>
+        <div class="grid" n:if="$data">
+            {var $today = new Datetime()}
+
+            {foreach $data as $nosic}
+                {php $i = 1}
+                <article>
+                    <div class="carousel gallery">
+                        {if isset($nosic[prilohy])}
+                            {foreach $nosic[prilohy] as $priloha}
+                                {cache $priloha, expire => '2 days'}
+                                    <img class="carousel-cell" src="{$basePath}/data/{$nosic[id]}/{$i}.jpg?v={$today|date:'jnY'}" alt="{$nosic[nazev]}">
+                                {/cache}
+                                {php $i++}
+                            {/foreach}
+                        {/if}
+                    </div>
+
+                    <div class="box">
+                        <h3 class="orange"> {$nosic[nazev]} </h3>
+                        <p>kód: {$nosic[id]}</p>
+                    </div>
+                    <div class="price">
+                        <h2 n:if="$nosic[cena] >= 1" class="new">{$nosic[cena]|number:0, ',', ' '} Kč</h2>
+                        {* <s>11 912 Kč</s>*}
+                    </div>
+                </article>
+            {/foreach}
         </div>
 
 
-
     </main>
-
-

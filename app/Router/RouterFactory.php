@@ -43,6 +43,8 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route($localMask.'/dekujemeZaZpravu', 'Front:Default:thanksContact');
         $router[] = new Nette\Application\Routers\Route($localMask.'/navody', 'Front:Default:navody');
 
+        $router[] = new Nette\Application\Routers\Route($localMask.'/kodovani-elektroinstalace', 'Front:Blog:kodovani');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/vyplneni-formulare', 'Front:Blog:jakNaFormular');
         $router[] = new Nette\Application\Routers\Route($localMask.'/blog', 'Front:Blog:default');
         $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-typy-tazneho', 'Front:Blog:typyTazneho');
         $router[] = new Nette\Application\Routers\Route($localMask.'/clanek-elektroinstalace', 'Front:Blog:elektroinstalace');
@@ -54,6 +56,10 @@ final class RouterFactory
         $router[] = new Nette\Application\Routers\Route($localMask.'/zaruka-po-montazi', 'Front:Blog:zaruka');
         $router[] = new Nette\Application\Routers\Route($localMask.'/vyber-tz-elektroinstalace', 'Front:Blog:vyberTzAEl');
 
+        $router[] = new Nette\Application\Routers\Route($localMask.'/akce-souteze', 'Front:Default:akce');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/darkove-poukazy', 'Front:Default:akcePoukazy');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/sleva-na-nosice', 'Front:Default:akceNosice');
+        $router[] = new Nette\Application\Routers\Route($localMask.'/vanocni-soutez', 'Front:Default:akceSoutez');
         $router[] = new Nette\Application\Routers\Route($localMask.'/akce-souteze', 'Front:Default:akce');
 //        $router[] = new Nette\Application\Routers\Route('/tisicovkaProTebe', 'Front:Default:akce1000montaz');
 //        $router[] = new Nette\Application\Routers\Route('/vybavSeNaZimu', 'Front:Default:akceZima');

@@ -18,35 +18,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="author" content="VAPOL | www.vapol.cz | it@vapol.cz">
+    <meta name="publisher" content="Rachel Rydlova | VAPOL ">
     <meta name="generator" content="SPR-Machine-1.0">
-    <meta name="keywords" content="">
-    <meta name="description" content="">
+    <meta name="keywords" content="{ifset keywords}{include keywords|stripHtml}{else}tazna zarizeni, tažná zařízení, montaz tazneho zarizeni, montáž tažného zařízení, montáže tažného zařízení cena, montáž tažného, montáž tažné koule{/ifset}">
+    <meta name="description" content="{ifset metaDescription}{include metaDescription|stripHtml} {else} Montáž tažných zařízení od profesionálů z oboru - Towpoint - vše co Vás zajímá o tažných koulích{/ifset}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no">
 
 
     <!-- Favicons -->
     <link href="{$basePath}/assets/img/favicon.ico" rel="icon">
+    <link href="https://www.towpoint.cz" rel="canonical">
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
           rel="stylesheet">
 
-    <!-- Gallery flickity -->
-    <link rel="stylesheet" href="{$basePath}/assets/unpkg/flickity.css?v={filemtime('assets/unpkg/flickity.css')}" type="text/css">
-    <link rel="stylesheet" href="{$basePath}/assets/unpkg/fullscreen.css?v={filemtime('assets/unpkg/fullscreen.css')}" type="text/css">
-
     <!-- Main CSS File -->
-    <link href="{$basePath}/assets/css/base.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/slides.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/map.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/langMenu.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/navbar.css" rel="stylesheet">
-    <link href="{$basePath}/assets/css/cookie.css" rel="stylesheet">
-
-    <!-- Simple Lightbox -->
-    <link rel="stylesheet" href="{$basePath}/assets/css/simple-lightbox.css">
-
+    <link href="{$basePath}src/main.css" rel="stylesheet">
 
 
     <!-- Templates CSS Files -->
@@ -55,12 +44,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/jquery-migrate-1.4.1.min.js"></script>
 
-    <!-- font awesome icons -->
-    <link href="{$basePath}/assets/css/fa.css" rel="stylesheet">
-    <script type="text/javascript" src="{$basePath}/assets/js/fa.js?v={filemtime('assets/js/fa.js')}"></script>
 
+    <!-- Main JS File -->
+    <script src="{$basePath}/src/main.js"></script>
 
-    <title>{ifset title}{include title|stripHtml} | {/ifset} {$baseTitle}</title>
+    <title>{ifset title}{include title|stripHtml} | {else} {$baseTitle}{/ifset}</title>
 
 </head>
 
@@ -99,8 +87,10 @@
     <div class="navbar">
         <div class="nav">
             <div class="contact">
+                <h2><a n:href="Default:akce">Akce</a></h2>
                 <i class="fa fa-phone-alt" aria-hidden="true"></i>
-                <h2><a href="tel:+420702111702" style="margin-right: 1rem; white-space: nowrap;">702 111 702</a></h2>
+                <h2><a href="tel:+420702111702" style="white-space: nowrap;">702 111 702</a></h2>
+                <p>(Po–Pá 7:30–17:00)</p>
                 <a id="navmail" href="mailto:info@towpoint.cz"><i class="fa fa-envelope" style="margin-right: 1rem;"></i></a>
                 <div class="navmail">
                     <a href="mailto:info@towpoint.cz">info@towpoint.cz</a>
@@ -116,12 +106,13 @@
                 <ul>
                     <li><a href="https://www.towpoint.cz/" class="cz"></a></li>
                     <li><a href="https://www.towpoint.sk/" class="sk"></a></li>
+                    <li><a href="https://www.towpoint.hu/" class="hu"></a></li>
                 </ul>
             </div>
         </div>
     </div>
     <a n:href="Default:" title="přejít na titulní stránku" class="logo"></a>
-    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption">
+    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption" title="">
         <a class="nav-link {if $presenter->isLinkCurrent($link)}active{/if}" n:href="$link"><span>{$caption}</span></a>
     </nav>
     <a href="#" id="mmenu"><span>Menu</span></a>
@@ -132,7 +123,7 @@
 
 
 <!-- ======= Social icons  ======= -->
-{*<aside>*}
+{*<aside class="social">*}
 {*    <div>*}
 {*        <a href="https://www.facebook.com/TowPointCZ">*}
 {*            <img src="{$basePath}/assets/image/ikony/social/fb.png" alt="facebook">*}
@@ -149,6 +140,19 @@
 <!-- ======= MAIN Section ======= -->
 {include content}
 <!-- ======= END MAIN Section ======= -->
+
+
+<!-- ======= POP-UP ======= -->
+{*<div n:if="!$popupSeen" class="popOverlay" id="popup">*}
+{*    <div class="popModal">*}
+{*        <a href="#" class="pop-end">*}
+{*            <span><i class="fa fa-times"></i></span>*}
+{*        </a>*}
+{*        <img src="{$basePath}/assets/image/stehovani_cz.jpg" alt="pop up akce a novinky" style="width: 100%">*}
+{*    </div>*}
+{*</div>*}
+
+<!-- ======= END POP-UP ======= -->
 
 
 <!-- ======= Footer ======= -->
@@ -195,12 +199,12 @@
 
 
     <section class="vyrobci">
-        <img src="{$basePath}/assets/image/loga/steinhof.png" alt="Steinhof">
-        <img src="{$basePath}/assets/image/loga/westfalia.png" alt="Westfalia">
-        <img src="{$basePath}/assets/image/loga/ah.png" alt="Auto-hak">
-        <img src="{$basePath}/assets/image/loga/multipa.png" alt="Multipa">
-        <img src="{$basePath}/assets/image/loga/ej.png" alt="Erich Jaeger">
-        <img src="{$basePath}/assets/image/loga/ecs.png" alt="ECS">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-steinhof.png" alt="Steinhof">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-westfalia.png" alt="Westfalia">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-autohak.png" alt="Auto-hak">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-multipa.png" alt="Multipa">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-erichjaeger.png" alt="Erich Jaeger">
+        <img src="{$basePath}/assets/image/loga/towpoint-logo-vyrobce-ecs.png" alt="ECS">
     </section>
 
 </footer>
@@ -243,26 +247,39 @@
         gtag('config', 'G-WWLNHLX643');
     </script>
 
-    <!-- Main JS File -->
 
-    <script src="{$basePath}/assets/js/jquery.iosslider.min.js?v={filemtime('assets/js/jquery.iosslider.min.js')}"></script>
-    <script src="{$basePath}/assets/js/mmenu.js?v={filemtime('assets/js/mmenu.js')}""></script>
-    <script src="{$basePath}/assets/js/simple-lightbox.js?v={filemtime('assets/js/simple-lightbox.js')}"></script>
-    <script src="{$basePath}/assets/js/support.js?v={filemtime('assets/js/support.js')}"></script>
+
+{*    <script src="{$basePath}/assets/js/jquery.iosslider.min.js?v={filemtime('assets/js/jquery.iosslider.min.js')}"></script>*}
+{*    <script src="{$basePath}/assets/js/mmenu.js?v={filemtime('assets/js/mmenu.js')}""></script>*}
+{*    <script src="{$basePath}/assets/js/simple-lightbox.js?v={filemtime('assets/js/simple-lightbox.js')}"></script>*}
+{*    <script src="{$basePath}/assets/js/support.js?v={filemtime('assets/js/support.js')}"></script>*}
 
 
     {*<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>*}
+
+    <!-- Nette form -->
+{*    <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>*}
+{*    <script src="{$basePath}/assets/js/nette.ajax.js?v={filemtime('assets/js/nette.ajax.js')}"></script>*}
+
 
     <!-- Flickity gallery JS -->
     <script src="{$basePath}/assets/unpkg/flickity.pkgd.js?v={filemtime('assets/unpkg/flickity.pkgd.js')}"></script>
     <script src="{$basePath}/assets/unpkg/fullscreen.js?v={filemtime('assets/unpkg/fullscreen.js')}"></script>
 
-
-    <!-- Nette form -->
-    <script src="https://nette.github.io/resources/js/3/netteForms.min.js"></script>
-    <script src="{$basePath}/assets/js/nette.ajax.js?v={filemtime('assets/js/nette.ajax.js')}"></script>
-
     {block script}
+
+    <script>
+        $(window).load(function () {
+            $('div.carousel.gallery').flickity({
+                wrapAround: true,
+                freeScroll: true,
+                fullscreen: true,
+                lazyLoad: 1,
+                pageDots: false
+            });
+        });
+    </script>
+
     {/block}
 
 

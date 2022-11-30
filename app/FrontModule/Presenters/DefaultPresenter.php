@@ -217,6 +217,23 @@ class DefaultPresenter extends BasePresenter
 //        $this->terminate();
     }
 
+    public function renderNosiceMul()
+    {
+        $this->template->data = $this->apiManager->getNosiceByVyrobceKategorie();
+    }
+    public function renderNosiceBuzz()
+    {
+        $this->template->data = $this->apiManager->getNosiceByVyrobceKategorie('BUZZRACK');
+    }
+    public function renderNosiceWest()
+    {
+        $this->template->data = $this->apiManager->getNosiceByVyrobceKategorie('Westfalia-Automotive');
+    }
+    public function renderNosiceYak()
+    {
+        $this->template->data = $this->apiManager->getNosiceByVyrobceKategorie('Yakima');
+    }
+
     public function render()
     {
         $this->template->setTranslator($this->translator);

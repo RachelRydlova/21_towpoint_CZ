@@ -89,7 +89,7 @@ input, textarea
 
 /* SOCIAL ICONS BAR */
 
-aside {
+aside.social {
 	position: fixed;
 	z-index: 100;
 	border-bottom-right-radius: 1em;
@@ -103,7 +103,7 @@ aside {
 	background-size: contain;
 }
 
-aside div {
+aside.social div {
 	padding-top: 1em;
 	display: flex;
 	flex-direction: column;
@@ -111,6 +111,61 @@ aside div {
 }
 
 /* end social icons Bar*/
+
+
+/* pop-up pro akce a novinky */
+.pop-end {
+	position: absolute;
+	right: -2%;
+	top: -2%;
+}
+.pop-end span {
+	border: 2px solid var(--color-lightGray);
+	padding: 0.2em 0.5em;
+	border-radius: 50%;
+	color: var(--color-lightGray);
+	background-color: var(--color-gray);
+}
+.pop-end .fa {
+	font-size: 3em !important;
+}
+.popModal a.pop-end span:hover {
+	background-color: var(--color-darkGray);
+}
+.popModal {
+	position: fixed;
+	z-index: 1000;
+	max-width: 510px;
+	border: 2px solid;
+	color: var(--color-white);
+	background-color: rgba(128,128,128,0.4);
+}
+
+.popOverlay {
+	/*display: flex;*/
+	z-index: 999;
+	position: fixed; /* Positioning and size */
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(128,128,128,0.5); /* color */
+	display: none; /* making it hidden by default */
+}
+
+.popOverlay .content {
+	display: flex;
+	justify-content: space-around;
+	text-align: left;
+	padding: 1em;
+}
+
+
+
+/* end of pop-up*/
+
 
 
 header
@@ -444,7 +499,7 @@ footer img.tazak {
 		max-height: 7.1875rem;
 	}
 
-	aside {
+	aside.social {
 		display: none;
 	}
 }
@@ -716,6 +771,13 @@ footer img.tazak {
 	}
 	.vyrobci img {
 		max-width: 4rem;
+	}
+
+	.modal {
+		width: 80%;
+	}
+	.modal img {
+		width: 100%;
 	}
 }
 

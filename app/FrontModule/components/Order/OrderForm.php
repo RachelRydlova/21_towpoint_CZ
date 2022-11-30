@@ -54,7 +54,7 @@ class OrderForm extends Control
             ->setHtmlAttribute('placeholder', 'Příjmení');
         $form->addEmail('email', "E-mail")
             ->setHtmlAttribute('placeholder', 'E-mail');
-        $form->addSelect('predvolba', $predvolby);
+        $form->addSelect('predvolba', 'Předvolba', $predvolby);
         $form->addText('tel', "Telefon")
             ->setHtmlAttribute('placeholder', 'Telefon');
         $form->addText('psc', "PSČ")

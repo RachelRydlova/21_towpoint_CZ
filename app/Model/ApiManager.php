@@ -16,6 +16,7 @@ use Nette\Application\AbortException;
 use Nette\Caching\Cache;
 use Nette\Http\Session;
 use Nette\Utils\Arrays;
+use SimpleXMLElement;
 use Tracy\Debugger;
 
 /**
@@ -106,6 +107,7 @@ class ApiManager
             $data = \GuzzleHttp\json_decode($response->getBody()->getContents());
             if (!isset($data->data)) {
                 Debugger::log('Neexistuje obrázek pro dané auto');
+                return null;
             }
         } catch (GuzzleException $e) {
             Debugger::log($e, $log);
@@ -133,6 +135,7 @@ class ApiManager
         $cacheKey = 'remote.getModelImage.'.$modelId;
         $token = self::countApiToken([$modelId]);
         $uri = '/remote-cars/get-model-image/?modelid='.$modelId.'&secret='.$token;
+        Debugger::log($this->solveVapolResponse($uri, $cacheKey), 'getModelImage');
         return $this->solveVapolResponse($uri, $cacheKey);
     }
 
@@ -333,6 +336,19 @@ class ApiManager
                     $state = 'CZ';
                 }
 
+                // nastavim predvolbu na telefonu
+                $predvolba = $dataToReva['contact']['predvolba'];
+                $tel = $dataToReva['contact']['tel'];
+                if ($predvolba == 2 ) {
+                    $predvolba = '0036';
+                } elseif ($predvolba == 1) {
+                    $predvolba = '00421';
+                } else {
+                    $predvolba = '+420';
+                }
+                $dataToReva['contact']['tel'] = $predvolba . $tel;
+
+
                 // preference Cena x Kvalita
                 $pref = Arrays::get($dataToReva, ['carInfo', 'pref']);
                 if ($pref == 0) {
@@ -518,4 +534,85 @@ class ApiManager
         $this->cache->save($cacheKey, $result, [Cache::EXPIRATION => '+ 6 hours']);
         return $result;
     }
+
+    public function getSovaData($partnerId = '01041229'): ?array
+    {
+
+        $xml = new SimpleXMLElement('https://sova.vapol.cz/xml/feed/data-r5/01041229/', NULL, TRUE);
+        $json = json_encode($xml);
+        $data = json_decode($json,TRUE);
+        if (is_array($data) && array_key_exists('vyrobek', $data)){
+            return $data['vyrobek'];
+        }
+        return [];
+    }
+
+    /**
+     * Data o produktu (nosicich) ze Sovy, filtruju podle vyrobce, kategorie a zobrazim pouze produkty, co jsou skladem
+     * @param $vyrobce
+     * @param string $kategorie
+     */
+    public function getNosiceByVyrobceKategorie($vyrobce = 'Multipa', string $kategorie = 'Nosiče kol na tažné zařízení'): ?array
+    {
+        $cacheKey = 'getNosiceByVyrobce_'.$vyrobce.'_Kategorie_'.$kategorie;
+        if ($load = $this->cache->load($cacheKey)) {
+            return $load;
+        }
+
+        $nosice = [];
+        $nosiceData = $this->getSovaData();
+
+        foreach ($nosiceData as $data => $nosic) {
+            $nosic['id'] = str_replace('/', '-', $nosic['id']);
+            if ($nosic['vyrobce'] == $vyrobce && $nosic['kategorie'] == $kategorie && ($nosic['sklad'] == 'ano' || $nosic['sklad'] > 0)) {
+                $nosice[] = $nosic;
+                $dir = WWW_DIR . '/data/' . $nosic['id'];
+                if (!is_dir($dir)) {
+                    mkdir($dir);
+                }
+                if (isset($nosic['prilohy'])) {
+                    $i = 1;
+                    foreach ($nosic['prilohy'] as $priloha) {
+                        if ($i <= 10) {
+                            $path = $dir . '/' . $i . '.jpg';
+                            $this->grab_image($priloha, $path);
+                            $i++;
+                            $priloha = $i;
+                        }
+                    }
+                }
+            }
+        }
+
+        if ($nosice) {
+            $this->cache->save($cacheKey, $nosice, [Cache::EXPIRATION => '3 days']);
+        }
+        Debugger::log($nosice, 'vyfiltrovaneNosice');
+        return $nosice;
+    }
+
+
+
+
+    /**
+     * HELPER
+     * @param $url
+     * @param $saveto
+     */
+    public function grab_image($url,$saveto)
+    {
+        $ch = curl_init ($url);
+        curl_setopt($ch, CURLOPT_HEADER, 0);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_BINARYTRANSFER,1);
+        $raw=curl_exec($ch);
+        curl_close ($ch);
+        if(file_exists($saveto)){
+            unlink($saveto);
+        }
+        $fp = fopen($saveto,'x');
+        fwrite($fp, $raw);
+        fclose($fp);
+    }
+
 }

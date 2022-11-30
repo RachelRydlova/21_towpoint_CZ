@@ -1,5 +1,7 @@
 
 {block title}Karavany | TowPoint{/block}
+{block metaDescription}Montáž tažného zařízení na karavany a obytné vozy. Poradíme Vám s výběrem a zařídíme montáž - Towpoint{/block}
+{block keywords}montáž tažného zařízení na obytný vůz, tažné na obytňák, tažné zařízení na karavan{/block}
 
 {block head}
     <link href="{$basePath}/assets/css/home.css" rel="stylesheet">
@@ -36,8 +38,7 @@
                 <p>Zařízení pro obytné vozy nám dodává německá firma AL-KO (SAWIKO), která je špičkou v oboru. Samozřejmostí je jak pevný, tak odnímatelný kulový čep dle Vaší volby.</p>
                 <p>Pokud je potřeba prodloužit nosný rám nástavby, tak demontujeme nosníky, namontujeme výztuhy, které jsou přípravou na nový, delší rám a pak následně i na tažné zařízení s
                     elektroinstalací.</p>
-                <p>Pro zapsání tažného zařízení do technického průkazu vozidla je stejný postup jako u osobního vozidla. Nemusíte na zdlouhavou STK. Od nás dostanete typový list, se kterým stačí
-                    zajít na dopravní inspektorát, kde Vám údaje zapíší.</p>
+                <p>Kvůli vysoké rozmanitosti provedení obytných vozů nám stačí sdělit VIN kód vozidla, podle kterého si u výrobce dohledáme přesnou specifikaci podvozku Vašeho vozu. Díky tomu jsme rychle schopni uvést přesnou cenu montáže.</p>
             </div>
 
 
@@ -76,7 +77,7 @@
             <ul>
                 <li>U přídavných vozíků ke karavanům je důležité znát hmotnost zatížení na nápravu.</li>
                 <li>Tuto informaci naleznete v technickém průkazu ve sloupci „Hmotnosti“ v poli N (Nejvyšší technicky přípustná hmotnost na nápravu).</li>
-                <li>Jak velká hmotnost přívěsu smí na obytná vůz závisí na tom, zda je přívěs vybaven vlastní brzdou nebo ne. Maximální tažnou kapacitu naleznete v TP vozidla.</li>
+                <li>Jak velká hmotnost přívěsu smí být, závisí na tom, zda je přívěs vybaven vlastní brzdou nebo ne. Maximální tažnou kapacitu naleznete v TP vozidla.</li>
             </ul>
             <h4>Tažná kapacita:</h4>
             <ul>
@@ -114,17 +115,19 @@
     <!-- Flickity gallery slider -->
 <footer>
     <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500, "pageDots": false }'>
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar6.jpg?" alt="Tazne zarizeni na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar1.jpg?" alt="Kararavan s kolem">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar5.jpg?" alt="Nosic kol na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar7.jpg?" alt="Karavan v prirode">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar2.jpg?" alt="Zada karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar8.jpg?" alt="Karavan v plne vybave">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar3.jpg?" alt="Detail zadni casti karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar4.jpg?" alt="Detail tazneho na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar9.jpg?" alt="Nase montaz tazneho na karavan">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar10.jpg?" alt="Tazne zarizeni na obytnaku">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar11.jpeg?" alt="Tazna koule na karavanu">
-        <img class="carousel-cell" src="{$basePath}/assets/img/karavan/kar12.jpeg?" alt="Obytne auto s taznym zarizenim">
+        {cache expire => '60 days'}
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-detail-koule.jpg?" alt="Tazne zarizeni na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-nosic-kol.jpg?" alt="Kararavan s kolem">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-nosic-kol-na-tazne.jpg?" alt="Nosic kol na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan.jpg?" alt="Karavan v prirode">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-realizace-tazneho.jpg?" alt="Zada karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-cestovani-karavanem.jpg?" alt="Karavan v plne vybave">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-detail-realizace.jpg?" alt="Detail zadni casti karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-montaze.jpg?" alt="Detail tazneho na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-realizace-tazneho.jpg?" alt="Nase montaz tazneho na karavan">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-detail-montaze-koule.jpg?" alt="Tazne zarizeni na obytnaku">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-nosice-kol-zavesny.jpeg?" alt="Tazna koule na karavanu">
+            <img class="carousel-cell" src="{$basePath}/assets/img/karavan/towpoint-karavan-detail-koule.jpeg?" alt="Obytne auto s taznym zarizenim">
+        {/cache}
     </div>
 </footer>

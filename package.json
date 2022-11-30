@@ -1,0 +1,32 @@
+{
+  "name": "21_towpoint",
+  "version": "1.0.0",
+  "description": "Towpoint - místo, kde poradíme s výběrem i montáží tažného zařízení",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "watch": "npm run dev -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://VapolCZ@dev.azure.com/VapolCZ/towPoint/_git/21_towpoint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-css-loader": "^4.1.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "babel-loader": "^9.1.0",
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "^6.7.1",
+    "glob": "^8.0.3",
+    "style-loader": "^3.3.1"
+  }
+}

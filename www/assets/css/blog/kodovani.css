@@ -1,0 +1,116 @@
+
+    body {
+        color: var(--color-darkGray);
+    }
+    main {
+        width: 100%;
+        margin: 1rem auto;
+        padding-top: 2rem;
+    }
+    article > div {
+        width: 70%;
+        margin: 0 auto;
+        padding: 2em 0;
+    }
+    article h3 {
+        padding-bottom: 1rem;
+    }
+    article p {
+        margin-bottom: 1.2em;
+        font-size: 1.2em;
+    }
+    article img {
+        width: 100%;
+        height: auto;
+        padding: 2em 0;
+    }
+    article img.smaller {
+        width: 60%;
+    }
+
+    article.gray {
+        background-color: var(--color-lightGray);
+        color: var(--color-darkGray);
+    }
+    article.gray p:first-of-type {
+        font-weight: 600;
+        width: 70%;
+    }
+    article.gray p:first-of-type span {
+        font-weight: 700;
+    }
+
+
+    div.list {
+        padding-left: 1em;
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+    div.list li {
+        font-size: 1.2em !important;
+    }
+
+
+    /*
+    **
+    *** MEDIA QUERIES
+    **
+    */
+
+
+
+    @media screen and (max-width: 1450px) {
+        p, ul li {
+            font-size: 1em;
+        }
+    }
+
+    @media screen and (max-width: 850px)
+    {
+        h3 {
+            font-size: 1.2em;
+        }
+        article.gray > div {
+             padding: 0;
+        }
+
+        div.list {
+            grid-template-columns: 1fr;
+            padding-left: 0;
+        }
+        article.gray p:first-of-type {
+            margin-top: 1.2em;
+            width: 100%;
+            font-size: 1.2em;
+        }
+
+        ul {
+            margin-bottom: 1.2em;
+            padding-left: 4%;
+        }
+        article.gray img {
+            width: 60%;
+            margin: 0 auto;
+        }
+        article img.smaller {
+            width: 100%;
+        }
+        article.gray {
+            padding-bottom: 1.2em;
+        }
+    }
+
+
+    @media screen and (max-width: 600px)
+    {
+        h3 {
+            font-size: 1.2em;
+            margin-bottom: .5em;
+        }
+        article p {
+            font-size: .9em;
+        }
+        div.list li {
+            font-size: .9em !important;
+        }
+    }

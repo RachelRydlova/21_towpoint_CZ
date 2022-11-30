@@ -1,0 +1,129 @@
+
+
+    body {
+        color: var(--color-darkGray);
+        font-size: 1.2em;
+    }
+    body p, li {
+        font-size: 1.3em;
+    }
+    main h1 {
+        font-size: 3em;
+        padding-bottom: .5em;
+    }
+    .headerText {
+        padding-bottom: 2em;
+    }
+    .textBigger {
+        align-self: center;
+        padding-left: 2em;
+    }
+    .textBigger p {
+        line-height: 2em;
+    }
+    .font-orange {
+        color: var(--color-orange);
+    }
+
+    .bg-image {
+        right: 15%;
+        position: absolute;
+        width: 25%;
+    }
+    .orange-button {
+        background-color: var(--color-orange);
+        color: var(--color-white);
+        padding: 0.8em;
+        text-transform: uppercase;
+        border: .8px solid var(--color-darkGray);
+        display: inline-block;
+        margin: .8em 0;
+    }
+    .d-flex {
+        display: flex;
+    }
+    .font-thin {
+        font-weight: 300;
+    }
+    .grayTextBox {
+        background-color: var(--color-lightGray);
+        padding: 1em 7.7em;
+    }
+    #obrazekvyhry {
+        display: none;
+    }
+    #vyhry {
+        display: flex;
+    }
+    .wrapper {
+        max-width: 84%;
+    }
+
+
+    @media screen and (max-width: 900px) {
+        #vyhry {
+            flex-direction: column;
+        }
+        #vyhry img {
+            margin: 0 auto;
+        }
+        main h1 {
+            font-size: 2em;
+        }
+        .wrapper {
+            z-index: 1000;
+        }
+        .textBigger p {
+            font-size: 1em;
+        }
+        .grayTextBox {
+            padding: 1em 2em;
+            font-size: .8em;
+        }
+        .wrapper {
+            padding-top: 1em !important;
+        }
+        .wrapper li, .wrapper p {
+            font-size: .8em;
+        }
+        a.orange-button, a {
+            font-size: .7em;
+        }
+        h1:last-of-type {
+            font-size: 1.2em;
+            padding-top: 1.5em;
+            margin-bottom: 1.5em;
+        }
+    }
+
+    @media screen and (max-width: 500px) {
+        .bg-image {
+            display: none;
+        }
+        h1:last-of-type {
+            padding-top: 0;
+            margin-bottom: 0;
+        }
+        .grayTextBox {
+            margin-top: 1em;
+        }
+        .wrapper p, .grayTextBox {
+            font-size: .6em;
+        }
+        .wrapper {
+            max-width: 90%;
+        }
+        #vyhry img {
+            width: 100%;
+            position: relative;
+        }
+        #obrazekvyhry {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin-top: 1em;
+        }
+        .recenze {
+            display: none;
+        }
+    }

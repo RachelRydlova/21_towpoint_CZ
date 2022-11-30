@@ -1,4 +1,6 @@
 {block title}Jednička v tažném zařízení | TowPoint{/block}
+{block metaDescription}Kalkulace montáže tažného zařízení, vyberte vozidlo, které Vás zajímá, odešlete nám informace a my Vám montáž naceníme. Zítra můžeme montovat - Towpoint{/block}
+{block keywords}montáž tažného zařízení, montáž koule, tažné zařízení, jak vybrat tažné, jaké jsou typy tažného zařízení, Towpoint{/block}
 
 {block recenzeTitle} {_messages.base.whyUs} {/block}
 
@@ -24,35 +26,54 @@
         <div class="slides iosSlider">
             <div class="slider">
                 {foreach $b as $bid => $bi}
+                    {cache $bi, expire => '1 day'}
                     <div class="item{$bid == 0 ? ' current' : ''}{($format[$bi]|lower) == 'mp4' ? ' video' : ''}">
                         {if ($format[$bi]|lower) == 'jpg'}
 
                             {*rucne se nastavi nazev banneru, pokud je akce*}
-                            {if $bi == '03'}
-                                <a n:href="Default:nosiceMul" style="cursor: pointer" target="_blank">
+                            {if $bi == '01'}
+                                <a n:href="Default:akceSoutez" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                                 </a>
                             {/if}
-{*                            {if $bi == '02'}*}
-{*                                <a n:href="Default:akceZima" style="cursor: pointer" target="_blank">*}
-{*                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">*}
-{*                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">*}
-{*                                </a>*}
-{*                            {/if}*}
+                            {if $bi == '03'}
+                                <a n:href="Default:karavany" style="cursor: pointer" target="_blank">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
                             {if $bi == '04'}
-                                <a href="https://www.facebook.com/TowPointCZ" style="cursor: pointer" target="_blank">
+                                <a n:href="Default:akcePoukazy" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                                 </a>
                             {/if}
                             {if $bi == '05'}
+                                <a n:href="Default:about#mapa" style="cursor: pointer" target="_blank">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
+{*                            {if $bi == '04'}*}
+{*                                <a href="Default:akceNosice" style="cursor: pointer" target="_blank">*}
+{*                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">*}
+{*                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">*}
+{*                                </a>*}
+{*                            {/if}*}
+                            {if $bi == '06'}
+                                <a href="https://www.facebook.com/TowPointCZ" style="cursor: pointer" target="_blank">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
+                                    <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
+                                </a>
+                            {/if}
+                            {if $bi == '07'}
                                 <a n:href="Default:elektro" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
                                 </a>
                             {/if}
-                            {if $bi == '06'}
+                            {if $bi == '08'}
                                 <a n:href="Default:voziky" style="cursor: pointer" target="_blank">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}.jpg" alt="">
                                     <img src="{$basePath}/assets/ftp/cz/{$bi}-sml.jpg" alt="">
@@ -70,6 +91,7 @@
                             <video playsinline muted> <source src="{$basePath}/assets/ftp/cz/{$bi}.mp4" type="video/mp4"></video>
                         {/if}
                     </div>
+                    {/cache}
                 {/foreach}
             </div>
         </div>
@@ -95,7 +117,9 @@
 
 
 <div class="subn step step1">
-    <h2>Vyberte vozidlo a&nbsp;motorizaci</h2>
+    <h2>Vyberte vozidlo a&nbsp;motorizaci
+    <a n:href="Blog:jakNaFormular" style="float: right; font-size: .8em">Jak vyplnit poptávkový formulář?</a>
+    </h2>
 </div>
 
 <section id="sel">

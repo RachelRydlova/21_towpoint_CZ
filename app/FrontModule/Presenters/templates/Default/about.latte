@@ -1,4 +1,11 @@
 {block title}O TowPoint{/block}
+{block metaDescription}O nás jako firmě - Towpoint{/block}
+{block keywords}
+    {foreach $mapData as $partner}
+        montáž tažného zařízení {$partner->nazev}, tažné zařízení {$partner->nazev}, montážní místo {$partner->nazev}, montáže tažného {$partner->nazev}
+    {/foreach}
+
+{/block}
 
 
 {block head}
@@ -49,14 +56,53 @@
 
 
         <br>
+
         {*  mapa Ceske republiky*}
-        <div class="mapcontainer" style="max-width: 1500px !important">
+        <div id="mapa" class="mapcontainer" style="max-width: 1500px !important; position: relative">
+            <aside id="mapInfo">
+                <div class="mapArrow">
+                    <img src="{$basePath}/assets/image/vyberSipka.png" alt="kliknutim zvolte montazni misto">
+                </div>
+                <div class="mapInfoText">
+                    <p class="mapFirstLine"> Mapa montážních míst </p>
+                    <p class="mapSecondLine"> Kliknutím zobrazíte více informací. </p>
+                </div>
+            </aside>
             <div class="map">
             </div>
         </div>
     </section>
 
+    {* seznam montaznich mist pro mobil *}
+    <section id="partner">
+        {if $mapData}
+        <p> Zvolte si montážní místo:</p>
 
+        {* selector montazniho mista *}
+        <form action="partnerForm">
+            <select name="partner" id="partnerForm-partner">
+                {foreach $mapData as $partner}
+                    <option id="{$partner->id}" value="{$partner->id}">{$partner->nazev}</option>
+                {/foreach}
+            </select>
+        </form>
+
+        {* parametry kazdeho montazniho strediska *}
+        {foreach $mapData as $partner}
+            <div id="partner{$partner->id}" class="partnerInfo">
+                <p>{$partner->adresa}</p>
+                {foreach $partner->images as $img}
+                    <img src="{$img}" alt="montazni stredisko">
+                {/foreach}
+                <ul>
+                    <li n:foreach="$partner->params as $param">
+                        {$param->name|noescape}
+                    </li>
+                </ul>
+            </div>
+        {/foreach}
+        {/if}
+    </section>
 
     <section class="info">
         <div>
@@ -82,7 +128,7 @@
         <div>
             <h1>Provozovatel:</h1>
             <a href="https://www.vapol.cz" onclick="window.open(this.href);return false">
-                <img src="{$basePath}/assets/img/vapol.png" alt="VAPOL CZ">
+                <img style="max-width: 50%; height: auto" src="{$basePath}/assets/image/loga/towpoint-logo-vapol.png" alt="VAPOL CZ">
             </a>
         </div>
 
@@ -108,18 +154,21 @@
         </div>
 
         <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500, "pageDots": false }'>
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/1.jpg?" alt="tazne na skodu">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/2.jpg?" alt="tazne i na luxusni vozidla">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/3.jpg?" alt="esteticka tazna koule">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/4.jpg?" alt="tazne zarizeni na vas vuz">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/5.jpg?" alt="nosice na kola">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/6.jpg?" alt="spousta montaznich mist">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/7.jpg?" alt="nosice na kola za auto">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/8.jpg?" alt="precizni zpracovani tazne koule">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/9.jpg?" alt="nosic na auto">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/10.jpg?" alt="nosic na karavan">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/11.jpg?" alt="postarame se o vas karavan">
-            <img class="carousel-cell" src="{$basePath}/assets/image/galerie/12.jpg?" alt="nosice na kouli auta">
+            {cache expire => '60 days'}
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-realizace-tazne-skoda.jpg?" alt="tazne na skodu">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-realizace-tazne-bmw.jpg?" alt="tazne i na luxusni vozidla">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-realizace-detail-koule.jpg?" alt="esteticka tazna koule">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-realizace-tazne-mazda.jpg?" alt="tazne zarizeni na vas vuz">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-nosice-kol-na-strechu.jpg?" alt="nosice na kola">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-montazni-stredisko.jpg?" alt="spousta montaznich mist">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-realizace-nosic-kol.jpg?" alt="nosice na kola za auto">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-realizace-tazne-koule.jpg?" alt="precizni zpracovani tazne koule">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-sidlo-firmy.jpg?" alt="towpoint Zasova sidlo firmy">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-tazne-karavan.jpg?" alt="nosic na karavan">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-tazne-obytny-vuz.jpg?" alt="postarame se o vas karavan">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-ilustrace-tazne-nosic.jpg?" alt="nosice na kouli auta">
+                <img class="carousel-cell" src="{$basePath}/assets/image/galerie/towpoint-ilustrace-nosice-kol-tazne.jpg?" alt="nosice kol na kouli auta">
+            {/cache}
         </div>
     </div>
 
@@ -128,33 +177,36 @@
 </main>
 
 {*   MODAL S INFEM O MONTAZNIM MISTU *}
-    {foreach $mapData as $partner}
-        <div class="overlay" id="modal{$partner->id}">
-            <div class="modal">
-                <div class="modal-content">
+    {if $mapData}
+        {foreach $mapData as $partner}
+            <div class="overlay" id="modal{$partner->id}">
+                <div class="modal">
                     <a href="#" class="close">
-                        <span>X</span></a>
-                    <h2 class="orange twpTitle">
-                        {$partner->nazev}
-                    </h2>
-                    <p class="twpAddress">
-                        {$partner->adresa}
-                    </p>
-                    <div class="content">
-                        {foreach $partner->images as $img}
-                            <img src="{$img}" alt="montazni stredisko">
-                        {/foreach}
-                        <ul class="light" style="font-size: 1.3rem">
-                            {foreach $partner->params as $param}
-                                <li class="twpParameter">{$param->name|noescape}</li>
+                        <span><i class="fa fa-times"></i></span>
+                    </a>
+                    <div class="modal-content">
+                        <h2 class="orange twpTitle">
+                            {$partner->nazev}
+                        </h2>
+                        <p class="twpAddress">
+                            {$partner->adresa}
+                        </p>
+                        <div class="content">
+                            {foreach $partner->images as $img}
+                                <img src="{$img}" alt="montazni stredisko">
                             {/foreach}
-                            <span class="twpText">{$partner->info}</span>
-                        </ul>
+                            <ul class="light" style="font-size: 1.3rem">
+                                {foreach $partner->params as $param}
+                                    <li class="twpParameter">{$param->name|noescape}</li>
+                                {/foreach}
+                                <span class="twpText">{$partner->info}</span>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    {/foreach}
+        {/foreach}
+    {/if}
 
 {/block}
 
@@ -163,12 +215,8 @@
     <script src="{$basePath}/assets/js/raphael.js"></script>
     <script src="{$basePath}/assets/js/jquery.mapael.js"></script>
 
+
     <script>
-        $(function() {
-            $.nette.init();
-        });
-
-
 
         $(function () {
             $(".mapcontainer").mapael({
@@ -179,24 +227,26 @@
                     }
                 },
                 plots: {
-                    {foreach $mapData as $partner}
-                        {$partner->id}: {
-                            id: {$partner->id},
-                            latitude: {if $partner->cord_ltd}{$partner->cord_ltd}{else}""{/if},
-                            longitude: {if $partner->cord_lng}{$partner->cord_lng}{else}""{/if},
-                            tooltip:
-                                {'content':
-                                    "<h2>{$partner->nazev|noescape}</h2>{if $partner->params}<ul>{foreach $partner->params as $param}<li>{$param->name|noescape}</li>{/foreach}</ul>{/if}"
-                                },
-                            twpTitle: {if $partner->nazev}{$partner->nazev}{else}""{/if},
-                            twpAdress: {if $partner->adresa}{$partner->adresa}{else}""{/if},
-                        },
-                    {/foreach}
+                    {if $mapData}
+                        {foreach $mapData as $partner}
+                            {$partner->id}: {
+                                id: {$partner->id},
+                                latitude: {if $partner->cord_ltd}{$partner->cord_ltd}{else}""{/if},
+                                longitude: {if $partner->cord_lng}{$partner->cord_lng}{else}""{/if},
+                                tooltip:
+                                    {'content':
+                                        "<h2>{$partner->nazev|noescape}</h2>{if $partner->params}<ul>{foreach $partner->params as $param}<li>{$param->name|noescape}</li>{/foreach}</ul>{/if}"
+                                    },
+                                twpTitle: {if $partner->nazev}{$partner->nazev}{else}""{/if},
+                                twpAdress: {if $partner->adresa}{$partner->adresa}{else}""{/if},
+                            },
+                        {/foreach}
+                    {/if}
                 }
             });
         });
 
-        $(document).on("click", "[data-id]", function(){
+        $(document).on("click","[data-id]", function(){
             let dataid = $(this).attr("data-id");
             $('#modal'+dataid).css('display', 'flex');
         });
@@ -212,6 +262,17 @@
             }
             $('.overlay').hide();
         });
+
+        // partner info pod mapou
+        $('#partnerForm-partner').on('change', function () {
+            let id = $(this).val();
+            console.log('#partner'+id);
+            $('.partnerInfo').hide();
+            $('#partner'+id).show();
+            $("[data-id]").css('stroke-width', '0');
+            $("[data-id='" + id + "']").css('stroke-width', '5');
+        });
+
 
     </script>
     <script src="{$basePath}/assets/js/mapCZ.js"></script>

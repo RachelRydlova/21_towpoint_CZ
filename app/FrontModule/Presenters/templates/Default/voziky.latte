@@ -1,4 +1,7 @@
 {block title}Servis vozíků | TowPoint{/block}
+{block metaDescription}Servis přívěsných vozíků probíhá v našich montážních střediscích TowPoint = Towpoint{/block}
+{block keywords}servis vozíku, oprava vozíku, servis přívesů{/block}
+
 
 {block head}
     <link href="{$basePath}/assets/css/home.css" rel="stylesheet">
@@ -63,10 +66,12 @@
     <footer>
         <section id="gallery">
             <div class="carousel" data-flickity='{ "wrapAround": true, "fullscreen": true, "autoPlay": 3500 }'>
-                <img class="carousel-cell" src="{$basePath}/assets/img/vozik.jpg?" alt="Volne stojici vozik">
-                <img class="carousel-cell" src="{$basePath}/assets/img/upinaky.jpg?" alt="Upinaci pasy">
-                <img class="carousel-cell" src="{$basePath}/assets/img/dilna-ruka.jpg?" alt="Spoluprace na dilne">
-                <img class="carousel-cell" src="{$basePath}/assets/img/vozik-za-autem.jpg" alt="Vyber voziku">
+                {cache expire => '60 days'}
+                    <img class="carousel-cell" src="{$basePath}/assets/img/towpoint-vozik.jpg?" alt="Volne stojici vozik">
+                    <img class="carousel-cell" src="{$basePath}/assets/img/towpoint-upinaky.jpg?" alt="Upinaci pasy">
+                    <img class="carousel-cell" src="{$basePath}/assets/img/towpoint-dilna-ruka.jpg?" alt="Spoluprace na dilne">
+                    <img class="carousel-cell" src="{$basePath}/assets/img/towpoint-vozik-za-autem.jpg" alt="Vyber voziku">
+                {/cache}
             </div>
         </section>
     </footer>

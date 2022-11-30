@@ -2,6 +2,17 @@ var uint;
 
 $(function () {
 
+    // pop-up banner
+    setTimeout(function () {
+        $('#popup').css('display', 'flex');
+    }, 8000);
+
+    $('.popOverlay .pop-end').on('click', function () {
+        $('.popOverlay').hide();
+        $.nette.ajax({
+            url: '?do=popUpSeen'
+        });
+    });
 
     $(document).on('click', '#acceptCookies', function (e){
         $('#cookie').hide(300);
@@ -399,15 +410,17 @@ $(function () {
 
         // zjistim jestli je vyplneny email
         let mailId = $('#frm-orderForm-orderForm-email');
+        let validRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         let mail = mailId.val();
-        if (!mail || mail.length === 0) {
+
+        if (!mail.match(validRegex)) {
             mailId.parent().addClass('error');
             $('.inputs p.complete').show();
+            mailId.focus();
         } else {
             mailId.parent().removeClass('error');
             $('.inputs p.complete').hide();
         }
-        console.log(mail);
 
         // zjistim jestli je vyplneny telefon
         let telId = $('#frm-orderForm-orderForm-tel');
@@ -415,6 +428,7 @@ $(function () {
         if (!tel || tel.length === 0) {
             telId.parent().addClass('error');
             $('.inputs p.complete').show();
+            telId.focus();
         } else {
             telId.parent().removeClass('error');
             $('.inputs p.complete').hide();
@@ -464,10 +478,14 @@ $(function () {
 
         // zjistim jestli je vyplneny email
         let mailId = $('#frm-contactForm-email');
-        let mail = mailId.val();
-        if (!mail || mail.length === 0) {
+        let mail = mailId.val().toLowerCase();
+        console.log(mail);
+        let validRegex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if (!mail.match(validRegex)) {
             mailId.parent().addClass('error');
             $('.inputs p.complete').show();
+            mailId.focus();
         } else {
             mailId.parent().removeClass('error');
             $('.inputs p.complete').hide();
@@ -480,6 +498,7 @@ $(function () {
         if (!tel || tel.length === 0) {
             telId.parent().addClass('error');
             $('.inputs p.complete').show();
+            telId.focus();
         } else {
             telId.parent().removeClass('error');
             $('.inputs p.complete').hide();

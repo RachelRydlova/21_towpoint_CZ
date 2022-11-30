@@ -29,7 +29,9 @@
         <div id="mark">
             <div class="logos">
                 <a href="javascript:;" title="{$carInfo->name}" n:foreach="$preferovane as $key => $carInfo" data-key="{(int) $carInfo->tcznacka}" class="znackaLink">
-                    <img src="{$carInfo->imageurl}" alt="{$carInfo->name}">
+                    {cache $carInfo->imageurl, expire => '30 days'}
+                        <img src="{$carInfo->imageurl}?v={$today|date:'jnY'}" alt="{$carInfo->name}">
+                    {/cache}
                 </a>
             </div>
             <div class="all">
@@ -49,7 +51,9 @@
                             {$modelInfo->fullname}
                         </a>
                         <figure>
-                            <img n:ifset="$modelInfo->modelimageurl" n:if="$modelInfo->modelimageurl" src="{$modelInfo->modelimageurl}" alt="">
+                            {cache $modelInfo->modelimageurl, expire => '20 days'}
+                                <img n:ifset="$modelInfo->modelimageurl" n:if="$modelInfo->modelimageurl" src="{$modelInfo->modelimageurl}?v={$today|date:'jnY'}" alt="">
+                            {/cache}
                         </figure>
                     </div>
                 {/if}

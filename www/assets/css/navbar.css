@@ -1,16 +1,8 @@
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-}
 
 .nav {
     display: flex;
-    flex-direction: row;
-    list-style: none;
-    padding-left: 0;
-    margin: 0;
     margin-top: .5rem;
+    justify-content: flex-end;
 }
 
 .navbar a {
@@ -21,22 +13,25 @@
 .contact h2 {
     font-size: 1.1rem;
 }
+.contact h2, p {
+    margin-right: 1em;
+}
 .contact svg {
     font-size: .9rem;
     margin-top: .2rem;
 }
+svg.fa-phone-alt {
+    margin-right: .5em;
+    padding-top: .1em;
+}
 .contact svg.fa-envelope {
     font-size: 1.5rem;
+    padding-right: .2em;
 }
 
 .nav > div {
     display: flex;
     align-items: center;
-    column-gap: .5rem;
-}
-
-.contact {
-    margin-right: 1rem;
 }
 
 .navmail {
@@ -53,5 +48,9 @@
     .nav {
         margin-top: 0;
         margin-bottom: .5rem;
+    }
+
+    .navbar .contact p {
+        display: none;
     }
 }

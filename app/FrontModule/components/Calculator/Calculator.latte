@@ -3,7 +3,9 @@
 {form calculator}
 
     <div class="radios pref">
-        <h3>{label pref}</h3>
+        <a class="question" href="{plink Blog:typyTazneho#vybratTazne}" title="Jak vybrat typ tažného zařízení??" target="_blank">
+            <h3>{label pref}</h3>
+        </a>
         {foreach $form['pref']->items as $key => $value}
             <div onclick="this.querySelector('input').click()">
                 <div>
@@ -58,13 +60,13 @@
 
     <div id="nabidka">
         {snippet summaryBox}
-            {if !isset($data)}
+            {if !isset($data) || empty($data)}
                 <h2 class="no">Pro zvolené vozidlo bohužel aktuálně nemáme k dispozici kompletní nabídku.</h2>
                 <p class="no">Přesto nám odešlete tuto svoji poptávku a naši specialisté se Vám ozvou s individuálním návrhem řešení.</p>
             {else}
                 {foreach $data as $item => $value}
                     <div id="{$item}" class="hidden">
-                        {if $value === 0 || !$value}
+                        {if $value == 0 || !$value}
                             <h2 class="no">Pro zvolené vozidlo bohužel aktuálně nemáme k dispozici kompletní nabídku.</h2>
                             <p class="no">Přesto nám odešlete tuto svoji poptávku a naši specialisté se Vám ozvou s individuálním návrhem řešení.</p>
                         {else}
