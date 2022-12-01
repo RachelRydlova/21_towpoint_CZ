@@ -46,14 +46,23 @@ base:
     psc: PSČ
     city: Obec / město
     note: Poznámky
+    contactNote: 'Poznámky - VIN, popis, závady, ...'
     state: Stát
     send: Odeslat
     currency: Kč
+    car: Osobní vozidla
+    caravan: Obytné vozy
+    hybrid: Hybridy/elektro
+    cart: Servis vozíků
+    bikeCarrier: Nosiče na kola
+    action: AKCE A SOUTĚŽE
 
 
 recenze:
     procMy: 'Proč si vybrat nás?'
     nenechameOdjet: 'Nenecháme Vás odjet s něčím, co bychom si sami na auto nedali.'
+    mobil: 'Pohodlně si u nás vyberete také z chytrého telefonu či tabletu.'
+    zkusenosti: 'Máme více než 20leté zkušenosti..'
 
 order:
     contact: Kontaktní údaje
@@ -68,9 +77,9 @@ order:
     noVehicle: 'Vašemu hledání neodpovídá žádný motor vybraného modelu.'
     chooseAnotherVeh: 'Zjednodušte vyhledávací dotaz, nebo si vyberte motor vozu přímo ze seznamu.'
     comfort: 'ACC Adaptive Control, Front Assist Control, hlídaní mrtvého úhlu nebo jiná komfortní výbava vozu?'
-    mark:
-    model:
-    vehicle:
+    mark: Značka vozu
+    model: Model vozu
+    vehicle: Motorizace
 
 calc:
     chooseTow: Jak vybrat typ upevnění?

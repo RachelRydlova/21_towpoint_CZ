@@ -6,6 +6,7 @@ namespace App\FrontModule\Forms;
 
 use App\Forms\FormFactory;
 use App\Model\ApiManager;
+use Contributte\Translation\Translator;
 use Nette;
 use Nette\Application\UI\Form;
 use Nette\Security\User;
@@ -21,12 +22,16 @@ final class ContactFormFactory
 	private User $user;
     private ApiManager $apiManager;
 
+    /** @var Translator @inject */
+    public Translator $translator;
 
-    public function __construct(FormFactory $factory, User $user, ApiManager $apiManager)
+
+    public function __construct(FormFactory $factory, User $user, ApiManager $apiManager, Translator $translator)
 	{
 		$this->factory = $factory;
 		$this->user = $user;
         $this->apiManager = $apiManager;
+        $this->translator = $translator;
     }
 
 
@@ -35,29 +40,33 @@ final class ContactFormFactory
 		$form = $this->factory->create();
 
         $form->getElementPrototype()->setAttribute('class', 'inputs');
+        $p = $this->translator;
 
-        $staty = ['Česká republika', 'Slovensko'];
-
-        $form->addText('name', "Jméno")
-            ->setHtmlAttribute('placeholder', 'Jméno');
-        $form->addText('surname', "Příjmení")
-            ->setHtmlAttribute('placeholder', 'Příjmení');
-        $form->addEmail('email', "E-mail")
-            ->setHtmlAttribute('placeholder', 'E-mail');
-        $form->addText('tel', "Telefon")
-            ->setHtmlAttribute('placeholder', 'Telefon');
-        $form->addText('psc', "PSČ")
-            ->setHtmlAttribute('placeholder', 'PSČ');
-        $form->addText('mesto', "Obec / město")
-            ->setHtmlAttribute('placeholder', 'Obec / město');
-        $form->addTextArea('note', "Poznámky")
-            ->setHtmlAttribute('placeholder', 'Poznámky - VIN, popis, závady, ...');
-        $form->addSelect('state', 'Stát', $staty);
+        $form->addText('name', $p->translate('messages.base.name'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.name'));
+        $form->addText('surname', $p->translate('messages.base.surname'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.surname'));
+        $form->addEmail('email', $p->translate('messages.base.email'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.email'));
+        $form->addText('tel', $p->translate('messages.base.phone'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.phone'));
+        $form->addText('psc', $p->translate('messages.base.psc'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.psc'));
+        $form->addText('mesto', $p->translate('messages.base.city'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.city'));
+        $form->addTextArea('note', $p->translate('messages.base.note'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.contactNote'));
+        $form->addSelect('state',$p->translate('messages.base.state'))
+            ->setItems(array(
+                'CZ' => $p->translate('Česká republika'),
+                'SK' => $p->translate('Slovensko'),
+                'HU' => $p->translate('Maďarsko'),
+            ));;
         $form->addCheckbox('gdpr');
         $form->addHidden('type');
 
 
-        $form->addSubmit('success', 'Odeslat');
+        $form->addSubmit('success', $p->translate('messages.base.send'));
 
         $form->onSuccess[] = function (Form $form, array $values) use ($onSuccess): void {
             $dataToReva = ['contact' => $values, 'carInfo' => []];

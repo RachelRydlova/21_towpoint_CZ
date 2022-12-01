@@ -67,7 +67,7 @@ class OrderForm extends Control
             ->setHtmlAttribute('placeholder', $p->translate('messages.base.city'));
         $form->addTextArea('note', $p->translate('messages.base.note'))
             ->setHtmlAttribute('placeholder', $p->translate('messages.base.note'));
-        $form->addSelect('state',$p->translate('messages.base.name'))
+        $form->addSelect('state',$p->translate('messages.base.state'))
             ->setItems(array(
                 'CZ' => $p->translate('Česká republika'),
                 'SK' => $p->translate('Slovensko'),

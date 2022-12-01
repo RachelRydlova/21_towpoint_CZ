@@ -7,9 +7,9 @@
     <link href="{$basePath}/assets/css/what.css" rel="stylesheet">
 {/block}
 
-{block recenzeTitle} Proč si vybrat nás? {/block}
+{block recenzeTitle} {_messages.recenze.procMy} {/block}
 
-{block recenze} Pohodlně si u nás vyberete také z chytrého telefonu či tabletu. {/block}
+{block recenze} {_messages.recenze.mobil} {/block}
 
 {block tazak} {$basePath}/assets/image/maskot/tazakPhone.png{/block}
 
@@ -18,35 +18,35 @@
 {block content}
 
 <section id="main">
-    <h1>Co nabízíme</h1>
+    <h1>{_messages.layout.whatOffer}</h1>
 </section>
 
 
 <main class="menu">
     <a class="osobak" n:href="Default:default">
-        <img src="{$basePath}/assets/image/piktogramy/tazneOsobak.png" alt="tazne zarizeni pro osobni vozidla">
-        <h2>Osobní vozidla</h2>
+        <img src="{$basePath}/assets/image/piktogramy/tazneOsobak.png" alt="{_messages.base.car}">
+        <h2>{_messages.base.car}</h2>
     </a>
     <a class="obytnak" n:href="Default:karavany">
-        <img src="{$basePath}/assets/image/piktogramy/tazneKaravan.png" alt="tazne zarizeni pro karavany a obytne vozy">
-        <h2>Obytné vozy</h2>
+        <img src="{$basePath}/assets/image/piktogramy/tazneKaravan.png" alt="{_messages.base.caravan}">
+        <h2>{_messages.base.caravan}</h2>
     </a>
     <a class="hybrid" n:href="Default:elektro">
-        <img src="{$basePath}/assets/image/piktogramy/tazneElektro.png" alt="tazne zarizeni pro elektromobily">
-        <h2>hybridy/elektro</h2>
+        <img src="{$basePath}/assets/image/piktogramy/tazneElektro.png" alt="{_messages.base.hybrid}">
+        <h2>{_messages.base.hybrid}</h2>
     </a>
     <a class="voziky" n:href="Default:voziky">
-        <img src="{$basePath}/assets/image/piktogramy/servisVoziku.png" alt="servis a oprava voziku">
-        <h2>servis vozíků</h2>
+        <img src="{$basePath}/assets/image/piktogramy/servisVoziku.png" alt="{_messages.base.cart}">
+        <h2>{_messages.base.cart}</h2>
     </a>
     <a class="nosice" n:href="Default:nosice">
-        <img src="{$basePath}/assets/image/piktogramy/nosic.png" alt="nosice na kola">
-        <h2>nosiče na kola</h2>
+        <img src="{$basePath}/assets/image/piktogramy/nosic.png" alt=">{_messages.base.bikeCarrier}">
+        <h2>{_messages.base.bikeCarrier}</h2>
     </a>
     <a class="akce" n:href="Default:akce">
-        <img src="{$basePath}/assets/image/piktogramy/darek.png" alt="akce a souteze">
+        <img src="{$basePath}/assets/image/piktogramy/darek.png" alt="{_messages.base.action}">
 {*        <img src="{$basePath}/assets/image/piktogramy/nosicKol.png" alt="">*}
-        <h2>AKCE A SOUTĚŽE</h2>
+        <h2>{_messages.base.action}</h2>
     </a>
 </main>
 
