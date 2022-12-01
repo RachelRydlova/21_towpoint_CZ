@@ -146,19 +146,35 @@ class Calculator extends Control
     {
         $form = new Form();
 
-        $form->addRadioList('pref', "Preference:", ['Cena','Kvalita'])
-            ->setAttribute('id', 'pref')
+        $p = $this->presenter;
+        $form->addRadioList('pref',$p->translate('messages.calc.pref'))
+            ->setItems(array(
+                $p->translate('messages.calc.cena'),
+                $p->translate('messages.calc.kvalita'),
+            ))->setAttribute('id', 'pref')
             ->setDisabled(true)
             ->setDefaultValue('0');
-        $form->addRadioList('koule', "Upevnění koule:", ['Pevné','Odnímatelné'])
+        $form->addRadioList('koule', $p->translate('messages.calc.koule'))
+            ->setItems(array(
+                $p->translate('messages.calc.pevne'),
+                $p->translate('messages.calc.odnimatelne'),
+            ))
             ->setAttribute('id', 'koule')
             ->setDisabled(true)
             ->setDefaultValue('0');
-        $form->addRadioList('zasuvka', "Zásuvka:", ['7pinová','13pinová'])
+        $form->addRadioList('zasuvka', $p->translate('messages.calc.zasuvka'))
+            ->setItems(array(
+                $p->translate('messages.calc.pin7'),
+                $p->translate('messages.calc.pin13'),
+            ))
             ->setAttribute('id', 'el')
             ->setDisabled(true)
             ->setDefaultValue('0');
-        $form->addRadioList('redukce', "Redukce zdarma:", ['7→13','13→7'])
+        $form->addRadioList('redukce', $p->translate('messages.calc.redukce'))
+            ->setItems(array(
+                $p->translate('messages.calc.na13'),
+                $p->translate('messages.calc.na7'),
+            ))
             ->setAttribute('id', 'redukce')
             ->setDisabled(true)
             ->setDefaultValue('0');

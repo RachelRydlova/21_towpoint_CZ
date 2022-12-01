@@ -10,6 +10,7 @@ use Nette\Application\UI\Presenter;
 use App\Model\BannerModel;
 use App\Model\ApiManager;
 use Nette\Localization\Translator;
+use Tracy\Debugger;
 
 
 /**
@@ -39,7 +40,6 @@ class BasePresenter extends Presenter
     /** @var string @persistent */
     public string $lang;
 
-
     /** @var Translator @inject */
     public $translator;
 
@@ -58,6 +58,17 @@ class BasePresenter extends Presenter
         $this->translatorSessionResolver->setLocale($this->locale);
 
         bdump($this->translator->translate('messages.test.test'), 'test');
+        // Translator LOCALE
+        bdump($this->locale, 'locale');
+        bdump($this->lang, 'lang');
+    }
+
+    /**
+     * @return Translator
+     */
+    public function getTranslator(): Translator
+    {
+        return $this->translator;
     }
 
 
@@ -103,6 +114,8 @@ class BasePresenter extends Presenter
 
     public function beforeRender(): void
     {
+        $this->template->lang = $this->lang;
+        $this->template->locale = $this->locale;
         // Zakladni labely
         $this->template->baseTitle = 'Jednička v montáži tažných zařízeních | TowPoint';
         // Cookie agreement
@@ -110,6 +123,21 @@ class BasePresenter extends Presenter
         // zda uz byl zobrazen popup
         $this->template->popupSeen = $this->getPopupCookie();
 
+    }
+
+    /**
+     * @param $s
+     * @param array $parameters
+     * @return string
+     */
+    public function translate($s, array $parameters = []): string
+    {
+        try {
+            return $this->translator->translate($s, $parameters);
+        } catch (InvalidArgument $e) {
+            Debugger::log($e, 'translator.error');
+            return $s;
+        }
     }
 
 }

@@ -1,7 +1,7 @@
     {form orderForm}
 
         <div class="subn step step3">
-            <h2>Kontaktní údaje</h2>
+            <h2>{_messages.order.contact}</h2>
         </div>
         <section id="form">
             <div n:foreach="$flashes as $flash" n:class="alert, 'alert-' . $flash->type">{$flash->message}</div>
@@ -13,19 +13,19 @@
 
             <div>
                 <div class="inputs">
-                    <p class="complete">Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s&nbsp;konkrétní nabídkou pro Váš&nbsp;vůz.</p>
+                    <p class="complete">{_messages.order.fullfillForm}</p>
 
                     {input note}
                     <div>  {input name}  </div>
                     <div>  {input surname}  </div>
                     <div class="required">
                         {input email}
-                        <p>Vyplňte svoji e-mailovou adresu ve&nbsp;správném formátu.</p>
+                        <p>{_messages.order.fillEmail}</p>
                     </div>
                     <div class="required" style="display: flex; column-gap: 1em">
                         {input predvolba style=>'width: 40%'}
                         {input tel}
-                        <p>Vyplňte své telefonní číslo.</p>
+                        <p>{_messages.order.fillPhone}</p>
                     </div>
                     <div>  {input psc}  </div>
                     <div>  {input mesto}  </div>
@@ -38,10 +38,10 @@
 
 
         <div class="subn step step4">
-            <h2>Odeslat nezávaznou poptávku</h2>
+            <h2>{_messages.order.sendInq}</h2>
         </div>
         <div class="poptavka">
-            <p>Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc <strong>redukci na zásuvku zdarma</strong>.</p>
+            <p>{_messages.order.freeSocket}</p>
             <div id="gdpr">
                 <input n:name="gdpr">
             </div>
@@ -49,8 +49,8 @@
                 <input type="checkbox" n:name="gdpr">
             </div>
             <span>
-                <p>Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení</p>
-                <p class="hidden error">Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.</p>
+                <p>{_messages.order.gdpr}<p>
+                <p class="hidden error">{_messages.order.agreeGdpr}</p>
             </span>
         </div>
         <a class="cta">
@@ -59,7 +59,7 @@
             </span>
         </a>
 
-        <div class="final_loader"><div>Odesíláme požadavek, mějte strpení...</div></div>
+        <div class="final_loader"><div>{_messages.order.sending}</div></div>
 
     {/form}
 

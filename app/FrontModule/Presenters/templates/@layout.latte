@@ -2,7 +2,7 @@
 {import '../../Forms/form.latte'}
 
 <!DOCTYPE html>
-<html lang="cs">
+<html lang="{$locale}">
 <head>
 
 <!-- Google Tag Manager -->
@@ -68,11 +68,10 @@
     <div class="cookiebar">
 {*        <span style=""><i class="fa fa-times"></i></span>*}
         <div>
-            <p>Tyto stránky používají k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie. Používáním těchto stránek s tím souhlasíte.
-            </p>
+            <p> {_messages.layout.cookieInfo} </p>
             <div class="cookiebtns">
-                <a class="cookie-more" href="{$basePath}/assets/pdf/ochranaOU.pdf" target="_blank">Detailnější informace</a>
-                <button id="acceptCookies" class="btn btn-secondary">Souhlasím</button>
+                <a class="cookie-more" href="{$basePath}/assets/pdf/ochranaOU.pdf" target="_blank">{_messages.layout.cookieDetail}</a>
+                <button id="acceptCookies" class="btn btn-secondary">{_messages.layout.agree}</button>
             </div>
         </div>
     </div>
@@ -87,13 +86,13 @@
     <div class="navbar">
         <div class="nav">
             <div class="contact">
-                <h2><a n:href="Default:akce">Akce</a></h2>
+                <h2><a n:href="Default:akce">{_messages.layout.action}</a></h2>
                 <i class="fa fa-phone-alt" aria-hidden="true"></i>
-                <h2><a href="tel:+420702111702" style="white-space: nowrap;">702 111 702</a></h2>
-                <p>(Po–Pá 7:30–17:00)</p>
-                <a id="navmail" href="mailto:info@towpoint.cz"><i class="fa fa-envelope" style="margin-right: 1rem;"></i></a>
+                <h2><a href="tel:{_messages.layout.czFullTel}" style="margin-right: 1rem; white-space: nowrap;">{_messages.layout.czTel}</a></h2>
+                <p>{_messages.layout.openHours}</p>
+                <a id="navmail" href="mailto:{_messages.layout.czMail}"><i class="fa fa-envelope" style="margin-right: 1rem;"></i></a>
                 <div class="navmail">
-                    <a href="mailto:info@towpoint.cz">info@towpoint.cz</a>
+                    <a href="mailto:{_messages.layout.czMail}">{_messages.layout.czMail}</a>
                 </div>
             </div>
 
@@ -111,11 +110,11 @@
             </div>
         </div>
     </div>
-    <a n:href="Default:" title="přejít na titulní stránku" class="logo"></a>
-    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption" title="">
+    <a n:href="Default:" title="{_messages.layout.toMain}" class="logo"></a>
+    <nav n:inner-foreach="App\Frontmodule\Presenters\BasePresenter::$mainMenu as $link => $caption">
         <a class="nav-link {if $presenter->isLinkCurrent($link)}active{/if}" n:href="$link"><span>{$caption}</span></a>
     </nav>
-    <a href="#" id="mmenu"><span>Menu</span></a>
+    <a href="#" id="mmenu"><span>{_messages.layout.menu}</span></a>
 
 </header>
 
@@ -166,32 +165,32 @@
 
     <section class="benefit">
         <div>
-            <img src="{$basePath}/assets/image/ikony/quality.png" alt="jednicka na trhu v taznych">
-            <p>Jednička na trhu tažných zařízení</p>
+            <img src="{$basePath}/assets/image/ikony/quality.png" alt="{_messages.layout.jednickaNaTrhu}">
+            <p>{_messages.layout.jednickaNaTrhu}</p>
         </div>
 
         <div>
-            <img src="{$basePath}/assets/image/ikony/call.png" alt="">
-            <p>Profesionální poradenství</p>
+            <img src="{$basePath}/assets/image/ikony/call.png" alt="{_messages.layout.poradenstvi}">
+            <p>{_messages.layout.poradenstvi}</p>
         </div>
 
         <div>
             <a n:href="Default:about">
-                <img src="{$basePath}/assets/image/ikony/shop.png" alt="">
-                <p>Montážní místa po celé ČR</p>
+                <img src="{$basePath}/assets/image/ikony/shop.png" alt="{_messages.layout.montazniMista}">
+                <p>{_messages.layout.montazniMista}</p>
             </a>
         </div>
 
         <div>
             <a href="https://www.facebook.com/TowPointCZ">
-                <img src="{$basePath}/assets/image/ikony/social/fb.png" alt="">
-                <p>Máme taky <br> facebook</p>
+                <img src="{$basePath}/assets/image/ikony/social/fb.png" alt="{_messages.layout.facebook}">
+                <p>{_messages.layout.facebook}</p>
             </a>
         </div>
 
         <div>
-            <img src="{$basePath}/assets/image/ikony/gift.png" alt="">
-            <p>Obdržíte vždy něco navíc</p>
+            <img src="{$basePath}/assets/image/ikony/gift.png" alt="{_messages.layout.navic}">
+            <p>{_messages.layout.navic}</p>
         </div>
     </section>
 
@@ -247,6 +246,7 @@
         gtag('config', 'G-WWLNHLX643');
     </script>
 
+    <!-- Main JS File -->
 
 
 {*    <script src="{$basePath}/assets/js/jquery.iosslider.min.js?v={filemtime('assets/js/jquery.iosslider.min.js')}"></script>*}

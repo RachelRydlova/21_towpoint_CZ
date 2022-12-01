@@ -1,10 +1,10 @@
-{block title}Jednička v tažném zařízení | TowPoint{/block}
+{block title}{_messages.base.oneInTows} | TowPoint{/block}
 {block metaDescription}Kalkulace montáže tažného zařízení, vyberte vozidlo, které Vás zajímá, odešlete nám informace a my Vám montáž naceníme. Zítra můžeme montovat - Towpoint{/block}
 {block keywords}montáž tažného zařízení, montáž koule, tažné zařízení, jak vybrat tažné, jaké jsou typy tažného zařízení, Towpoint{/block}
 
-{block recenzeTitle} {_messages.base.whyUs} {/block}
+{block recenzeTitle} {_messages.recenze.procMy} {/block}
 
-{block recenze} Nenecháme Vás odjet s něčím, co bychom si sami na auto nedali. {/block}
+{block recenze} {_messages.recenze.nenechameOdjet} {/block}
 
 {block tazak} {$basePath}/assets/image/maskot/tazakPalec.png {/block}
 
@@ -96,8 +96,8 @@
             </div>
         </div>
 
-        <a href="#" title="předchozí"><i class="fa fa-arrow-circle-left prev"></i></a>
-        <a href="#" title="další"><i class="fa fa-arrow-circle-right next"></i></a>
+        <a href="#" title="{_messages.base.prev}"><i class="fa fa-arrow-circle-left prev"></i></a>
+        <a href="#" title="{_messages.base.next}"><i class="fa fa-arrow-circle-right next"></i></a>
 
        {* <ol class="flickity-page-dots">
             {foreach $b as $bid => $bi}
@@ -112,13 +112,13 @@
 
 
 <hr><section id="main">
-    <h1>{_messages.layout.blog}Chci nabídku na tažné zařízení i&nbsp;s&nbsp;montáží</h1>
+    <h1>{_messages.base.wantOfferFull}</h1>
 </section>
 
 
 <div class="subn step step1">
-    <h2>Vyberte vozidlo a&nbsp;motorizaci
-    <a n:href="Blog:jakNaFormular" style="float: right; font-size: .8em">Jak vyplnit poptávkový formulář?</a>
+    <h2>{_messages.base.chooseCar}
+        <a n:href="Blog:jakNaFormular" style="float: right; font-size: .8em">{_messages.base.howToFill}</a>
     </h2>
 </div>
 
@@ -137,7 +137,7 @@
 <section id="form2">
 
     <div class="subn step step2">
-        <h2>Konfigurátor s&nbsp;kalkulačkou</h2>
+        <h2>{_messages.base.calc}</h2>
     </div>
     <div>
         {control calculator}

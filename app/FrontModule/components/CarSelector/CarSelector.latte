@@ -75,7 +75,7 @@
                     </div>
                 </div>
                 {else}
-                    <p>Vašemu hledání neodpovídá žádný motor vybraného modelu.<br>Zjednodušte vyhledávací dotaz, nebo si vyberte motor vozu přímo ze seznamu.</p>
+                    <p>{_messages.order.noVehicle}<br>{_messages.order.chooseAnotherVeh}</p>
                 {/if}
             </div>
 
@@ -88,7 +88,7 @@
 
     <div style="float: left; width: 100%">
         <div id="komfort">
-            <p>ACC Adaptive Control, Front Assist Control, hlídaní mrtvého úhlu nebo jiná komfortní výbava vozu?</p>
+            <p>{_messages.order.comfort}</p>
             <input n:name="komfort">
 {*            <a><span>Vozidlo s prvky komfortní výbavy</span></a>*}
         </div>

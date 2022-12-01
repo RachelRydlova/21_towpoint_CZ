@@ -37,12 +37,12 @@ extensions:
 
 translation:
 	locales:
-		whitelist: [en, cs, sk]
+		whitelist: [cs, sk, hu]
 		default: cs
 		fallback: [cs]
 	dirs:
 		- %appDir%/lang
-	returnOriginalMessage: true
+	returnOriginalMessage: true # to not translate undefined messages, default is false
 	localeResolvers:
 		- Contributte\Translation\LocalesResolvers\Session
 

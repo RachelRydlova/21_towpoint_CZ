@@ -98,6 +98,9 @@
     display: block;
     z-index: 100;
 }
+.hu:before {
+    background-image: url("../image/ikony/hu.jpg");
+}
 
 
 

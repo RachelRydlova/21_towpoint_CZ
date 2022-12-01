@@ -4,6 +4,7 @@
 namespace App\FrontModule\components;
 
 
+use Contributte\Translation\Translator;
 use Nette;
 use Nette\Application\UI\Control;
 use Nette\Application\UI\Form;
@@ -22,6 +23,9 @@ class OrderForm extends Control
 
     /** @var ApiManager */
     private $apiManager;
+
+    /** @var Translator @inject */
+    public $translator;
 
     /**
      * form selector constructor
@@ -45,30 +49,35 @@ class OrderForm extends Control
 
         $form->getElementPrototype()->setAttribute('class', 'inputs');
 
-        $staty = ['Česká republika', 'Slovensko'];
+        $p = $this->presenter;
         $predvolby = ['+420', '00421', '0036'];
 
-        $form->addText('name', "Jméno")
-            ->setHtmlAttribute('placeholder', 'Jméno');
-        $form->addText('surname', "Příjmení")
-            ->setHtmlAttribute('placeholder', 'Příjmení');
-        $form->addEmail('email', "E-mail")
-            ->setHtmlAttribute('placeholder', 'E-mail');
+        $form->addText('name', $p->translate('messages.base.name'))
+            ->setHtmlAttribute('placeholder',  $p->translate('messages.base.name'));
+        $form->addText('surname', $p->translate('messages.base.surname'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.surname'));
+        $form->addEmail('email', $p->translate('messages.base.email'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.email'));
         $form->addSelect('predvolba', 'Předvolba', $predvolby);
-        $form->addText('tel', "Telefon")
-            ->setHtmlAttribute('placeholder', 'Telefon');
-        $form->addText('psc', "PSČ")
-            ->setHtmlAttribute('placeholder', 'PSČ');
-        $form->addText('mesto', "Obec / město")
-            ->setHtmlAttribute('placeholder', 'Obec / město');
-        $form->addTextArea('note', "Poznámky")
-            ->setHtmlAttribute('placeholder', 'Poznámky');
-        $form->addSelect('state', 'Stát', $staty);
+        $form->addText('tel', $p->translate('messages.base.phone'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.phone'));
+        $form->addText('psc', $p->translate('messages.base.psc'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.psc'));
+        $form->addText('mesto', $p->translate('messages.base.city'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.city'));
+        $form->addTextArea('note', $p->translate('messages.base.note'))
+            ->setHtmlAttribute('placeholder', $p->translate('messages.base.note'));
+        $form->addSelect('state',$p->translate('messages.base.name'))
+            ->setItems(array(
+                'CZ' => $p->translate('Česká republika'),
+                'SK' => $p->translate('Slovensko'),
+                'HU' => $p->translate('Maďarsko'),
+            ));
         $form->addCheckbox('gdpr');
         $form->addHidden('type')
             ->setDefaultValue(1);
 
-        $form->addSubmit('success', 'Odeslat');
+        $form->addSubmit('success', $p->translate('messages.base.send'));
 
 
         $form->onSuccess[] = [$this, 'OrderFormSucceeded'];

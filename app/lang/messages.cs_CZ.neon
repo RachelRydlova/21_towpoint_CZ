@@ -1,13 +1,93 @@
-
+test:
+    test: otestovani prekladu
 layout:
     wantOffer: Chci nabídku
     whatOffer: Co nabízíme
     howItWorks: Jak to funguje
+    action: Akce
     aboutUs: O nás
     blog: Blog
+    cookieInfo: 'Tyto stránky používají k poskytování služeb, personalizaci reklam a analýze návštěvnosti soubory cookie. Používáním těchto stránek s tím souhlasíte.'
+    cookieDetail: Detailnější informace
+    agree: Souhlasím
+    czTel: 702 111 702
+    czFullTel: +420702111702
+    skTel: 00421 950 103 510
+    skFullTel: 00421950103510
+    huTell: 0036 94 200 220
+    huFullTel: 003694200220
+    czMail: info@towpoint.cz
+    skMail: info@towpoint.sk
+    huMail: info@towpoint.hu
+    openHours: '(Po–Pá 7:30–17:00)'
+    toMain: přejít na titulní stránku
+    menu: Menu
+    jednickaNaTrhu: Jednička na trhu tažných zařízení
+    poradenstvi: Profesionální poradenství
+    montazniMista: Montážní místa po celé ČR i SR
+    facebook: 'Máme taky <br> facebook'
+    navic: Obdržíte vždy něco navíc
 
 flash:
     fillPreferencies: 'Vyplňte preference Vašeho výběru.'
 
 base:
-    whyUs: 'Proč si vybrat nás?'
+    oneInTows: Jednička v tažném zařízení
+    next: další
+    prev: předchozí
+    wantOfferFull: Chci nabídku na tažné zařízení i s montáží
+    chooseCar: Vyberte vozidlo a motorizaci
+    howToFill: Jak vyplnit poptávkový formulář?
+    calc: Konfigurátor s kalkulačkou
+    name: Jméno
+    surname: Příjmení
+    email: E-mail
+    phone: Telefon
+    psc: PSČ
+    city: Obec / město
+    note: Poznámky
+    state: Stát
+    send: Odeslat
+    currency: Kč
+
+
+recenze:
+    procMy: 'Proč si vybrat nás?'
+    nenechameOdjet: 'Nenecháme Vás odjet s něčím, co bychom si sami na auto nedali.'
+
+order:
+    contact: Kontaktní údaje
+    fullfillForm: 'Doplňte prosím všechny zvýrazněné údaje, abychom Vás mohli kontaktovat s konkrétní nabídkou pro Váš vůz.'
+    fillEmail: Vyplňte svoji e-mailovou adresu ve správném formátu.
+    fillPhone: Vyplňte své telefonní číslo.
+    sendInq: Odeslat nezávaznou poptávku
+    freeSocket: Za odeslání nezávazné poptávky získáte v&nbsp;případě realizace montáže navíc redukci na zásuvku zdarma.
+    gdpr: 'Souhlasím se zpracováním osobních údajů pro potřeby kontaktování zákaznickým centrem v souvislosti s nabídkou montáže tažného zařízení'
+    agreeGdpr: 'Pro odeslání poptávky je třeba souhlasit se zpracováním osobních údajů.'
+    sending: 'Odesíláme požadavek, mějte strpení...'
+    noVehicle: 'Vašemu hledání neodpovídá žádný motor vybraného modelu.'
+    chooseAnotherVeh: 'Zjednodušte vyhledávací dotaz, nebo si vyberte motor vozu přímo ze seznamu.'
+    comfort: 'ACC Adaptive Control, Front Assist Control, hlídaní mrtvého úhlu nebo jiná komfortní výbava vozu?'
+    mark:
+    model:
+    vehicle:
+
+calc:
+    chooseTow: Jak vybrat typ upevnění?
+    chooseSocket: Jak vybrat zásuvku?
+    noOffer: 'Pro zvolené vozidlo bohužel aktuálně nemáme k dispozici kompletní nabídku.'
+    sendInq: 'Přesto nám odešlete tuto svoji poptávku a naši specialisté se Vám ozvou s individuálním návrhem řešení.'
+    price: 'Orientační cena včetně montáže s DPH:'
+    estimatedPrice: 'Cena je orientační a může se dle technického provedení vozidla lišit, pro více informací kontaktujte naši zákaznickou linku.'
+    pref: 'Preference:'
+    cena: Cena
+    kvalita: Kvalita
+    koule: 'Upevnění koule:'
+    pevne: Pevné
+    odnimatelne: Odnímatelné
+    zasuvka: 'Zásuvka:'
+    pin7: 7pinová
+    pin13: 13pinová
+    redukce: 'Redukce zdarma:'
+    na13: '7→13'
+    na7: '13→7'
